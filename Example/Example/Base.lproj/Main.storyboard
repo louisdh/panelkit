@@ -24,7 +24,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qba-C7-DQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-734" y="137"/>
+            <point key="canvasLocation" x="-1206" y="138"/>
         </scene>
         <!--PanelKit Example-->
         <scene sceneID="tne-QT-ifu">
@@ -115,7 +115,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkw-dk-M5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="879"/>
+            <point key="canvasLocation" x="136" y="1095"/>
         </scene>
         <!--Map Panel Content View Controller-->
         <scene sceneID="rDc-mz-Zi0">
@@ -142,7 +142,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqE-2A-jpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="628" y="760"/>
+            <point key="canvasLocation" x="915" y="810"/>
         </scene>
         <!--Text Panel Content View Controller-->
         <scene sceneID="bBw-Ul-2Ac">
@@ -176,7 +176,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loM-da-204" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="882" y="759"/>
+            <point key="canvasLocation" x="1318" y="810"/>
         </scene>
     </scenes>
 </document>

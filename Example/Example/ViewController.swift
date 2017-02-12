@@ -81,13 +81,4 @@ class ViewController: UIViewController, PanelManager {
 		return view.bounds.width > 800
 	}
 	
-	func didUpdatePinnedPanels() {
-		
-		
-	}
-	
-	func enablePanelShadow(for panel: PanelViewController) -> Bool {
-		return true
-	}
-	
 }

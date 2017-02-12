@@ -27,6 +27,21 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	
 }
 
+// MARK: - Default implementation
+
+public extension PanelManager where Self: UIViewController {
+
+	func didUpdatePinnedPanels() {
+		
+		
+	}
+	
+	func enablePanelShadow(for panel: PanelViewController) -> Bool {
+		return true
+	}
+	
+}
+
 // MARK: -
 
 public extension PanelManager where Self: UIViewController {
