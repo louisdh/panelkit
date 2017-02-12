@@ -163,6 +163,15 @@ public protocol PanelViewControllerDelegate: class {
 		return contentViewController.isShownAsPanel
 	}
 	
+	@objc override public var preferredContentSize: CGSize {
+		get {
+			return contentViewController?.contentSize() ?? super.preferredContentSize
+		}
+		set {
+			super.preferredContentSize = newValue
+		}
+	}
+	
 	// MARK: -
 	
 	func didDrag() {
