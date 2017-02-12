@@ -38,22 +38,23 @@ class ViewController: UIViewController, PanelManager {
 	// MARK: - Popover
 	
 	@IBAction func showMap(_ sender: UIBarButtonItem) {
-	
-		mapPanelVC.modalPresentationStyle = .popover
-		
-		mapPanelVC.popoverPresentationController?.barButtonItem = sender
-		
-		present(mapPanelVC, animated: true, completion: nil)
-		
+
+		showPopover(mapPanelVC, from: sender)
+
 	}
 	
 	@IBAction func showTextViewPanel(_ sender: UIBarButtonItem) {
+		
+		showPopover(textPanelVC, from: sender)
+		
+	}
 	
-		textPanelVC.modalPresentationStyle = .popover
+	func showPopover(_ vc: UIViewController, from barButtonItem: UIBarButtonItem) {
 		
-		textPanelVC.popoverPresentationController?.barButtonItem = sender
+		vc.modalPresentationStyle = .popover
+		vc.popoverPresentationController?.barButtonItem = barButtonItem
 		
-		present(textPanelVC, animated: true, completion: nil)
+		present(vc, animated: true, completion: nil)
 		
 	}
 
