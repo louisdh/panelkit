@@ -105,7 +105,7 @@ import UIKit
 		
 	func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
 		
-		guard let wrapperViewController = self.panelViewController else {
+		guard let panelViewController = self.panelViewController else {
 			return
 		}
 		
@@ -118,7 +118,7 @@ import UIKit
 	
 		let proposedCenter = CGPoint(x: proposeX, y: proposeY)
 		
-		viewToMove.center = wrapperViewController.allowedCenter(for: proposedCenter)
+		viewToMove.center = panelViewController.allowedCenter(for: proposedCenter)
 		
 		self.prevTouch = touch
 		
@@ -127,7 +127,7 @@ import UIKit
 		
 		bringToFront()
 		
-		wrapperViewController.didDrag()
+		panelViewController.didDrag()
 		
 	}
 	
