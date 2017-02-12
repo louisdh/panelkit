@@ -24,7 +24,7 @@ public protocol PanelsFullscreenTransitionDelegate {
 
 // MARK: -
 
-public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate {
+public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate, PanelContentViewControllerDelegate {
 	
 	var panels: [PanelViewController?] { get }
 	

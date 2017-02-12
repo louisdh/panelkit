@@ -32,7 +32,7 @@ extension UIViewController {
 	
 }
 
-class ViewController: UIViewController, PanelManager, PanelContentViewControllerDelegate {
+class ViewController: UIViewController, PanelManager {
 
 	var mapPanelContentViewController: MapPanelContentViewController!
 	var mapPanelViewController: PanelViewController!
