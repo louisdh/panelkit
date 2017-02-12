@@ -12,15 +12,18 @@ import MapKit
 
 class MapPanelContentViewController: PanelContentViewController {
 
+	fileprivate func panelToggleBtnTitle() -> String {
+		if isShownAsPanel {
+			return "Close"
+		} else {
+			return "⬇︎"
+		}
+	}
+	
 	fileprivate func getPanelToggleBtn() -> UIBarButtonItem {
 		
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
-		
-		if isShownAsPanel {
-			button.title = "╳"
-		} else {
-			button.title = "⬇︎"
-		}
+		button = panelToggleBtnTitle()
 		
 		return button
 	}

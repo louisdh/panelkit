@@ -18,7 +18,7 @@ class TextPanelContentViewController: PanelContentViewController {
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
 		
 		if isShownAsPanel {
-			button.title = "╳"
+			button.title = "Close"
 		} else {
 			button.title = "⬇︎"
 		}
