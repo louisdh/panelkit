@@ -11,11 +11,11 @@ import PanelKit
 
 class ViewController: UIViewController, PanelManager {
 
-	var mapPanelContentViewController: MapPanelContentViewController!
-	var mapPanelViewController: PanelViewController!
+	var mapPanelContentVC: MapPanelContentViewController!
+	var mapPanelVC: PanelViewController!
 	
-	var textPanelContentViewController: TextPanelContentViewController!
-	var textPanelViewController: PanelViewController!
+	var textPanelContentVC: TextPanelContentViewController!
+	var textPanelVC: PanelViewController!
 	
 
 	@IBOutlet weak var contentWrapperView: UIView!
@@ -24,21 +24,14 @@ class ViewController: UIViewController, PanelManager {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
-		mapPanelContentViewController = storyboard?.instantiateViewController(withIdentifier: "MapPanelContentViewController") as! MapPanelContentViewController
+		mapPanelContentVC = storyboard?.instantiateViewController(withIdentifier: "MapPanelContentViewController") as! MapPanelContentViewController
 		
-		mapPanelContentViewController.panelDelegate = self
-
-		mapPanelViewController = PanelViewController(with: mapPanelContentViewController)
-		mapPanelViewController.delegate = self
+		mapPanelVC = PanelViewController(with: mapPanelContentVC, in: self)
 		
 		
-		textPanelContentViewController = storyboard?.instantiateViewController(withIdentifier: "TextPanelContentViewController") as! TextPanelContentViewController
+		textPanelContentVC = storyboard?.instantiateViewController(withIdentifier: "TextPanelContentViewController") as! TextPanelContentViewController
 		
-		textPanelContentViewController.panelDelegate = self
-		
-		textPanelViewController = PanelViewController(with: textPanelContentViewController)
-		textPanelViewController.delegate = self
-		
+		textPanelVC = PanelViewController(with: textPanelContentVC, in: self)
 		
 	}
 	
@@ -46,21 +39,21 @@ class ViewController: UIViewController, PanelManager {
 	
 	@IBAction func showMap(_ sender: UIBarButtonItem) {
 	
-		mapPanelViewController.modalPresentationStyle = .popover
+		mapPanelVC.modalPresentationStyle = .popover
 		
-		mapPanelViewController.popoverPresentationController?.barButtonItem = sender
+		mapPanelVC.popoverPresentationController?.barButtonItem = sender
 		
-		present(mapPanelViewController, animated: true, completion: nil)
+		present(mapPanelVC, animated: true, completion: nil)
 		
 	}
 	
 	@IBAction func showTextViewPanel(_ sender: UIBarButtonItem) {
 	
-		textPanelViewController.modalPresentationStyle = .popover
+		textPanelVC.modalPresentationStyle = .popover
 		
-		textPanelViewController.popoverPresentationController?.barButtonItem = sender
+		textPanelVC.popoverPresentationController?.barButtonItem = sender
 		
-		present(textPanelViewController, animated: true, completion: nil)
+		present(textPanelVC, animated: true, completion: nil)
 		
 	}
 
@@ -77,7 +70,7 @@ class ViewController: UIViewController, PanelManager {
 	var panelPinnedPreviewView: UIView?
 	
 	var panels: [PanelViewController?] {
-		return [mapPanelViewController, textPanelViewController]
+		return [mapPanelVC, textPanelVC]
 	}
 	
 	var allowFloatingPanels: Bool {
