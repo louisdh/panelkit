@@ -11,6 +11,8 @@ import PanelKit
 
 class TextPanelContentViewController: PanelContentViewController {
 
+	@IBOutlet weak var textView: UITextView!
+	
 	fileprivate func getPanelToggleBtn() -> UIBarButtonItem {
 		
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
@@ -66,16 +68,20 @@ class TextPanelContentViewController: PanelContentViewController {
 		
 		if hidden {
 			
-			navigationItem.rightBarButtonItems = []
+			navigationItem.leftBarButtonItems = []
 			
 		} else {
 			
 			let panelToggleBtn = getPanelToggleBtn()
 			
-			navigationItem.rightBarButtonItems = [panelToggleBtn]
+			navigationItem.leftBarButtonItems = [panelToggleBtn]
 			
 		}
 		
+	}
+	
+	override func shouldAdjustForKeyboard() -> Bool {
+		return textView.isFirstResponder
 	}
 	
 	override func setAsPanel(_ asPanel: Bool) {

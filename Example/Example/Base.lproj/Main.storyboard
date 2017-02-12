@@ -6,7 +6,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -45,6 +44,15 @@
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VER-Ij-adX">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <subviews>
+                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxX-Dp-fJS">
+                                                <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                                <connections>
+                                                    <segue destination="naq-A9-io3" kind="embed" id="ZlL-3c-zn5"/>
+                                                </connections>
+                                            </containerView>
+                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                 </subviews>
@@ -82,6 +90,33 @@
             </objects>
             <point key="canvasLocation" x="136.5234375" y="138.28125"/>
         </scene>
+        <!--View Controller-->
+        <scene sceneID="8qf-Sj-orb">
+            <objects>
+                <viewController id="naq-A9-io3" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dhd-kI-vkU"/>
+                        <viewControllerLayoutGuide type="bottom" id="N2e-tF-29f"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="dPC-02-Xbn">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYt-bh-zqY">
+                                <rect key="frame" x="462" y="335" width="100" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lkw-dk-M5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137" y="879"/>
+        </scene>
         <!--Map Panel Content View Controller-->
         <scene sceneID="rDc-mz-Zi0">
             <objects>
@@ -94,24 +129,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-Ci-Ruj">
-                                <rect key="frame" x="0.0" y="20" width="320" height="380"/>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-Ci-Ruj">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="tCS-JI-vLe" firstAttribute="top" secondItem="hAa-Ci-Ruj" secondAttribute="bottom" id="Bg5-ag-25M"/>
-                            <constraint firstItem="hAa-Ci-Ruj" firstAttribute="top" secondItem="kPo-34-cXf" secondAttribute="bottom" id="HQM-op-Kc7"/>
-                            <constraint firstAttribute="trailing" secondItem="hAa-Ci-Ruj" secondAttribute="trailing" id="YwZ-eG-PII"/>
-                            <constraint firstItem="hAa-Ci-Ruj" firstAttribute="leading" secondItem="o2o-Xj-OcW" secondAttribute="leading" id="uVV-po-AXZ"/>
-                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqE-2A-jpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-43" y="840"/>
+            <point key="canvasLocation" x="628" y="760"/>
         </scene>
         <!--Text Panel Content View Controller-->
         <scene sceneID="bBw-Ul-2Ac">
@@ -125,8 +156,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-ry-TW0">
-                                <rect key="frame" x="16" y="20" width="288" height="380"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-ry-TW0">
+                                <rect key="frame" x="16" y="0.0" width="288" height="400"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -134,19 +166,17 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="hj6-3w-OAM" firstAttribute="top" secondItem="P2G-ry-TW0" secondAttribute="bottom" id="B1j-Tg-chj"/>
-                            <constraint firstItem="P2G-ry-TW0" firstAttribute="top" secondItem="Tpw-mH-5Gf" secondAttribute="bottom" id="Pre-VU-8UQ"/>
-                            <constraint firstItem="P2G-ry-TW0" firstAttribute="leading" secondItem="iux-bv-PwE" secondAttribute="leadingMargin" id="ozh-bB-jUj"/>
-                            <constraint firstItem="P2G-ry-TW0" firstAttribute="trailing" secondItem="iux-bv-PwE" secondAttribute="trailingMargin" id="tLo-Yv-50A"/>
-                        </constraints>
                     </view>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
+                    <connections>
+                        <outlet property="textView" destination="P2G-ry-TW0" id="vyG-Zx-yh7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loM-da-204" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="203" y="840"/>
+            <point key="canvasLocation" x="882" y="759"/>
         </scene>
     </scenes>
 </document>

@@ -67,13 +67,13 @@ class MapPanelContentViewController: PanelContentViewController {
 		
 		if hidden {
 			
-			navigationItem.rightBarButtonItems = []
+			navigationItem.leftBarButtonItems = []
 			
 		} else {
 			
 			let panelToggleBtn = getPanelToggleBtn()
 			
-			navigationItem.rightBarButtonItems = [panelToggleBtn]
+			navigationItem.leftBarButtonItems = [panelToggleBtn]
 			
 		}
 		
