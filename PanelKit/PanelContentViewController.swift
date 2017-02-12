@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc public protocol PanelContentViewControllerDelegate {
+public protocol PanelContentViewControllerDelegate: class {
 	
 	func didToggle(_ panel: PanelViewController)
 	
@@ -18,7 +18,7 @@ import UIKit
 @objc open class PanelContentViewController: UIViewController {
 
 	private var prevTouch: CGPoint?
-	@objc public weak var panelDelegate: PanelContentViewControllerDelegate?
+	public weak var panelDelegate: PanelContentViewControllerDelegate?
 	
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController

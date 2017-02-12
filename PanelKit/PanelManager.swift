@@ -9,6 +9,30 @@
 import Foundation
 import UIKit
 
+extension UIViewController {
+	
+	var isPresentedAsPopover: Bool {
+		get {
+			
+			if let p = self.popoverPresentationController {
+				
+				// FIXME: presentedViewController can never be nil?
+				let c = p.presentedViewController as UIViewController?
+				
+				return c != nil && p.arrowDirection != .unknown
+				
+			} else {
+				
+				return false
+				
+			}
+			
+		}
+	}
+	
+}
+
+
 public protocol PanelsFullscreenTransitionDelegate {
 	
 	func panelsPrepareMoveOffScreen()
@@ -181,6 +205,58 @@ public extension PanelManager where Self: UIViewController {
 }
 
 // MARK: -
+
+public extension PanelManager where Self: UIViewController {
+
+	func didToggle(_ panel: PanelViewController) {
+		
+		let panelNavCon = panel.panelNavigationController
+		
+		if panel.contentViewController!.isShownAsPanel && !panelNavCon.isPresentedAsPopover {
+			
+			panel.view.removeFromSuperview()
+			
+			panel.contentViewController?.setAsPanel(false)
+			
+		} else {
+			
+			let rect = panel.view.convert(panel.view.frame, to: panelContentWrapperView)
+			
+			panel.dismiss(animated: false, completion: {
+				
+				self.panelContentWrapperView.addSubview(panel.view)
+				
+				panel.view.frame = rect
+				
+				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
+					
+					let x = rect.origin.x
+					
+					let y: CGFloat = 12.0
+					
+					let width = panel.view.frame.size.width
+					
+					let height = max(panel.view.frame.size.height, 44*5)
+					
+					panel.view.frame = CGRect(x: x, y: y, width: width, height: height)
+					panel.view.center = panel.allowedCenter(for: panel.view.center)
+					
+				}, completion: nil)
+				
+				
+				panel.contentViewController?.setAutoResizingMask()
+				
+				if panel.view.superview == self.panelContentWrapperView {
+					panel.contentViewController?.setAsPanel(true)
+					panelNavCon.setAsPanel(true)
+				}
+				
+			})
+			
+		}
+		
+	}
+}
 
 public extension PanelManager where Self: UIViewController {
 	

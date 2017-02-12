@@ -9,29 +9,6 @@
 import UIKit
 import PanelKit
 
-extension UIViewController {
-	
-	public var isPresentedAsPopover: Bool {
-		get {
-			
-			if let p = self.popoverPresentationController {
-				
-				// FIXME: presentedViewController can never be nil?
-				let c = p.presentedViewController as UIViewController?
-				
-				return c != nil && p.arrowDirection != .unknown
-				
-			} else {
-				
-				return false
-				
-			}
-			
-		}
-	}
-	
-}
-
 class ViewController: UIViewController, PanelManager {
 
 	var mapPanelContentViewController: MapPanelContentViewController!
@@ -89,58 +66,6 @@ class ViewController: UIViewController, PanelManager {
 		
 		present(textPanelViewController, animated: true, completion: nil)
 		
-	}
-	
-	// MARK: - 
-	
-	func didToggle(_ panel: PanelViewController) {
-		
-		let panelNavCon = panel.panelNavigationController
-		
-		if panel.contentViewController!.isShownAsPanel && !panelNavCon.isPresentedAsPopover {
-			
-			panel.view.removeFromSuperview()
-
-			panel.contentViewController?.setAsPanel(false)
-			
-		} else {
-			
-			let rect = panel.view.convert(panel.view.frame, to: self.contentWrapperView)
-			
-			panel.dismiss(animated: false, completion: {
-				
-				self.contentWrapperView.addSubview(panel.view)
-				
-				panel.view.frame = rect
-				
-				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: { 
-					
-					let x = rect.origin.x
-					
-					let y: CGFloat = 12.0
-					
-					let width = panel.view.frame.size.width
-					
-					let height = max(panel.view.frame.size.height, 44*5)
-					
-					panel.view.frame = CGRect(x: x, y: y, width: width, height: height)
-					panel.view.center = panel.allowedCenter(for: panel.view.center)
-					
-				}, completion: nil)
-		
-				
-				panel.contentViewController?.setAutoResizingMask()
-				
-				if panel.view.superview == self.contentWrapperView {
-					panel.contentViewController?.setAsPanel(true)
-					panelNavCon.setAsPanel(true)
-				}
-			
-				
-			})
-		
-		}
-	
 	}
 
 	// MARK: - PanelManager
