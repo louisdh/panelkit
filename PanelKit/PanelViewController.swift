@@ -56,7 +56,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	// MARK: -
 
-	public init(with contentViewController: PanelContentViewController) {
+	public init(with contentViewController: PanelContentViewController, in panelManager: PanelManager) {
 		
 		self.contentViewController = contentViewController
 		
@@ -74,7 +74,6 @@ public protocol PanelViewControllerDelegate: class {
 	
 		panelNavigationController.navigationBar.tintColor = contentViewController.view.tintColor
 		
-		self.updateShadow()
 	
 		self.view.clipsToBounds = false
 		
@@ -89,6 +88,11 @@ public protocol PanelViewControllerDelegate: class {
 		
 //		self.presentationController?.delegate = self
 		
+		
+		contentViewController.panelDelegate = panelManager
+		self.delegate = panelManager
+		
+		
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -100,11 +104,15 @@ public protocol PanelViewControllerDelegate: class {
     override public func viewDidLoad() {
         super.viewDidLoad()
 
+		self.updateShadow()
+
     }
 	
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		self.updateShadow()
+
 		contentViewController?.viewWillAppear(animated)
 		
 		print("\(self) viewWillAppear")
