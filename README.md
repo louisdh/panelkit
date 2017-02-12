@@ -9,7 +9,7 @@
 
 
 ## About
-PanelKit is a UI framework that enables panels on iOS. A panel can presented in the following ways:
+PanelKit is a UI framework that enables panels on iOS. A panel can be presented in the following ways:
 
 * Modally
 * As a popover
@@ -21,7 +21,10 @@ This framework does all the heavy lifting for dragging panels, pinning them and 
 
 A panel needs to be shown in a ```PanelNavigationController```, but the top bar can be hidden or styled as with any ```UINavigationController```.
 
+## Requirements
 
+* iOS 8.0+
+* Xcode 8.2+
 
 ## License
 
