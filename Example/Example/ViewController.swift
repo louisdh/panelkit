@@ -35,7 +35,7 @@ class ViewController: UIViewController, PanelManager {
 		
 	}
 	
-	// MARK: -
+	// MARK: - Popover
 	
 	@IBAction func showMap(_ sender: UIBarButtonItem) {
 	
