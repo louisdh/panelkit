@@ -165,27 +165,27 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 
-	func updateConstraintsForKeyboardShow(with frame: CGRect) {
+	open func updateConstraintsForKeyboardShow(with frame: CGRect) {
 
 		
 	}
 	
-	func updateUIForKeyboardShow(with frame: CGRect) {
+	open func updateUIForKeyboardShow(with frame: CGRect) {
 		
 		
 	}
 	
-	func updateConstraintsForKeyboardHide() {
+	open func updateConstraintsForKeyboardHide() {
 		
 		
 	}
 	
-	func updateUIForKeyboardHide() {
+	open func updateUIForKeyboardHide() {
 		
 		
 	}
 	
-	func shouldAdjustForKeyboard() -> Bool {
+	open func shouldAdjustForKeyboard() -> Bool {
 		return false
 	}
 
