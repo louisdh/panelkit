@@ -20,9 +20,7 @@ class ViewController: UIViewController, PanelManager {
 
 	@IBOutlet weak var contentWrapperView: UIView!
 	@IBOutlet weak var contentView: UIView!
-	
-	var privatePanelPinnedPreviewView: UIView!
-	
+		
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		
@@ -31,7 +29,6 @@ class ViewController: UIViewController, PanelManager {
 		mapPanelContentViewController.panelDelegate = self
 
 		mapPanelViewController = PanelViewController(with: mapPanelContentViewController)
-		mapPanelViewController.preferredContentSize = mapPanelContentViewController.contentSize()
 		mapPanelViewController.delegate = self
 		
 		
@@ -40,7 +37,6 @@ class ViewController: UIViewController, PanelManager {
 		textPanelContentViewController.panelDelegate = self
 		
 		textPanelViewController = PanelViewController(with: textPanelContentViewController)
-		textPanelViewController.preferredContentSize = textPanelContentViewController.contentSize()
 		textPanelViewController.delegate = self
 		
 		
@@ -102,4 +98,3 @@ class ViewController: UIViewController, PanelManager {
 	}
 	
 }
-
