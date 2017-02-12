@@ -11,7 +11,7 @@ import UIKit
 @objc public class PanelNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
 	private var prevTouch: CGPoint?
-	weak var wrapperViewController: PanelViewController?
+	public weak var wrapperViewController: PanelViewController?
 
 	/// Default is false
 	internal(set) var isShownAsPanel = false
@@ -145,7 +145,7 @@ import UIKit
 
 	}
 	
-	@objc func setAsPanel(_ asPanel: Bool) {
+	@objc public func setAsPanel(_ asPanel: Bool) {
 		
 		isShownAsPanel = asPanel
 		

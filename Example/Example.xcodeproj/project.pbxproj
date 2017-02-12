@@ -14,6 +14,8 @@
 		BE24AD311E508C49008892A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE24AD2F1E508C49008892A2 /* LaunchScreen.storyboard */; };
 		BE24AD3A1E508C8F008892A2 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD391E508C8F008892A2 /* PanelKit.framework */; };
 		BEF801401E508CA3007D3CEE /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD391E508C8F008892A2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BEF801441E508FFC007D3CEE /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */; };
+		BEF801461E50E1AC007D3CEE /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +41,8 @@
 		BE24AD301E508C49008892A2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BE24AD321E508C49008892A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE24AD391E508C8F008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanelKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PanelKit-bazukjpbanitzpeyxanllouvbgxh/Build/Products/Debug-iphoneos/PanelKit.framework"; sourceTree = "<group>"; };
+		BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPanelContentViewController.swift; path = Panels/MapPanelContentViewController.swift; sourceTree = "<group>"; };
+		BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPanelContentViewController.swift; path = Panels/TextPanelContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		BE24AD251E508C49008892A2 /* Example */ = {
 			isa = PBXGroup;
 			children = (
+				BEF801421E508FE0007D3CEE /* Panels */,
 				BE24AD261E508C49008892A2 /* AppDelegate.swift */,
 				BE24AD281E508C49008892A2 /* ViewController.swift */,
 				BE24AD2A1E508C49008892A2 /* Main.storyboard */,
@@ -89,6 +94,15 @@
 				BE24AD391E508C8F008892A2 /* PanelKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BEF801421E508FE0007D3CEE /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */,
+				BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */,
+			);
+			name = Panels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -165,7 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BEF801441E508FFC007D3CEE /* MapPanelContentViewController.swift in Sources */,
 				BE24AD291E508C49008892A2 /* ViewController.swift in Sources */,
+				BEF801461E50E1AC007D3CEE /* TextPanelContentViewController.swift in Sources */,
 				BE24AD271E508C49008892A2 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

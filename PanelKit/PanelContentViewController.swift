@@ -15,12 +15,12 @@ import UIKit
 }
 
 /// Needs to be presented as root view controller in a PanelNavigationController instance
-@objc public class PanelContentViewController: UIViewController {
+@objc open class PanelContentViewController: UIViewController {
 
 	private var prevTouch: CGPoint?
-	@objc weak var panelDelegate: PanelContentViewControllerDelegate?
+	@objc public weak var panelDelegate: PanelContentViewControllerDelegate?
 	
-	@objc weak var panelNavigationController: PanelNavigationController? {
+	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
 	}
 	
@@ -30,9 +30,9 @@ import UIKit
 	
 	
 	// Default is false
-	internal(set) var isShownAsPanel = false
+	internal(set) public var isShownAsPanel = false
 	
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
 
 		NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(_ :)), name: .UIKeyboardWillShow, object: nil)
@@ -42,12 +42,12 @@ import UIKit
 
 	}
 	
-	override public func viewWillAppear(_ animated: Bool) {
+	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 	}
 	
-	override public func viewDidAppear(_ animated: Bool) {
+	override open func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 	}
@@ -269,7 +269,7 @@ import UIKit
 	
 	// MARK: -
 	
-	func setAutoResizingMask() {
+	public func setAutoResizingMask() {
 
 		guard let viewToMove = self.viewToMove else {
 			return
@@ -302,7 +302,7 @@ import UIKit
 		
 	}
 	
-	var canFloat: Bool {
+	public var canFloat: Bool {
 		
 		guard let navHeight = panelNavigationController?.view.frame.size.height else {
 			return false
@@ -312,13 +312,13 @@ import UIKit
 		
 	}
 	
-	func setAsPanel(_ asPanel: Bool) {
+	open func setAsPanel(_ asPanel: Bool) {
 		
 		isShownAsPanel = asPanel
 		
 	}
 	
-	func contentSize() -> CGSize {
+	open func contentSize() -> CGSize {
 		fatalError("Content size not implemented")
 	}
 	

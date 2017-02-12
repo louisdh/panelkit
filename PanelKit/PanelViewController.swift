@@ -25,9 +25,9 @@ public protocol PanelViewControllerDelegate: class {
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	// TODO: make internal?
-	@objc let panelNavigationController: PanelNavigationController
+	@objc public let panelNavigationController: PanelNavigationController
 	
-	@objc weak var contentViewController: PanelContentViewController?
+	@objc public weak var contentViewController: PanelContentViewController?
 	
 	var pinnedSide: PanelPinSide?
 	
@@ -35,7 +35,7 @@ public protocol PanelViewControllerDelegate: class {
 		return pinnedSide != nil
 	}
 	
-	weak var delegate: PanelViewControllerDelegate? {
+	public weak var delegate: PanelViewControllerDelegate? {
 		didSet {
 			self.updateShadow()
 		}
@@ -56,7 +56,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	// MARK: -
 
-	init(with contentViewController: PanelContentViewController) {
+	public init(with contentViewController: PanelContentViewController) {
 		
 		self.contentViewController = contentViewController
 		
