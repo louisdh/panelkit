@@ -18,7 +18,7 @@ public protocol PanelContentViewControllerDelegate: class {
 @objc open class PanelContentViewController: UIViewController {
 
 	private var prevTouch: CGPoint?
-	public weak var panelDelegate: PanelContentViewControllerDelegate?
+	internal(set) public weak var panelDelegate: PanelContentViewControllerDelegate?
 	
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController

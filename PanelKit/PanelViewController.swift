@@ -35,7 +35,7 @@ public protocol PanelViewControllerDelegate: class {
 		return pinnedSide != nil
 	}
 	
-	public weak var delegate: PanelViewControllerDelegate? {
+	weak var delegate: PanelViewControllerDelegate? {
 		didSet {
 			self.updateShadow()
 		}
