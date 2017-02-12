@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-protocol PanelsFullscreenTransitionDelegate {
+public protocol PanelsFullscreenTransitionDelegate {
 	
 	func panelsPrepareMoveOffScreen()
 	func panelsPrepareMoveOnScreen()
@@ -24,7 +24,7 @@ protocol PanelsFullscreenTransitionDelegate {
 
 // MARK: -
 
-protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate {
+public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate {
 	
 	var panels: [PanelViewController?] { get }
 	
@@ -44,7 +44,7 @@ protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDe
 
 // MARK: -
 
-extension PanelManager where Self: UIViewController {
+public extension PanelManager where Self: UIViewController {
 	
 	func closeAllPanels() {
 		
@@ -182,7 +182,7 @@ extension PanelManager where Self: UIViewController {
 
 // MARK: -
 
-extension PanelManager where Self: UIViewController {
+public extension PanelManager where Self: UIViewController {
 	
 	func didDragFree(_ panel: PanelViewController) {
 		
@@ -344,7 +344,7 @@ extension PanelManager where Self: UIViewController {
 
 // MARK: -
 
-extension PanelManager where Self: UIViewController {
+public extension PanelManager where Self: UIViewController {
 	
 	func panelsPrepareMoveOffScreen() {
 		

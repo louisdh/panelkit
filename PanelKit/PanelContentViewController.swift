@@ -8,14 +8,14 @@
 
 import UIKit
 
-@objc protocol PanelContentViewControllerDelegate {
+@objc public protocol PanelContentViewControllerDelegate {
 	
 	func didToggle(_ panel: PanelViewController)
 	
 }
 
 /// Needs to be presented as root view controller in a PanelNavigationController instance
-@objc class PanelContentViewController: UIViewController {
+@objc public class PanelContentViewController: UIViewController {
 
 	private var prevTouch: CGPoint?
 	@objc weak var panelDelegate: PanelContentViewControllerDelegate?
@@ -32,7 +32,7 @@ import UIKit
 	// Default is false
 	internal(set) var isShownAsPanel = false
 	
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
 		NotificationCenter.default.addObserver(self, selector: #selector(willShowKeyboard(_ :)), name: .UIKeyboardWillShow, object: nil)
@@ -42,12 +42,12 @@ import UIKit
 
 	}
 	
-	override func viewWillAppear(_ animated: Bool) {
+	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
+	override public func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 	}

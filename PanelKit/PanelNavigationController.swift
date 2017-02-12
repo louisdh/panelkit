@@ -8,7 +8,7 @@
 
 import UIKit
 
-@objc class PanelNavigationController: UINavigationController, UIGestureRecognizerDelegate {
+@objc public class PanelNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
 	private var prevTouch: CGPoint?
 	weak var wrapperViewController: PanelViewController?
@@ -16,7 +16,7 @@ import UIKit
 	/// Default is false
 	internal(set) var isShownAsPanel = false
 
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 		
 		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragOnBar(_ :)))
@@ -34,7 +34,7 @@ import UIKit
 		print("deinit \(self)")
 	}
 	
-	func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return true
 	}
 	
@@ -151,7 +151,7 @@ import UIKit
 		
 	}
 
-	override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		if !isShownAsPanel {
 			return
@@ -178,14 +178,14 @@ import UIKit
 
 	}
 	
-	override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+	override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		prevTouch = nil
 		wrapperViewController?.didEndDrag()
 
 	}
 	
-	override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
+	override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		prevTouch = nil
 		wrapperViewController?.didEndDrag()

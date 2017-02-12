@@ -8,11 +8,11 @@
 
 import Foundation
 
-@objc enum PanelPinSide: Int, CustomStringConvertible {
+@objc public enum PanelPinSide: Int, CustomStringConvertible {
 	case left
 	case right
 	
-	var description: String {
+	public var description: String {
 		switch self {
 		case .left:
 			return "left"

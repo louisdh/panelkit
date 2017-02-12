@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol PanelViewControllerDelegate: class {
+public protocol PanelViewControllerDelegate: class {
 
 	func didDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide)
 	func didDragFree(_ panel: PanelViewController)
@@ -22,7 +22,7 @@ protocol PanelViewControllerDelegate: class {
 	
 }
 
-@objc class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
+@objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	// TODO: make internal?
 	@objc let panelNavigationController: PanelNavigationController
@@ -91,18 +91,18 @@ protocol PanelViewControllerDelegate: class {
 		
 	}
 	
-	required init?(coder aDecoder: NSCoder) {
+	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
 	// MARK: -
 	
-    override func viewDidLoad() {
+    override public func viewDidLoad() {
         super.viewDidLoad()
 
     }
 	
-	override func viewWillAppear(_ animated: Bool) {
+	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
 		contentViewController?.viewWillAppear(animated)
@@ -110,7 +110,7 @@ protocol PanelViewControllerDelegate: class {
 		print("\(self) viewWillAppear")
 	}
 	
-	override func viewDidAppear(_ animated: Bool) {
+	override public func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 		
 		contentViewController?.viewDidAppear(animated)
@@ -118,12 +118,12 @@ protocol PanelViewControllerDelegate: class {
 		print("\(self) viewDidAppear")
 	}
 	
-	override func viewWillLayoutSubviews() {
+	override public func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
 		
 	}
 	
-	override func viewDidLayoutSubviews() {
+	override public func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
 		if panelNavigationController.isShownAsPanel {
@@ -367,13 +367,13 @@ protocol PanelViewControllerDelegate: class {
 		
 	}
 	
-	override var prefersStatusBarHidden: Bool {
+	override public var prefersStatusBarHidden: Bool {
 		// PanelViewController currently doesn't support status bar 
 		// because it causes glitches when presented as a modal
 		return true
 	}
 	
-	override var preferredStatusBarStyle: UIStatusBarStyle {
+	override public var preferredStatusBarStyle: UIStatusBarStyle {
 		
 		if let contentViewController = contentViewController {
 			return contentViewController.preferredStatusBarStyle
