@@ -73,12 +73,4 @@ class ViewController: UIViewController, PanelManager {
 		return [mapPanelVC, textPanelVC]
 	}
 	
-	var allowFloatingPanels: Bool {
-		return view.bounds.width > 800
-	}
-	
-	var allowPanelPinning: Bool {
-		return view.bounds.width > 800
-	}
-	
 }

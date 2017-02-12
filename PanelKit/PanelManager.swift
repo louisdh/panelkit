@@ -33,11 +33,18 @@ public extension PanelManager where Self: UIViewController {
 
 	func didUpdatePinnedPanels() {
 		
-		
 	}
 	
 	func enablePanelShadow(for panel: PanelViewController) -> Bool {
 		return true
+	}
+
+	var allowFloatingPanels: Bool {
+		return panelContentWrapperView.bounds.width > 800
+	}
+	
+	var allowPanelPinning: Bool {
+		return panelContentWrapperView.bounds.width > 800
 	}
 	
 }
