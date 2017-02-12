@@ -10,7 +10,7 @@ import UIKit
 
 public protocol PanelContentViewControllerDelegate: class {
 	
-	func didToggle(_ panel: PanelViewController)
+	func toggleFloatStatus(for panel: PanelViewController)
 	
 }
 
@@ -25,7 +25,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	}
 	
 	private weak var viewToMove: UIView? {
-		return panelNavigationController?.wrapperViewController?.view
+		return panelNavigationController?.panelViewController?.view
 	}
 	
 	
@@ -79,7 +79,7 @@ public protocol PanelContentViewControllerDelegate: class {
 			return
 		}
 		
-		guard let viewToMove = panelNavigationController?.wrapperViewController?.view else {
+		guard let viewToMove = panelNavigationController?.panelViewController?.view else {
 			return
 		}
 		
@@ -131,7 +131,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	func willHideKeyboard(_ notification: Notification) {
 		
-		guard let viewToMove = panelNavigationController?.wrapperViewController?.view else {
+		guard let viewToMove = panelNavigationController?.panelViewController?.view else {
 			return
 		}
 		
@@ -291,7 +291,7 @@ public protocol PanelContentViewControllerDelegate: class {
 			
 		}
 		
-		if panelNavigationController?.wrapperViewController?.isPinned == true {
+		if panelNavigationController?.panelViewController?.isPinned == true {
 			mask.formUnion(.flexibleHeight)
 		}
 		

@@ -70,7 +70,7 @@ public protocol PanelViewControllerDelegate: class {
 		self.view.addSubview(shadowView)
 		self.view.addSubview(panelNavigationController.view)
 		
-		panelNavigationController.wrapperViewController = self
+		panelNavigationController.panelViewController = self
 	
 		panelNavigationController.navigationBar.tintColor = contentViewController.view.tintColor
 		

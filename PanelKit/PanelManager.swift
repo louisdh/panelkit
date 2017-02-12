@@ -208,7 +208,7 @@ public extension PanelManager where Self: UIViewController {
 
 public extension PanelManager where Self: UIViewController {
 
-	func didToggle(_ panel: PanelViewController) {
+	func toggleFloatStatus(for panel: PanelViewController) {
 		
 		let panelNavCon = panel.panelNavigationController
 		

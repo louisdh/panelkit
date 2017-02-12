@@ -41,11 +41,11 @@ class MapPanelContentViewController: PanelContentViewController {
 	
 	func popPanel(_ sender: UIBarButtonItem) {
 		
-		guard let wrapperVC = panelNavigationController?.wrapperViewController else {
+		guard let panel = panelNavigationController?.panelViewController else {
 			return
 		}
 		
-		self.panelDelegate?.didToggle(wrapperVC)
+		self.panelDelegate?.toggleFloatStatus(for: panel)
 		
 	}
 	

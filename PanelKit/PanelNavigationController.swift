@@ -11,7 +11,7 @@ import UIKit
 @objc public class PanelNavigationController: UINavigationController, UIGestureRecognizerDelegate {
 
 	private var prevTouch: CGPoint?
-	public weak var wrapperViewController: PanelViewController?
+	public weak var panelViewController: PanelViewController?
 
 	/// Default is false
 	internal(set) var isShownAsPanel = false
@@ -43,8 +43,8 @@ import UIKit
 	private let touchYMin: CGFloat = 0.0
 
 	var dragInsets: UIEdgeInsets {
-		if let wrapperViewController = self.wrapperViewController {
-			return self.wrapperViewController?.delegate?.dragAreaInsets(for: wrapperViewController) ?? .zero
+		if let panelViewController = self.panelViewController {
+			return self.panelViewController?.delegate?.dragAreaInsets(for: panelViewController) ?? .zero
 		}
 		
 		return .zero
@@ -61,7 +61,7 @@ import UIKit
 		if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
 			
 			prevTouch = nil
-			wrapperViewController?.didEndDrag()
+			panelViewController?.didEndDrag()
 			return
 
 		}
@@ -70,7 +70,7 @@ import UIKit
 			return
 		}
 		
-		guard let viewToMove = self.wrapperViewController?.view else {
+		guard let viewToMove = self.panelViewController?.view else {
 			return
 		}
 		
@@ -105,11 +105,11 @@ import UIKit
 		
 	func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
 		
-		guard let wrapperViewController = self.wrapperViewController else {
+		guard let wrapperViewController = self.panelViewController else {
 			return
 		}
 		
-		guard let viewToMove = self.wrapperViewController?.view else {
+		guard let viewToMove = self.panelViewController?.view else {
 			return
 		}
 
@@ -133,7 +133,7 @@ import UIKit
 	
 	private func bringToFront() {
 		
-		guard let viewToMove = self.wrapperViewController?.view else {
+		guard let viewToMove = self.panelViewController?.view else {
 			return
 		}
 		
@@ -157,7 +157,7 @@ import UIKit
 			return
 		}
 		
-		guard let viewToMove = self.wrapperViewController?.view else {
+		guard let viewToMove = self.panelViewController?.view else {
 			return
 		}
 		
@@ -181,14 +181,14 @@ import UIKit
 	override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		prevTouch = nil
-		wrapperViewController?.didEndDrag()
+		panelViewController?.didEndDrag()
 
 	}
 	
 	override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
 		prevTouch = nil
-		wrapperViewController?.didEndDrag()
+		panelViewController?.didEndDrag()
 
 	}
 }
