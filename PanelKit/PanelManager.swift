@@ -9,45 +9,6 @@
 import Foundation
 import UIKit
 
-extension UIViewController {
-	
-	var isPresentedAsPopover: Bool {
-		get {
-			
-			if let p = self.popoverPresentationController {
-				
-				// FIXME: presentedViewController can never be nil?
-				let c = p.presentedViewController as UIViewController?
-				
-				return c != nil && p.arrowDirection != .unknown
-				
-			} else {
-				
-				return false
-				
-			}
-			
-		}
-	}
-	
-}
-
-
-public protocol PanelsFullscreenTransitionDelegate {
-	
-	func panelsPrepareMoveOffScreen()
-	func panelsPrepareMoveOnScreen()
-	
-	func panelsMovePanelOnScreen()
-	func panelsMovePanelOffScreen()
-	
-	func panelsCompleteMoveOnScreen()
-	func panelsCompleteMoveOffScreen()
-	
-}
-
-// MARK: -
-
 public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate, PanelContentViewControllerDelegate {
 	
 	var panels: [PanelViewController?] { get }
