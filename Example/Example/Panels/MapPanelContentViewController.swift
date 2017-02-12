@@ -23,7 +23,7 @@ class MapPanelContentViewController: PanelContentViewController {
 	fileprivate func getPanelToggleBtn() -> UIBarButtonItem {
 		
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
-		button = panelToggleBtnTitle()
+		button.title = panelToggleBtnTitle()
 		
 		return button
 	}

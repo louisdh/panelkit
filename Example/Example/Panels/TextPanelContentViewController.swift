@@ -13,16 +13,20 @@ class TextPanelContentViewController: PanelContentViewController {
 
 	@IBOutlet weak var textView: UITextView!
 	
+	fileprivate func panelToggleBtnTitle() -> String {
+		if isShownAsPanel {
+			return "Close"
+		} else {
+			return "⬇︎"
+		}
+	}
+	
 	fileprivate func getPanelToggleBtn() -> UIBarButtonItem {
 		
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
 		
-		if isShownAsPanel {
-			button.title = "Close"
-		} else {
-			button.title = "⬇︎"
-		}
-		
+		button.title = panelToggleBtnTitle()
+
 		return button
 	}
 	
