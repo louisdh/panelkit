@@ -118,7 +118,13 @@ import UIKit
 	
 		let proposedCenter = CGPoint(x: proposeX, y: proposeY)
 		
-		viewToMove.center = panelViewController.allowedCenter(for: proposedCenter)
+		var newFrame = viewToMove.frame
+		let newCenter = panelViewController.allowedCenter(for: proposedCenter)
+		newFrame.center = newCenter
+		
+		
+		panelViewController.delegate?.updateFrame(for: panelViewController, to: newFrame)
+//		viewToMove.center = panelViewController.allowedCenter(for: proposedCenter)
 		
 		self.prevTouch = touch
 		

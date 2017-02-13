@@ -24,6 +24,11 @@ public protocol PanelViewControllerDelegate: class {
 
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
+	var topConstraint: NSLayoutConstraint?
+	var leadingConstraint: NSLayoutConstraint?
+	var widthConstraint: NSLayoutConstraint?
+	var heightConstraint: NSLayoutConstraint?
+	
 	// TODO: make internal?
 	@objc public let panelNavigationController: PanelNavigationController
 	
@@ -35,7 +40,7 @@ public protocol PanelViewControllerDelegate: class {
 		return pinnedSide != nil
 	}
 	
-	weak var delegate: PanelViewControllerDelegate? {
+	weak var delegate: PanelManager? {
 		didSet {
 			self.updateShadow()
 		}
@@ -61,7 +66,7 @@ public protocol PanelViewControllerDelegate: class {
 		self.contentViewController = contentViewController
 		
 		self.panelNavigationController = PanelNavigationController(rootViewController: contentViewController)
-//		panelNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
+		panelNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
 		
 		self.shadowView = UIView(frame: .zero)
 		
@@ -81,10 +86,10 @@ public protocol PanelViewControllerDelegate: class {
 		panelNavigationController.view.clipsToBounds = true
 		
 		
-//		panelNavigationController.view.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1.0).isActive = true
-//		panelNavigationController.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
-//		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
-//		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
+		panelNavigationController.view.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1.0).isActive = true
+		panelNavigationController.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
+		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
+		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
 		
 //		self.presentationController?.delegate = self
 		
@@ -103,6 +108,8 @@ public protocol PanelViewControllerDelegate: class {
 	
     override public func viewDidLoad() {
         super.viewDidLoad()
+
+		self.view.translatesAutoresizingMaskIntoConstraints = false
 
 		self.updateShadow()
 

@@ -11,6 +11,7 @@ import UIKit
 
 public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate, PanelContentViewControllerDelegate {
 	
+	// TODO: should not be array of optionals?
 	var panels: [PanelViewController?] { get }
 	
 	var allowFloatingPanels: Bool { get	}
@@ -73,7 +74,7 @@ public extension PanelManager where Self: UIViewController {
 			
 			panel.contentViewController?.setAsPanel(false)
 			
-			if panel.isPinned == true {
+			if panel.isPinned {
 				didDragFree(panel)
 			}
 			
@@ -90,7 +91,11 @@ public extension PanelManager where Self: UIViewController {
 				continue
 			}
 			
-			panel.view.center = panel.allowedCenter(for: panel.view.center)
+			var newPanelFrame = panel.view.frame
+			newPanelFrame.center = panel.allowedCenter(for: newPanelFrame.center)
+			
+			updateFrame(for: panel, to: newPanelFrame)
+//			panel.view.center = panel.allowedCenter(for: panel.view.center)
 			
 		}
 		
@@ -189,13 +194,57 @@ public extension PanelManager where Self: UIViewController {
 
 // MARK: -
 
+extension PanelManager {
+
+	func updateFrame(for panel: PanelViewController, to frame: CGRect) {
+		
+		guard panel.view.superview == panelContentWrapperView else {
+			return
+		}
+		
+		if panel.widthConstraint == nil {
+			panel.widthConstraint = panel.view.widthAnchor.constraint(equalToConstant: frame.width)
+		}
+		
+		panel.widthConstraint?.isActive = true
+		panel.widthConstraint?.constant = frame.width
+
+		
+		if panel.heightConstraint == nil {
+			panel.heightConstraint = panel.view.heightAnchor.constraint(equalToConstant: frame.height)
+		}
+
+		
+		panel.heightConstraint?.isActive = true
+		panel.heightConstraint?.constant = frame.height
+
+		
+		if panel.topConstraint == nil {
+			panel.topConstraint = panel.view.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor, constant: 0.0)
+		}
+			
+		panel.topConstraint?.isActive = true
+		panel.topConstraint?.constant = frame.origin.y
+		
+		
+		if panel.leadingConstraint == nil {
+			panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: 0.0)
+		}
+		
+		panel.leadingConstraint?.isActive = true
+		panel.leadingConstraint?.constant = frame.origin.x
+		
+	}
+
+}
+
 public extension PanelManager where Self: UIViewController {
 
 	func toggleFloatStatus(for panel: PanelViewController) {
 		
 		let panelNavCon = panel.panelNavigationController
 		
-		if panel.contentViewController!.isShownAsPanel && !panelNavCon.isPresentedAsPopover {
+		if panel.contentViewController?.isShownAsPanel == true && !panelNavCon.isPresentedAsPopover {
 			
 			panel.view.removeFromSuperview()
 			
@@ -208,21 +257,26 @@ public extension PanelManager where Self: UIViewController {
 			panel.dismiss(animated: false, completion: {
 				
 				self.panelContentWrapperView.addSubview(panel.view)
+								
+				self.updateFrame(for: panel, to: rect)
+				self.panelContentWrapperView.layoutIfNeeded()
+
+				let x = rect.origin.x
 				
-				panel.view.frame = rect
+				let y: CGFloat = 12.0
 				
+				let width = panel.view.frame.size.width
+				
+				let height = max(panel.view.frame.size.height, 44*5)
+				
+				var newFrame = CGRect(x: x, y: y, width: width, height: height)
+				newFrame.center = panel.allowedCenter(for: newFrame.center)
+				
+				self.updateFrame(for: panel, to: newFrame)
+
 				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
-					
-					let x = rect.origin.x
-					
-					let y: CGFloat = 12.0
-					
-					let width = panel.view.frame.size.width
-					
-					let height = max(panel.view.frame.size.height, 44*5)
-					
-					panel.view.frame = CGRect(x: x, y: y, width: width, height: height)
-					panel.view.center = panel.allowedCenter(for: panel.view.center)
+					self.panelContentWrapperView.layoutIfNeeded()
+
 					
 				}, completion: nil)
 				
@@ -266,28 +320,21 @@ public extension PanelManager where Self: UIViewController {
 		
 		panel.enableCornerRadius(animated: true, duration: panelGrowDuration)
 		
+		updateFrame(for: panel, to: newFrame)
+
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
 			panel.enableShadow()
 			
-			self.panelContentView.frame = self.updatedContentViewFrame()
-			
+			self.panelContentWrapperView.layoutIfNeeded()
+
 			self.didUpdatePinnedPanels()
 			
 		}) { (completed) in
 			
 			
 		}
-		
-		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
-			
-			panelView.frame = newFrame
-			
-		}) { (completed) in
-			
-			
-		}
-		
+
 	}
 	
 	func dragAreaInsets(for panel: PanelViewController) -> UIEdgeInsets {
@@ -369,16 +416,18 @@ public extension PanelManager where Self: UIViewController {
 		
 		panel.contentViewController?.setAutoResizingMask()
 		
+		self.moveAllPanelsToValidPositions()
+		self.updateFrame(for: panel, to: frame)
+
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
 			panel.disableShadow()
 			
-			panelView.frame = frame
-			
+			self.panelContentWrapperView.layoutIfNeeded()
+
 			self.panelContentView.frame = self.updatedContentViewFrame()
 			
 			self.didUpdatePinnedPanels()
-			self.moveAllPanelsToValidPositions()
 			
 		}) { (completed) in
 			
@@ -401,67 +450,3 @@ public extension PanelManager where Self: UIViewController {
 	
 }
 
-// MARK: -
-
-public extension PanelManager where Self: UIViewController {
-	
-	func panelsPrepareMoveOffScreen() {
-		
-		for panel in panels {
-			panel?.contentViewController?.prepareMoveOffScreen()
-		}
-		
-	}
-	
-	func panelsPrepareMoveOnScreen() {
-		
-		for panel in panels {
-			panel?.contentViewController?.prepareMoveOnScreen()
-		}
-		
-	}
-	
-	func panelsMovePanelOnScreen() {
-		
-		for panel in panels {
-			
-			guard panel?.isShownAsPanel == true else {
-				continue
-			}
-			
-			panel?.contentViewController?.movePanelOnScreen()
-			
-		}
-		
-	}
-	
-	func panelsMovePanelOffScreen() {
-		
-		for panel in panels {
-			
-			guard panel?.isShownAsPanel == true else {
-				continue
-			}
-			
-			panel?.contentViewController?.movePanelOffScreen()
-		}
-		
-	}
-	
-	func panelsCompleteMoveOnScreen() {
-		
-		for panel in panels {
-			panel?.contentViewController?.completeMoveOnScreen()
-		}
-		
-	}
-	
-	func panelsCompleteMoveOffScreen() {
-		
-		for panel in panels {
-			panel?.contentViewController?.completeMoveOffScreen()
-		}
-		
-	}
-	
-}
