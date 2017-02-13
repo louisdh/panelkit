@@ -23,7 +23,7 @@ A panel needs to be shown in a ```PanelNavigationController```, but the top bar 
 
 ## Requirements
 
-* iOS 8.0+
+* iOS 9.0+
 * Xcode 8.2+
 
 ## License
