@@ -266,8 +266,7 @@ public extension PanelManager where Self: UIViewController {
 				let y: CGFloat = 12.0
 				
 				let width = panel.view.frame.size.width
-				
-				let height = max(panel.view.frame.size.height, 44*5)
+				let height = panel.view.frame.size.height
 				
 				var newFrame = CGRect(x: x, y: y, width: width, height: height)
 				newFrame.center = panel.allowedCenter(for: newFrame.center)
