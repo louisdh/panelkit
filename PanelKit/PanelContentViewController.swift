@@ -269,6 +269,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	// MARK: -
 	
+	// TODO: can be removed?
 	public func setAutoResizingMask() {
 
 		guard let viewToMove = self.viewToMove else {
@@ -304,11 +305,20 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	public var canFloat: Bool {
 		
-		guard let navHeight = panelNavigationController?.view.frame.size.height else {
+		guard let panel = self.panelNavigationController?.panelViewController else {
 			return false
 		}
 		
-		return navHeight != UIScreen.main.bounds.size.height
+		if panel.isPresentedAsPopover {
+			return true
+		}
+		
+		// Modal
+		if panel.presentingViewController != nil {
+			return false
+		}
+				
+		return true
 		
 	}
 	
