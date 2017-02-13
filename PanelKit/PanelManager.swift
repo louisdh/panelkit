@@ -325,6 +325,7 @@ public extension PanelManager where Self: UIViewController {
 			
 			panel.enableShadow()
 			
+			self.panelContentView.frame = self.updatedContentViewFrame()
 			self.panelContentWrapperView.layoutIfNeeded()
 
 			self.didUpdatePinnedPanels()
