@@ -17,9 +17,7 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	var allowFloatingPanels: Bool { get	}
 	
 	var allowPanelPinning: Bool { get }
-	
-	var panelPinnedPreviewView: UIView? { get set }
-	
+		
 	var panelContentWrapperView: UIView { get }
 	
 	var panelContentView: UIView { get }
@@ -175,9 +173,9 @@ public extension PanelManager where Self: UIViewController {
 		return updatedContentViewFrame
 	}
 	
-	func fadePanelPinnedPreviewOut() {
+	func fadePanelPinnedPreviewOut(for panel: PanelViewController) {
 		
-		if let panelPinnedPreviewView = panelPinnedPreviewView {
+		if let panelPinnedPreviewView = panel.panelPinnedPreviewView {
 			
 			UIView.animate(withDuration: 0.3, animations: {
 				panelPinnedPreviewView.alpha = 0.0
@@ -185,7 +183,7 @@ public extension PanelManager where Self: UIViewController {
 				panelPinnedPreviewView.removeFromSuperview()
 			})
 			
-			self.panelPinnedPreviewView = nil
+			panel.panelPinnedPreviewView = nil
 		}
 		
 	}
@@ -298,7 +296,7 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didDragFree(_ panel: PanelViewController) {
 		
-		fadePanelPinnedPreviewOut()
+		fadePanelPinnedPreviewOut(for: panel)
 		
 		guard panel.isPinned else {
 			return
@@ -355,7 +353,7 @@ public extension PanelManager where Self: UIViewController {
 			return
 		}
 		
-		if let _ = panelPinnedPreviewView {
+		if let _ = panel.panelPinnedPreviewView {
 			return
 		}
 		
@@ -384,12 +382,12 @@ public extension PanelManager where Self: UIViewController {
 			
 		}
 		
-		panelPinnedPreviewView = previewView
+		panel.panelPinnedPreviewView = previewView
 	}
 	
 	func didEndDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {
 		
-		fadePanelPinnedPreviewOut()
+		fadePanelPinnedPreviewOut(for: panel)
 		
 		guard allowPanelPinning else {
 			return
@@ -438,7 +436,7 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didEndDragFree(_ panel: PanelViewController) {
 		
-		fadePanelPinnedPreviewOut()
+		fadePanelPinnedPreviewOut(for: panel)
 		
 		guard panel.isPinned else {
 			return

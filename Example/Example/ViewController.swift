@@ -68,8 +68,6 @@ class ViewController: UIViewController, PanelManager {
 		return contentView
 	}
 	
-	var panelPinnedPreviewView: UIView?
-	
 	var panels: [PanelViewController?] {
 		return [mapPanelVC, textPanelVC]
 	}

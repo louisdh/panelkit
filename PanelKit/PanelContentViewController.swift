@@ -317,7 +317,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		if panel.presentingViewController != nil {
 			return false
 		}
-				
+		
 		return true
 		
 	}

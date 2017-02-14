@@ -29,6 +29,9 @@ public protocol PanelViewControllerDelegate: class {
 	var widthConstraint: NSLayoutConstraint?
 	var heightConstraint: NSLayoutConstraint?
 	
+	var panelPinnedPreviewView: UIView?
+
+	
 	// TODO: make internal?
 	@objc public let panelNavigationController: PanelNavigationController
 	
