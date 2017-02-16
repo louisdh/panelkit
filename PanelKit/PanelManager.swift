@@ -390,6 +390,8 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didEndDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {
 		
+		let pinnedPreviewView = panel.panelPinnedPreviewView
+		
 		fadePinnedPreviewOut(for: panel)
 		
 		guard allowPanelPinning else {
@@ -413,9 +415,12 @@ public extension PanelManager where Self: UIViewController {
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
 
+		// FIXME: not needed?
 		panelView.removeFromSuperview()
 		panelContentWrapperView.addSubview(panelView)
 		
+		
+
 		panel.contentViewController?.setAutoResizingMask()
 		
 		self.moveAllPanelsToValidPositions()
@@ -432,6 +437,11 @@ public extension PanelManager where Self: UIViewController {
 			
 		}) { (completed) in
 			
+			// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
+			self.panelContentWrapperView.sendSubview(toBack: panelView)
+			if let pinnedPreviewView = pinnedPreviewView {
+				self.panelContentWrapperView.sendSubview(toBack: pinnedPreviewView)
+			}
 			
 		}
 		

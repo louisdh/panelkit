@@ -50,7 +50,9 @@ import UIKit
 	
 	@objc private func didTapBar(_ gestureRecognizer: UITapGestureRecognizer) {
 
-		bringToFront()
+		if self.panelViewController?.isPinned != true {
+			bringToFront()
+		}
 		
 	}
 	
@@ -129,12 +131,15 @@ import UIKit
 		// TODO: refactor
 		(self.viewControllers.first as? PanelContentViewController)?.setAutoResizingMask()
 		
-		bringToFront()
+		if self.panelViewController?.isPinned != true {
+			bringToFront()
+		}
 		
 		panelViewController.didDrag()
 		
 	}
 	
+	// FIXME: move to PanelViewController class
 	private func bringToFront() {
 		
 		guard let viewToMove = self.panelViewController?.view else {
