@@ -203,8 +203,6 @@ public protocol PanelContentViewControllerDelegate: class {
 	}
 	
 	private let deltaToMoveOffscreen: CGFloat = 400
-	private let topYMin: CGFloat = 0.0
-	private let touchYMin: CGFloat = 0.0
 
 	@objc func movePanelOffScreen() {
 		
