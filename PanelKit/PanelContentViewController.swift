@@ -303,6 +303,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
+	/// A panel can't float when it is presented modally
 	public var canFloat: Bool {
 		
 		guard let panel = self.panelNavigationController?.panelViewController else {
