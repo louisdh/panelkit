@@ -84,7 +84,7 @@ class TextPanelContentViewController: PanelContentViewController {
 		
 	}
 	
-	override func shouldAdjustForKeyboard() -> Bool {
+	override var shouldAdjustForKeyboard: Bool {
 		return textView.isFirstResponder
 	}
 	
