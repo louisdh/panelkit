@@ -13,7 +13,7 @@ import MapKit
 class MapPanelContentViewController: PanelContentViewController {
 
 	fileprivate func panelToggleBtnTitle() -> String {
-		if isShownAsPanel {
+		if isFloating {
 			return "Close"
 		} else {
 			return "⬇︎"
@@ -85,7 +85,7 @@ class MapPanelContentViewController: PanelContentViewController {
 	override func setAsPanel(_ asPanel: Bool) {
 		super.setAsPanel(asPanel)
 		
-		setPanelToggleHidden(!isShownAsPanel)
+		setPanelToggleHidden(!isFloating)
 
 	}
 

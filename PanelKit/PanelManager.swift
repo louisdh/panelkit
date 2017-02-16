@@ -242,7 +242,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		let panelNavCon = panel.panelNavigationController
 		
-		if panel.contentViewController?.isShownAsPanel == true && !panelNavCon.isPresentedAsPopover {
+		if panel.contentViewController?.isFloating == true && !panelNavCon.isPresentedAsPopover {
 			
 			panel.view.removeFromSuperview()
 			

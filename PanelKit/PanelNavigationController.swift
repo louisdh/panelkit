@@ -14,7 +14,7 @@ import UIKit
 	public weak var panelViewController: PanelViewController?
 
 	/// Default is false
-	internal(set) var isShownAsPanel = false
+	internal(set) var isFloating = false
 
     override public func viewDidLoad() {
         super.viewDidLoad()
@@ -66,7 +66,7 @@ import UIKit
 
 		}
 		
-		guard isShownAsPanel else {
+		guard isFloating else {
 			return
 		}
 		
@@ -151,15 +151,15 @@ import UIKit
 
 	}
 	
-	@objc public func setAsPanel(_ asPanel: Bool) {
+	@objc func setAsPanel(_ asPanel: Bool) {
 		
-		isShownAsPanel = asPanel
+		isFloating = asPanel
 		
 	}
 
 	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
-		if !isShownAsPanel {
+		if !isFloating {
 			return
 		}
 		

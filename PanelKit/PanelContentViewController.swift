@@ -30,7 +30,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	
 	// Default is false
-	internal(set) public var isShownAsPanel = false
+	internal(set) public var isFloating = false
 	
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -95,7 +95,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 //		let keyboardIntersectingFrame = viewToMove.bounds.intersection(superView.bounds)
 		
-		if isShownAsPanel {
+		if isFloating {
 			
 			if keyboardFrame.intersects(viewToMove.bounds) {
 				
@@ -324,7 +324,11 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	open func setAsPanel(_ asPanel: Bool) {
 		
-		isShownAsPanel = asPanel
+		isFloating = asPanel
+		
+	}
+	
+	open func didToggleFloatState() {
 		
 	}
 	

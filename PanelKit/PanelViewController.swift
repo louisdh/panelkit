@@ -43,6 +43,15 @@ public protocol PanelViewControllerDelegate: class {
 		return pinnedSide != nil
 	}
 	
+	var isFloating: Bool {
+		
+		guard let contentViewController = contentViewController else {
+			return false
+		}
+		
+		return contentViewController.isFloating
+	}
+	
 	weak var delegate: PanelManager? {
 		didSet {
 			self.updateShadow()
@@ -144,7 +153,7 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		if panelNavigationController.isShownAsPanel {
+		if panelNavigationController.isFloating {
 			self.view.frame.size = panelNavigationController.view.frame.size
 		} else {
 			panelNavigationController.view.frame = self.view.bounds
@@ -171,15 +180,6 @@ public protocol PanelViewControllerDelegate: class {
 	}
 	
 	// MARK: -
-
-	var isShownAsPanel: Bool {
-		
-		guard let contentViewController = contentViewController else {
-			return false
-		}
-	
-		return contentViewController.isShownAsPanel
-	}
 	
 	@objc override public var preferredContentSize: CGSize {
 		get {
@@ -194,7 +194,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	func didDrag() {
 		
-		guard isShownAsPanel else {
+		guard isFloating else {
 			return
 		}
 		
@@ -220,7 +220,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	func didEndDrag() {
 		
-		guard isShownAsPanel else {
+		guard isFloating else {
 			return
 		}
 		

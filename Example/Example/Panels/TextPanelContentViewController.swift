@@ -14,7 +14,7 @@ class TextPanelContentViewController: PanelContentViewController {
 	@IBOutlet weak var textView: UITextView!
 	
 	fileprivate func panelToggleBtnTitle() -> String {
-		if isShownAsPanel {
+		if isFloating {
 			return "Close"
 		} else {
 			return "⬇︎"
@@ -91,7 +91,7 @@ class TextPanelContentViewController: PanelContentViewController {
 	override func setAsPanel(_ asPanel: Bool) {
 		super.setAsPanel(asPanel)
 		
-		setPanelToggleHidden(!isShownAsPanel)
+		setPanelToggleHidden(!isFloating)
 		
 	}
 	
