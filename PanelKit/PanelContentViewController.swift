@@ -185,6 +185,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
+	/// Defaults to false
 	open func shouldAdjustForKeyboard() -> Bool {
 		return false
 	}
