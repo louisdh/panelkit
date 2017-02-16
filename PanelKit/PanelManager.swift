@@ -11,8 +11,7 @@ import UIKit
 
 public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTransitionDelegate, PanelContentViewControllerDelegate {
 	
-	// TODO: should not be array of optionals?
-	var panels: [PanelViewController?] { get }
+	var panels: [PanelViewController] { get }
 	
 	var allowFloatingPanels: Bool { get	}
 	
@@ -56,10 +55,6 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard let panel = panel else {
-				continue
-			}
-			
 			guard let panelSuperview = panel.view.superview else {
 				continue
 			}
@@ -85,7 +80,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard let panel = panel else {
+			guard panel.isFloating else {
 				continue
 			}
 			
@@ -102,7 +97,7 @@ public extension PanelManager where Self: UIViewController {
 	var panelPinnedLeft: PanelViewController? {
 		
 		for panel in panels {
-			if panel?.pinnedSide == .left {
+			if panel.pinnedSide == .left {
 				return panel
 			}
 		}
@@ -113,7 +108,7 @@ public extension PanelManager where Self: UIViewController {
 	var panelPinnedRight: PanelViewController? {
 		
 		for panel in panels {
-			if panel?.pinnedSide == .right {
+			if panel.pinnedSide == .right {
 				return panel
 			}
 		}

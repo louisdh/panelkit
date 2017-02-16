@@ -68,7 +68,7 @@ class ViewController: UIViewController, PanelManager {
 		return contentView
 	}
 	
-	var panels: [PanelViewController?] {
+	var panels: [PanelViewController] {
 		return [mapPanelVC, textPanelVC]
 	}
 	

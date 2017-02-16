@@ -13,7 +13,7 @@ public extension PanelManager where Self: UIViewController {
 	func panelsPrepareMoveOffScreen() {
 		
 		for panel in panels {
-			panel?.contentViewController?.prepareMoveOffScreen()
+			panel.contentViewController?.prepareMoveOffScreen()
 		}
 		
 	}
@@ -21,7 +21,7 @@ public extension PanelManager where Self: UIViewController {
 	func panelsPrepareMoveOnScreen() {
 		
 		for panel in panels {
-			panel?.contentViewController?.prepareMoveOnScreen()
+			panel.contentViewController?.prepareMoveOnScreen()
 		}
 		
 	}
@@ -30,11 +30,11 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard panel?.isFloating == true else {
+			guard panel.isFloating else {
 				continue
 			}
 			
-			panel?.contentViewController?.movePanelOnScreen()
+			panel.contentViewController?.movePanelOnScreen()
 			
 		}
 		
@@ -44,11 +44,11 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard panel?.isFloating == true else {
+			guard panel.isFloating == true else {
 				continue
 			}
 			
-			panel?.contentViewController?.movePanelOffScreen()
+			panel.contentViewController?.movePanelOffScreen()
 		}
 		
 	}
@@ -56,7 +56,7 @@ public extension PanelManager where Self: UIViewController {
 	func panelsCompleteMoveOnScreen() {
 		
 		for panel in panels {
-			panel?.contentViewController?.completeMoveOnScreen()
+			panel.contentViewController?.completeMoveOnScreen()
 		}
 		
 	}
@@ -64,7 +64,7 @@ public extension PanelManager where Self: UIViewController {
 	func panelsCompleteMoveOffScreen() {
 		
 		for panel in panels {
-			panel?.contentViewController?.completeMoveOffScreen()
+			panel.contentViewController?.completeMoveOffScreen()
 		}
 		
 	}
