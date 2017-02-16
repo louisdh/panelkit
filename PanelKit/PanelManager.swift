@@ -173,7 +173,7 @@ public extension PanelManager where Self: UIViewController {
 		return updatedContentViewFrame
 	}
 	
-	func fadePanelPinnedPreviewOut(for panel: PanelViewController) {
+	func fadePinnedPreviewOut(for panel: PanelViewController) {
 		
 		if let panelPinnedPreviewView = panel.panelPinnedPreviewView {
 			
@@ -296,7 +296,7 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didDragFree(_ panel: PanelViewController) {
 		
-		fadePanelPinnedPreviewOut(for: panel)
+		fadePinnedPreviewOut(for: panel)
 		
 		guard panel.isPinned else {
 			return
@@ -387,7 +387,7 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didEndDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {
 		
-		fadePanelPinnedPreviewOut(for: panel)
+		fadePinnedPreviewOut(for: panel)
 		
 		guard allowPanelPinning else {
 			return
@@ -436,7 +436,7 @@ public extension PanelManager where Self: UIViewController {
 	
 	func didEndDragFree(_ panel: PanelViewController) {
 		
-		fadePanelPinnedPreviewOut(for: panel)
+		fadePinnedPreviewOut(for: panel)
 		
 		guard panel.isPinned else {
 			return
