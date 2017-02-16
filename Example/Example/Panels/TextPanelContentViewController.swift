@@ -13,7 +13,7 @@ class TextPanelContentViewController: PanelContentViewController {
 
 	@IBOutlet weak var textView: UITextView!
 	
-	fileprivate func panelToggleBtnTitle() -> String {
+	private func panelFloatToggleBtnTitle() -> String {
 		if isFloating {
 			return "Close"
 		} else {
@@ -21,11 +21,11 @@ class TextPanelContentViewController: PanelContentViewController {
 		}
 	}
 	
-	fileprivate func getPanelToggleBtn() -> UIBarButtonItem {
+	private func getPanelToggleBtn() -> UIBarButtonItem {
 		
 		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
 		
-		button.title = panelToggleBtnTitle()
+		button.title = panelFloatToggleBtnTitle()
 
 		return button
 	}

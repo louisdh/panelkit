@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -24,7 +25,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qba-C7-DQN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1206" y="138"/>
+            <point key="canvasLocation" x="-793" y="138"/>
         </scene>
         <!--PanelKit Example-->
         <scene sceneID="tne-QT-ifu">
@@ -115,12 +116,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkw-dk-M5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="136" y="1095"/>
+            <point key="canvasLocation" x="137" y="965"/>
         </scene>
         <!--Map Panel Content View Controller-->
         <scene sceneID="rDc-mz-Zi0">
             <objects>
-                <viewController storyboardIdentifier="MapPanelContentViewController" id="Dem-Dx-2T5" customClass="MapPanelContentViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapPanelContentViewController" automaticallyAdjustsScrollViewInsets="NO" id="Dem-Dx-2T5" customClass="MapPanelContentViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="kPo-34-cXf"/>
                         <viewControllerLayoutGuide type="bottom" id="tCS-JI-vLe"/>
@@ -129,20 +130,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-Ci-Ruj">
+                            <mapView multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="hAa-Ci-Ruj">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="hAa-Ci-Ruj" firstAttribute="leading" secondItem="o2o-Xj-OcW" secondAttribute="leading" id="4tF-o6-ZFZ"/>
+                            <constraint firstItem="tCS-JI-vLe" firstAttribute="top" secondItem="hAa-Ci-Ruj" secondAttribute="bottom" id="V8O-dw-plB"/>
+                            <constraint firstItem="hAa-Ci-Ruj" firstAttribute="top" secondItem="o2o-Xj-OcW" secondAttribute="top" id="kyB-EI-7VW"/>
+                            <constraint firstAttribute="trailing" secondItem="hAa-Ci-Ruj" secondAttribute="trailing" id="w0D-2T-Lly"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rqE-2A-jpE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="915" y="810"/>
+            <point key="canvasLocation" x="914.64843749999989" y="809.375"/>
         </scene>
         <!--Text Panel Content View Controller-->
         <scene sceneID="bBw-Ul-2Ac">
@@ -156,9 +163,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-ry-TW0">
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="P2G-ry-TW0">
                                 <rect key="frame" x="16" y="0.0" width="288" height="400"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -166,8 +172,15 @@
                             </textView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="P2G-ry-TW0" firstAttribute="trailing" secondItem="iux-bv-PwE" secondAttribute="trailingMargin" id="k9t-oQ-zgT"/>
+                            <constraint firstItem="hj6-3w-OAM" firstAttribute="top" secondItem="P2G-ry-TW0" secondAttribute="bottom" id="nZ8-Xx-ADa"/>
+                            <constraint firstItem="P2G-ry-TW0" firstAttribute="leading" secondItem="iux-bv-PwE" secondAttribute="leadingMargin" id="qpl-Ic-QPt"/>
+                            <constraint firstItem="P2G-ry-TW0" firstAttribute="top" secondItem="iux-bv-PwE" secondAttribute="topMargin" id="z5A-u1-bQh"/>
+                        </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="400"/>
                     <connections>
@@ -176,7 +189,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loM-da-204" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1318" y="810"/>
+            <point key="canvasLocation" x="1199" y="809"/>
         </scene>
     </scenes>
 </document>
