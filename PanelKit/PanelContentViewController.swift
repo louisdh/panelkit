@@ -60,7 +60,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	func willShowKeyboard(_ notification: Notification) {
 		
-		if !shouldAdjustForKeyboard {
+		guard shouldAdjustForKeyboard else {
 			return
 		}
 		
