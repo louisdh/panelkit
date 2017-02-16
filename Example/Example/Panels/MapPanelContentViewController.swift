@@ -82,11 +82,11 @@ class MapPanelContentViewController: PanelContentViewController {
 		
 	}
 	
-	override func setAsPanel(_ asPanel: Bool) {
-		super.setAsPanel(asPanel)
+	override func didUpdateFloatingState() {
+		super.didUpdateFloatingState()
 		
 		setPanelToggleHidden(!isFloating)
-
+		
 	}
 
 	override func contentSize() -> CGSize {

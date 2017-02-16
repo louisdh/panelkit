@@ -88,13 +88,13 @@ class TextPanelContentViewController: PanelContentViewController {
 		return textView.isFirstResponder
 	}
 	
-	override func setAsPanel(_ asPanel: Bool) {
-		super.setAsPanel(asPanel)
+	override func didUpdateFloatingState() {
+		super.didUpdateFloatingState()
 		
 		setPanelToggleHidden(!isFloating)
-		
+
 	}
-	
+
 	override func contentSize() -> CGSize {
 		return CGSize(width: 320, height: 400)
 	}

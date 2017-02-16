@@ -322,13 +322,14 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
-	open func setAsPanel(_ asPanel: Bool) {
+	func setAsPanel(_ asPanel: Bool) {
 		
 		isFloating = asPanel
+		didUpdateFloatingState()
 		
 	}
 	
-	open func didToggleFloatState() {
+	open func didUpdateFloatingState() {
 		
 	}
 	
