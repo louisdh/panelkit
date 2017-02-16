@@ -270,7 +270,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	// MARK: -
 	
 	// TODO: can be removed?
-	public func setAutoResizingMask() {
+	func setAutoResizingMask() {
 
 		guard let viewToMove = self.viewToMove else {
 			return

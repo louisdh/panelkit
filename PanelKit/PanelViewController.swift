@@ -39,11 +39,11 @@ public protocol PanelViewControllerDelegate: class {
 	
 	var pinnedSide: PanelPinSide?
 	
-	var isPinned: Bool {
+	public var isPinned: Bool {
 		return pinnedSide != nil
 	}
 	
-	var isFloating: Bool {
+	public var isFloating: Bool {
 		
 		guard let contentViewController = contentViewController else {
 			return false
@@ -244,7 +244,7 @@ public protocol PanelViewControllerDelegate: class {
 		
 	}
 	
-	public func allowedCenter(for proposedCenter: CGPoint) -> CGPoint {
+	func allowedCenter(for proposedCenter: CGPoint) -> CGPoint {
 		
 		guard let viewToMove = self.view else {
 			return proposedCenter
