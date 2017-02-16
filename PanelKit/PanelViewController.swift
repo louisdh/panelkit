@@ -335,17 +335,47 @@ public protocol PanelViewControllerDelegate: class {
 //	}
 	
 	// MARK: -
+	
+	/// Shadow "force" disabled (meaning not by delegate choice).
+	///
+	/// E.g. when panel is pinned.
+	private var isShadowForceDisabled = false
 
-	func disableShadow() {
+	func disableShadow(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.toValue = 0.0
+			anim.duration = duration
+			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			
+		}
 		
 		shadowView.layer.shadowOpacity = 0.0
-
+		
+		isShadowForceDisabled = true
 	}
 	
-	func enableShadow() {
+	func enableShadow(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.toValue = shadowOpacity
+			anim.duration = duration
+			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			
+		}
 		
 		shadowView.layer.shadowOpacity = shadowOpacity
 		
+		isShadowForceDisabled = false
+
 	}
 	
 	func disableCornerRadius(animated: Bool = false, duration: Double = 0.3) {
@@ -391,6 +421,10 @@ public protocol PanelViewControllerDelegate: class {
 	}
 	
 	private func updateShadow() {
+		
+		if isShadowForceDisabled {
+			return
+		}
 		
 		if shadowEnabled {
 

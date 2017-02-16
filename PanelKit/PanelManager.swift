@@ -318,12 +318,11 @@ public extension PanelManager where Self: UIViewController {
 		}
 		
 		panel.enableCornerRadius(animated: true, duration: panelGrowDuration)
-		
+		panel.enableShadow(animated: true, duration: panelGrowDuration)
+
 		updateFrame(for: panel, to: newFrame)
 
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
-			
-			panel.enableShadow()
 			
 			self.panelContentView.frame = self.updatedContentViewFrame()
 			self.panelContentWrapperView.layoutIfNeeded()
@@ -412,7 +411,8 @@ public extension PanelManager where Self: UIViewController {
 		panel.pinnedSide = side
 		
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
-		
+		panel.disableShadow(animated: true, duration: panelGrowDuration)
+
 		panelView.removeFromSuperview()
 		panelContentWrapperView.addSubview(panelView)
 		
@@ -421,9 +421,8 @@ public extension PanelManager where Self: UIViewController {
 		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: frame)
 
+
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
-			
-			panel.disableShadow()
 			
 			self.panelContentWrapperView.layoutIfNeeded()
 
