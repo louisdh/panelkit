@@ -39,10 +39,6 @@ import UIKit
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		return true
 	}
-	
-	// TODO: get from delegate
-	private let topYMin: CGFloat = 0.0
-	private let touchYMin: CGFloat = 0.0
 
 	var dragInsets: UIEdgeInsets {
 		if let panelViewController = self.panelViewController {
