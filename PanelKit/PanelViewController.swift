@@ -52,6 +52,10 @@ public protocol PanelViewControllerDelegate: class {
 		return contentViewController.isFloating
 	}
 	
+	var logLevel: LogLevel {
+		return delegate?.panelManagerLogLevel ?? .none
+	}
+	
 	weak var delegate: PanelManager? {
 		didSet {
 			self.updateShadow()
@@ -109,7 +113,6 @@ public protocol PanelViewControllerDelegate: class {
 		contentViewController.panelDelegate = panelManager
 		self.delegate = panelManager
 		
-		
 	}
 	
 	required public init?(coder aDecoder: NSCoder) {
@@ -125,6 +128,9 @@ public protocol PanelViewControllerDelegate: class {
 
 		self.updateShadow()
 
+		if logLevel == .full {
+			print("\(self) viewDidLoad")
+		}
     }
 	
 	override public func viewWillAppear(_ animated: Bool) {
@@ -134,7 +140,10 @@ public protocol PanelViewControllerDelegate: class {
 
 		contentViewController?.viewWillAppear(animated)
 		
-		print("\(self) viewWillAppear")
+		if logLevel == .full {
+			print("\(self) viewWillAppear")
+		}
+		
 	}
 	
 	override public func viewDidAppear(_ animated: Bool) {
@@ -142,7 +151,10 @@ public protocol PanelViewControllerDelegate: class {
 		
 		contentViewController?.viewDidAppear(animated)
 
-		print("\(self) viewDidAppear")
+		if logLevel == .full {
+			print("\(self) viewDidAppear")
+		}
+		
 	}
 	
 	override public func viewWillLayoutSubviews() {
@@ -285,7 +297,9 @@ public protocol PanelViewControllerDelegate: class {
 	}
 	
 	deinit {
-		print("deinit \(self)")
+		if logLevel == .full {
+			print("deinit \(self)")
+		}
 	}
 	
 	// MARK: -

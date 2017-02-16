@@ -17,6 +17,7 @@
 		BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */; };
 		BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801501E525607007D3CEE /* CGRect+Center.swift */; };
 		BEF801531E525681007D3CEE /* PanelManager+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801521E525681007D3CEE /* PanelManager+Offscreen.swift */; };
+		BEF801551E565CEB007D3CEE /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801541E565CEB007D3CEE /* LogLevel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
 		BEF801501E525607007D3CEE /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Center.swift"; path = "Utils/CGRect+Center.swift"; sourceTree = "<group>"; };
 		BEF801521E525681007D3CEE /* PanelManager+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "PanelManager+Offscreen.swift"; sourceTree = "<group>"; };
+		BEF801541E565CEB007D3CEE /* LogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogLevel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				BEF801491E50F0A1007D3CEE /* Utils */,
+				BEF801541E565CEB007D3CEE /* LogLevel.swift */,
 				BEF801471E50F08F007D3CEE /* PanelsFullscreenTransitionDelegate.swift */,
 				BE24AD111E508B0C008892A2 /* PanelManager.swift */,
 				BEF801521E525681007D3CEE /* PanelManager+Offscreen.swift */,
@@ -170,6 +173,7 @@
 				BE24AD171E508B0C008892A2 /* PanelNavigationController.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,
 				BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */,
+				BEF801551E565CEB007D3CEE /* LogLevel.swift in Sources */,
 				BEF801481E50F08F007D3CEE /* PanelsFullscreenTransitionDelegate.swift in Sources */,
 				BE24AD181E508B0C008892A2 /* PanelPinSide.swift in Sources */,
 				BE24AD161E508B0C008892A2 /* PanelManager.swift in Sources */,

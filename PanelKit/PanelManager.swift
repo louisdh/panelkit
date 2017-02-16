@@ -21,6 +21,9 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	
 	var panelContentView: UIView { get }
 	
+	/// Default implementation is ```LogLevel.none```
+	var panelManagerLogLevel: LogLevel { get }
+	
 	func didUpdatePinnedPanels()
 	
 }
@@ -43,6 +46,10 @@ public extension PanelManager where Self: UIViewController {
 	
 	var allowPanelPinning: Bool {
 		return panelContentWrapperView.bounds.width > 800
+	}
+	
+	var panelManagerLogLevel: LogLevel {
+		return .none
 	}
 	
 }
@@ -352,7 +359,9 @@ public extension PanelManager where Self: UIViewController {
 			return
 		}
 		
-		print("did drag \(panel) to edge of \(side) side")
+		if panel.logLevel == .full {
+			print("did drag \(panel) to edge of \(side) side")
+		}
 		
 		guard let panelView = panel.view else {
 			return

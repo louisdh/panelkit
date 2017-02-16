@@ -31,7 +31,9 @@ import UIKit
     }
 	
 	deinit {
-		print("deinit \(self)")
+		if panelViewController?.logLevel == .full {
+			print("deinit \(self)")
+		}
 	}
 	
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
