@@ -157,14 +157,14 @@ public extension PanelManager where Self: UIViewController {
 		updatedContentViewFrame.origin.x = 0.0
 		
 		
-		if let leftPanelSize = panelPinnedLeft?.contentViewController?.contentSize() {
+		if let leftPanelSize = panelPinnedLeft?.contentViewController?.preferredPanelContentSize {
 			
 			updatedContentViewFrame.size.width -= leftPanelSize.width
 			
 			updatedContentViewFrame.origin.x = leftPanelSize.width
 		}
 		
-		if let rightPanelSize = panelPinnedRight?.contentViewController?.contentSize() {
+		if let rightPanelSize = panelPinnedRight?.contentViewController?.preferredPanelContentSize {
 			
 			updatedContentViewFrame.size.width -= rightPanelSize.width
 			
@@ -311,7 +311,7 @@ public extension PanelManager where Self: UIViewController {
 		let currentFrame = panelView.frame
 		
 		var newFrame = currentFrame
-		if let contentSize = panel.contentViewController?.contentSize() {
+		if let contentSize = panel.contentViewController?.preferredPanelContentSize {
 			newFrame.size = contentSize
 		}
 		

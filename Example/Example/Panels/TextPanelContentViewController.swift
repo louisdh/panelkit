@@ -95,7 +95,7 @@ class TextPanelContentViewController: PanelContentViewController {
 
 	}
 
-	override func contentSize() -> CGSize {
+	override var preferredPanelContentSize: CGSize {
 		return CGSize(width: 320, height: 400)
 	}
 

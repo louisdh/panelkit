@@ -150,7 +150,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		let currentFrame = viewToMove.frame
 		
 		var newFrame = currentFrame
-		newFrame.size = contentSize()
+		newFrame.size = preferredPanelContentSize
 		
 		
 		updateConstraintsForKeyboardHide()
@@ -333,8 +333,8 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
-	open func contentSize() -> CGSize {
-		fatalError("Content size not implemented")
+	open var preferredPanelContentSize: CGSize {
+		fatalError("Preferred panel content size not implemented")
 	}
 	
 }

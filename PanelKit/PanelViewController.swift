@@ -183,7 +183,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	@objc override public var preferredContentSize: CGSize {
 		get {
-			return contentViewController?.contentSize() ?? super.preferredContentSize
+			return contentViewController?.preferredPanelContentSize ?? super.preferredContentSize
 		}
 		set {
 			super.preferredContentSize = newValue
