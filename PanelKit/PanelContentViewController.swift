@@ -110,9 +110,7 @@ public protocol PanelContentViewControllerDelegate: class {
 					viewToMove.frame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
 					
 				}, completion: nil)
-				
-				setAutoResizingMask()
-				
+								
 			}
 			
 		}
@@ -267,40 +265,6 @@ public protocol PanelContentViewControllerDelegate: class {
 	}
 	
 	// MARK: -
-	
-	// TODO: can be removed?
-	func setAutoResizingMask() {
-
-		guard let viewToMove = self.viewToMove else {
-			return
-		}
-		
-		guard let superview = viewToMove.superview else {
-			return
-		}
-		
-		var mask: UIViewAutoresizing
-
-		if viewToMove.center.x > superview.frame.size.width/2.0 {
-			
-			mask = .flexibleLeftMargin
-			
-		} else {
-			
-			mask = .flexibleRightMargin
-			
-		}
-		
-		if panelNavigationController?.panelViewController?.isPinned == true {
-			mask.formUnion(.flexibleHeight)
-		}
-		
-		mask.formUnion(.flexibleTopMargin)
-		mask.formUnion(.flexibleBottomMargin)
-		
-		viewToMove.autoresizingMask = mask
-		
-	}
 	
 	/// A panel can't float when it is presented modally
 	public var canFloat: Bool {

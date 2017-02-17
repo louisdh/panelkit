@@ -128,9 +128,6 @@ import UIKit
 		
 		self.prevTouch = touch
 		
-		// TODO: refactor
-		(self.viewControllers.first as? PanelContentViewController)?.setAutoResizingMask()
-		
 		if self.panelViewController?.isPinned != true {
 			bringToFront()
 		}

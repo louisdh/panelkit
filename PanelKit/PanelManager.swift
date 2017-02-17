@@ -321,9 +321,7 @@ public extension PanelManager where Self: UIViewController {
 					
 				}, completion: nil)
 				
-				
-				panel.contentViewController?.setAutoResizingMask()
-				
+								
 				if panel.view.superview == self.panelContentWrapperView {
 					panel.contentViewController?.setAsPanel(true)
 					panelNavCon.setAsPanel(true)
@@ -461,9 +459,6 @@ public extension PanelManager where Self: UIViewController {
 		panelView.removeFromSuperview()
 		panelContentWrapperView.addSubview(panelView)
 		
-		
-
-		panel.contentViewController?.setAutoResizingMask()
 		
 		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: frame)
