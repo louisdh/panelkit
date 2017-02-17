@@ -342,10 +342,14 @@ public protocol PanelContentViewControllerDelegate: class {
 	// MARK: - Bar button items
 	
 	/// Excludes potential "close" or "pop" buttons
-	open var leftBarButtonItems: [UIBarButtonItem] = []
+	open var leftBarButtonItems: [UIBarButtonItem] {
+		return []
+	}
 	
 	/// Excludes potential "close" or "pop" buttons
-	open var rightBarButtonItems: [UIBarButtonItem] = []
+	open var rightBarButtonItems: [UIBarButtonItem] {
+		return []
+	}
 
 	open var closeButtonTitle = "Close"
 	open var popButtonTitle = "⬇︎"
@@ -391,7 +395,7 @@ public protocol PanelContentViewControllerDelegate: class {
 			
 			let backBtn = getBackBtn()
 
-			navigationItem.leftBarButtonItems = leftBarButtonItems + [backBtn]
+			navigationItem.leftBarButtonItems = [backBtn] + leftBarButtonItems
 
 		} else {
 			
@@ -403,7 +407,7 @@ public protocol PanelContentViewControllerDelegate: class {
 				
 				let panelToggleBtn = getPanelToggleBtn()
 				
-				navigationItem.leftBarButtonItems = leftBarButtonItems + [panelToggleBtn]
+				navigationItem.leftBarButtonItems = [panelToggleBtn] + leftBarButtonItems
 				
 			}
 			
