@@ -55,6 +55,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		super.viewWillAppear(animated)
 
 		didUpdateFloatingState()
+		updateNavigationButtons()
 
 	}
 	
@@ -297,12 +298,91 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
+	public func dismissPanel() {
+		panelNavigationController?.panelViewController?.dismiss(animated: true, completion: nil)
+	}
+	
 	open func didUpdateFloatingState() {
-		
+	
+		setPanelToggleHidden(!isFloating)
+
 	}
 	
 	open var preferredPanelContentSize: CGSize {
 		fatalError("Preferred panel content size not implemented")
+	}
+	
+	// MARK: - Bar button items
+	
+	/// Excludes potential "close" or "pop" buttons
+	open var leftBarButtonItems: [UIBarButtonItem] = []
+	
+	/// Excludes potential "close" or "pop" buttons
+	open var rightBarButtonItems: [UIBarButtonItem] = []
+
+	// TODO: allow title to be overriden
+	private func panelFloatToggleBtnTitle() -> String {
+		if isFloating {
+			return "Close"
+		} else {
+			return "⬇︎"
+		}
+	}
+	
+	private func getBackBtn() -> UIBarButtonItem {
+		
+		// TODO: allow title to be overriden
+		let button = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(dismissPanel))
+		
+		return button
+	}
+	
+	private func getPanelToggleBtn() -> UIBarButtonItem {
+		
+		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
+		button.title = panelFloatToggleBtnTitle()
+		
+		return button
+	}
+	
+	
+	func popPanel(_ sender: UIBarButtonItem) {
+		
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
+		self.panelDelegate?.toggleFloatStatus(for: panel)
+		
+	}
+	
+	func updateNavigationButtons() {
+		
+		if !canFloat {
+			
+			setPanelToggleHidden(true)
+			
+		} else {
+			
+			setPanelToggleHidden(false)
+			
+		}
+	}
+	
+	func setPanelToggleHidden(_ hidden: Bool) {
+		
+		if hidden {
+			
+			navigationItem.leftBarButtonItems = []
+			
+		} else {
+			
+			let panelToggleBtn = getPanelToggleBtn()
+			
+			navigationItem.leftBarButtonItems = [panelToggleBtn]
+			
+		}
+		
 	}
 	
 }
