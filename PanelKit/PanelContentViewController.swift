@@ -91,7 +91,11 @@ public protocol PanelContentViewControllerDelegate: class {
 			return
 		}
 		
-		guard let viewToMove = panelNavigationController?.panelViewController?.view else {
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
+		guard let viewToMove = panel.view else {
 			return
 		}
 		
@@ -111,15 +115,19 @@ public protocol PanelContentViewControllerDelegate: class {
 			
 			if keyboardFrame.intersects(viewToMove.bounds) {
 				
+				let maxHeight = superView.bounds.height - keyboardFrameInSuperView.height
+				
+				let height = min(viewToMove.frame.height, maxHeight)
+				
+				let y = keyboardFrameInSuperView.origin.y - height
+				
+				let updatedFrame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
+				
+				panel.delegate?.updateFrame(for: panel, to: updatedFrame)
+				
 				UIView.animate(withDuration: duration, delay: 0.0, options: [animationCurve], animations: {
 					
-					let maxHeight = superView.bounds.height - keyboardFrameInSuperView.height
-					
-					let height = min(viewToMove.frame.height, maxHeight)
-					
-					let y = keyboardFrameInSuperView.origin.y - height
-					
-					viewToMove.frame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
+					panel.delegate?.panelContentWrapperView.layoutIfNeeded()
 					
 				}, completion: nil)
 								
@@ -141,7 +149,11 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	func willHideKeyboard(_ notification: Notification) {
 		
-		guard let viewToMove = panelNavigationController?.panelViewController?.view else {
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
+		guard let viewToMove = panel.view else {
 			return
 		}
 		
@@ -162,12 +174,14 @@ public protocol PanelContentViewControllerDelegate: class {
 		var newFrame = currentFrame
 		newFrame.size = preferredPanelContentSize
 		
+		panel.delegate?.updateFrame(for: panel, to: newFrame)
 		
 		updateConstraintsForKeyboardHide()
 		
 		UIView.animate(withDuration: duration, delay: 0.0, options: animationCurve, animations: {
 			
-			viewToMove.frame = newFrame
+			panel.delegate?.panelContentWrapperView.layoutIfNeeded()
+
 			self.view.layoutIfNeeded()
 			self.updateUIForKeyboardHide()
 			

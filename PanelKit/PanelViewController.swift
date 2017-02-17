@@ -179,12 +179,6 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 		
-		if panelNavigationController.isFloating {
-			self.view.frame.size = panelNavigationController.view.frame.size
-		} else {
-			panelNavigationController.view.frame = self.view.bounds
-		}
-		
 		shadowView.frame = panelNavigationController.view.frame
 		
 		if shadowEnabled {
