@@ -88,8 +88,11 @@ public protocol PanelViewControllerDelegate: class {
 		
 		super.init(nibName: nil, bundle: nil)
 	
+		
 		self.view.addSubview(shadowView)
+		self.addChildViewController(panelNavigationController)
 		self.view.addSubview(panelNavigationController.view)
+		panelNavigationController.didMove(toParentViewController: self)
 		
 		panelNavigationController.panelViewController = self
 	
