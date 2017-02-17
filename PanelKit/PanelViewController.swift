@@ -25,7 +25,11 @@ public protocol PanelViewControllerDelegate: class {
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	var topConstraint: NSLayoutConstraint?
+	var bottomConstraint: NSLayoutConstraint?
+
 	var leadingConstraint: NSLayoutConstraint?
+	var trailingConstraint: NSLayoutConstraint?
+
 	var widthConstraint: NSLayoutConstraint?
 	var heightConstraint: NSLayoutConstraint?
 	

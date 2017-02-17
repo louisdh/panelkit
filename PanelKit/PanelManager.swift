@@ -196,6 +196,7 @@ public extension PanelManager where Self: UIViewController {
 
 extension PanelManager {
 
+	/// Updates the panel's constraints to match the specified frame
 	func updateFrame(for panel: PanelViewController, to frame: CGRect) {
 		
 		guard panel.view.superview == panelContentWrapperView else {
@@ -206,34 +207,75 @@ extension PanelManager {
 			panel.widthConstraint = panel.view.widthAnchor.constraint(equalToConstant: frame.width)
 		}
 		
-		panel.widthConstraint?.isActive = true
-		panel.widthConstraint?.constant = frame.width
-
-		
-		if panel.heightConstraint == nil {
-			panel.heightConstraint = panel.view.heightAnchor.constraint(equalToConstant: frame.height)
-		}
-
-		
-		panel.heightConstraint?.isActive = true
-		panel.heightConstraint?.constant = frame.height
-
-		
 		if panel.topConstraint == nil {
 			panel.topConstraint = panel.view.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor, constant: 0.0)
 		}
-			
-		panel.topConstraint?.isActive = true
-		panel.topConstraint?.constant = frame.origin.y
 		
+		if panel.bottomConstraint == nil {
+			panel.bottomConstraint = panel.view.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor, constant: 0.0)
+		}
 		
 		if panel.leadingConstraint == nil {
 			panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: 0.0)
 		}
 		
-		panel.leadingConstraint?.isActive = true
-		panel.leadingConstraint?.constant = frame.origin.x
+		if panel.trailingConstraint == nil {
+			panel.trailingConstraint = panel.view.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: 0.0)
+		}
 		
+		
+		if panel.isPinned {
+			
+			panel.heightConstraint?.isActive = false
+			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: 1.0)
+			panel.heightConstraint?.isActive = true
+			
+		} else {
+			
+			panel.heightConstraint?.isActive = false
+			panel.heightConstraint = panel.view.heightAnchor.constraint(equalToConstant: frame.height)
+			panel.heightConstraint?.isActive = true
+			panel.heightConstraint?.constant = frame.height
+			
+		}
+		
+		
+		panel.leadingConstraint?.constant = frame.origin.x
+		panel.trailingConstraint?.constant = frame.maxX - panelContentWrapperView.bounds.maxX
+		
+		if frame.center.x > panelContentView.frame.center.x {
+			
+			panel.leadingConstraint?.isActive = false
+			panel.trailingConstraint?.isActive = true
+
+		} else {
+		
+			panel.leadingConstraint?.isActive = true
+			panel.trailingConstraint?.isActive = false
+
+		}
+		
+		
+		panel.widthConstraint?.isActive = true
+		panel.widthConstraint?.constant = frame.width
+		
+		
+		panel.topConstraint?.constant = frame.origin.y
+		panel.bottomConstraint?.constant = frame.maxY - panelContentWrapperView.bounds.maxY
+
+		
+		if frame.center.y > panelContentWrapperView.bounds.center.y {
+
+			panel.topConstraint?.isActive = false
+			panel.bottomConstraint?.isActive = true
+			
+		} else {
+			
+			panel.topConstraint?.isActive = true
+			panel.bottomConstraint?.isActive = false
+			
+		}
+
 	}
 
 }
