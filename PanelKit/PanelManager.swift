@@ -62,7 +62,7 @@ extension PanelManager where Self: UIViewController {
 		
 		panel.view.removeFromSuperview()
 		
-		panel.contentViewController?.setAsPanel(false)
+		panel.contentViewController?.didUpdateFloatingState()
 		
 		if panel.isPinned {
 			didDragFree(panel)
@@ -331,7 +331,7 @@ public extension PanelManager where Self: UIViewController {
 				
 				
 				if panel.view.superview == self.panelContentWrapperView {
-					panel.contentViewController?.setAsPanel(true)
+					panel.contentViewController?.didUpdateFloatingState()
 					panelNavCon.setAsPanel(true)
 				}
 				

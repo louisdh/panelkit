@@ -28,9 +28,18 @@ public protocol PanelContentViewControllerDelegate: class {
 		return panelNavigationController?.panelViewController?.view
 	}
 	
-	
-	// Default is false
-	internal(set) public var isFloating = false
+	public var isFloating: Bool {
+		
+		guard let panel = self.panelNavigationController?.panelViewController else {
+			return false
+		}
+		
+		if canFloat {
+			return !panel.isPresentedAsPopover
+		}
+		
+		return false
+	}
 	
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +53,8 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
+
+		didUpdateFloatingState()
 
 	}
 	
@@ -283,13 +294,6 @@ public protocol PanelContentViewControllerDelegate: class {
 		}
 		
 		return true
-		
-	}
-	
-	func setAsPanel(_ asPanel: Bool) {
-		
-		isFloating = asPanel
-		didUpdateFloatingState()
 		
 	}
 	

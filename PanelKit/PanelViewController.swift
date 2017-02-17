@@ -143,9 +143,20 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
+		if isFloating {
+			self.view.translatesAutoresizingMaskIntoConstraints = false
+		} else {
+			self.view.translatesAutoresizingMaskIntoConstraints = true
+		}
+		
 		self.updateShadow()
 
 		contentViewController?.viewWillAppear(animated)
+		
+		if !isFloating {
+			widthConstraint?.isActive = false
+			heightConstraint?.isActive = false
+		}
 		
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
@@ -196,6 +207,17 @@ public protocol PanelViewControllerDelegate: class {
 //		panelNavigationController.navigationBar.setNeedsLayout()
 //		panelNavigationController.navigationBar.layoutSubviews()
 //		
+	}
+	
+	override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+		super.viewWillTransition(to: size, with: coordinator)
+		
+		if isFloating {
+			self.view.translatesAutoresizingMaskIntoConstraints = false
+		} else {
+			self.view.translatesAutoresizingMaskIntoConstraints = true
+		}
+		
 	}
 	
 	// MARK: -
@@ -331,7 +353,7 @@ public protocol PanelViewControllerDelegate: class {
 //		return .popover
 //	}
 //	
-//	func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
+//	public func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
 //		
 //		if style == .popover {
 //			return self
@@ -450,8 +472,11 @@ public protocol PanelViewControllerDelegate: class {
 	}
 	
 	override public var prefersStatusBarHidden: Bool {
-		// PanelViewController currently doesn't support status bar 
-		// because it causes glitches when presented as a modal
+
+		if let contentViewController = contentViewController {
+			return contentViewController.prefersStatusBarHidden
+		}
+		
 		return true
 	}
 	
