@@ -133,6 +133,13 @@ public extension PanelManager where Self: UIViewController {
 		return nil
 	}
 	
+}
+
+extension PanelManager where Self: UIViewController {
+	
+	var panelGrowDuration: Double {
+		return 0.3
+	}
 	
 	func pinnedPanelFrame(for panel: PanelViewController, at side: PanelPinSide) -> CGRect? {
 		
@@ -154,10 +161,6 @@ public extension PanelManager where Self: UIViewController {
 		previewTargetFrame.size.height = panelContentWrapperView.bounds.height - previewTargetFrame.origin.y
 		
 		return previewTargetFrame
-	}
-	
-	var panelGrowDuration: Double {
-		return 0.3
 	}
 	
 	func updatedContentViewFrame() -> CGRect {
