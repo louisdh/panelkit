@@ -56,6 +56,22 @@ public extension PanelManager where Self: UIViewController {
 
 // MARK: -
 
+extension PanelManager where Self: UIViewController {
+
+	func close(_ panel: PanelViewController) {
+		
+		panel.view.removeFromSuperview()
+		
+		panel.contentViewController?.setAsPanel(false)
+		
+		if panel.isPinned {
+			didDragFree(panel)
+		}
+	
+	}
+	
+}
+
 public extension PanelManager where Self: UIViewController {
 	
 	func closeAllPanels() {
@@ -70,13 +86,7 @@ public extension PanelManager where Self: UIViewController {
 				continue
 			}
 			
-			panel.view.removeFromSuperview()
-			
-			panel.contentViewController?.setAsPanel(false)
-			
-			if panel.isPinned {
-				didDragFree(panel)
-			}
+			close(panel)
 			
 		}
 		
@@ -287,11 +297,9 @@ public extension PanelManager where Self: UIViewController {
 		let panelNavCon = panel.panelNavigationController
 		
 		if panel.contentViewController?.isFloating == true && !panelNavCon.isPresentedAsPopover {
-			
-			panel.view.removeFromSuperview()
-			
-			panel.contentViewController?.setAsPanel(false)
-			
+						
+			close(panel)
+
 		} else {
 			
 			let rect = panel.view.convert(panel.view.frame, to: panelContentWrapperView)
