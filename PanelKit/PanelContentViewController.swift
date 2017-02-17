@@ -276,6 +276,19 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 	}
 	
+	func isPresentedModally() -> Bool {
+		
+		guard let panel = self.panelNavigationController?.panelViewController else {
+			return false
+		}
+		
+		if panel.isPresentedAsPopover {
+			return false
+		}
+		
+		return panel.presentingViewController != nil
+	}
+	
 	// MARK: -
 	
 	/// A panel can't float when it is presented modally
@@ -290,7 +303,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		}
 		
 		// Modal
-		if panel.presentingViewController != nil {
+		if isPresentedModally() {
 			return false
 		}
 		
@@ -304,7 +317,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	open func didUpdateFloatingState() {
 	
-		setPanelToggleHidden(!isFloating)
+		updateNavigationButtons()
 
 	}
 	
@@ -320,19 +333,21 @@ public protocol PanelContentViewControllerDelegate: class {
 	/// Excludes potential "close" or "pop" buttons
 	open var rightBarButtonItems: [UIBarButtonItem] = []
 
-	// TODO: allow title to be overriden
+	open var closeButtonTitle = "Close"
+	open var popButtonTitle = "⬇︎"
+	open var modalCloseButtonTitle = "Back"
+	
 	private func panelFloatToggleBtnTitle() -> String {
 		if isFloating {
-			return "Close"
+			return closeButtonTitle
 		} else {
-			return "⬇︎"
+			return popButtonTitle
 		}
 	}
 	
 	private func getBackBtn() -> UIBarButtonItem {
 		
-		// TODO: allow title to be overriden
-		let button = UIBarButtonItem(title: "Back", style: .done, target: self, action: #selector(dismissPanel))
+		let button = UIBarButtonItem(title: modalCloseButtonTitle, style: .done, target: self, action: #selector(dismissPanel))
 		
 		return button
 	}
@@ -358,31 +373,30 @@ public protocol PanelContentViewControllerDelegate: class {
 	
 	func updateNavigationButtons() {
 		
-		if !canFloat {
+		if isPresentedModally() {
 			
-			setPanelToggleHidden(true)
-			
+			let backBtn = getBackBtn()
+
+			navigationItem.leftBarButtonItems = leftBarButtonItems + [backBtn]
+
 		} else {
 			
-			setPanelToggleHidden(false)
-			
-		}
-	}
-	
-	func setPanelToggleHidden(_ hidden: Bool) {
-		
-		if hidden {
-			
-			navigationItem.leftBarButtonItems = []
-			
-		} else {
-			
-			let panelToggleBtn = getPanelToggleBtn()
-			
-			navigationItem.leftBarButtonItems = [panelToggleBtn]
+			if !canFloat {
+				
+				navigationItem.leftBarButtonItems = leftBarButtonItems
+				
+			} else {
+				
+				let panelToggleBtn = getPanelToggleBtn()
+				
+				navigationItem.leftBarButtonItems = leftBarButtonItems + [panelToggleBtn]
+				
+			}
 			
 		}
 		
+		navigationItem.rightBarButtonItems = rightBarButtonItems
+
 	}
 	
 }

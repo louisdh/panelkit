@@ -143,11 +143,7 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		if isFloating {
-			self.view.translatesAutoresizingMaskIntoConstraints = false
-		} else {
-			self.view.translatesAutoresizingMaskIntoConstraints = true
-		}
+		updateState()
 		
 		self.updateShadow()
 
@@ -212,11 +208,29 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
 		super.viewWillTransition(to: size, with: coordinator)
 		
+		updateState()
+		
+		coordinator.animate(alongsideTransition: { (context) in
+			
+		}) { (context) in
+			
+			self.updateState()
+
+		}
+		
+	}
+	
+	// MARK: -
+
+	func updateState() {
+		
 		if isFloating {
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 		} else {
 			self.view.translatesAutoresizingMaskIntoConstraints = true
 		}
+		
+		contentViewController?.updateNavigationButtons()
 		
 	}
 	
