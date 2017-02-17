@@ -316,12 +316,12 @@ public extension PanelManager where Self: UIViewController {
 				self.updateFrame(for: panel, to: newFrame)
 
 				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
-					self.panelContentWrapperView.layoutIfNeeded()
 
+					self.panelContentWrapperView.layoutIfNeeded()
 					
 				}, completion: nil)
 				
-								
+				
 				if panel.view.superview == self.panelContentWrapperView {
 					panel.contentViewController?.setAsPanel(true)
 					panelNavCon.setAsPanel(true)
