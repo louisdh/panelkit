@@ -486,9 +486,10 @@ public extension PanelManager where Self: UIViewController {
 		}) { (completed) in
 			
 			// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
-			self.panelContentWrapperView.sendSubview(toBack: panelView)
+			self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
+			
 			if let pinnedPreviewView = pinnedPreviewView {
-				self.panelContentWrapperView.sendSubview(toBack: pinnedPreviewView)
+				self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
 			}
 			
 		}
