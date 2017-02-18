@@ -328,6 +328,10 @@ public protocol PanelContentViewControllerDelegate: class {
 			return false
 		}
 		
+		guard panel.delegate?.allowFloatingPanels == true else {
+			return false
+		}
+		
 		if panel.isPresentedAsPopover {
 			return true
 		}
