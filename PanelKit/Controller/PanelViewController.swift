@@ -220,8 +220,20 @@ public protocol PanelViewControllerDelegate: class {
 		
 		if isFloating {
 			self.view.translatesAutoresizingMaskIntoConstraints = false
+			
+			if !isPinned {
+				enableCornerRadius()
+				if shadowEnabled {
+					enableShadow()
+				}
+			}
+			
 		} else {
 			self.view.translatesAutoresizingMaskIntoConstraints = true
+		
+			disableShadow()
+			disableCornerRadius()
+			
 		}
 		
 		contentViewController?.updateNavigationButtons()
