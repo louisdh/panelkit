@@ -210,7 +210,7 @@ extension PanelManager where Self: UIViewController {
 extension PanelManager {
 
 	/// Updates the panel's constraints to match the specified frame
-	func updateFrame(for panel: PanelViewController, to frame: CGRect) {
+	func updateFrame(for panel: PanelViewController, to frame: CGRect, keyboardShown: Bool = false) {
 		
 		guard panel.view.superview == panelContentWrapperView else {
 			return
@@ -237,7 +237,7 @@ extension PanelManager {
 		}
 		
 		
-		if panel.isPinned {
+		if panel.isPinned && !keyboardShown {
 			
 			panel.heightConstraint?.isActive = false
 			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: 1.0)

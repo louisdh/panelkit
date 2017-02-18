@@ -123,7 +123,7 @@ public protocol PanelContentViewControllerDelegate: class {
 				
 				let updatedFrame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
 				
-				panel.delegate?.updateFrame(for: panel, to: updatedFrame)
+				panel.delegate?.updateFrame(for: panel, to: updatedFrame, keyboardShown: true)
 				
 				UIView.animate(withDuration: duration, delay: 0.0, options: [animationCurve], animations: {
 					
@@ -179,7 +179,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		newFrame.size.height += 1
 		
 		
-		panel.delegate?.updateFrame(for: panel, to: newFrame)
+		panel.delegate?.updateFrame(for: panel, to: newFrame, keyboardShown: true)
 		
 		updateConstraintsForKeyboardHide()
 		
