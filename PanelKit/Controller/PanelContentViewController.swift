@@ -144,7 +144,6 @@ public protocol PanelContentViewControllerDelegate: class {
 			
 		}, completion: nil)
 		
-		
 	}
 	
 	func willHideKeyboard(_ notification: Notification) {
@@ -160,7 +159,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		guard let userInfo = notification.userInfo else {
 			return
 		}
-		
+
 		let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
 		let animationCurveRaw = animationCurveRawNSN?.uintValue ?? UIViewAnimationOptions().rawValue
 		let animationCurve = UIViewAnimationOptions(rawValue: animationCurveRaw)
@@ -171,8 +170,14 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 		let currentFrame = viewToMove.frame
 		
+		// Currently uses a slight hack to prevent navigation bar height from bugging out (height became 64, instaed of the normal 44)
+		
+		// 1: change panel size height to actual height + 1
+		
 		var newFrame = currentFrame
 		newFrame.size = preferredPanelContentSize
+		newFrame.size.height += 1
+		
 		
 		panel.delegate?.updateFrame(for: panel, to: newFrame)
 		
@@ -180,12 +185,23 @@ public protocol PanelContentViewControllerDelegate: class {
 		
 		UIView.animate(withDuration: duration, delay: 0.0, options: animationCurve, animations: {
 			
+			self.view.layoutIfNeeded()
+
 			panel.delegate?.panelContentWrapperView.layoutIfNeeded()
 
-			self.view.layoutIfNeeded()
 			self.updateUIForKeyboardHide()
 			
 		}, completion: nil)
+		
+		
+		// 2: change panel size height to actual height
+		
+		var newFrame2 = currentFrame
+		newFrame2.size = preferredPanelContentSize
+		
+		panel.delegate?.updateFrame(for: panel, to: newFrame2)
+		panel.delegate?.panelContentWrapperView.layoutIfNeeded()
+		
 		
 	}
 

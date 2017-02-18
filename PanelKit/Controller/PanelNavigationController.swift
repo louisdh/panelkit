@@ -197,4 +197,5 @@ import UIKit
 		panelViewController?.didEndDrag()
 
 	}
+	
 }
