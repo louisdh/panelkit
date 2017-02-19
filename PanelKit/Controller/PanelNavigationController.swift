@@ -39,7 +39,7 @@ import UIKit
 
 	var dragInsets: UIEdgeInsets {
 		if let panelViewController = self.panelViewController {
-			return self.panelViewController?.delegate?.dragAreaInsets(for: panelViewController) ?? .zero
+			return self.panelViewController?.delegate?.totalDragInsets(for: panelViewController) ?? .zero
 		}
 		
 		return .zero

@@ -26,6 +26,8 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	
 	func didUpdatePinnedPanels()
 	
+	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets
+	
 }
 
 // MARK: - Default implementation
@@ -50,6 +52,49 @@ public extension PanelManager where Self: UIViewController {
 	
 	var panelManagerLogLevel: LogLevel {
 		return .none
+	}
+	
+	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets {
+		return .zero
+	}
+
+}
+
+// MARK: -
+
+extension PanelManager {
+	
+	var panelPinnedLeft: PanelViewController? {
+		
+		for panel in panels {
+			if panel.pinnedSide == .left {
+				return panel
+			}
+		}
+		
+		return nil
+	}
+	
+	var panelPinnedRight: PanelViewController? {
+		
+		for panel in panels {
+			if panel.pinnedSide == .right {
+				return panel
+			}
+		}
+		
+		return nil
+	}
+	
+	func totalDragInsets(for panel: PanelViewController) -> UIEdgeInsets {
+		
+		let insets = dragInsets(for: panel)
+		
+		let left = panelPinnedLeft?.view?.bounds.width ?? 0.0
+		let right = panelPinnedRight?.view?.bounds.width ?? 0.0
+		
+		return UIEdgeInsets(top: insets.top, left: insets.left + left, bottom: insets.bottom, right: insets.right + right)
+		
 	}
 	
 }
@@ -135,28 +180,6 @@ public extension PanelManager where Self: UIViewController {
 			
 		}
 		
-	}
-	
-	var panelPinnedLeft: PanelViewController? {
-		
-		for panel in panels {
-			if panel.pinnedSide == .left {
-				return panel
-			}
-		}
-		
-		return nil
-	}
-	
-	var panelPinnedRight: PanelViewController? {
-		
-		for panel in panels {
-			if panel.pinnedSide == .right {
-				return panel
-			}
-		}
-		
-		return nil
 	}
 	
 }
@@ -410,14 +433,6 @@ public extension PanelManager where Self: UIViewController {
 			
 		}
 
-	}
-	
-	func dragAreaInsets(for panel: PanelViewController) -> UIEdgeInsets {
-		
-		let left = panelPinnedLeft?.view?.bounds.width ?? 0.0
-		let right = panelPinnedRight?.view?.bounds.width ?? 0.0
-		
-		return UIEdgeInsets(top: 0.0, left: left, bottom: 0.0, right: right)
 	}
 	
 	func didDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {

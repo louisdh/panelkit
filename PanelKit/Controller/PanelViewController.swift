@@ -15,9 +15,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	func didEndDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide)
 	func didEndDragFree(_ panel: PanelViewController)
-	
-	func dragAreaInsets(for panel: PanelViewController) -> UIEdgeInsets
-
+		
 	func enablePanelShadow(for panel: PanelViewController) -> Bool
 	
 }
