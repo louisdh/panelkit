@@ -361,7 +361,6 @@ public extension PanelManager where Self: UIViewController {
 				
 				if panel.view.superview == self.panelContentWrapperView {
 					panel.contentViewController?.didUpdateFloatingState()
-					panelNavCon.setAsPanel(true)
 				}
 				
 			})

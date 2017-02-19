@@ -13,10 +13,6 @@ import UIKit
 	private var prevTouch: CGPoint?
 	public weak var panelViewController: PanelViewController?
 
-	/// Default is false
-	// TODO: make computable property, call panelViewController
-	internal(set) var isFloating = false
-
     override public func viewDidLoad() {
         super.viewDidLoad()
 		
@@ -129,7 +125,6 @@ import UIKit
 		
 		
 		panelViewController.delegate?.updateFrame(for: panelViewController, to: newFrame)
-//		viewToMove.center = panelViewController.allowedCenter(for: proposedCenter)
 		
 		self.prevTouch = touch
 		
@@ -154,13 +149,6 @@ import UIKit
 		
 		superview.bringSubview(toFront: viewToMove)
 
-	}
-	
-	// TODO: remove
-	@objc func setAsPanel(_ asPanel: Bool) {
-		
-		isFloating = asPanel
-		
 	}
 
 	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
