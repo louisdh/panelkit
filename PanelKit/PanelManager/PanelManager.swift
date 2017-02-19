@@ -73,8 +73,30 @@ extension PanelManager where Self: UIViewController {
 }
 
 public extension PanelManager where Self: UIViewController {
+
+	func closeAllPinnedPanels() {
+
+		for panel in panels {
+			
+			guard let panelSuperview = panel.view.superview else {
+				continue
+			}
+			
+			guard panelSuperview == panelContentWrapperView else {
+				continue
+			}
+			
+			guard panel.isPinned else {
+				continue
+			}
+			
+			close(panel)
+			
+		}
+		
+	}
 	
-	func closeAllPanels() {
+	func closeAllFloatingPanels() {
 		
 		for panel in panels {
 			
@@ -83,6 +105,10 @@ public extension PanelManager where Self: UIViewController {
 			}
 			
 			guard panelSuperview == panelContentWrapperView else {
+				continue
+			}
+			
+			guard panel.isFloating else {
 				continue
 			}
 			
@@ -299,7 +325,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		let panelNavCon = panel.panelNavigationController
 		
-		if panel.contentViewController?.isFloating == true && !panelNavCon.isPresentedAsPopover {
+		if (panel.isFloating || panel.isPinned) && !panelNavCon.isPresentedAsPopover {
 						
 			close(panel)
 

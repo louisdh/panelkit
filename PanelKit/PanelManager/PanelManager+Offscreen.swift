@@ -30,7 +30,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard panel.isFloating else {
+			guard panel.isFloating || panel.isPinned else {
 				continue
 			}
 			
@@ -44,7 +44,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		for panel in panels {
 			
-			guard panel.isFloating == true else {
+			guard panel.isFloating || panel.isPinned else {
 				continue
 			}
 			

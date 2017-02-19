@@ -14,6 +14,7 @@ import UIKit
 	public weak var panelViewController: PanelViewController?
 
 	/// Default is false
+	// TODO: make computable property, call panelViewController
 	internal(set) var isFloating = false
 
     override public func viewDidLoad() {
@@ -66,11 +67,15 @@ import UIKit
 
 		}
 		
-		guard isFloating else {
+		guard let panel = panelViewController else {
 			return
 		}
 		
-		guard let viewToMove = self.panelViewController?.view else {
+		guard panel.isFloating || panel.isPinned else {
+			return
+		}
+		
+		guard let viewToMove = panel.view else {
 			return
 		}
 		
@@ -151,6 +156,7 @@ import UIKit
 
 	}
 	
+	// TODO: remove
 	@objc func setAsPanel(_ asPanel: Bool) {
 		
 		isFloating = asPanel
@@ -159,11 +165,15 @@ import UIKit
 
 	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
 		
-		if !isFloating {
+		guard let panel = panelViewController else {
 			return
 		}
 		
-		guard let viewToMove = self.panelViewController?.view else {
+		guard panel.isFloating || panel.isPinned else {
+			return
+		}
+		
+		guard let viewToMove = panel.view else {
 			return
 		}
 		

@@ -27,6 +27,15 @@ public protocol PanelContentViewControllerDelegate: class {
 	private weak var viewToMove: UIView? {
 		return panelNavigationController?.panelViewController?.view
 	}
+
+	public var isPinned: Bool {
+
+		guard let panel = self.panelNavigationController?.panelViewController else {
+			return false
+		}
+	
+		return panel.isPinned
+	}
 	
 	public var isFloating: Bool {
 		
@@ -34,11 +43,19 @@ public protocol PanelContentViewControllerDelegate: class {
 			return false
 		}
 		
-		if canFloat {
-			return !panel.isPresentedAsPopover
+		if panel.isPresentedAsPopover {
+			return false
 		}
 		
-		return false
+		if isPresentedModally() {
+			return false
+		}
+
+		if panel.isPinned {
+			return false
+		}
+		
+		return true
 	}
 	
     override open func viewDidLoad() {
@@ -111,7 +128,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 //		let keyboardIntersectingFrame = viewToMove.bounds.intersection(superView.bounds)
 		
-		if isFloating {
+		if isFloating || isPinned {
 			
 			if keyboardFrame.intersects(viewToMove.bounds) {
 				
@@ -376,7 +393,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	open var modalCloseButtonTitle = "Back"
 	
 	private func panelFloatToggleBtnTitle() -> String {
-		if isFloating {
+		if isFloating || isPinned {
 			return closeButtonTitle
 		} else {
 			return popButtonTitle

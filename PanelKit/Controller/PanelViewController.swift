@@ -149,7 +149,7 @@ public protocol PanelViewControllerDelegate: class {
 
 		contentViewController?.viewWillAppear(animated)
 		
-		if !isFloating {
+		if !(isFloating || isPinned) {
 			widthConstraint?.isActive = false
 			heightConstraint?.isActive = false
 		}
@@ -218,7 +218,7 @@ public protocol PanelViewControllerDelegate: class {
 
 	func updateState() {
 		
-		if isFloating {
+		if isFloating || isPinned {
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 			
 			if !isPinned {
@@ -255,7 +255,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	func didDrag() {
 		
-		guard isFloating else {
+		guard isFloating || isPinned else {
 			return
 		}
 		
@@ -281,7 +281,7 @@ public protocol PanelViewControllerDelegate: class {
 	
 	func didEndDrag() {
 		
-		guard isFloating else {
+		guard isFloating || isPinned else {
 			return
 		}
 		
