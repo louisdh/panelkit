@@ -7,6 +7,9 @@
 [![Twitter](https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat)](http://twitter.com/LouisDhauwe)
 </center>
 
+<p align="center">
+<img src="readme-resources/example.gif" style="max-height: 4480px;" alt="PanelKit for iOS">
+</p>
 
 ## About
 PanelKit is a UI framework that enables panels on iOS. A panel can be presented in the following ways:
