@@ -2,10 +2,14 @@
 <img src="readme-resources/hero.png" style="max-height: 300px;" alt="PanelKit for iOS">
 </p>
 
-<center>[![Swift](https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat")](https://developer.apple.com/swift/)
-![platform](https://img.shields.io/badge/platform-iOS-lightgrey.svg)
-[![Twitter](https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat)](http://twitter.com/LouisDhauwe)
-</center>
+<p align="center">
+<a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"></a>
+
+<img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS">
+
+<a href="http://twitter.com/LouisDhauwe"><img src="https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat" style="max-height: 300px;" alt="Twitter"></a>
+
+</p>
 
 <p align="center">
 <img src="readme-resources/example.gif" style="max-height: 4480px;" alt="PanelKit for iOS">
