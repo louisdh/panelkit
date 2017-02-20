@@ -87,4 +87,4 @@ Typically the ```PanelManager``` protocol is implemented on a ```UIViewControlle
 
 ## License
 
-TBD
+This project is available under the MIT license. See the LICENSE file for more info.
