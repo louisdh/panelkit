@@ -5,6 +5,9 @@
 <p align="center">
 <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"></a>
 
+<a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"></a>
+
+
 <img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS">
 
 <a href="http://twitter.com/LouisDhauwe"><img src="https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat" style="max-height: 300px;" alt="Twitter"></a>
@@ -82,6 +85,15 @@ A panel is explicitly (without your action) shown in a ```UINavigationController
 
 Typically the ```PanelManager``` protocol is implemented on a ```UIViewController```.
 
+## Installation
+
+### [CocoaPods](http://cocoapods.org)
+
+To install, add the following line to your ```Podfile```:
+
+```ruby
+pod 'PanelKit', '~> 0.8'
+```
 
 ## Requirements
 
