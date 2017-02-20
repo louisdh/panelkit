@@ -41,22 +41,32 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ldo-aI-aqI">
                                 <rect key="frame" x="0.0" y="64" width="1024" height="704"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VER-Ij-adX">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VER-Ij-adX">
                                         <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
-                                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <subviews>
-                                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AxX-Dp-fJS">
+                                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AxX-Dp-fJS">
                                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
-                                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 <connections>
                                                     <segue destination="naq-A9-io3" kind="embed" id="ZlL-3c-zn5"/>
                                                 </connections>
                                             </containerView>
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="AxX-Dp-fJS" firstAttribute="top" secondItem="VER-Ij-adX" secondAttribute="top" id="Ch8-sm-rjp"/>
+                                            <constraint firstItem="AxX-Dp-fJS" firstAttribute="leading" secondItem="VER-Ij-adX" secondAttribute="leading" id="UE8-VM-uAH"/>
+                                            <constraint firstAttribute="trailing" secondItem="AxX-Dp-fJS" secondAttribute="trailing" id="Ug4-zm-q5t"/>
+                                            <constraint firstAttribute="bottom" secondItem="AxX-Dp-fJS" secondAttribute="bottom" id="uKB-2R-6KY"/>
+                                        </constraints>
                                     </view>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="VER-Ij-adX" secondAttribute="trailing" id="CEc-5b-hgY"/>
+                                    <constraint firstAttribute="bottom" secondItem="VER-Ij-adX" secondAttribute="bottom" id="VvL-I9-baQ"/>
+                                    <constraint firstItem="VER-Ij-adX" firstAttribute="top" secondItem="Ldo-aI-aqI" secondAttribute="top" id="e5B-QB-akR"/>
+                                    <constraint firstItem="VER-Ij-adX" firstAttribute="leading" secondItem="Ldo-aI-aqI" secondAttribute="leading" id="xaL-H4-Aen"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -98,24 +108,39 @@
                         <viewControllerLayoutGuide type="top" id="dhd-kI-vkU"/>
                         <viewControllerLayoutGuide type="bottom" id="N2e-tF-29f"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="dPC-02-Xbn">
+                    <view key="view" clipsSubviews="YES" contentMode="scaleToFill" id="dPC-02-Xbn">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="704"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYt-bh-zqY">
-                                <rect key="frame" x="462" y="335" width="100" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="28"/>
-                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kd8-cy-OLT">
+                                <rect key="frame" x="20" y="20" width="984" height="664"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Content" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LYt-bh-zqY">
+                                        <rect key="frame" x="442" y="315" width="100" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="LYt-bh-zqY" firstAttribute="centerY" secondItem="Kd8-cy-OLT" secondAttribute="centerY" id="GKz-PF-9oG"/>
+                                    <constraint firstItem="LYt-bh-zqY" firstAttribute="centerX" secondItem="Kd8-cy-OLT" secondAttribute="centerX" id="ORw-EK-hIQ"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Kd8-cy-OLT" firstAttribute="top" secondItem="dhd-kI-vkU" secondAttribute="bottom" constant="20" id="5Ni-PY-Hn7"/>
+                            <constraint firstAttribute="trailing" secondItem="Kd8-cy-OLT" secondAttribute="trailing" constant="20" id="FLF-in-9Q3"/>
+                            <constraint firstItem="Kd8-cy-OLT" firstAttribute="leading" secondItem="dPC-02-Xbn" secondAttribute="leading" constant="20" id="Kud-yb-bzd"/>
+                            <constraint firstItem="N2e-tF-29f" firstAttribute="top" secondItem="Kd8-cy-OLT" secondAttribute="bottom" constant="20" id="exy-SO-F5f"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lkw-dk-M5h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137" y="965"/>
+            <point key="canvasLocation" x="136.5234375" y="964.84375"/>
         </scene>
         <!--Map Panel Content View Controller-->
         <scene sceneID="rDc-mz-Zi0">

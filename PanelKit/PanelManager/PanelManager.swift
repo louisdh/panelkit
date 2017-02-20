@@ -257,7 +257,41 @@ extension PanelManager where Self: UIViewController {
 // MARK: -
 
 extension PanelManager {
+	
+	func updateContentViewFrame(to frame: CGRect) {
 
+		// First remove constraints that will be recreated
+		
+		var constraintsToCheck = [NSLayoutConstraint]()
+		constraintsToCheck.append(contentsOf: panelContentWrapperView.constraints)
+		constraintsToCheck.append(contentsOf: panelContentView.constraints)
+		
+		for c in constraintsToCheck {
+			
+			if (c.firstItem === panelContentView && c.secondItem === panelContentWrapperView) ||
+				(c.secondItem === panelContentView && c.firstItem === panelContentWrapperView) {
+				
+				if panelContentView.constraints.contains(c) {
+					panelContentView.removeConstraint(c)
+				} else if panelContentWrapperView.constraints.contains(c) {
+					panelContentWrapperView.removeConstraint(c)
+				}
+
+			}
+			
+		}
+		
+		// Recreate them
+		
+		panelContentView.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor).isActive = true
+		panelContentView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor).isActive = true
+		
+		panelContentView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: frame.origin.x).isActive = true
+
+		panelContentView.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: frame.maxX - panelContentWrapperView.bounds.width).isActive = true
+
+	}
+	
 	/// Updates the panel's constraints to match the specified frame
 	func updateFrame(for panel: PanelViewController, to frame: CGRect, keyboardShown: Bool = false) {
 		
@@ -421,9 +455,10 @@ public extension PanelManager where Self: UIViewController {
 
 		updateFrame(for: panel, to: newFrame)
 
+		updateContentViewFrame(to: updatedContentViewFrame())
+		
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
-			self.panelContentView.frame = self.updatedContentViewFrame()
 			self.panelContentWrapperView.layoutIfNeeded()
 
 			self.didUpdatePinnedPanels()
@@ -514,12 +549,11 @@ public extension PanelManager where Self: UIViewController {
 		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: frame)
 
+		updateContentViewFrame(to: updatedContentViewFrame())
 
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
 			self.panelContentWrapperView.layoutIfNeeded()
-
-			self.panelContentView.frame = self.updatedContentViewFrame()
 			
 			self.didUpdatePinnedPanels()
 			
