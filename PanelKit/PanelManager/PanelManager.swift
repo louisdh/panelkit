@@ -17,7 +17,7 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	/// Allow floating panels
 	var allowFloatingPanels: Bool { get	}
 	
-	/// Allow panels to pin to either the left or right side, 
+	/// Allow panels to pin to either the left or right side,
 	/// resizing ```panelContentView``` when a panel is pinned.
 	var allowPanelPinning: Bool { get }
 	
@@ -47,7 +47,7 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 // MARK: - Default implementation
 
 public extension PanelManager where Self: UIViewController {
-
+	
 	func didUpdatePinnedPanels() {
 		
 	}
@@ -55,7 +55,7 @@ public extension PanelManager where Self: UIViewController {
 	func enablePanelShadow(for panel: PanelViewController) -> Bool {
 		return true
 	}
-
+	
 	var allowFloatingPanels: Bool {
 		return panelContentWrapperView.bounds.width > 800
 	}
@@ -71,7 +71,7 @@ public extension PanelManager where Self: UIViewController {
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets {
 		return .zero
 	}
-
+	
 }
 
 // MARK: -
@@ -116,7 +116,7 @@ extension PanelManager {
 // MARK: -
 
 extension PanelManager where Self: UIViewController {
-
+	
 	func close(_ panel: PanelViewController) {
 		
 		panel.view.removeFromSuperview()
@@ -126,15 +126,15 @@ extension PanelManager where Self: UIViewController {
 		if panel.isPinned {
 			didDragFree(panel)
 		}
-	
+		
 	}
 	
 }
 
 public extension PanelManager where Self: UIViewController {
-
+	
 	func closeAllPinnedPanels() {
-
+		
 		for panel in panels {
 			
 			guard let panelSuperview = panel.view.superview else {
@@ -190,7 +190,7 @@ public extension PanelManager where Self: UIViewController {
 			newPanelFrame.center = panel.allowedCenter(for: newPanelFrame.center)
 			
 			updateFrame(for: panel, to: newPanelFrame)
-//			panel.view.center = panel.allowedCenter(for: panel.view.center)
+			//			panel.view.center = panel.allowedCenter(for: panel.view.center)
 			
 		}
 		
@@ -273,7 +273,7 @@ extension PanelManager where Self: UIViewController {
 extension PanelManager {
 	
 	func updateContentViewFrame(to frame: CGRect) {
-
+		
 		// First remove constraints that will be recreated
 		
 		var constraintsToCheck = [NSLayoutConstraint]()
@@ -290,7 +290,7 @@ extension PanelManager {
 				} else if panelContentWrapperView.constraints.contains(c) {
 					panelContentWrapperView.removeConstraint(c)
 				}
-
+				
 			}
 			
 		}
@@ -301,9 +301,9 @@ extension PanelManager {
 		panelContentView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor).isActive = true
 		
 		panelContentView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: frame.origin.x).isActive = true
-
+		
 		panelContentView.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: frame.maxX - panelContentWrapperView.bounds.width).isActive = true
-
+		
 	}
 	
 	/// Updates the panel's constraints to match the specified frame
@@ -357,12 +357,12 @@ extension PanelManager {
 			
 			panel.leadingConstraint?.isActive = false
 			panel.trailingConstraint?.isActive = true
-
+			
 		} else {
-		
+			
 			panel.leadingConstraint?.isActive = true
 			panel.trailingConstraint?.isActive = false
-
+			
 		}
 		
 		
@@ -372,10 +372,10 @@ extension PanelManager {
 		
 		panel.topConstraint?.constant = frame.origin.y
 		panel.bottomConstraint?.constant = frame.maxY - panelContentWrapperView.bounds.maxY
-
+		
 		
 		if frame.center.y > panelContentWrapperView.bounds.center.y {
-
+			
 			panel.topConstraint?.isActive = false
 			panel.bottomConstraint?.isActive = true
 			
@@ -385,21 +385,21 @@ extension PanelManager {
 			panel.bottomConstraint?.isActive = false
 			
 		}
-
+		
 	}
-
+	
 }
 
 public extension PanelManager where Self: UIViewController {
-
+	
 	func toggleFloatStatus(for panel: PanelViewController) {
 		
 		let panelNavCon = panel.panelNavigationController
 		
 		if (panel.isFloating || panel.isPinned) && !panelNavCon.isPresentedAsPopover {
-						
+			
 			close(panel)
-
+			
 		} else {
 			
 			let rect = panel.view.convert(panel.view.frame, to: panelContentWrapperView)
@@ -407,10 +407,10 @@ public extension PanelManager where Self: UIViewController {
 			panel.dismiss(animated: false, completion: {
 				
 				self.panelContentWrapperView.addSubview(panel.view)
-								
+				
 				self.updateFrame(for: panel, to: rect)
 				self.panelContentWrapperView.layoutIfNeeded()
-
+				
 				let x = rect.origin.x
 				
 				let y: CGFloat = 12.0
@@ -422,9 +422,9 @@ public extension PanelManager where Self: UIViewController {
 				newFrame.center = panel.allowedCenter(for: newFrame.center)
 				
 				self.updateFrame(for: panel, to: newFrame)
-
+				
 				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
-
+					
 					self.panelContentWrapperView.layoutIfNeeded()
 					
 				}, completion: nil)
@@ -466,22 +466,22 @@ public extension PanelManager where Self: UIViewController {
 		
 		panel.enableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.enableShadow(animated: true, duration: panelGrowDuration)
-
+		
 		updateFrame(for: panel, to: newFrame)
-
+		
 		updateContentViewFrame(to: updatedContentViewFrame())
 		
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
 			self.panelContentWrapperView.layoutIfNeeded()
-
+			
 			self.didUpdatePinnedPanels()
 			
 		}) { (completed) in
 			
 			
 		}
-
+		
 	}
 	
 	func didDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {
@@ -554,7 +554,7 @@ public extension PanelManager where Self: UIViewController {
 		
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
-
+		
 		// FIXME: not needed?
 		panelView.removeFromSuperview()
 		panelContentWrapperView.addSubview(panelView)
@@ -562,9 +562,9 @@ public extension PanelManager where Self: UIViewController {
 		
 		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: frame)
-
+		
 		updateContentViewFrame(to: updatedContentViewFrame())
-
+		
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
 			
 			self.panelContentWrapperView.layoutIfNeeded()
@@ -597,4 +597,3 @@ public extension PanelManager where Self: UIViewController {
 	}
 	
 }
-
