@@ -7,25 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0132BD1E5C4C96006ACFD2 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE0132BC1E5C4C96006ACFD2 /* PanelKit.framework */; };
+		BE0132BE1E5C4C96006ACFD2 /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE0132BC1E5C4C96006ACFD2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BE24AD271E508C49008892A2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE24AD261E508C49008892A2 /* AppDelegate.swift */; };
 		BE24AD291E508C49008892A2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE24AD281E508C49008892A2 /* ViewController.swift */; };
 		BE24AD2C1E508C49008892A2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE24AD2A1E508C49008892A2 /* Main.storyboard */; };
 		BE24AD2E1E508C49008892A2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BE24AD2D1E508C49008892A2 /* Assets.xcassets */; };
 		BE24AD311E508C49008892A2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE24AD2F1E508C49008892A2 /* LaunchScreen.storyboard */; };
-		BE24AD3A1E508C8F008892A2 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD391E508C8F008892A2 /* PanelKit.framework */; };
-		BEF801401E508CA3007D3CEE /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD391E508C8F008892A2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BEF801441E508FFC007D3CEE /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */; };
 		BEF801461E50E1AC007D3CEE /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		BEF801411E508CA3007D3CEE /* Embed Frameworks */ = {
+		BE0132BF1E5C4C96006ACFD2 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				BEF801401E508CA3007D3CEE /* PanelKit.framework in Embed Frameworks */,
+				BE0132BE1E5C4C96006ACFD2 /* PanelKit.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -33,6 +33,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE0132BC1E5C4C96006ACFD2 /* PanelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PanelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE24AD231E508C49008892A2 /* Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE24AD261E508C49008892A2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BE24AD281E508C49008892A2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ViewController.swift; sourceTree = "<group>"; usesTabs = 1; };
@@ -50,7 +51,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BE24AD3A1E508C8F008892A2 /* PanelKit.framework in Frameworks */,
+				BE0132BD1E5C4C96006ACFD2 /* PanelKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -60,6 +61,7 @@
 		BE24AD1A1E508C49008892A2 = {
 			isa = PBXGroup;
 			children = (
+				BE0132BC1E5C4C96006ACFD2 /* PanelKit.framework */,
 				BE24AD251E508C49008892A2 /* Example */,
 				BE24AD241E508C49008892A2 /* Products */,
 				BE24AD381E508C8E008892A2 /* Frameworks */,
@@ -115,7 +117,7 @@
 				BE24AD1F1E508C49008892A2 /* Sources */,
 				BE24AD201E508C49008892A2 /* Frameworks */,
 				BE24AD211E508C49008892A2 /* Resources */,
-				BEF801411E508CA3007D3CEE /* Embed Frameworks */,
+				BE0132BF1E5C4C96006ACFD2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
