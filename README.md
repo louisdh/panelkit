@@ -48,20 +48,17 @@ Example:
 
 ```swift
 class MyPanelContentViewController: PanelContentViewController {
-	
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-		self.title = "Panel title"
-		
+        
+        self.title = "Panel title"	
     }
-	
-	override var preferredPanelContentSize: CGSize {
-		return CGSize(width: 320, height: 500)
-	}
-	
+    
+    override var preferredPanelContentSize: CGSize {
+        return CGSize(width: 320, height: 500)
+    }	
 }
-
 ```  
 
 A panel is explicitly (without your action) shown in a ```UINavigationController```, but the top bar can be hidden or styled as with any ```UINavigationController```.
@@ -71,21 +68,20 @@ A panel is explicitly (without your action) shown in a ```UINavigationController
 ```PanelManager``` is a protocol that in its most basic form expects the following:
 
 ```swift
-	// The view in which the panels may be dragged around
-	var panelContentWrapperView: UIView {
-		return contentWrapperView
-	}
-	
-	// The content view, which will be moved/resized when panels pin
-	var panelContentView: UIView {
-		return contentView
-	}
-	
-	// An array of PanelViewController objects
-	var panels: [PanelViewController] {
-		return []
-	}
+// The view in which the panels may be dragged around
+var panelContentWrapperView: UIView {
+    return contentWrapperView
+}
 
+// The content view, which will be moved/resized when panels pin
+var panelContentView: UIView {
+    return contentView
+}
+
+// An array of PanelViewController objects
+var panels: [PanelViewController] {
+    return []
+}
 ``` 
 
 Typically the ```PanelManager``` protocol is implemented on a ```UIViewController```.
