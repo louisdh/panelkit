@@ -12,6 +12,7 @@
 
 <a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"></a>
 
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"></a>
 
 <img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS">
 
@@ -95,6 +96,16 @@ To install, add the following line to your ```Podfile```:
 ```ruby
 pod 'PanelKit', '~> 0.8'
 ```
+
+### [Carthage](https://github.com/Carthage/Carthage)
+To install, add the following line to your ```Cartfile```:
+
+```ruby
+github "louisdh/panelkit" ~> 0.8
+```
+Run ```carthage update``` to build the framework and drag the built ```PanelKit.framework``` into your Xcode project.
+
+
 
 ## Requirements
 
