@@ -54,6 +54,14 @@ class ViewController: UIViewController, PanelManager {
 		
 	}
 	
+	// MARK: - Exposé
+	
+	@IBAction func toggleExpose(_ sender: UIBarButtonItem) {
+	
+		self.enterExpose()
+		
+	}
+	
 	// MARK: - Popover
 	
 	@IBAction func showMap(_ sender: UIBarButtonItem) {
