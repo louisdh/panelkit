@@ -297,8 +297,8 @@ extension PanelManager {
 		
 		// Recreate them
 		
-		panelContentView.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor).isActive = true
-		panelContentView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor).isActive = true
+		panelContentView.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor, constant: frame.origin.y).isActive = true
+		panelContentView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor, constant: panelContentWrapperView.bounds.height - frame.maxY).isActive = true
 		
 		panelContentView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: frame.origin.x).isActive = true
 		
