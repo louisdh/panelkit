@@ -227,7 +227,7 @@ extension PanelManager {
 					continue
 				}
 				
-				if r1.exposeFrame.intersects(r2.exposeFrame) {
+				if numberOfIntersections(of: r1, with: [r2]) > 0 {
 					return true
 				}
 				
@@ -250,7 +250,8 @@ extension PanelManager {
 				continue
 			}
 			
-			if r1.exposeFrame.intersects(r2.exposeFrame) {
+			let r1InsetFrame = r1.exposeFrame.insetBy(dx: -20.0, dy: -20.0)
+			if r1InsetFrame.intersects(r2.exposeFrame) {
 				intersections += 1
 			}
 			
