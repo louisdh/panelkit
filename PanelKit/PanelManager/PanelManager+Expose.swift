@@ -10,6 +10,7 @@ import Foundation
 
 private var exposeOverlayViewKey: UInt8 = 0
 private var exposeOverlayTapRecognizerKey: UInt8 = 0
+private var exposeEnterTapRecognizerKey: UInt8 = 0
 
 extension PanelManager {
 	
@@ -45,9 +46,47 @@ extension PanelManager {
 		}
 	}
 	
+	var exposeEnterTapRecognizer: BlockGestureRecognizer {
+		get {
+			return associatedObject(self, key: &exposeEnterTapRecognizerKey) {
+				
+				let tapGestureRecognizer = UITapGestureRecognizer()
+				tapGestureRecognizer.numberOfTapsRequired = 2
+				tapGestureRecognizer.numberOfTouchesRequired = 3
+				
+				let blockRecognizer = BlockGestureRecognizer(view: panelContentWrapperView, recognizer: tapGestureRecognizer) {
+					
+					self.toggleExpose()
+					
+				}
+				
+				return blockRecognizer
+			}
+		}
+		set {
+			associateObject(self, key: &exposeEnterTapRecognizerKey, value: newValue)
+		}
+	}
+	
 }
 
 public extension PanelManager {
+	
+	func enableTripleTapExposeActivation() {
+		
+		_ = exposeEnterTapRecognizer
+		
+	}
+	
+	func toggleExpose() {
+		
+		if isInExpose {
+			exitExpose()
+		} else {
+			enterExpose()
+		}
+		
+	}
 
 	var isInExpose: Bool {
 		
