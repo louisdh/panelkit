@@ -57,7 +57,7 @@ public extension PanelManager where Self: UIViewController {
 			updateFrame(for: panelFrame.panel, to: panelFrame.exposeFrame)
 		}
 		
-		UIView.animate(withDuration: 0.4, delay: 0.0, options: [], animations: {
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
 
 			self.exposeOverlayView.alpha = 0.4
 			
@@ -90,7 +90,7 @@ public extension PanelManager where Self: UIViewController {
 			}
 		}
 		
-		UIView.animate(withDuration: 0.4, delay: 0.0, options: [], animations: {
+		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
 			
 			self.exposeOverlayView.alpha = 0.0
 			
