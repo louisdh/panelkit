@@ -281,8 +281,8 @@ extension PanelManager where Self: UIViewController {
 			let unionRect = self.unionRect(with: rectangles)
 			let g = CGPoint(x: unionRect.midX, y: unionRect.midY)
 			
-			let deltaX = last.panel.view.center.x - g.x
-			let deltaY = last.panel.view.center.y - g.y
+			let deltaX = max(1.0, last.panel.view.center.x - g.x)
+			let deltaY = max(1.0, last.panel.view.center.y - g.y)
 			
 			while numberOfIntersections(of: last, with: rectangles) > 0 {
 				
