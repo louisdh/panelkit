@@ -9,6 +9,7 @@
 import Foundation
 
 private var exposeOverlayViewKey: UInt8 = 0
+private var exposeOverlayTapRecognizerKey: UInt8 = 0
 
 extension PanelManager where Self: UIViewController {
 	
@@ -20,6 +21,27 @@ extension PanelManager where Self: UIViewController {
 		}
 		set {
 			associateObject(self, key: &exposeOverlayViewKey, value: newValue)
+		}
+	}
+	
+	var exposeOverlayTapRecognizer: BlockGestureRecognizer {
+		get {
+			return associatedObject(self, key: &exposeOverlayTapRecognizerKey) {
+				
+				let gestureRecognizer = UITapGestureRecognizer()
+				
+				let blockRecognizer = BlockGestureRecognizer(view: exposeOverlayView, recognizer: gestureRecognizer, closure: {
+					
+					if self.isInExpose {
+						self.exitExpose()
+					}
+				})
+				
+				return blockRecognizer
+			}
+		}
+		set {
+			associateObject(self, key: &exposeOverlayTapRecognizerKey, value: newValue)
 		}
 	}
 	
@@ -127,13 +149,16 @@ extension PanelManager where Self: UIViewController {
 			exposeOverlayView.backgroundColor = .black
 			
 			exposeOverlayView.alpha = 0.0
+			
+			exposeOverlayView.isUserInteractionEnabled = true
 
 			panelContentWrapperView.layoutIfNeeded()
-
+			
+			let _ = exposeOverlayTapRecognizer
 		}
 		
 	}
-	
+
 	func calculateExposeFrames(with panels: [PanelViewController]) -> ([PanelExposeFrame], CGFloat) {
 		
 		let panelFrames: [PanelExposeFrame] = panels.map { (p) -> PanelExposeFrame in
