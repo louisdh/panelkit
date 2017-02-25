@@ -72,6 +72,10 @@ public extension PanelManager {
 			return p.isPinned || p.isFloating
 		}
 		
+		guard !exposePanels.isEmpty else {
+			return
+		}
+		
 		let (panelFrames, scale) = calculateExposeFrames(with: exposePanels)
 
 		for panelFrame in panelFrames {
@@ -103,6 +107,10 @@ public extension PanelManager {
 		
 		let exposePanels = panels.filter { (p) -> Bool in
 			return p.isInExpose
+		}
+		
+		guard !exposePanels.isEmpty else {
+			return
 		}
 		
 		for panel in exposePanels {
@@ -167,7 +175,10 @@ extension PanelManager {
 		
 		distribute(panelFrames)
 		
-		let unionFrame = unionRect(with: panelFrames)
+		guard let unionFrame = unionRect(with: panelFrames) else {
+			return (panelFrames, 1.0)
+		}
+		
 		print("unionFrame: \(unionFrame)")
 		
 		for r in panelFrames {
@@ -260,9 +271,11 @@ extension PanelManager {
 		return intersections
 	}
 	
-	func unionRect(with frames: [PanelExposeFrame]) -> CGRect {
+	func unionRect(with frames: [PanelExposeFrame]) -> CGRect? {
 		
-		var rect = frames.first!.exposeFrame
+		guard var rect = frames.first?.exposeFrame else {
+			return nil
+		}
 		
 		for r in frames {
 			
@@ -304,7 +317,10 @@ extension PanelManager {
 			
 			frames.append(last)
 			
-			let unionRect = self.unionRect(with: frames)
+			guard let unionRect = self.unionRect(with: frames) else {
+				break
+			}
+			
 			let g = CGPoint(x: unionRect.midX, y: unionRect.midY)
 			
 			let deltaX = max(1.0, last.panel.view.center.x - g.x)
