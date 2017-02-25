@@ -160,7 +160,7 @@ extension PanelManager where Self: UIViewController {
 		
 		let padding: CGFloat = 44.0
 		
-		let scale = min(1.0, min(((self.view.frame.width - padding) / unionFrame.width), ((self.view.frame.height - padding) / unionFrame.height)))
+		let scale = min(1.0, min(((panelContentWrapperView.frame.width - padding) / unionFrame.width), ((panelContentWrapperView.frame.height - padding) / unionFrame.height)))
 		
 		print("scale: \(scale)")
 		
@@ -184,8 +184,8 @@ extension PanelManager where Self: UIViewController {
 			
 			// Center
 			
-			r.exposeFrame.origin.x += (max(self.view.frame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
-			r.exposeFrame.origin.y += (max(self.view.frame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
+			r.exposeFrame.origin.x += (max(panelContentWrapperView.frame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
+			r.exposeFrame.origin.y += (max(panelContentWrapperView.frame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
 			
 		}
 		
