@@ -58,7 +58,16 @@ public protocol PanelViewControllerDelegate: class {
 		return frameBeforeExpose != nil
 	}
 	
-	var frameBeforeExpose: CGRect?
+	var frameBeforeExpose: CGRect? {
+		didSet {
+			if isInExpose {
+				panelNavigationController.view.endEditing(true)
+				panelNavigationController.view.isUserInteractionEnabled = false
+			} else {
+				panelNavigationController.view.isUserInteractionEnabled = true
+			}
+		}
+	}
 	
 	var logLevel: LogLevel {
 		return delegate?.panelManagerLogLevel ?? .none
@@ -123,6 +132,11 @@ public protocol PanelViewControllerDelegate: class {
 		
 		contentViewController.panelDelegate = panelManager
 		self.delegate = panelManager
+	
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
+//		tapGestureRecognizer.delegate = self
+		tapGestureRecognizer.cancelsTouchesInView = false
+		self.view.addGestureRecognizer(tapGestureRecognizer)
 		
 	}
 	
@@ -214,6 +228,19 @@ public protocol PanelViewControllerDelegate: class {
 			
 			self.updateState()
 
+		}
+		
+	}
+	
+	// MARK: -
+	
+	func didTap(_ sender: UITapGestureRecognizer) {
+		
+		if delegate?.isInExpose == true {
+			
+			panelNavigationController.bringToFront()
+			
+			delegate?.exitExpose()
 		}
 		
 	}

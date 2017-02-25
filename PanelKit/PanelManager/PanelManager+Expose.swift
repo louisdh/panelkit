@@ -11,7 +11,7 @@ import Foundation
 private var exposeOverlayViewKey: UInt8 = 0
 private var exposeOverlayTapRecognizerKey: UInt8 = 0
 
-extension PanelManager where Self: UIViewController {
+extension PanelManager {
 	
 	var exposeOverlayView: UIView {
 		get {
@@ -47,7 +47,7 @@ extension PanelManager where Self: UIViewController {
 	
 }
 
-public extension PanelManager where Self: UIViewController {
+public extension PanelManager {
 
 	var isInExpose: Bool {
 		
@@ -130,7 +130,7 @@ public extension PanelManager where Self: UIViewController {
 	
 }
 
-extension PanelManager where Self: UIViewController {
+extension PanelManager {
 	
 	func addExposeOverlayViewIfNeeded() {
 		
