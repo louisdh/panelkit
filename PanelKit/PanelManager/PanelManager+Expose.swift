@@ -134,10 +134,10 @@ extension PanelManager where Self: UIViewController {
 		
 	}
 	
-	func calculateExposeFrames(with panels: [PanelViewController]) -> ([PanelFrame], CGFloat) {
+	func calculateExposeFrames(with panels: [PanelViewController]) -> ([PanelExposeFrame], CGFloat) {
 		
-		let panelFrames: [PanelFrame] = panels.map { (p) -> PanelFrame in
-			return PanelFrame(panel: p)
+		let panelFrames: [PanelExposeFrame] = panels.map { (p) -> PanelExposeFrame in
+			return PanelExposeFrame(panel: p)
 		}
 		
 		distribute(panelFrames)
@@ -193,11 +193,11 @@ extension PanelManager where Self: UIViewController {
 		
 	}
 	
-	func doRectanglesIntersect(_ rectangles: [PanelFrame]) -> Bool {
+	func doFramesIntersect(_ frames: [PanelExposeFrame]) -> Bool {
 		
-		for r1 in rectangles {
+		for r1 in frames {
 			
-			for r2 in rectangles {
+			for r2 in frames {
 				if r1 === r2 {
 					continue
 				}
@@ -214,13 +214,13 @@ extension PanelManager where Self: UIViewController {
 		
 	}
 	
-	func numberOfIntersections(of rectangle: PanelFrame, with rectangles: [PanelFrame]) -> Int {
+	func numberOfIntersections(of frame: PanelExposeFrame, with frames: [PanelExposeFrame]) -> Int {
 		
 		var intersections = 0
 		
-		let r1 = rectangle
+		let r1 = frame
 		
-		for r2 in rectangles {
+		for r2 in frames {
 			if r1 === r2 {
 				continue
 			}
@@ -234,11 +234,11 @@ extension PanelManager where Self: UIViewController {
 		return intersections
 	}
 	
-	func unionRect(with rectangles: [PanelFrame]) -> CGRect {
+	func unionRect(with frames: [PanelExposeFrame]) -> CGRect {
 		
-		var rect = rectangles.first!.exposeFrame
+		var rect = frames.first!.exposeFrame
 		
-		for r in rectangles {
+		for r in frames {
 			
 			rect = rect.union(r.exposeFrame)
 			
@@ -248,17 +248,17 @@ extension PanelManager where Self: UIViewController {
 		
 	}
 	
-	func distribute(_ rectangles: [PanelFrame]) {
+	func distribute(_ frames: [PanelExposeFrame]) {
 		
-		var rectangles = rectangles
+		var frames = frames
 		
-		var stack = [PanelFrame]()
+		var stack = [PanelExposeFrame]()
 		
-		while doRectanglesIntersect(rectangles) {
+		while doFramesIntersect(frames) {
 			
-			var sortedRectangles = rectangles.sorted(by: { (r1, r2) -> Bool in
-				let n1 = numberOfIntersections(of: r1, with: rectangles)
-				let n2 = numberOfIntersections(of: r2, with: rectangles)
+			var sortedRectangles = frames.sorted(by: { (r1, r2) -> Bool in
+				let n1 = numberOfIntersections(of: r1, with: frames)
+				let n2 = numberOfIntersections(of: r2, with: frames)
 				return n1 > n2
 			})
 			
@@ -266,7 +266,7 @@ extension PanelManager where Self: UIViewController {
 			
 			stack.append(mostIntersected)
 			
-			rectangles.remove(at: rectangles.index(where: { (r) -> Bool in
+			frames.remove(at: frames.index(where: { (r) -> Bool in
 				r === mostIntersected
 			})!)
 			
@@ -276,15 +276,15 @@ extension PanelManager where Self: UIViewController {
 			
 			let last = stack.popLast()!
 			
-			rectangles.append(last)
+			frames.append(last)
 			
-			let unionRect = self.unionRect(with: rectangles)
+			let unionRect = self.unionRect(with: frames)
 			let g = CGPoint(x: unionRect.midX, y: unionRect.midY)
 			
 			let deltaX = max(1.0, last.panel.view.center.x - g.x)
 			let deltaY = max(1.0, last.panel.view.center.y - g.y)
 			
-			while numberOfIntersections(of: last, with: rectangles) > 0 {
+			while numberOfIntersections(of: last, with: frames) > 0 {
 				
 				last.exposeFrame.origin.x += deltaX / 20.0
 				last.exposeFrame.origin.y += deltaY / 20.0
@@ -297,7 +297,7 @@ extension PanelManager where Self: UIViewController {
 	
 }
 
-class PanelFrame {
+class PanelExposeFrame {
 	
 	let panel: PanelViewController
 	var exposeFrame: CGRect
