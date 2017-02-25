@@ -54,6 +54,12 @@ public protocol PanelViewControllerDelegate: class {
 		return contentViewController.isFloating
 	}
 	
+	public var isInExpose: Bool {
+		return frameBeforeExpose != nil
+	}
+	
+	var frameBeforeExpose: CGRect?
+	
 	var logLevel: LogLevel {
 		return delegate?.panelManagerLogLevel ?? .none
 	}

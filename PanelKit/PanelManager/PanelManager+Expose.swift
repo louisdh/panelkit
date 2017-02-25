@@ -8,19 +8,59 @@
 
 import Foundation
 
+private var exposeOverlayViewKey: UInt8 = 0
+
+extension PanelManager where Self: UIViewController {
+	
+	var exposeOverlayView: UIView {
+		get {
+			return associatedObject(self, key: &exposeOverlayViewKey) {
+				return UIView()
+			}
+		}
+		set {
+			associateObject(self, key: &exposeOverlayViewKey, value: newValue)
+		}
+	}
+	
+}
+
 public extension PanelManager where Self: UIViewController {
 
+	var isInExpose: Bool {
+		
+		for panel in panels {
+			if panel.isInExpose {
+				return true
+			}
+		}
+		
+		return false
+	}
+	
 	func enterExpose() {
 		
-		// TODO: only calculate expose for floating panels!
-		let (panelFrames, scale) = calculateExposeFrames(with: panels)
+		guard !isInExpose else {
+			return
+		}
+		
+		addExposeOverlayViewIfNeeded()
+		
+		let exposePanels = panels.filter { (p) -> Bool in
+			return p.isPinned || p.isFloating
+		}
+		
+		let (panelFrames, scale) = calculateExposeFrames(with: exposePanels)
 
 		for panelFrame in panelFrames {
+			panelFrame.panel.frameBeforeExpose = panelFrame.panel.view.frame
 			updateFrame(for: panelFrame.panel, to: panelFrame.exposeFrame)
 		}
 		
 		UIView.animate(withDuration: 0.4, delay: 0.0, options: [], animations: {
 
+			self.exposeOverlayView.alpha = 0.4
+			
 			self.panelContentWrapperView.layoutIfNeeded()
 			
 			for panelFrame in panelFrames {
@@ -35,15 +75,32 @@ public extension PanelManager where Self: UIViewController {
 	
 	func exitExpose() {
 	
+		guard isInExpose else {
+			return
+		}
+		
+		let exposePanels = panels.filter { (p) -> Bool in
+			return p.isInExpose
+		}
+		
+		for panel in exposePanels {
+			if let frameBeforeExpose = panel.frameBeforeExpose {
+				updateFrame(for: panel, to: frameBeforeExpose)
+				panel.frameBeforeExpose = nil
+			}
+		}
+		
 		UIView.animate(withDuration: 0.4, delay: 0.0, options: [], animations: {
 			
+			self.exposeOverlayView.alpha = 0.0
+			
 			self.panelContentWrapperView.layoutIfNeeded()
-//
-//			for panelFrame in panelFrames {
-//				
-//				panelFrame.panel.view.transform = .identity
-//				
-//			}
+
+			for panel in exposePanels {
+				
+				panel.view.transform = .identity
+				
+			}
 			
 		})
 		
@@ -52,6 +109,30 @@ public extension PanelManager where Self: UIViewController {
 }
 
 extension PanelManager where Self: UIViewController {
+	
+	func addExposeOverlayViewIfNeeded() {
+		
+		if exposeOverlayView.superview == nil {
+			
+			exposeOverlayView.translatesAutoresizingMaskIntoConstraints = false
+
+			panelContentWrapperView.addSubview(exposeOverlayView)
+			panelContentWrapperView.insertSubview(exposeOverlayView, aboveSubview: panelContentView)
+			
+			exposeOverlayView.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor).isActive = true
+			exposeOverlayView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor).isActive = true
+			exposeOverlayView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor).isActive = true
+			exposeOverlayView.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor).isActive = true
+			
+			exposeOverlayView.backgroundColor = .black
+			
+			exposeOverlayView.alpha = 0.0
+
+			panelContentWrapperView.layoutIfNeeded()
+
+		}
+		
+	}
 	
 	func calculateExposeFrames(with panels: [PanelViewController]) -> ([PanelFrame], CGFloat) {
 		
