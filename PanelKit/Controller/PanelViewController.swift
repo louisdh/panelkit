@@ -161,17 +161,9 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		updateState()
-		
-		self.updateShadow()
-
+		didUpdateFloatingState()
 		contentViewController?.viewWillAppear(animated)
-		
-		if !(isFloating || isPinned) {
-			widthConstraint?.isActive = false
-			heightConstraint?.isActive = false
-		}
-		
+
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
@@ -228,6 +220,21 @@ public protocol PanelViewControllerDelegate: class {
 			
 			self.updateState()
 
+		}
+		
+	}
+	
+	// MARK: -
+	
+	func didUpdateFloatingState() {
+		
+		updateState()
+		
+		self.updateShadow()
+		
+		if !(isFloating || isPinned) {
+			widthConstraint?.isActive = false
+			heightConstraint?.isActive = false
 		}
 		
 	}

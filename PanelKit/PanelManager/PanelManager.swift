@@ -407,6 +407,7 @@ public extension PanelManager where Self: UIViewController {
 			panel.dismiss(animated: false, completion: {
 				
 				self.panelContentWrapperView.addSubview(panel.view)
+				panel.didUpdateFloatingState()
 				
 				self.updateFrame(for: panel, to: rect)
 				self.panelContentWrapperView.layoutIfNeeded()

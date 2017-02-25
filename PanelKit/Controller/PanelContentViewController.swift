@@ -55,6 +55,10 @@ public protocol PanelContentViewControllerDelegate: class {
 			return false
 		}
 		
+		guard panel.view.superview != nil else {
+			return false
+		}
+		
 		return true
 	}
 	
