@@ -337,7 +337,7 @@ extension PanelManager {
 		}
 		
 		
-		if panel.isPinned && !keyboardShown {
+		if panel.isPinned && !keyboardShown && !isInExpose {
 			
 			panel.heightConstraint?.isActive = false
 			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: 1.0)
@@ -372,8 +372,16 @@ extension PanelManager {
 		panel.widthConstraint?.isActive = true
 		panel.widthConstraint?.constant = frame.width
 		
+		if panel.isPinned && !isInExpose {
+
+			panel.topConstraint?.constant = panelContentView.frame.origin.y
+
+		} else {
+
+			panel.topConstraint?.constant = frame.origin.y
+			
+		}
 		
-		panel.topConstraint?.constant = frame.origin.y
 		panel.bottomConstraint?.constant = frame.maxY - panelContentWrapperView.bounds.maxY
 		
 		
