@@ -45,6 +45,12 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	/// Blur effect for content overlay view when exposé is active.
 	var exposeOverlayBlurEffect: UIBlurEffect { get }
 	
+	/// Called when exposé is about to be entered.
+	func willEnterExpose()
+	
+	/// Called when exposé is about to be exited.
+	func willExitExpose()
+	
 }
 
 // MARK: - Default implementation
@@ -73,6 +79,14 @@ public extension PanelManager where Self: UIViewController {
 	
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets {
 		return .zero
+	}
+	
+	func willEnterExpose() {
+		
+	}
+	
+	func willExitExpose() {
+		
 	}
 	
 }

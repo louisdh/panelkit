@@ -119,6 +119,8 @@ public extension PanelManager {
 			return
 		}
 		
+		willEnterExpose()
+
 		let (panelFrames, scale) = calculateExposeFrames(with: exposePanels)
 
 		for panelFrame in panelFrames {
@@ -157,6 +159,8 @@ public extension PanelManager {
 		guard !exposePanels.isEmpty else {
 			return
 		}
+		
+		willExitExpose()
 		
 		for panel in exposePanels {
 			if let frameBeforeExpose = panel.frameBeforeExpose {
@@ -241,7 +245,7 @@ extension PanelManager {
 		
 		let padding: CGFloat = 44.0
 		
-		let scale = min(1.0, min(((panelContentWrapperView.frame.width - padding) / unionFrame.width), ((panelContentWrapperView.frame.height - padding) / unionFrame.height)))
+		let scale = min(1.0, min(((panelContentView.frame.width - padding) / unionFrame.width), ((panelContentView.frame.height - padding) / unionFrame.height)))
 		
 		print("scale: \(scale)")
 		
@@ -265,9 +269,10 @@ extension PanelManager {
 			
 			// Center
 			
-			r.exposeFrame.origin.x += (max(panelContentWrapperView.frame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
-			r.exposeFrame.origin.y += (max(panelContentWrapperView.frame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
-			
+			r.exposeFrame.origin.x += (max(panelContentView.frame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
+			r.exposeFrame.origin.y += (max(panelContentView.frame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
+			r.exposeFrame.origin.y += panelContentView.frame.origin.y
+
 		}
 		
 		return (panelFrames, scale)
