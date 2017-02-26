@@ -10,24 +10,24 @@ import Foundation
 import UIKit
 
 extension UIViewController {
-	
+
 	var isPresentedAsPopover: Bool {
 		get {
-			
+
 			if let p = self.popoverPresentationController {
-				
+
 				// FIXME: presentedViewController can never be nil?
 				let c = p.presentedViewController as UIViewController?
-				
+
 				return c != nil && p.arrowDirection != .unknown
-				
+
 			} else {
-				
+
 				return false
-				
+
 			}
-			
+
 		}
 	}
-	
+
 }

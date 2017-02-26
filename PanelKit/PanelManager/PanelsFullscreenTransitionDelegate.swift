@@ -9,14 +9,14 @@
 import Foundation
 
 public protocol PanelsFullscreenTransitionDelegate {
-	
+
 	func panelsPrepareMoveOffScreen()
 	func panelsPrepareMoveOnScreen()
-	
+
 	func panelsMovePanelOnScreen()
 	func panelsMovePanelOffScreen()
-	
+
 	func panelsCompleteMoveOnScreen()
 	func panelsCompleteMoveOffScreen()
-	
+
 }

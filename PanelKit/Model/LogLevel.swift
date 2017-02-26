@@ -11,8 +11,8 @@ import Foundation
 /// Log level for common events, such as "viewWillAppear" or "panel did pin".
 /// Helpful while debugging.
 public enum LogLevel {
-	
+
 	case none
 	case full
-	
+
 }
