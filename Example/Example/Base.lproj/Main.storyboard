@@ -78,6 +78,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="PanelKit Example" id="0j5-HW-w4S">
+                        <barButtonItem key="leftBarButtonItem" title="Exposé" id="ZJy-Vw-E2o">
+                            <connections>
+                                <action selector="toggleExpose:" destination="BYZ-38-t0r" id="efI-u2-QsQ"/>
+                            </connections>
+                        </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem title="TextView" id="Oga-o6-uCI">
                                 <connections>

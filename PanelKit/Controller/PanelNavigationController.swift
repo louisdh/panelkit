@@ -137,7 +137,7 @@ import UIKit
 	}
 	
 	// FIXME: move to PanelViewController class
-	private func bringToFront() {
+	func bringToFront() {
 		
 		guard let viewToMove = self.panelViewController?.view else {
 			return

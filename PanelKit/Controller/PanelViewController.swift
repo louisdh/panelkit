@@ -54,6 +54,21 @@ public protocol PanelViewControllerDelegate: class {
 		return contentViewController.isFloating
 	}
 	
+	public var isInExpose: Bool {
+		return frameBeforeExpose != nil
+	}
+	
+	var frameBeforeExpose: CGRect? {
+		didSet {
+			if isInExpose {
+				panelNavigationController.view.endEditing(true)
+				panelNavigationController.view.isUserInteractionEnabled = false
+			} else {
+				panelNavigationController.view.isUserInteractionEnabled = true
+			}
+		}
+	}
+	
 	var logLevel: LogLevel {
 		return delegate?.panelManagerLogLevel ?? .none
 	}
@@ -117,6 +132,11 @@ public protocol PanelViewControllerDelegate: class {
 		
 		contentViewController.panelDelegate = panelManager
 		self.delegate = panelManager
+	
+		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
+//		tapGestureRecognizer.delegate = self
+		tapGestureRecognizer.cancelsTouchesInView = false
+		self.view.addGestureRecognizer(tapGestureRecognizer)
 		
 	}
 	
@@ -141,17 +161,9 @@ public protocol PanelViewControllerDelegate: class {
 	override public func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 		
-		updateState()
-		
-		self.updateShadow()
-
+		didUpdateFloatingState()
 		contentViewController?.viewWillAppear(animated)
-		
-		if !(isFloating || isPinned) {
-			widthConstraint?.isActive = false
-			heightConstraint?.isActive = false
-		}
-		
+
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
@@ -208,6 +220,34 @@ public protocol PanelViewControllerDelegate: class {
 			
 			self.updateState()
 
+		}
+		
+	}
+	
+	// MARK: -
+	
+	func didUpdateFloatingState() {
+		
+		updateState()
+		
+		self.updateShadow()
+		
+		if !(isFloating || isPinned) {
+			widthConstraint?.isActive = false
+			heightConstraint?.isActive = false
+		}
+		
+	}
+	
+	// MARK: -
+	
+	func didTap(_ sender: UITapGestureRecognizer) {
+		
+		if delegate?.isInExpose == true {
+			
+			panelNavigationController.bringToFront()
+			
+			delegate?.exitExpose()
 		}
 		
 	}

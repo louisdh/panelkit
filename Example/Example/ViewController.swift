@@ -33,6 +33,7 @@ class ViewController: UIViewController, PanelManager {
 		
 		textPanelVC = PanelViewController(with: textPanelContentVC, in: self)
 		
+		enableTripleTapExposeActivation()
 	}
 	
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -51,6 +52,14 @@ class ViewController: UIViewController, PanelManager {
 			}
 			
 		}
+		
+	}
+	
+	// MARK: - Exposé
+	
+	@IBAction func toggleExpose(_ sender: UIBarButtonItem) {
+	
+		toggleExpose()
 		
 	}
 	

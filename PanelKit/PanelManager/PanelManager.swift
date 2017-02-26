@@ -42,6 +42,15 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	/// - Returns: Edge insets.
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets
 	
+	/// Blur effect for content overlay view when exposé is active.
+	var exposeOverlayBlurEffect: UIBlurEffect { get }
+	
+	/// Called when exposé is about to be entered.
+	func willEnterExpose()
+	
+	/// Called when exposé is about to be exited.
+	func willExitExpose()
+	
 }
 
 // MARK: - Default implementation
@@ -70,6 +79,14 @@ public extension PanelManager where Self: UIViewController {
 	
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets {
 		return .zero
+	}
+	
+	func willEnterExpose() {
+		
+	}
+	
+	func willExitExpose() {
+		
 	}
 	
 }
@@ -334,7 +351,7 @@ extension PanelManager {
 		}
 		
 		
-		if panel.isPinned && !keyboardShown {
+		if panel.isPinned && !keyboardShown && !isInExpose {
 			
 			panel.heightConstraint?.isActive = false
 			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: 1.0)
@@ -369,8 +386,16 @@ extension PanelManager {
 		panel.widthConstraint?.isActive = true
 		panel.widthConstraint?.constant = frame.width
 		
+		if panel.isPinned && !isInExpose {
+
+			panel.topConstraint?.constant = panelContentView.frame.origin.y
+
+		} else {
+
+			panel.topConstraint?.constant = frame.origin.y
+			
+		}
 		
-		panel.topConstraint?.constant = frame.origin.y
 		panel.bottomConstraint?.constant = frame.maxY - panelContentWrapperView.bounds.maxY
 		
 		
@@ -407,6 +432,7 @@ public extension PanelManager where Self: UIViewController {
 			panel.dismiss(animated: false, completion: {
 				
 				self.panelContentWrapperView.addSubview(panel.view)
+				panel.didUpdateFloatingState()
 				
 				self.updateFrame(for: panel, to: rect)
 				self.panelContentWrapperView.layoutIfNeeded()
