@@ -14,10 +14,10 @@ private var exposeEnterTapRecognizerKey: UInt8 = 0
 
 extension PanelManager {
 	
-	var exposeOverlayView: UIView {
+	var exposeOverlayView: UIVisualEffectView {
 		get {
 			return associatedObject(self, key: &exposeOverlayViewKey) {
-				return UIView()
+				return UIVisualEffectView(effect: nil)
 			}
 		}
 		set {
@@ -122,9 +122,11 @@ public extension PanelManager {
 			updateFrame(for: panelFrame.panel, to: panelFrame.exposeFrame)
 		}
 		
+		exposeOverlayView.isUserInteractionEnabled = true
+
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
 
-			self.exposeOverlayView.alpha = 0.4
+			self.exposeOverlayView.effect = UIBlurEffect(style: .light)
 			
 			self.panelContentWrapperView.layoutIfNeeded()
 			
@@ -159,9 +161,11 @@ public extension PanelManager {
 			}
 		}
 		
+		exposeOverlayView.isUserInteractionEnabled = false
+
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
 			
-			self.exposeOverlayView.alpha = 0.0
+			self.exposeOverlayView.effect = nil
 			
 			self.panelContentWrapperView.layoutIfNeeded()
 
@@ -193,11 +197,9 @@ extension PanelManager {
 			exposeOverlayView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor).isActive = true
 			exposeOverlayView.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor).isActive = true
 			
-			exposeOverlayView.backgroundColor = .black
+			exposeOverlayView.alpha = 1.0
 			
-			exposeOverlayView.alpha = 0.0
-			
-			exposeOverlayView.isUserInteractionEnabled = true
+			exposeOverlayView.isUserInteractionEnabled = false
 
 			panelContentWrapperView.layoutIfNeeded()
 			
