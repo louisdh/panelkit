@@ -42,6 +42,9 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 	/// - Returns: Edge insets.
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets
 	
+	/// Blur effect for content overlay view when exposé is active.
+	var exposeOverlayBlurEffect: UIBlurEffect { get }
+	
 }
 
 // MARK: - Default implementation

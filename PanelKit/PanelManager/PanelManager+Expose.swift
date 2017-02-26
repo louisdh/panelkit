@@ -72,6 +72,10 @@ extension PanelManager {
 
 public extension PanelManager {
 	
+	var exposeOverlayBlurEffect: UIBlurEffect {
+		return UIBlurEffect(style: .light)
+	}
+	
 	func enableTripleTapExposeActivation() {
 		
 		_ = exposeEnterTapRecognizer
@@ -126,7 +130,7 @@ public extension PanelManager {
 
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
 
-			self.exposeOverlayView.effect = UIBlurEffect(style: .light)
+			self.exposeOverlayView.effect = self.exposeOverlayBlurEffect
 			
 			self.panelContentWrapperView.layoutIfNeeded()
 			
@@ -192,8 +196,8 @@ extension PanelManager {
 			panelContentWrapperView.addSubview(exposeOverlayView)
 			panelContentWrapperView.insertSubview(exposeOverlayView, aboveSubview: panelContentView)
 			
-			exposeOverlayView.topAnchor.constraint(equalTo: panelContentWrapperView.topAnchor).isActive = true
-			exposeOverlayView.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor).isActive = true
+			exposeOverlayView.topAnchor.constraint(equalTo: panelContentView.topAnchor).isActive = true
+			exposeOverlayView.bottomAnchor.constraint(equalTo: panelContentView.bottomAnchor).isActive = true
 			exposeOverlayView.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor).isActive = true
 			exposeOverlayView.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor).isActive = true
 			
