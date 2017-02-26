@@ -112,6 +112,16 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 * iOS 9.0+
 * Xcode 8.2+
 
+## Todo 
+### Before v1.0:
+- [ ] Make ```PanelContentViewController``` a protocol (no more subclassing needed)
+- [ ] Exposé
+- [ ] Unit tests
+
+### Long term:
+- [ ] Panel resizing
+- [ ] Top/down pinning
+
 
 ## License
 
