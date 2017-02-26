@@ -79,11 +79,11 @@ public extension PanelManager where Self: UIViewController {
 extension PanelManager {
 	
 	var panelPinnedLeft: PanelViewController? {
-        return panels.filter{ $0.pinnedSide == .left }.first
-    }
+		return panels.filter { $0.pinnedSide == .left }.first
+	}
 	
 	var panelPinnedRight: PanelViewController? {
-        return panels.filter{ $0.pinnedSide == .right }.first
+		return panels.filter { $0.pinnedSide == .right }.first
 	}
 	
 	func totalDragInsets(for panel: PanelViewController) -> UIEdgeInsets {
