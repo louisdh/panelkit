@@ -13,15 +13,17 @@ import UIKit
 	private var prevTouch: CGPoint?
 	public weak var panelViewController: PanelViewController?
 
-	var dragGestureRecognizer: UIPanGestureRecognizer!
+	var dragGestureRecognizer: UIPanGestureRecognizer?
 	
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-		dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
+		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
 		dragGestureRecognizer.delegate = self
 
 		self.view.addGestureRecognizer(dragGestureRecognizer)
+		
+		self.dragGestureRecognizer = dragGestureRecognizer
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapBar(_ :)))
 		tapGestureRecognizer.delegate = self
