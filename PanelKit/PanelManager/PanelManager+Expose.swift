@@ -344,25 +344,33 @@ extension PanelManager {
 
 		while doFramesIntersect(frames) {
 
-			var sortedFrames = frames.sorted(by: { (r1, r2) -> Bool in
+			let sortedFrames = frames.sorted(by: { (r1, r2) -> Bool in
 				let n1 = numberOfIntersections(of: r1, with: frames)
 				let n2 = numberOfIntersections(of: r2, with: frames)
 				return n1 > n2
 			})
 
-			let mostIntersected = sortedFrames[0]
+			guard let mostIntersected = sortedFrames.first else {
+				break
+			}
 
 			stack.append(mostIntersected)
 
-			frames.remove(at: frames.index(where: { (r) -> Bool in
+			guard let index = frames.index(where: { (r) -> Bool in
 				r === mostIntersected
-			})!)
+			}) else {
+				break
+			}
+			
+			frames.remove(at: index)
 
 		}
 
 		while !stack.isEmpty {
 
-			let last = stack.popLast()!
+			guard let last = stack.popLast() else {
+				break
+			}
 
 			frames.append(last)
 
