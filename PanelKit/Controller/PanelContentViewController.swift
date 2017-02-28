@@ -266,6 +266,7 @@ public protocol PanelContentViewControllerDelegate: class {
 			return
 		}
 
+		// FIXME: use updateFrame
 		if viewToMove.center.x < superView.frame.size.width/2.0 {
 			viewToMove.center = CGPoint(x: -deltaToMoveOffscreen, y: viewToMove.center.y)
 		} else {
@@ -308,6 +309,7 @@ public protocol PanelContentViewControllerDelegate: class {
 			return
 		}
 
+		// FIXME: use updateFrame
 		viewToMove?.center = position
 
 	}
