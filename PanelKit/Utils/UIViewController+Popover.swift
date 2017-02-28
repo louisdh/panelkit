@@ -14,18 +14,12 @@ extension UIViewController {
 	var isPresentedAsPopover: Bool {
 		get {
 
-			if let p = self.popoverPresentationController {
+            guard let p = self.popoverPresentationController else { return false }
 
-				// FIXME: presentedViewController can never be nil?
-				let c = p.presentedViewController as UIViewController?
+            // FIXME: presentedViewController can never be nil?
+            let c = p.presentedViewController as UIViewController?
 
-				return c != nil && p.arrowDirection != .unknown
-
-			} else {
-
-				return false
-
-			}
+            return c != nil && p.arrowDirection != .unknown
 
 		}
 	}
