@@ -239,7 +239,7 @@ public protocol PanelViewControllerDelegate: class {
 		if delegate?.isInExpose == true {
 
 			if !isPinned {
-				panelNavigationController.bringToFront()
+				bringToFront()
 			}
 
 			delegate?.exitExpose()
@@ -248,6 +248,20 @@ public protocol PanelViewControllerDelegate: class {
 	}
 
 	// MARK: -
+	
+	func bringToFront() {
+		
+		guard let viewToMove = self.view else {
+			return
+		}
+		
+		guard let superview = viewToMove.superview else {
+			return
+		}
+		
+		superview.bringSubview(toFront: viewToMove)
+		
+	}
 
 	func updateState() {
 

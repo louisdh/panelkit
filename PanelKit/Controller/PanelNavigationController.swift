@@ -48,7 +48,7 @@ import UIKit
 	@objc private func didTapBar(_ gestureRecognizer: UITapGestureRecognizer) {
 
 		if self.panelViewController?.isPinned != true {
-			bringToFront()
+			self.panelViewController?.bringToFront()
 		}
 
 	}
@@ -127,25 +127,10 @@ import UIKit
 		self.prevTouch = touch
 
 		if self.panelViewController?.isPinned != true {
-			bringToFront()
+			self.panelViewController?.bringToFront()
 		}
 
 		panelViewController.didDrag()
-
-	}
-
-	// FIXME: move to PanelViewController class
-	func bringToFront() {
-
-		guard let viewToMove = self.panelViewController?.view else {
-			return
-		}
-
-		guard let superview = viewToMove.superview else {
-			return
-		}
-
-		superview.bringSubview(toFront: viewToMove)
 
 	}
 
