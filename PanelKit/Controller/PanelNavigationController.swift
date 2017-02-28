@@ -105,6 +105,10 @@ import UIKit
 
 			prevTouch = touch
 
+			if self.panelViewController?.isPinned != true {
+				self.panelViewController?.bringToFront()
+			}
+			
 		}
 
 		if gestureRecognizer.state == .changed {
@@ -141,10 +145,6 @@ import UIKit
 		panelViewController.delegate?.updateFrame(for: panelViewController, to: newFrame)
 
 		self.prevTouch = touch
-
-		if self.panelViewController?.isPinned != true {
-			self.panelViewController?.bringToFront()
-		}
 
 		panelViewController.didDrag()
 
