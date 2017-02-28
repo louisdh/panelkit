@@ -16,9 +16,9 @@ import UIKit
     override public func viewDidLoad() {
         super.viewDidLoad()
 
-		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragOnBar(_ :)))
+		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
 
-		self.navigationBar.addGestureRecognizer(dragGestureRecognizer)
+		self.view.addGestureRecognizer(dragGestureRecognizer)
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapBar(_ :)))
 		tapGestureRecognizer.delegate = self
@@ -53,7 +53,7 @@ import UIKit
 
 	}
 
-	@objc private func dragOnBar(_ gestureRecognizer: UIPanGestureRecognizer) {
+	@objc private func dragView(_ gestureRecognizer: UIPanGestureRecognizer) {
 
 		if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
 
@@ -146,51 +146,6 @@ import UIKit
 		}
 
 		superview.bringSubview(toFront: viewToMove)
-
-	}
-
-	override public func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-		guard let panel = panelViewController else {
-			return
-		}
-
-		guard panel.isFloating || panel.isPinned else {
-			return
-		}
-
-		guard let viewToMove = panel.view else {
-			return
-		}
-
-		guard let superview = viewToMove.superview else {
-			return
-		}
-
-		guard let touch = touches.first?.location(in: superview) else {
-			return
-		}
-
-		guard let prevTouch = prevTouch else {
-			self.prevTouch = touch
-			return
-		}
-
-		moveWithTouch(from: prevTouch, to: touch)
-
-	}
-
-	override public func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-		prevTouch = nil
-		panelViewController?.didEndDrag()
-
-	}
-
-	override public func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent?) {
-
-		prevTouch = nil
-		panelViewController?.didEndDrag()
 
 	}
 
