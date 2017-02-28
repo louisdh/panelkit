@@ -238,7 +238,9 @@ public protocol PanelViewControllerDelegate: class {
 
 		if delegate?.isInExpose == true {
 
-			panelNavigationController.bringToFront()
+			if !isPinned {
+				panelNavigationController.bringToFront()
+			}
 
 			delegate?.exitExpose()
 		}

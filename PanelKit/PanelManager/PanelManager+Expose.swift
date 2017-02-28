@@ -128,6 +128,7 @@ public extension PanelManager {
 			updateFrame(for: panelFrame.panel, to: panelFrame.exposeFrame)
 		}
 
+		panelContentWrapperView.insertSubview(exposeOverlayView, aboveSubview: panelContentView)
 		exposeOverlayView.isUserInteractionEnabled = true
 
 		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
