@@ -19,9 +19,50 @@
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
 		BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F21E6225DC00714BED /* AssociatedObject.swift */; };
 		BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */; };
+		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
+		BED541E01E676172002A5459 /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */; };
 		BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801501E525607007D3CEE /* CGRect+Center.swift */; };
+		BEFCF7691E6759F800BC95ED /* PanelKit_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7681E6759F800BC95ED /* PanelKit_UI_Tests.swift */; };
+		BEFCF7751E675D0600BC95ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7741E675D0600BC95ED /* AppDelegate.swift */; };
+		BEFCF7771E675D0600BC95ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7761E675D0600BC95ED /* ViewController.swift */; };
+		BEFCF77A1E675D0600BC95ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF7781E675D0600BC95ED /* Main.storyboard */; };
+		BEFCF77C1E675D0600BC95ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF77B1E675D0600BC95ED /* Assets.xcassets */; };
+		BEFCF77F1E675D0600BC95ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF77D1E675D0600BC95ED /* LaunchScreen.storyboard */; };
+		BEFCF7881E675EC100BC95ED /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7871E675EC100BC95ED /* MapPanelContentViewController.swift */; };
+		BEFCF78A1E67605200BC95ED /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7891E67605200BC95ED /* TextPanelContentViewController.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BED541E11E676172002A5459 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE24AD021E4F6B11008892A2;
+			remoteInfo = PanelKit;
+		};
+		BEFCF7841E675D0B00BC95ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEFCF7711E675D0600BC95ED;
+			remoteInfo = "PanelKit UI Test Host";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		BED541E31E676173002A5459 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BED541E01E676172002A5459 /* PanelKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		BE24AD031E4F6B11008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -40,6 +81,18 @@
 		BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockGestureRecognizer.swift; path = Model/BlockGestureRecognizer.swift; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
 		BEF801501E525607007D3CEE /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Center.swift"; path = "Utils/CGRect+Center.swift"; sourceTree = "<group>"; };
+		BEFCF7661E6759F800BC95ED /* PanelKit UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PanelKit UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEFCF7681E6759F800BC95ED /* PanelKit_UI_Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelKit_UI_Tests.swift; sourceTree = "<group>"; };
+		BEFCF76A1E6759F800BC95ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEFCF7721E675D0600BC95ED /* PanelKit UI Test Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PanelKit UI Test Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEFCF7741E675D0600BC95ED /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BEFCF7761E675D0600BC95ED /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEFCF7791E675D0600BC95ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BEFCF77B1E675D0600BC95ED /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEFCF77E1E675D0600BC95ED /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BEFCF7801E675D0600BC95ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEFCF7871E675EC100BC95ED /* MapPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPanelContentViewController.swift; path = Panels/MapPanelContentViewController.swift; sourceTree = "<group>"; };
+		BEFCF7891E67605200BC95ED /* TextPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPanelContentViewController.swift; path = Panels/TextPanelContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,6 +103,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BEFCF7631E6759F800BC95ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFCF76F1E675D0600BC95ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -57,6 +125,8 @@
 			isa = PBXGroup;
 			children = (
 				BE24AD051E4F6B11008892A2 /* PanelKit */,
+				BEFCF7731E675D0600BC95ED /* PanelKit UI Test Host */,
+				BEFCF7671E6759F800BC95ED /* PanelKit UI Tests */,
 				BE24AD041E4F6B11008892A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -65,6 +135,8 @@
 			isa = PBXGroup;
 			children = (
 				BE24AD031E4F6B11008892A2 /* PanelKit.framework */,
+				BEFCF7661E6759F800BC95ED /* PanelKit UI Tests.xctest */,
+				BEFCF7721E675D0600BC95ED /* PanelKit UI Test Host.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -123,6 +195,38 @@
 			name = Utils;
 			sourceTree = "<group>";
 		};
+		BEFCF7671E6759F800BC95ED /* PanelKit UI Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BEFCF7681E6759F800BC95ED /* PanelKit_UI_Tests.swift */,
+				BEFCF76A1E6759F800BC95ED /* Info.plist */,
+			);
+			path = "PanelKit UI Tests";
+			sourceTree = "<group>";
+		};
+		BEFCF7731E675D0600BC95ED /* PanelKit UI Test Host */ = {
+			isa = PBXGroup;
+			children = (
+				BEFCF7861E675EA100BC95ED /* Panels */,
+				BEFCF7741E675D0600BC95ED /* AppDelegate.swift */,
+				BEFCF7761E675D0600BC95ED /* ViewController.swift */,
+				BEFCF7781E675D0600BC95ED /* Main.storyboard */,
+				BEFCF77B1E675D0600BC95ED /* Assets.xcassets */,
+				BEFCF77D1E675D0600BC95ED /* LaunchScreen.storyboard */,
+				BEFCF7801E675D0600BC95ED /* Info.plist */,
+			);
+			path = "PanelKit UI Test Host";
+			sourceTree = "<group>";
+		};
+		BEFCF7861E675EA100BC95ED /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				BEFCF7871E675EC100BC95ED /* MapPanelContentViewController.swift */,
+				BEFCF7891E67605200BC95ED /* TextPanelContentViewController.swift */,
+			);
+			name = Panels;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -155,18 +259,67 @@
 			productReference = BE24AD031E4F6B11008892A2 /* PanelKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		BEFCF7651E6759F800BC95ED /* PanelKit UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEFCF76D1E6759F800BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Tests" */;
+			buildPhases = (
+				BEFCF7621E6759F800BC95ED /* Sources */,
+				BEFCF7631E6759F800BC95ED /* Frameworks */,
+				BEFCF7641E6759F800BC95ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEFCF7851E675D0B00BC95ED /* PBXTargetDependency */,
+			);
+			name = "PanelKit UI Tests";
+			productName = "PanelKit UI Tests";
+			productReference = BEFCF7661E6759F800BC95ED /* PanelKit UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		BEFCF7711E675D0600BC95ED /* PanelKit UI Test Host */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEFCF7811E675D0600BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Test Host" */;
+			buildPhases = (
+				BEFCF76E1E675D0600BC95ED /* Sources */,
+				BEFCF76F1E675D0600BC95ED /* Frameworks */,
+				BEFCF7701E675D0600BC95ED /* Resources */,
+				BED541E31E676173002A5459 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BED541E21E676172002A5459 /* PBXTargetDependency */,
+			);
+			name = "PanelKit UI Test Host";
+			productName = "PanelKit UI Test Host";
+			productReference = BEFCF7721E675D0600BC95ED /* PanelKit UI Test Host.app */;
+			productType = "com.apple.product-type.application";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		BE24ACFA1E4F6B11008892A2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0820;
 				LastUpgradeCheck = 0820;
 				ORGANIZATIONNAME = "Silver Fox";
 				TargetAttributes = {
 					BE24AD021E4F6B11008892A2 = {
 						CreatedOnToolsVersion = 8.2.1;
 						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+					BEFCF7651E6759F800BC95ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6G5LMQ72D8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BEFCF7711E675D0600BC95ED;
+					};
+					BEFCF7711E675D0600BC95ED = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6G5LMQ72D8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -177,6 +330,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = BE24ACF91E4F6B11008892A2;
 			productRefGroup = BE24AD041E4F6B11008892A2 /* Products */;
@@ -184,6 +338,8 @@
 			projectRoot = "";
 			targets = (
 				BE24AD021E4F6B11008892A2 /* PanelKit */,
+				BEFCF7651E6759F800BC95ED /* PanelKit UI Tests */,
+				BEFCF7711E675D0600BC95ED /* PanelKit UI Test Host */,
 			);
 		};
 /* End PBXProject section */
@@ -193,6 +349,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFCF7641E6759F800BC95ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFCF7701E675D0600BC95ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFCF77F1E675D0600BC95ED /* LaunchScreen.storyboard in Resources */,
+				BEFCF77C1E675D0600BC95ED /* Assets.xcassets in Resources */,
+				BEFCF77A1E675D0600BC95ED /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -219,7 +392,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BEFCF7621E6759F800BC95ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFCF7691E6759F800BC95ED /* PanelKit_UI_Tests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEFCF76E1E675D0600BC95ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEFCF7881E675EC100BC95ED /* MapPanelContentViewController.swift in Sources */,
+				BEFCF7771E675D0600BC95ED /* ViewController.swift in Sources */,
+				BEFCF78A1E67605200BC95ED /* TextPanelContentViewController.swift in Sources */,
+				BEFCF7751E675D0600BC95ED /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BED541E21E676172002A5459 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE24AD021E4F6B11008892A2 /* PanelKit */;
+			targetProxy = BED541E11E676172002A5459 /* PBXContainerItemProxy */;
+		};
+		BEFCF7851E675D0B00BC95ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEFCF7711E675D0600BC95ED /* PanelKit UI Test Host */;
+			targetProxy = BEFCF7841E675D0B00BC95ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BEFCF7781E675D0600BC95ED /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEFCF7791E675D0600BC95ED /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEFCF77D1E675D0600BC95ED /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEFCF77E1E675D0600BC95ED /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		BE24AD091E4F6B11008892A2 /* Debug */ = {
@@ -362,6 +586,64 @@
 			};
 			name = Release;
 		};
+		BEFCF76B1E6759F800BC95ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit UI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "PanelKit UI Test Host";
+			};
+			name = Debug;
+		};
+		BEFCF76C1E6759F800BC95ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit UI Tests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = "PanelKit UI Test Host";
+			};
+			name = Release;
+		};
+		BEFCF7821E675D0600BC95ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit UI Test Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-UI-Test-Host";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BEFCF7831E675D0600BC95ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit UI Test Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-UI-Test-Host";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -379,6 +661,24 @@
 			buildConfigurations = (
 				BE24AD0C1E4F6B11008892A2 /* Debug */,
 				BE24AD0D1E4F6B11008892A2 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEFCF76D1E6759F800BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFCF76B1E6759F800BC95ED /* Debug */,
+				BEFCF76C1E6759F800BC95ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BEFCF7811E675D0600BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Test Host" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEFCF7821E675D0600BC95ED /* Debug */,
+				BEFCF7831E675D0600BC95ED /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
