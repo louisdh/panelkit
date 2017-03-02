@@ -28,7 +28,26 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BEFCF7651E6759F800BC95ED"
+               BuildableName = "PanelKit UI Tests.xctest"
+               BlueprintName = "PanelKit UI Tests"
+               ReferencedContainer = "container:PanelKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "BE24AD021E4F6B11008892A2"
+            BuildableName = "PanelKit.framework"
+            BlueprintName = "PanelKit"
+            ReferencedContainer = "container:PanelKit.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
