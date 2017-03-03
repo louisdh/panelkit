@@ -12,19 +12,15 @@ extension CGRect {
 
 	var center: CGPoint {
 		get {
-			let x = origin.x + width / 2.0
-			let y = origin.y + height / 2.0
 
-			return CGPoint(x: x, y: y)
+			return CGPoint(x: midX, y: midY)
 		}
 		set {
 
-			let x = newValue.x - width / 2.0
-			let y = newValue.y - height / 2.0
+			let dx = newValue.x - center.x
+			let dy = newValue.y - center.y
 
-			let newOrigin = CGPoint(x: x, y: y)
-
-			self.origin = newOrigin
+			self = self.offsetBy(dx: dx, dy: dy)
 
 		}
 	}
