@@ -14,7 +14,7 @@ import UIKit
 	public weak var panelViewController: PanelViewController?
 
 	var dragGestureRecognizer: UIPanGestureRecognizer?
-	
+
     override public func viewDidLoad() {
         super.viewDidLoad()
 
@@ -22,7 +22,7 @@ import UIKit
 		dragGestureRecognizer.delegate = self
 
 		self.view.addGestureRecognizer(dragGestureRecognizer)
-		
+
 		self.dragGestureRecognizer = dragGestureRecognizer
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapBar(_ :)))
@@ -44,14 +44,14 @@ import UIKit
 		}
 		return true
 	}
-	
+
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-		
+
 		// Prevent panel from dragging when sliding UITableViewCell (e.g. for "delete")
 		if gestureRecognizer == dragGestureRecognizer && otherGestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer.view?.superview is UITableView {
 			return true
 		}
-		
+
 		return false
 	}
 
@@ -110,7 +110,7 @@ import UIKit
 			if self.panelViewController?.isPinned != true {
 				self.panelViewController?.bringToFront()
 			}
-			
+
 		}
 
 		if gestureRecognizer.state == .changed {

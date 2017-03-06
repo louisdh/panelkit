@@ -362,7 +362,7 @@ extension PanelManager {
 			}) else {
 				break
 			}
-			
+
 			frames.remove(at: index)
 
 		}
