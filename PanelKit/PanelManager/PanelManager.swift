@@ -140,7 +140,7 @@ public extension PanelManager where Self: UIViewController {
 
 		for panel in panels {
 
-			guard let panelSuperview = panel.view.superview, panelSuperview == panelContentWrapperView else {
+			guard panel.view.superview == panelContentWrapperView else {
 				continue
 			}
 
@@ -158,11 +158,7 @@ public extension PanelManager where Self: UIViewController {
 
 		for panel in panels {
 
-			guard let panelSuperview = panel.view.superview else {
-				continue
-			}
-
-			guard panelSuperview == panelContentWrapperView else {
+			guard panel.view.superview == panelContentWrapperView else {
 				continue
 			}
 
