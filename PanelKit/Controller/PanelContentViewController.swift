@@ -129,8 +129,6 @@ public protocol PanelContentViewControllerDelegate: class {
 		keyboardFrame = viewToMove.convert(keyboardFrame, from: nil)
 		keyboardFrame = keyboardFrame.intersection(viewToMove.bounds)
 
-//		let keyboardIntersectingFrame = viewToMove.bounds.intersection(superView.bounds)
-
 		if isFloating || isPinned {
 
 			if keyboardFrame.intersects(viewToMove.bounds) {

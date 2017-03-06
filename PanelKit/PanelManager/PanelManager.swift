@@ -193,7 +193,6 @@ public extension PanelManager where Self: UIViewController {
 			newPanelFrame.center = panel.allowedCenter(for: newPanelFrame.center)
 
 			updateFrame(for: panel, to: newPanelFrame)
-			//			panel.view.center = panel.allowedCenter(for: panel.view.center)
 
 		}
 

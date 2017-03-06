@@ -123,13 +123,10 @@ public protocol PanelViewControllerDelegate: class {
 		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
 
-//		self.presentationController?.delegate = self
-
 		contentViewController.panelDelegate = panelManager
 		self.delegate = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
-//		tapGestureRecognizer.delegate = self
 		tapGestureRecognizer.cancelsTouchesInView = false
 		self.view.addGestureRecognizer(tapGestureRecognizer)
 
@@ -190,16 +187,6 @@ public protocol PanelViewControllerDelegate: class {
 			shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
 		}
 
-//		panelNavigationController.setNeedsStatusBarAppearanceUpdate()
-//		
-//		panelNavigationController.updateViewConstraints()
-//
-//		panelNavigationController.view.setNeedsLayout()
-//		panelNavigationController.view.layoutSubviews()
-//		
-//		panelNavigationController.navigationBar.setNeedsLayout()
-//		panelNavigationController.navigationBar.layoutSubviews()
-//		
 	}
 
 	override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -396,38 +383,6 @@ public protocol PanelViewControllerDelegate: class {
 			print("deinit \(self)")
 		}
 	}
-
-	// MARK: -
-
-//	func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
-//		return .popover
-//	}
-//	
-//	func presentationController(_ presentationController: UIPresentationController, willPresentWithAdaptiveStyle style: UIModalPresentationStyle, transitionCoordinator: UIViewControllerTransitionCoordinator?) {
-//		
-//		if style == .popover {
-//			
-//			
-//		} else {
-//			
-//			
-//		}
-//
-//	}
-//	
-//	func adaptivePresentationStyle(for controller: UIPresentationController, traitCollection: UITraitCollection) -> UIModalPresentationStyle {
-//		return .popover
-//	}
-//	
-//	public func presentationController(_ controller: UIPresentationController, viewControllerForAdaptivePresentationStyle style: UIModalPresentationStyle) -> UIViewController? {
-//		
-//		if style == .popover {
-//			return self
-//		}
-//		
-//		return panelNavigationController
-//		
-//	}
 
 	// MARK: -
 
