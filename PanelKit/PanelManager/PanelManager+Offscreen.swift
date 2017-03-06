@@ -8,6 +8,7 @@
 
 import Foundation
 
+// Default implementation
 public extension PanelManager where Self: UIViewController {
 
 	func panelsPrepareMoveOffScreen() {

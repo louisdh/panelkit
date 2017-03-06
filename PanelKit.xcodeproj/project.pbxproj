@@ -19,6 +19,8 @@
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
 		BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F21E6225DC00714BED /* AssociatedObject.swift */; };
 		BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */; };
+		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
+		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
 		BED541E01E676172002A5459 /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */; };
@@ -79,6 +81,8 @@
 		BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Expose.swift"; path = "PanelManager/PanelManager+Expose.swift"; sourceTree = "<group>"; };
 		BE8682F21E6225DC00714BED /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssociatedObject.swift; path = Model/AssociatedObject.swift; sourceTree = "<group>"; };
 		BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockGestureRecognizer.swift; path = Model/BlockGestureRecognizer.swift; sourceTree = "<group>"; };
+		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
+		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
 		BEF801501E525607007D3CEE /* CGRect+Center.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "CGRect+Center.swift"; path = "Utils/CGRect+Center.swift"; sourceTree = "<group>"; };
 		BEFCF7661E6759F800BC95ED /* PanelKit UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "PanelKit UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -178,6 +182,8 @@
 			children = (
 				BE5123661E5790FD0034A61F /* PanelManager.swift */,
 				BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */,
+				BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */,
+				BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */,
 				BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */,
 				BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */,
 			);
@@ -385,10 +391,12 @@
 				BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */,
 				BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */,
 				BE51236B1E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift in Sources */,
+				BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */,
 				BE5123641E5790E30034A61F /* LogLevel.swift in Sources */,
 				BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */,
 				BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */,
 				BE5123711E5791090034A61F /* PanelViewController.swift in Sources */,
+				BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
