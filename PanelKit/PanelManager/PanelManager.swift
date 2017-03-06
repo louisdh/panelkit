@@ -138,7 +138,15 @@ public extension PanelManager where Self: UIViewController {
 
 	func closeAllPinnedPanels() {
 
-		for panel in panels where panel.view.superview == panelContentWrapperView && panel.isPinned {
+		for panel in panels {
+
+			guard let panelSuperview = panel.view.superview, panelSuperview == panelContentWrapperView else {
+				continue
+			}
+
+			guard panel.isPinned else {
+				continue
+			}
 
 			close(panel)
 
