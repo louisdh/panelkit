@@ -17,10 +17,12 @@ extension CGRect {
 		}
 		set {
 
-			let dx = newValue.x - center.x
-			let dy = newValue.y - center.y
+			let x = newValue.x - width / 2.0
+			let y = newValue.y - height / 2.0
 
-			self = self.offsetBy(dx: dx, dy: dy)
+			let newOrigin = CGPoint(x: x, y: y)
+
+			self.origin = newOrigin
 
 		}
 	}
