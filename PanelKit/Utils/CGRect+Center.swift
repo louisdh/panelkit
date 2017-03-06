@@ -12,10 +12,8 @@ extension CGRect {
 
 	var center: CGPoint {
 		get {
-			let x = origin.x + width / 2.0
-			let y = origin.y + height / 2.0
 
-			return CGPoint(x: x, y: y)
+			return CGPoint(x: midX, y: midY)
 		}
 		set {
 
