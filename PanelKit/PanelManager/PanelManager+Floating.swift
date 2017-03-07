@@ -1,0 +1,61 @@
+//
+//  PanelManager+Floating.swift
+//  PanelKit
+//
+//  Created by Louis D'hauwe on 07/03/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+import UIKit
+
+public extension PanelManager {
+	
+	func toggleFloatStatus(for panel: PanelViewController) {
+		
+		let panelNavCon = panel.panelNavigationController
+		
+		if (panel.isFloating || panel.isPinned) && !panelNavCon.isPresentedAsPopover {
+			
+			close(panel)
+			
+		} else {
+			
+			let rect = panel.view.convert(panel.view.frame, to: panelContentWrapperView)
+			
+			panel.dismiss(animated: false, completion: {
+				
+				self.panelContentWrapperView.addSubview(panel.view)
+				panel.didUpdateFloatingState()
+				
+				self.updateFrame(for: panel, to: rect)
+				self.panelContentWrapperView.layoutIfNeeded()
+				
+				let x = rect.origin.x
+				
+				let y: CGFloat = 12.0
+				
+				let width = panel.view.frame.size.width
+				let height = panel.view.frame.size.height
+				
+				var newFrame = CGRect(x: x, y: y, width: width, height: height)
+				newFrame.center = panel.allowedCenter(for: newFrame.center)
+				
+				self.updateFrame(for: panel, to: newFrame)
+				
+				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
+					
+					self.panelContentWrapperView.layoutIfNeeded()
+					
+				}, completion: nil)
+				
+				if panel.view.superview == self.panelContentWrapperView {
+					panel.contentViewController?.didUpdateFloatingState()
+				}
+				
+			})
+			
+		}
+		
+	}
+	
+}
