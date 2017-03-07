@@ -23,6 +23,10 @@ let pinnedPanelPreviewGrowDuration: TimeInterval = 0.3
 let pinnedPanelPreviewFadeDuration: TimeInterval = 0.3
 let panelGrowDuration: TimeInterval = 0.3
 
+// Floating
+
+let panelPopDuration: TimeInterval = 0.2
+
 // PanelViewController
 
 let cornerRadius: CGFloat = 16.0

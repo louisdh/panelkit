@@ -42,7 +42,7 @@ public extension PanelManager {
 				
 				self.updateFrame(for: panel, to: newFrame)
 				
-				UIView.animate(withDuration: 0.2, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
+				UIView.animate(withDuration: panelPopDuration, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
 					
 					self.panelContentWrapperView.layoutIfNeeded()
 					
