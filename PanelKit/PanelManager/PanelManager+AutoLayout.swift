@@ -74,7 +74,7 @@ extension PanelManager {
 		if panel.isPinned && !keyboardShown && !isInExpose {
 
 			panel.heightConstraint?.isActive = false
-			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: 1.0)
+			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentView.heightAnchor, multiplier: 1.0)
 			panel.heightConstraint?.isActive = true
 
 		} else {
