@@ -87,7 +87,7 @@ extension PanelManager {
 
 }
 
-public extension PanelManager where Self: UIViewController {
+public extension PanelManager {
 
 	func closeAllPinnedPanels() {
 
