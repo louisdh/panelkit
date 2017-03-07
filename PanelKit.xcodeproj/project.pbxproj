@@ -184,8 +184,8 @@
 				BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */,
 				BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */,
 				BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */,
-				BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */,
 				BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */,
+				BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */,
 			);
 			name = PanelManager;
 			sourceTree = "<group>";

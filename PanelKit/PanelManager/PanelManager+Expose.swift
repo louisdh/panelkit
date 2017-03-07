@@ -229,7 +229,9 @@ extension PanelManager {
 			return (panelFrames, 1.0)
 		}
 
-		print("unionFrame: \(unionFrame)")
+		if panelManagerLogLevel == .full {
+			print("[Exposé] unionFrame: \(unionFrame)")
+		}
 
 		for r in panelFrames {
 
@@ -242,19 +244,25 @@ extension PanelManager {
 		normalizedUnionFrame.origin.x = 0.0
 		normalizedUnionFrame.origin.y = 0.0
 
-		print("normalizedUnionFrame: \(normalizedUnionFrame)")
+		if panelManagerLogLevel == .full {
+			print("[Exposé] normalizedUnionFrame: \(normalizedUnionFrame)")
+		}
 
 		let padding: CGFloat = 44.0
 
 		let scale = min(1.0, min(((panelContentView.frame.width - padding) / unionFrame.width), ((panelContentView.frame.height - padding) / unionFrame.height)))
 
-		print("scale: \(scale)")
+		if panelManagerLogLevel == .full {
+			print("[Exposé] scale: \(scale)")
+		}
 
 		var scaledNormalizedUnionFrame = normalizedUnionFrame
 		scaledNormalizedUnionFrame.size.width *= scale
 		scaledNormalizedUnionFrame.size.height *= scale
 
-		print("scaledNormalizedUnionFrame: \(scaledNormalizedUnionFrame)")
+		if panelManagerLogLevel == .full {
+			print("[Exposé] scaledNormalizedUnionFrame: \(scaledNormalizedUnionFrame)")
+		}
 
 		for r in panelFrames {
 
