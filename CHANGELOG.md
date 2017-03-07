@@ -6,24 +6,24 @@ CHANGELOG
 
 | Contents                        |
 | :------------------------------ |
-| [PanelKit 0.8.2](#panelkit-082) |
-| [PanelKit 0.8.1](#panelkit-081) |
-| [PanelKit 0.8](#panelkit-08)    |
+| [0.8.2](#082) |
+| [0.8.1](#081) |
+| [0.8](#08)    |
 
 </details>
 
-PanelKit 0.8.2
+[0.8.2](https://github.com/louisdh/panelkit/tree/0.8.2) (2017-23-02)
 --------------
 
 * Fixed pinned panel preview views that weren't ever removed
 * ```panelContentView``` now supports a top and bottom margin other than 0
 
-PanelKit 0.8.1
+[0.8.1](https://github.com/louisdh/panelkit/tree/0.8.1) (2017-21-02)
 --------------
 
 *  Updated documentation
 
-PanelKit 0.8
+[0.8](https://github.com/louisdh/panelkit/tree/0.8) (2017-20-02)
 ------------
 
 * Initial release with support for floating and pinned panels.
