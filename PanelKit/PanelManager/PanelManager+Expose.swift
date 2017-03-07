@@ -247,10 +247,14 @@ extension PanelManager {
 		if panelManagerLogLevel == .full {
 			print("[Exposé] normalizedUnionFrame: \(normalizedUnionFrame)")
 		}
-
+		
+		var exposeContainmentFrame = panelContentView.frame
+		exposeContainmentFrame.size.width = panelContentWrapperView.frame.width
+		exposeContainmentFrame.origin.x = 0
+		
 		let padding: CGFloat = 44.0
 
-		let scale = min(1.0, min(((panelContentView.frame.width - padding) / unionFrame.width), ((panelContentView.frame.height - padding) / unionFrame.height)))
+		let scale = min(1.0, min(((exposeContainmentFrame.width - padding) / unionFrame.width), ((exposeContainmentFrame.height - padding) / unionFrame.height)))
 
 		if panelManagerLogLevel == .full {
 			print("[Exposé] scale: \(scale)")
@@ -277,9 +281,9 @@ extension PanelManager {
 
 			// Center
 
-			r.exposeFrame.origin.x += (max(panelContentView.frame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
-			r.exposeFrame.origin.y += (max(panelContentView.frame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
-			r.exposeFrame.origin.y += panelContentView.frame.origin.y
+			r.exposeFrame.origin.x += (max(exposeContainmentFrame.width - scaledNormalizedUnionFrame.width, 0.0)) / 2.0
+			r.exposeFrame.origin.y += (max(exposeContainmentFrame.height - scaledNormalizedUnionFrame.height, 0.0)) / 2.0
+			r.exposeFrame.origin.y += exposeContainmentFrame.origin.y
 
 		}
 
