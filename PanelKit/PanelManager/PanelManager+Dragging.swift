@@ -24,6 +24,8 @@ public extension PanelManager {
 
 		panel.pinnedSide = nil
 
+		panel.bringToFront()
+
 		let currentFrame = panelView.frame
 
 		var newFrame = currentFrame
