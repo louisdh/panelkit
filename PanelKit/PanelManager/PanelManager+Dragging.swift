@@ -80,12 +80,12 @@ public extension PanelManager where Self: UIViewController {
 		}
 
 		previewView.backgroundColor = panel.tintColor
-		previewView.alpha = 0.4
+		previewView.alpha = pinnedPanelPreviewAlpha
 
 		panelContentWrapperView.addSubview(previewView)
 		panelContentWrapperView.insertSubview(previewView, belowSubview: panelView)
 
-		UIView.animate(withDuration: 0.3) {
+		UIView.animate(withDuration: pinnedPanelPreviewGrowDuration) {
 
 			previewView.frame = previewTargetFrame
 

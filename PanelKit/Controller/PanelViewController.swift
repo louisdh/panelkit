@@ -80,13 +80,6 @@ public protocol PanelViewControllerDelegate: class {
 
 	private let shadowView: UIView
 
-	private let cornerRadius: CGFloat = 16.0
-
-	private let shadowRadius: CGFloat = 8.0
-	private let shadowOpacity: Float = 0.3
-	private let shadowOffset: CGSize = CGSize(width: 0, height: 10.0)
-	private let shadowColor =  UIColor.black.cgColor
-
 	var tintColor: UIColor {
 		return panelNavigationController.navigationBar.tintColor
 	}

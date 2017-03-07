@@ -72,10 +72,6 @@ extension PanelManager {
 
 public extension PanelManager {
 
-	var exposeOverlayBlurEffect: UIBlurEffect {
-		return UIBlurEffect(style: .light)
-	}
-
 	func enableTripleTapExposeActivation() {
 
 		_ = exposeEnterTapRecognizer
@@ -131,7 +127,7 @@ public extension PanelManager {
 		panelContentWrapperView.insertSubview(exposeOverlayView, aboveSubview: panelContentView)
 		exposeOverlayView.isUserInteractionEnabled = true
 
-		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+		UIView.animate(withDuration: exposeEnterDuration, delay: 0.0, options: [], animations: {
 
 			self.exposeOverlayView.effect = self.exposeOverlayBlurEffect
 
@@ -172,7 +168,7 @@ public extension PanelManager {
 
 		exposeOverlayView.isUserInteractionEnabled = false
 
-		UIView.animate(withDuration: 0.3, delay: 0.0, options: [], animations: {
+		UIView.animate(withDuration: exposeExitDuration, delay: 0.0, options: [], animations: {
 
 			self.exposeOverlayView.effect = nil
 
@@ -252,7 +248,7 @@ extension PanelManager {
 		exposeContainmentFrame.size.width = panelContentWrapperView.frame.width
 		exposeContainmentFrame.origin.x = 0
 		
-		let padding: CGFloat = 44.0
+		let padding: CGFloat = exposeOuterPadding
 
 		let scale = min(1.0, min(((exposeContainmentFrame.width - padding) / unionFrame.width), ((exposeContainmentFrame.height - padding) / unionFrame.height)))
 
@@ -323,7 +319,7 @@ extension PanelManager {
 				continue
 			}
 
-			let r1InsetFrame = r1.exposeFrame.insetBy(dx: -20.0, dy: -20.0)
+			let r1InsetFrame = r1.exposeFrame.insetBy(dx: -exposePanelHorizontalSpacing, dy: -exposePanelVerticalSpacing)
 			if r1InsetFrame.intersects(r2.exposeFrame) {
 				intersections += 1
 			}

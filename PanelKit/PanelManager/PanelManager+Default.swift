@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension PanelManager where Self: UIViewController {
+public extension PanelManager {
 
 	func didUpdatePinnedPanels() {
 
@@ -40,6 +40,10 @@ public extension PanelManager where Self: UIViewController {
 
 	func willExitExpose() {
 
+	}
+	
+	var exposeOverlayBlurEffect: UIBlurEffect {
+		return UIBlurEffect(style: .light)
 	}
 
 }

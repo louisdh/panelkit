@@ -22,6 +22,7 @@
 		BEBE2F351E6F459A00DEDF21 /* PanelManager+Pinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */; };
 		BEBE2F371E6F463300DEDF21 /* PanelManager+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */; };
 		BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */; };
+		BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -87,6 +88,7 @@
 		BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Pinning.swift"; path = "PanelManager/PanelManager+Pinning.swift"; sourceTree = "<group>"; };
 		BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+AutoLayout.swift"; path = "PanelManager/PanelManager+AutoLayout.swift"; sourceTree = "<group>"; };
 		BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Floating.swift"; path = "PanelManager/PanelManager+Floating.swift"; sourceTree = "<group>"; };
+		BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Model/Constants.swift; sourceTree = "<group>"; };
 		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
@@ -169,6 +171,7 @@
 			children = (
 				BE5123621E5790E30034A61F /* LogLevel.swift */,
 				BE5123631E5790E30034A61F /* PanelPinSide.swift */,
+				BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -392,6 +395,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */,
+				BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */,
 				BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */,
 				BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,

@@ -18,10 +18,6 @@ extension PanelManager {
 		return panels.filter { $0.pinnedSide == .right }.first
 	}
 	
-	var panelGrowDuration: Double {
-		return 0.3
-	}
-	
 	func pinnedPanelFrame(for panel: PanelViewController, at side: PanelPinSide) -> CGRect? {
 		
 		guard let panelView = panel.view else {
@@ -72,7 +68,7 @@ extension PanelManager {
 		
 		if let panelPinnedPreviewView = panel.panelPinnedPreviewView {
 			
-			UIView.animate(withDuration: 0.3, animations: {
+			UIView.animate(withDuration: pinnedPanelPreviewFadeDuration, animations: {
 				panelPinnedPreviewView.alpha = 0.0
 			}, completion: { (_) in
 				panelPinnedPreviewView.removeFromSuperview()
