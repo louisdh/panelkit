@@ -41,7 +41,7 @@ public extension PanelManager {
 	func willExitExpose() {
 
 	}
-	
+
 	var exposeOverlayBlurEffect: UIBlurEffect {
 		return UIBlurEffect(style: .light)
 	}

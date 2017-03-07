@@ -55,7 +55,7 @@ public protocol PanelManager: PanelViewControllerDelegate, PanelsFullscreenTrans
 // MARK: -
 
 extension PanelManager {
-	
+
 	func totalDragInsets(for panel: PanelViewController) -> UIEdgeInsets {
 
 		let insets = dragInsets(for: panel)

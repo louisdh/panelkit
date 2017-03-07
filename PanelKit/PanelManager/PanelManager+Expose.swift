@@ -243,11 +243,11 @@ extension PanelManager {
 		if panelManagerLogLevel == .full {
 			print("[Exposé] normalizedUnionFrame: \(normalizedUnionFrame)")
 		}
-		
+
 		var exposeContainmentFrame = panelContentView.frame
 		exposeContainmentFrame.size.width = panelContentWrapperView.frame.width
 		exposeContainmentFrame.origin.x = 0
-		
+
 		let padding: CGFloat = exposeOuterPadding
 
 		let scale = min(1.0, min(((exposeContainmentFrame.width - padding) / unionFrame.width), ((exposeContainmentFrame.height - padding) / unionFrame.height)))
