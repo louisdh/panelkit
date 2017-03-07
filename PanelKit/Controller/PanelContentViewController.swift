@@ -186,7 +186,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 		let currentFrame = viewToMove.frame
 
-		// Currently uses a slight hack to prevent navigation bar height from bugging out (height became 64, instaed of the normal 44)
+		// Currently uses a slight hack to prevent navigation bar height from bugging out (height became 64, instead of the normal 44)
 
 		// 1: change panel size height to actual height + 1
 
