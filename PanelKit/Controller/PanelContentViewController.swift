@@ -315,11 +315,11 @@ public protocol PanelContentViewControllerDelegate: class {
 	open var modalCloseButtonTitle = "Back"
 
 	private func panelFloatToggleBtnTitle() -> String {
-		
+
 		guard let panel = panelNavigationController?.panelViewController else {
 			return closeButtonTitle
 		}
-		
+
 		if panel.isFloating || panel.isPinned {
 			return closeButtonTitle
 		} else {
@@ -357,7 +357,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		guard let panel = panelNavigationController?.panelViewController else {
 			return
 		}
-		
+
 		if panel.isPresentedModally {
 
 			let backBtn = getBackBtn()

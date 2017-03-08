@@ -31,17 +31,17 @@ import UIKit
 	var wasPinned: Bool {
 		return !isPinned && pinnedSide != nil
 	}
-	
+
 	public var isPinned: Bool {
-		
+
 		if isPresentedAsPopover {
 			return false
 		}
-		
+
 		if isPresentedModally {
 			return false
 		}
-		
+
 		guard view.superview != nil else {
 			return false
 		}
@@ -54,28 +54,28 @@ import UIKit
 		if isPresentedAsPopover {
 			return false
 		}
-		
+
 		if isPresentedModally {
 			return false
 		}
-		
+
 		if isPinned {
 			return false
 		}
-		
+
 		guard view.superview != nil else {
 			return false
 		}
-		
+
 		return true
 	}
-	
+
 	var isPresentedModally: Bool {
 
 		if isPresentedAsPopover {
 			return false
 		}
-		
+
 		return presentingViewController != nil
 	}
 
@@ -85,23 +85,23 @@ import UIKit
 
 	/// A panel can't float when it is presented modally
 	public var canFloat: Bool {
-		
+
 		guard delegate?.allowFloatingPanels == true else {
 			return false
 		}
-		
+
 		if isPresentedAsPopover {
 			return true
 		}
-		
+
 		// Modal
 		if isPresentedModally {
 			return false
 		}
-		
+
 		return true
 	}
-	
+
 	var frameBeforeExpose: CGRect? {
 		didSet {
 			if isInExpose {
@@ -197,7 +197,7 @@ import UIKit
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
-		
+
 	}
 
 	override public func viewDidAppear(_ animated: Bool) {
@@ -290,7 +290,7 @@ import UIKit
 	}
 
 	func updateState() {
-		
+
 		if wasPinned {
 			delegate?.didDragFree(self)
 		}
