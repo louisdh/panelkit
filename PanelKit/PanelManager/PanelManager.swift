@@ -79,7 +79,7 @@ extension PanelManager {
 
 		panel.contentViewController?.didUpdateFloatingState()
 
-		if panel.isPinned {
+		if panel.isPinned || panel.wasPinned {
 			didDragFree(panel)
 		}
 
@@ -97,7 +97,7 @@ public extension PanelManager {
 				continue
 			}
 
-			guard panel.isPinned else {
+			guard panel.isPinned || panel.wasPinned else {
 				continue
 			}
 

@@ -40,23 +40,80 @@ public protocol PanelViewControllerDelegate: class {
 
 	var pinnedSide: PanelPinSide?
 
+	var wasPinned: Bool {
+		return !isPinned && pinnedSide != nil
+	}
+	
 	public var isPinned: Bool {
+		
+		if isPresentedAsPopover {
+			return false
+		}
+		
+		if isPresentedModally {
+			return false
+		}
+		
+		guard view.superview != nil else {
+			return false
+		}
+
 		return pinnedSide != nil
 	}
 
 	public var isFloating: Bool {
 
-		guard let contentViewController = contentViewController else {
+		if isPresentedAsPopover {
 			return false
 		}
+		
+		if isPresentedModally {
+			return false
+		}
+		
+		if isPinned {
+			return false
+		}
+		
+		guard view.superview != nil else {
+			return false
+		}
+		
+		return true
+	}
+	
+	var isPresentedModally: Bool {
 
-		return contentViewController.isFloating
+		if isPresentedAsPopover {
+			return false
+		}
+		
+		return presentingViewController != nil
 	}
 
 	public var isInExpose: Bool {
 		return frameBeforeExpose != nil
 	}
 
+	/// A panel can't float when it is presented modally
+	public var canFloat: Bool {
+		
+		guard delegate?.allowFloatingPanels == true else {
+			return false
+		}
+		
+		if isPresentedAsPopover {
+			return true
+		}
+		
+		// Modal
+		if isPresentedModally {
+			return false
+		}
+		
+		return true
+	}
+	
 	var frameBeforeExpose: CGRect? {
 		didSet {
 			if isInExpose {
@@ -152,12 +209,13 @@ public protocol PanelViewControllerDelegate: class {
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
-
+		
 	}
 
 	override public func viewDidAppear(_ animated: Bool) {
 		super.viewDidAppear(animated)
 
+		didUpdateFloatingState()
 		contentViewController?.viewDidAppear(animated)
 
 		if logLevel == .full {
@@ -244,6 +302,10 @@ public protocol PanelViewControllerDelegate: class {
 	}
 
 	func updateState() {
+		
+		if wasPinned {
+			delegate?.didDragFree(self)
+		}
 
 		if isFloating || isPinned {
 			self.view.translatesAutoresizingMaskIntoConstraints = false

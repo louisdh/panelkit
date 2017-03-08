@@ -14,7 +14,7 @@ public extension PanelManager {
 
 		fadePinnedPreviewOut(for: panel)
 
-		guard panel.isPinned else {
+		guard panel.isPinned || panel.wasPinned else {
 			return
 		}
 
@@ -122,10 +122,6 @@ public extension PanelManager {
 
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
-
-		// FIXME: not needed?
-		panelView.removeFromSuperview()
-		panelContentWrapperView.addSubview(panelView)
 
 		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: frame)

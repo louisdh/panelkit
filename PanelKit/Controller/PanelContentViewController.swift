@@ -28,40 +28,6 @@ public protocol PanelContentViewControllerDelegate: class {
 		return panelNavigationController?.panelViewController?.view
 	}
 
-	public var isPinned: Bool {
-
-		guard let panel = self.panelNavigationController?.panelViewController else {
-			return false
-		}
-
-		return panel.isPinned
-	}
-
-	public var isFloating: Bool {
-
-		guard let panel = self.panelNavigationController?.panelViewController else {
-			return false
-		}
-
-		if panel.isPresentedAsPopover {
-			return false
-		}
-
-		if isPresentedModally() {
-			return false
-		}
-
-		if panel.isPinned {
-			return false
-		}
-
-		guard panel.view.superview != nil else {
-			return false
-		}
-
-		return true
-	}
-
     override open func viewDidLoad() {
         super.viewDidLoad()
 
@@ -129,7 +95,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		keyboardFrame = viewToMove.convert(keyboardFrame, from: nil)
 		keyboardFrame = keyboardFrame.intersection(viewToMove.bounds)
 
-		if isFloating || isPinned {
+		if panel.isFloating || panel.isPinned {
 
 			if keyboardFrame.intersects(viewToMove.bounds) {
 
@@ -316,44 +282,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	}
 
-	func isPresentedModally() -> Bool {
-
-		guard let panel = self.panelNavigationController?.panelViewController else {
-			return false
-		}
-
-		if panel.isPresentedAsPopover {
-			return false
-		}
-
-		return panel.presentingViewController != nil
-	}
-
 	// MARK: -
-
-	/// A panel can't float when it is presented modally
-	public var canFloat: Bool {
-
-		guard let panel = self.panelNavigationController?.panelViewController else {
-			return false
-		}
-
-		guard panel.delegate?.allowFloatingPanels == true else {
-			return false
-		}
-
-		if panel.isPresentedAsPopover {
-			return true
-		}
-
-		// Modal
-		if isPresentedModally() {
-			return false
-		}
-
-		return true
-
-	}
 
 	public func dismissPanel() {
 		panelNavigationController?.panelViewController?.dismiss(animated: true, completion: nil)
@@ -386,7 +315,12 @@ public protocol PanelContentViewControllerDelegate: class {
 	open var modalCloseButtonTitle = "Back"
 
 	private func panelFloatToggleBtnTitle() -> String {
-		if isFloating || isPinned {
+		
+		guard let panel = panelNavigationController?.panelViewController else {
+			return closeButtonTitle
+		}
+		
+		if panel.isFloating || panel.isPinned {
 			return closeButtonTitle
 		} else {
 			return popButtonTitle
@@ -420,7 +354,11 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	func updateNavigationButtons() {
 
-		if isPresentedModally() {
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
+		if panel.isPresentedModally {
 
 			let backBtn = getBackBtn()
 
@@ -428,7 +366,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 		} else {
 
-			if !canFloat {
+			if !panel.canFloat {
 
 				navigationItem.leftBarButtonItems = leftBarButtonItems
 
