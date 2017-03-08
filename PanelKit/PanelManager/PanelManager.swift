@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol PanelManager: PanelsFullscreenTransitionDelegate, PanelContentViewControllerDelegate {
+public protocol PanelManager: PanelContentViewControllerDelegate {
 
 	/// The panels to be managed.
 	var panels: [PanelViewController] { get }

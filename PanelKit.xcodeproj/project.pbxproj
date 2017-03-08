@@ -12,7 +12,6 @@
 		BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123631E5790E30034A61F /* PanelPinSide.swift */; };
 		BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123661E5790FD0034A61F /* PanelManager.swift */; };
 		BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */; };
-		BE51236B1E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */; };
 		BE51236F1E5791090034A61F /* PanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236C1E5791090034A61F /* PanelContentViewController.swift */; };
 		BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236D1E5791090034A61F /* PanelNavigationController.swift */; };
 		BE5123711E5791090034A61F /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236E1E5791090034A61F /* PanelViewController.swift */; };
@@ -79,7 +78,6 @@
 		BE5123631E5790E30034A61F /* PanelPinSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelPinSide.swift; path = Model/PanelPinSide.swift; sourceTree = "<group>"; };
 		BE5123661E5790FD0034A61F /* PanelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelManager.swift; path = PanelManager/PanelManager.swift; sourceTree = "<group>"; };
 		BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Offscreen.swift"; path = "PanelManager/PanelManager+Offscreen.swift"; sourceTree = "<group>"; };
-		BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelsFullscreenTransitionDelegate.swift; path = PanelManager/PanelsFullscreenTransitionDelegate.swift; sourceTree = "<group>"; };
 		BE51236C1E5791090034A61F /* PanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelContentViewController.swift; path = Controller/PanelContentViewController.swift; sourceTree = "<group>"; };
 		BE51236D1E5791090034A61F /* PanelNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelNavigationController.swift; path = Controller/PanelNavigationController.swift; sourceTree = "<group>"; };
 		BE51236E1E5791090034A61F /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelViewController.swift; path = Controller/PanelViewController.swift; sourceTree = "<group>"; };
@@ -200,7 +198,6 @@
 				BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */,
 				BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */,
 				BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */,
-				BE5123681E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift */,
 			);
 			name = PanelManager;
 			sourceTree = "<group>";
@@ -407,7 +404,6 @@
 				BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */,
 				BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */,
 				BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */,
-				BE51236B1E5790FD0034A61F /* PanelsFullscreenTransitionDelegate.swift in Sources */,
 				BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */,
 				BE5123641E5790E30034A61F /* LogLevel.swift in Sources */,
 				BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */,
