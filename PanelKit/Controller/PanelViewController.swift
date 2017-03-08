@@ -8,18 +8,6 @@
 
 import UIKit
 
-public protocol PanelViewControllerDelegate: class {
-
-	func didDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide)
-	func didDragFree(_ panel: PanelViewController)
-
-	func didEndDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide)
-	func didEndDragFree(_ panel: PanelViewController)
-
-	func enablePanelShadow(for panel: PanelViewController) -> Bool
-
-}
-
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	var topConstraint: NSLayoutConstraint?

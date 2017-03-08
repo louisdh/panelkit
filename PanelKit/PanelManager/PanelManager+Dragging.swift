@@ -8,7 +8,7 @@
 
 import Foundation
 
-public extension PanelManager {
+extension PanelManager {
 
 	func didDragFree(_ panel: PanelViewController) {
 
