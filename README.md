@@ -115,7 +115,7 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 ## Todo 
 ### Before v1.0:
 - [ ] Make ```PanelContentViewController``` a protocol (no more subclassing needed)
-- [ ] Exposé
+- [x] Exposé
 - [ ] Unit tests
 
 ### Long term:
