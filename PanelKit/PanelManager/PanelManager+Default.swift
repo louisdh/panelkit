@@ -27,7 +27,7 @@ public extension PanelManager {
 	}
 
 	var panelManagerLogLevel: LogLevel {
-		return .full
+		return .none
 	}
 
 	func dragInsets(for panel: PanelViewController) -> UIEdgeInsets {
