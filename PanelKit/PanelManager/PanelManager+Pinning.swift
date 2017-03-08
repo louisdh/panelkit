@@ -26,7 +26,7 @@ extension PanelManager {
 
 		var previewTargetFrame = panelView.bounds
 
-		previewTargetFrame.origin.y = 0.0
+		previewTargetFrame.origin.y = panelContentView.frame.origin.y
 
 		switch side {
 		case .left:
