@@ -23,6 +23,7 @@
 		BEBE2F371E6F463300DEDF21 /* PanelManager+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */; };
 		BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */; };
 		BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */; };
+		BEBE2F3D1E70984800DEDF21 /* PanelManager+Closing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3C1E70984800DEDF21 /* PanelManager+Closing.swift */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -89,6 +90,7 @@
 		BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+AutoLayout.swift"; path = "PanelManager/PanelManager+AutoLayout.swift"; sourceTree = "<group>"; };
 		BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Floating.swift"; path = "PanelManager/PanelManager+Floating.swift"; sourceTree = "<group>"; };
 		BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Model/Constants.swift; sourceTree = "<group>"; };
+		BEBE2F3C1E70984800DEDF21 /* PanelManager+Closing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Closing.swift"; path = "PanelManager/PanelManager+Closing.swift"; sourceTree = "<group>"; };
 		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
@@ -191,6 +193,7 @@
 			children = (
 				BE5123661E5790FD0034A61F /* PanelManager.swift */,
 				BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */,
+				BEBE2F3C1E70984800DEDF21 /* PanelManager+Closing.swift */,
 				BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */,
 				BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */,
 				BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */,
@@ -412,6 +415,7 @@
 				BE5123711E5791090034A61F /* PanelViewController.swift in Sources */,
 				BEBE2F351E6F459A00DEDF21 /* PanelManager+Pinning.swift in Sources */,
 				BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */,
+				BEBE2F3D1E70984800DEDF21 /* PanelManager+Closing.swift in Sources */,
 				BEBE2F371E6F463300DEDF21 /* PanelManager+AutoLayout.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
