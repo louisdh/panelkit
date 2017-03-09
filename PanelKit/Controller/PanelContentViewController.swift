@@ -17,17 +17,12 @@ public protocol PanelContentViewControllerDelegate: class {
 /// Needs to be presented as root view controller in a PanelNavigationController instance
 @objc open class PanelContentViewController: UIViewController {
 
-	private var prevTouch: CGPoint?
 	internal(set) public weak var panelDelegate: PanelContentViewControllerDelegate?
 
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
 	}
-
-	private weak var viewToMove: UIView? {
-		return panelNavigationController?.panelViewController?.view
-	}
-
+	
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
