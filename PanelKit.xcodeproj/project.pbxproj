@@ -23,6 +23,10 @@
 		BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */; };
 		BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */; };
 		BEBE2F3D1E70984800DEDF21 /* PanelManager+Closing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3C1E70984800DEDF21 /* PanelManager+Closing.swift */; };
+		BEBE2F3F1E71DCE400DEDF21 /* PanelViewController+States.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F3E1E71DCE400DEDF21 /* PanelViewController+States.swift */; };
+		BEBE2F411E71DDFC00DEDF21 /* PanelViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */; };
+		BEBE2F431E71DED600DEDF21 /* PanelViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */; };
+		BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -89,6 +93,10 @@
 		BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Floating.swift"; path = "PanelManager/PanelManager+Floating.swift"; sourceTree = "<group>"; };
 		BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Constants.swift; path = Model/Constants.swift; sourceTree = "<group>"; };
 		BEBE2F3C1E70984800DEDF21 /* PanelManager+Closing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Closing.swift"; path = "PanelManager/PanelManager+Closing.swift"; sourceTree = "<group>"; };
+		BEBE2F3E1E71DCE400DEDF21 /* PanelViewController+States.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+States.swift"; path = "Controller/PanelViewController+States.swift"; sourceTree = "<group>"; };
+		BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Appearance.swift"; path = "Controller/PanelViewController+Appearance.swift"; sourceTree = "<group>"; };
+		BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Keyboard.swift"; path = "Controller/PanelViewController+Keyboard.swift"; sourceTree = "<group>"; };
+		BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Dragging.swift"; path = "Controller/PanelViewController+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
@@ -182,6 +190,10 @@
 				BE51236C1E5791090034A61F /* PanelContentViewController.swift */,
 				BE51236D1E5791090034A61F /* PanelNavigationController.swift */,
 				BE51236E1E5791090034A61F /* PanelViewController.swift */,
+				BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */,
+				BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */,
+				BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */,
+				BEBE2F3E1E71DCE400DEDF21 /* PanelViewController+States.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -398,15 +410,19 @@
 				BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */,
 				BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */,
 				BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */,
+				BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,
 				BE51236F1E5791090034A61F /* PanelContentViewController.swift in Sources */,
+				BEBE2F3F1E71DCE400DEDF21 /* PanelViewController+States.swift in Sources */,
 				BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */,
 				BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */,
 				BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */,
 				BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */,
 				BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */,
+				BEBE2F431E71DED600DEDF21 /* PanelViewController+Keyboard.swift in Sources */,
 				BE5123641E5790E30034A61F /* LogLevel.swift in Sources */,
 				BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */,
+				BEBE2F411E71DDFC00DEDF21 /* PanelViewController+Appearance.swift in Sources */,
 				BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */,
 				BE5123711E5791090034A61F /* PanelViewController.swift in Sources */,
 				BEBE2F351E6F459A00DEDF21 /* PanelManager+Pinning.swift in Sources */,

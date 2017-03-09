@@ -1,0 +1,118 @@
+//
+//  PanelViewController+Appearance.swift
+//  PanelKit
+//
+//  Created by Louis D'hauwe on 09/03/2017.
+//  Copyright © 2017 Silver Fox. All rights reserved.
+//
+
+import Foundation
+
+extension PanelViewController {
+	
+	var tintColor: UIColor {
+		return panelNavigationController.navigationBar.tintColor
+	}
+	
+	func disableShadow(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.toValue = 0.0
+			anim.duration = duration
+			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			
+		}
+		
+		shadowView.layer.shadowOpacity = 0.0
+		
+		isShadowForceDisabled = true
+	}
+	
+	func enableShadow(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.toValue = shadowOpacity
+			anim.duration = duration
+			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			
+		}
+		
+		shadowView.layer.shadowOpacity = shadowOpacity
+		
+		isShadowForceDisabled = false
+		
+	}
+	
+	func disableCornerRadius(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.cornerRadius))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = panelNavigationController.view.layer.cornerRadius
+			anim.toValue = 0.0
+			anim.duration = duration
+			panelNavigationController.view.layer.add(anim, forKey: #keyPath(CALayer.cornerRadius))
+			
+		}
+		
+		panelNavigationController.view.layer.cornerRadius = 0.0
+		
+		panelNavigationController.view.clipsToBounds = true
+		
+	}
+	
+	func enableCornerRadius(animated: Bool = false, duration: Double = 0.3) {
+		
+		if animated {
+			
+			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.cornerRadius))
+			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
+			anim.fromValue = panelNavigationController.view.layer.cornerRadius
+			anim.toValue = cornerRadius
+			anim.duration = duration
+			panelNavigationController.view.layer.add(anim, forKey: #keyPath(CALayer.cornerRadius))
+			
+		}
+		
+		panelNavigationController.view.layer.cornerRadius = cornerRadius
+		
+		panelNavigationController.view.clipsToBounds = true
+		
+	}
+	
+	var shadowEnabled: Bool {
+		return delegate?.enablePanelShadow(for: self) == true
+	}
+	
+	func updateShadow() {
+		
+		if isShadowForceDisabled {
+			return
+		}
+		
+		if shadowEnabled {
+			
+			shadowView.layer.shadowRadius = shadowRadius
+			shadowView.layer.shadowOpacity = shadowOpacity
+			shadowView.layer.shadowOffset = shadowOffset
+			shadowView.layer.shadowColor = shadowColor
+			
+		} else {
+			
+			shadowView.layer.shadowRadius = 0.0
+			shadowView.layer.shadowOpacity = 0.0
+			
+		}
+		
+	}
+	
+}
