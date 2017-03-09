@@ -28,6 +28,16 @@
 		BEBE2F431E71DED600DEDF21 /* PanelViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */; };
 		BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */; };
 		BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */; };
+		BEBE2F4F1E71FC0B00DEDF21 /* PanelKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */; };
+		BEBE2F511E71FC0B00DEDF21 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
+		BEBE2F5A1E71FCC500DEDF21 /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F581E71FCC500DEDF21 /* MapPanelContentViewController.swift */; };
+		BEBE2F5B1E71FCC500DEDF21 /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F591E71FCC500DEDF21 /* TextPanelContentViewController.swift */; };
+		BEBE2F5D1E71FE1900DEDF21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F5C1E71FE1900DEDF21 /* ViewController.swift */; };
+		BEBE2F651E7208C800DEDF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F641E7208C800DEDF21 /* AppDelegate.swift */; };
+		BEBE2F671E7208C800DEDF21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F661E7208C800DEDF21 /* ViewController.swift */; };
+		BEBE2F6A1E7208C800DEDF21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F681E7208C800DEDF21 /* Main.storyboard */; };
+		BEBE2F6C1E7208C800DEDF21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F6B1E7208C800DEDF21 /* Assets.xcassets */; };
+		BEBE2F6F1E7208C800DEDF21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F6D1E7208C800DEDF21 /* LaunchScreen.storyboard */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -45,6 +55,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BEBE2F521E71FC0B00DEDF21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE24AD021E4F6B11008892A2;
+			remoteInfo = PanelKit;
+		};
+		BEBE2F741E7208DE00DEDF21 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BEBE2F611E7208C800DEDF21;
+			remoteInfo = "PanelKit Test Host";
+		};
 		BED541E11E676172002A5459 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
@@ -99,6 +123,19 @@
 		BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Keyboard.swift"; path = "Controller/PanelViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Dragging.swift"; path = "Controller/PanelViewController+Dragging.swift"; sourceTree = "<group>"; };
 		BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Offscreen.swift"; path = "Controller/PanelViewController+Offscreen.swift"; sourceTree = "<group>"; };
+		BEBE2F4C1E71FC0A00DEDF21 /* PanelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PanelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelKitTests.swift; sourceTree = "<group>"; };
+		BEBE2F501E71FC0B00DEDF21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEBE2F581E71FCC500DEDF21 /* MapPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPanelContentViewController.swift; path = Panels/MapPanelContentViewController.swift; sourceTree = "<group>"; };
+		BEBE2F591E71FCC500DEDF21 /* TextPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPanelContentViewController.swift; path = Panels/TextPanelContentViewController.swift; sourceTree = "<group>"; };
+		BEBE2F5C1E71FE1900DEDF21 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEBE2F621E7208C800DEDF21 /* PanelKit Test Host.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "PanelKit Test Host.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BEBE2F641E7208C800DEDF21 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		BEBE2F661E7208C800DEDF21 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		BEBE2F691E7208C800DEDF21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		BEBE2F6B1E7208C800DEDF21 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		BEBE2F6E1E7208C800DEDF21 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		BEBE2F701E7208C800DEDF21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
@@ -119,6 +156,21 @@
 
 /* Begin PBXFrameworksBuildPhase section */
 		BE24ACFF1E4F6B11008892A2 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBE2F491E71FC0A00DEDF21 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBE2F511E71FC0B00DEDF21 /* PanelKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBE2F5F1E7208C800DEDF21 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -149,6 +201,8 @@
 				BE24AD051E4F6B11008892A2 /* PanelKit */,
 				BEFCF7731E675D0600BC95ED /* PanelKit UI Test Host */,
 				BEFCF7671E6759F800BC95ED /* PanelKit UI Tests */,
+				BEBE2F631E7208C800DEDF21 /* PanelKit Test Host */,
+				BEBE2F4D1E71FC0A00DEDF21 /* PanelKit Tests */,
 				BE24AD041E4F6B11008892A2 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -159,6 +213,8 @@
 				BE24AD031E4F6B11008892A2 /* PanelKit.framework */,
 				BEFCF7661E6759F800BC95ED /* PanelKit UI Tests.xctest */,
 				BEFCF7721E675D0600BC95ED /* PanelKit UI Test Host.app */,
+				BEBE2F4C1E71FC0A00DEDF21 /* PanelKitTests.xctest */,
+				BEBE2F621E7208C800DEDF21 /* PanelKit Test Host.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -215,6 +271,40 @@
 				BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */,
 			);
 			name = PanelManager;
+			sourceTree = "<group>";
+		};
+		BEBE2F4D1E71FC0A00DEDF21 /* PanelKit Tests */ = {
+			isa = PBXGroup;
+			children = (
+				BEBE2F5C1E71FE1900DEDF21 /* ViewController.swift */,
+				BEBE2F571E71FCA300DEDF21 /* Panels */,
+				BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */,
+				BEBE2F501E71FC0B00DEDF21 /* Info.plist */,
+			);
+			name = "PanelKit Tests";
+			path = PanelKitTests;
+			sourceTree = "<group>";
+		};
+		BEBE2F571E71FCA300DEDF21 /* Panels */ = {
+			isa = PBXGroup;
+			children = (
+				BEBE2F581E71FCC500DEDF21 /* MapPanelContentViewController.swift */,
+				BEBE2F591E71FCC500DEDF21 /* TextPanelContentViewController.swift */,
+			);
+			name = Panels;
+			sourceTree = "<group>";
+		};
+		BEBE2F631E7208C800DEDF21 /* PanelKit Test Host */ = {
+			isa = PBXGroup;
+			children = (
+				BEBE2F641E7208C800DEDF21 /* AppDelegate.swift */,
+				BEBE2F661E7208C800DEDF21 /* ViewController.swift */,
+				BEBE2F681E7208C800DEDF21 /* Main.storyboard */,
+				BEBE2F6B1E7208C800DEDF21 /* Assets.xcassets */,
+				BEBE2F6D1E7208C800DEDF21 /* LaunchScreen.storyboard */,
+				BEBE2F701E7208C800DEDF21 /* Info.plist */,
+			);
+			path = "PanelKit Test Host";
 			sourceTree = "<group>";
 		};
 		BEF801491E50F0A1007D3CEE /* Utils */ = {
@@ -292,6 +382,42 @@
 			productReference = BE24AD031E4F6B11008892A2 /* PanelKit.framework */;
 			productType = "com.apple.product-type.framework";
 		};
+		BEBE2F4B1E71FC0A00DEDF21 /* PanelKitTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEBE2F541E71FC0B00DEDF21 /* Build configuration list for PBXNativeTarget "PanelKitTests" */;
+			buildPhases = (
+				BEBE2F481E71FC0A00DEDF21 /* Sources */,
+				BEBE2F491E71FC0A00DEDF21 /* Frameworks */,
+				BEBE2F4A1E71FC0A00DEDF21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BEBE2F531E71FC0B00DEDF21 /* PBXTargetDependency */,
+				BEBE2F751E7208DE00DEDF21 /* PBXTargetDependency */,
+			);
+			name = PanelKitTests;
+			productName = PanelKitTests;
+			productReference = BEBE2F4C1E71FC0A00DEDF21 /* PanelKitTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		BEBE2F611E7208C800DEDF21 /* PanelKit Test Host */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BEBE2F711E7208C800DEDF21 /* Build configuration list for PBXNativeTarget "PanelKit Test Host" */;
+			buildPhases = (
+				BEBE2F5E1E7208C800DEDF21 /* Sources */,
+				BEBE2F5F1E7208C800DEDF21 /* Frameworks */,
+				BEBE2F601E7208C800DEDF21 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "PanelKit Test Host";
+			productName = "PanelKit Test Host";
+			productReference = BEBE2F621E7208C800DEDF21 /* PanelKit Test Host.app */;
+			productType = "com.apple.product-type.application";
+		};
 		BEFCF7651E6759F800BC95ED /* PanelKit UI Tests */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = BEFCF76D1E6759F800BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Tests" */;
@@ -344,6 +470,17 @@
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 					};
+					BEBE2F4B1E71FC0A00DEDF21 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6G5LMQ72D8;
+						ProvisioningStyle = Automatic;
+						TestTargetID = BEBE2F611E7208C800DEDF21;
+					};
+					BEBE2F611E7208C800DEDF21 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6G5LMQ72D8;
+						ProvisioningStyle = Automatic;
+					};
 					BEFCF7651E6759F800BC95ED = {
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = 6G5LMQ72D8;
@@ -373,6 +510,8 @@
 				BE24AD021E4F6B11008892A2 /* PanelKit */,
 				BEFCF7651E6759F800BC95ED /* PanelKit UI Tests */,
 				BEFCF7711E675D0600BC95ED /* PanelKit UI Test Host */,
+				BEBE2F4B1E71FC0A00DEDF21 /* PanelKitTests */,
+				BEBE2F611E7208C800DEDF21 /* PanelKit Test Host */,
 			);
 		};
 /* End PBXProject section */
@@ -382,6 +521,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBE2F4A1E71FC0A00DEDF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBE2F601E7208C800DEDF21 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBE2F6F1E7208C800DEDF21 /* LaunchScreen.storyboard in Resources */,
+				BEBE2F6C1E7208C800DEDF21 /* Assets.xcassets in Resources */,
+				BEBE2F6A1E7208C800DEDF21 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +592,26 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		BEBE2F481E71FC0A00DEDF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBE2F5A1E71FCC500DEDF21 /* MapPanelContentViewController.swift in Sources */,
+				BEBE2F5B1E71FCC500DEDF21 /* TextPanelContentViewController.swift in Sources */,
+				BEBE2F5D1E71FE1900DEDF21 /* ViewController.swift in Sources */,
+				BEBE2F4F1E71FC0B00DEDF21 /* PanelKitTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BEBE2F5E1E7208C800DEDF21 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BEBE2F671E7208C800DEDF21 /* ViewController.swift in Sources */,
+				BEBE2F651E7208C800DEDF21 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BEFCF7621E6759F800BC95ED /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -458,6 +634,16 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BEBE2F531E71FC0B00DEDF21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE24AD021E4F6B11008892A2 /* PanelKit */;
+			targetProxy = BEBE2F521E71FC0B00DEDF21 /* PBXContainerItemProxy */;
+		};
+		BEBE2F751E7208DE00DEDF21 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BEBE2F611E7208C800DEDF21 /* PanelKit Test Host */;
+			targetProxy = BEBE2F741E7208DE00DEDF21 /* PBXContainerItemProxy */;
+		};
 		BED541E21E676172002A5459 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE24AD021E4F6B11008892A2 /* PanelKit */;
@@ -471,6 +657,22 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		BEBE2F681E7208C800DEDF21 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEBE2F691E7208C800DEDF21 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		BEBE2F6D1E7208C800DEDF21 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEBE2F6E1E7208C800DEDF21 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		BEFCF7781E675D0600BC95ED /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -630,6 +832,62 @@
 			};
 			name = Release;
 		};
+		BEBE2F551E71FC0B00DEDF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = PanelKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.PanelKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PanelKit Test Host.app/PanelKit Test Host";
+			};
+			name = Debug;
+		};
+		BEBE2F561E71FC0B00DEDF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = PanelKitTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = be.silverfox.PanelKitTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/PanelKit Test Host.app/PanelKit Test Host";
+			};
+			name = Release;
+		};
+		BEBE2F721E7208C800DEDF21 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit Test Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-Test-Host";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		BEBE2F731E7208C800DEDF21 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
+				INFOPLIST_FILE = "PanelKit Test Host/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "be.silverfox.PanelKit-Test-Host";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
 		BEFCF76B1E6759F800BC95ED /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -708,6 +966,22 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
+		};
+		BEBE2F541E71FC0B00DEDF21 /* Build configuration list for PBXNativeTarget "PanelKitTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEBE2F551E71FC0B00DEDF21 /* Debug */,
+				BEBE2F561E71FC0B00DEDF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BEBE2F711E7208C800DEDF21 /* Build configuration list for PBXNativeTarget "PanelKit Test Host" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BEBE2F721E7208C800DEDF21 /* Debug */,
+				BEBE2F731E7208C800DEDF21 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
 		};
 		BEFCF76D1E6759F800BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Tests" */ = {
 			isa = XCConfigurationList;

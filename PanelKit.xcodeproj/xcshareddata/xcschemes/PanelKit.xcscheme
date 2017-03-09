@@ -38,6 +38,16 @@
                ReferencedContainer = "container:PanelKit.xcodeproj">
             </BuildableReference>
          </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "BEBE2F4B1E71FC0A00DEDF21"
+               BuildableName = "PanelKitTests.xctest"
+               BlueprintName = "PanelKitTests"
+               ReferencedContainer = "container:PanelKit.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
       <MacroExpansion>
          <BuildableReference
