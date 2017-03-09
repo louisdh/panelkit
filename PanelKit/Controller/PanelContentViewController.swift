@@ -9,11 +9,11 @@
 import UIKit
 
 extension PanelContentViewController {
-	
+
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
 	}
-	
+
 }
 
 /// Needs to be presented as root view controller in a PanelNavigationController instance
@@ -113,7 +113,7 @@ extension PanelContentViewController {
 		guard let panel = panelNavigationController?.panelViewController else {
 			return
 		}
-		
+
 		panel.delegate?.toggleFloatStatus(for: panel)
 
 	}

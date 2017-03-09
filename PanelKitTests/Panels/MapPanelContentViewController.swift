@@ -17,7 +17,7 @@ class MapPanelContentViewController: PanelContentViewController {
 
 		let mapView = MKMapView(frame: view.bounds)
 		self.view.addSubview(mapView)
-		
+
 		self.title = "Map"
 
 	}

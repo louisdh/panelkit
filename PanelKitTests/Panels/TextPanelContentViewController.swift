@@ -18,7 +18,7 @@ class TextPanelContentViewController: PanelContentViewController {
 
 		textView = UITextView(frame: view.bounds)
 		self.view.addSubview(textView)
-		
+
 		self.title = "TextView"
 
 	}
