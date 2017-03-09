@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol PanelManager: PanelContentViewControllerDelegate {
+public protocol PanelManager: class {
 
 	/// The panels to be managed.
 	var panels: [PanelViewController] { get }

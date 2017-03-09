@@ -8,16 +8,8 @@
 
 import UIKit
 
-public protocol PanelContentViewControllerDelegate: class {
-
-	func toggleFloatStatus(for panel: PanelViewController)
-
-}
-
 /// Needs to be presented as root view controller in a PanelNavigationController instance
 @objc open class PanelContentViewController: UIViewController {
-
-	internal(set) public weak var panelDelegate: PanelContentViewControllerDelegate?
 
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
@@ -117,8 +109,8 @@ public protocol PanelContentViewControllerDelegate: class {
 		guard let panel = panelNavigationController?.panelViewController else {
 			return
 		}
-
-		self.panelDelegate?.toggleFloatStatus(for: panel)
+		
+		panel.delegate?.toggleFloatStatus(for: panel)
 
 	}
 

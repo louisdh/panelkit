@@ -91,7 +91,6 @@ import UIKit
 		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
 
-		contentViewController.panelDelegate = panelManager
 		self.delegate = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
