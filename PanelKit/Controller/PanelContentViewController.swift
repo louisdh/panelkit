@@ -8,12 +8,16 @@
 
 import UIKit
 
-/// Needs to be presented as root view controller in a PanelNavigationController instance
-@objc open class PanelContentViewController: UIViewController {
-
+extension PanelContentViewController {
+	
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
 	}
+	
+}
+
+/// Needs to be presented as root view controller in a PanelNavigationController instance
+@objc open class PanelContentViewController: UIViewController {
 
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
