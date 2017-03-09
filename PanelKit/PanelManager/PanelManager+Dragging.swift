@@ -15,7 +15,7 @@ extension PanelManager {
 		fadePinnedPreviewOut(for: panel)
 
 		let isPinned = panel.isPinned
-		
+
 		guard isPinned || panel.wasPinned else {
 			return
 		}
@@ -26,20 +26,20 @@ extension PanelManager {
 
 		panel.pinnedSide = nil
 
-		panel.bringToFront()		
+		panel.bringToFront()
 
 		panel.enableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.enableShadow(animated: true, duration: panelGrowDuration)
 
 		if isPinned {
-			
+
 			let currentFrame = panelView.frame
 
 			var newFrame = currentFrame
 			if let contentSize = panel.contentViewController?.preferredPanelContentSize {
 				newFrame.size = contentSize
 			}
-			
+
 			updateFrame(for: panel, to: newFrame)
 		}
 

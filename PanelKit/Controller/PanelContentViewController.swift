@@ -22,7 +22,7 @@ public protocol PanelContentViewControllerDelegate: class {
 	@objc public weak var panelNavigationController: PanelNavigationController? {
 		return navigationController as? PanelNavigationController
 	}
-	
+
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
@@ -30,7 +30,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		updateNavigationButtons()
 
 	}
-	
+
 	open func updateConstraintsForKeyboardShow(with frame: CGRect) {
 
 	}
