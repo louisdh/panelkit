@@ -28,12 +28,6 @@ public protocol PanelContentViewControllerDelegate: class {
 		return panelNavigationController?.panelViewController?.view
 	}
 
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-
-
-	}
-
 	override open func viewWillAppear(_ animated: Bool) {
 		super.viewWillAppear(animated)
 
@@ -41,12 +35,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		updateNavigationButtons()
 
 	}
-
-	override open func viewDidAppear(_ animated: Bool) {
-		super.viewDidAppear(animated)
-
-	}
-
+	
 	open func updateConstraintsForKeyboardShow(with frame: CGRect) {
 
 	}
