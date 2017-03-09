@@ -64,7 +64,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	// MARK: - Move off screen
 
-	@objc func prepareMoveOffScreen() {
+	func prepareMoveOffScreen() {
 
 		position = viewToMove?.center
 
@@ -72,7 +72,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	private let deltaToMoveOffscreen: CGFloat = 400
 
-	@objc func movePanelOffScreen() {
+	func movePanelOffScreen() {
 
 		guard let viewToMove = self.viewToMove else {
 			return
@@ -91,7 +91,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	}
 
-	@objc func completeMoveOffScreen() {
+	func completeMoveOffScreen() {
 
 		positionInFullscreen = viewToMove?.center
 
@@ -99,7 +99,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	// MARK: - Move on screen
 
-	@objc func prepareMoveOnScreen() {
+	func prepareMoveOnScreen() {
 
 		guard let position = position else {
 			return
@@ -119,7 +119,7 @@ public protocol PanelContentViewControllerDelegate: class {
 		self.position = CGPoint(x: x, y: y)
 	}
 
-	@objc func movePanelOnScreen() {
+	func movePanelOnScreen() {
 
 		guard let position = position else {
 			return
@@ -130,7 +130,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	}
 
-	@objc func completeMoveOnScreen() {
+	func completeMoveOnScreen() {
 
 	}
 
