@@ -70,6 +70,7 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	}
 
+	// FIXME: make panel width
 	private let deltaToMoveOffscreen: CGFloat = 400
 
 	func movePanelOffScreen() {
