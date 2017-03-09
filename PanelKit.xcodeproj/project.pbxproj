@@ -27,6 +27,7 @@
 		BEBE2F411E71DDFC00DEDF21 /* PanelViewController+Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */; };
 		BEBE2F431E71DED600DEDF21 /* PanelViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */; };
 		BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */; };
+		BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -97,6 +98,7 @@
 		BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Appearance.swift"; path = "Controller/PanelViewController+Appearance.swift"; sourceTree = "<group>"; };
 		BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Keyboard.swift"; path = "Controller/PanelViewController+Keyboard.swift"; sourceTree = "<group>"; };
 		BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Dragging.swift"; path = "Controller/PanelViewController+Dragging.swift"; sourceTree = "<group>"; };
+		BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Offscreen.swift"; path = "Controller/PanelViewController+Offscreen.swift"; sourceTree = "<group>"; };
 		BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Dragging.swift"; path = "PanelManager/PanelManager+Dragging.swift"; sourceTree = "<group>"; };
 		BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Default.swift"; path = "PanelManager/PanelManager+Default.swift"; sourceTree = "<group>"; };
 		BEF8014A1E50F0C4007D3CEE /* UIViewController+Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "UIViewController+Popover.swift"; path = "Utils/UIViewController+Popover.swift"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				BEBE2F401E71DDFC00DEDF21 /* PanelViewController+Appearance.swift */,
 				BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */,
 				BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */,
+				BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */,
 				BEBE2F3E1E71DCE400DEDF21 /* PanelViewController+States.swift */,
 			);
 			name = Controller;
@@ -409,6 +412,7 @@
 				BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */,
 				BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */,
 				BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */,
+				BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */,
 				BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */,
 				BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,

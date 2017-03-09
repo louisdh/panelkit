@@ -13,7 +13,7 @@ public extension PanelManager {
 	func panelsPrepareMoveOffScreen() {
 
 		for panel in panels {
-			panel.contentViewController?.prepareMoveOffScreen()
+			panel.prepareMoveOffScreen()
 		}
 
 	}
@@ -21,7 +21,7 @@ public extension PanelManager {
 	func panelsPrepareMoveOnScreen() {
 
 		for panel in panels {
-			panel.contentViewController?.prepareMoveOnScreen()
+			panel.prepareMoveOnScreen()
 		}
 
 	}
@@ -34,7 +34,7 @@ public extension PanelManager {
 				continue
 			}
 
-			panel.contentViewController?.movePanelOnScreen()
+			panel.movePanelOnScreen()
 
 		}
 
@@ -48,7 +48,7 @@ public extension PanelManager {
 				continue
 			}
 
-			panel.contentViewController?.movePanelOffScreen()
+			panel.movePanelOffScreen()
 		}
 
 	}
@@ -56,7 +56,7 @@ public extension PanelManager {
 	func panelsCompleteMoveOnScreen() {
 
 		for panel in panels {
-			panel.contentViewController?.completeMoveOnScreen()
+			panel.completeMoveOnScreen()
 		}
 
 	}
@@ -64,7 +64,7 @@ public extension PanelManager {
 	func panelsCompleteMoveOffScreen() {
 
 		for panel in panels {
-			panel.contentViewController?.completeMoveOffScreen()
+			panel.completeMoveOffScreen()
 		}
 
 	}

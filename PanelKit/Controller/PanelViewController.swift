@@ -21,6 +21,9 @@ import UIKit
 
 	var panelPinnedPreviewView: UIView?
 
+	var position: CGPoint?
+	var positionInFullscreen: CGPoint?
+
 	/// Shadow "force" disabled (meaning not by delegate choice).
 	///
 	/// E.g. when panel is pinned.
