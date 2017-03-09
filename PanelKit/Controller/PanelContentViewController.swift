@@ -70,11 +70,12 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	}
 
-	// FIXME: make panel width
-	private let deltaToMoveOffscreen: CGFloat = 400
-
 	func movePanelOffScreen() {
 
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
 		guard let viewToMove = self.viewToMove else {
 			return
 		}
@@ -83,12 +84,17 @@ public protocol PanelContentViewControllerDelegate: class {
 			return
 		}
 
-		// FIXME: use updateFrame
+		let deltaToMoveOffscreen: CGFloat = viewToMove.frame.width + shadowRadius + max(0, -shadowOffset.width)
+		
+		var frame = viewToMove.frame
+		
 		if viewToMove.center.x < superView.frame.size.width/2.0 {
-			viewToMove.center = CGPoint(x: -deltaToMoveOffscreen, y: viewToMove.center.y)
+			frame.center = CGPoint(x: -deltaToMoveOffscreen, y: viewToMove.center.y)
 		} else {
-			viewToMove.center = CGPoint(x: superView.frame.size.width + deltaToMoveOffscreen, y: viewToMove.center.y)
+			frame.center = CGPoint(x: superView.frame.size.width + deltaToMoveOffscreen, y: viewToMove.center.y)
 		}
+		
+		panel.delegate?.updateFrame(for: panel, to: frame)
 
 	}
 
@@ -122,12 +128,22 @@ public protocol PanelContentViewControllerDelegate: class {
 
 	func movePanelOnScreen() {
 
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
 		guard let position = position else {
 			return
 		}
 
-		// FIXME: use updateFrame
-		viewToMove?.center = position
+		guard let viewToMove = self.viewToMove else {
+			return
+		}
+
+		var frame = viewToMove.frame
+		frame.center = position
+
+		panel.delegate?.updateFrame(for: panel, to: frame)
 
 	}
 
