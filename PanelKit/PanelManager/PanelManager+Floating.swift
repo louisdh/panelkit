@@ -10,13 +10,14 @@ import UIKit
 
 public extension PanelManager {
 
-	func toggleFloatStatus(for panel: PanelViewController) {
+	func toggleFloatStatus(for panel: PanelViewController, completion: (() -> Void)? = nil) {
 
 		let panelNavCon = panel.panelNavigationController
 
 		if (panel.isFloating || panel.isPinned) && !panelNavCon.isPresentedAsPopover {
 
 			close(panel)
+			completion?()
 
 		} else {
 
@@ -51,6 +52,8 @@ public extension PanelManager {
 				if panel.view.superview == self.panelContentWrapperView {
 					panel.contentViewController?.didUpdateFloatingState()
 				}
+
+				completion?()
 
 			})
 
