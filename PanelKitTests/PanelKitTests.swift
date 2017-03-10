@@ -244,4 +244,81 @@ class PanelKitTests: XCTestCase {
 		
 	}
 	
+	func testClosing() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			assert(mapPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				assert(mapPanel.isFloating)
+
+				self.viewController.close(mapPanel)
+				
+				assert(!mapPanel.isFloating)
+				
+				popExp.fulfill()
+				
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
+	func testDragToPin() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			assert(mapPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				let from = mapPanel.view.center
+				let toX = self.viewController.view.bounds.width - mapPanel.contentViewController!.view.bounds.width/2
+				let to = CGPoint(x: toX, y: mapPanel.view.center.y)
+				mapPanel.panelNavigationController.moveWithTouch(from: from, to: to)
+				self.viewController.view.layoutIfNeeded()
+				
+				mapPanel.panelNavigationController.moveWithTouch(from: to, to: to)
+
+				mapPanel.didEndDrag()
+				
+				assert(mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == mapPanel)
+				
+				popExp.fulfill()
+
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
 }
