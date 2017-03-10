@@ -270,6 +270,70 @@ class PanelKitTests: XCTestCase {
 		
 	}
 	
+	func testClosingAllFloating() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		
+		let exp = self.expectation(description: "closing")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				assert(mapPanel.isFloating)
+				
+				self.viewController.closeAllFloatingPanels()
+				
+				assert(!mapPanel.isFloating)
+				
+				exp.fulfill()
+				
+			})
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
+	func testClosingAllPinned() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		
+		let exp = self.expectation(description: "closing")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				self.viewController.didEndDrag(mapPanel, toEdgeOf: .right)
+				
+				assert(mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == mapPanel)
+				
+				self.viewController.closeAllPinnedPanels()
+				
+				assert(!mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == nil)
+				
+				exp.fulfill()
+				
+			})
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
 	func testDragToPin() {
 		
 		let mapPanel = viewController.mapPanelVC!
