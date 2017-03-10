@@ -111,5 +111,82 @@ class PanelKitTests: XCTestCase {
 		}
 		
 	}
+	
+	func testPinned() {
+
+		let mapPanel = viewController.mapPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			assert(mapPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				self.viewController.didEndDrag(mapPanel, toEdgeOf: .right)
+
+				assert(mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == mapPanel)
+				
+				
+				self.viewController.didDragFree(mapPanel)
+				assert(!mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == nil)
+
+				popExp.fulfill()
+				
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
+	func testKeyboard() {
+
+		let textPanel = viewController.textPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showTextPanelFromBarButton {
+			
+			assert(textPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: textPanel, completion: {
+				
+				let textView = self.viewController.textPanelContentVC.textView
+				
+				textView!.becomeFirstResponder()
+				
+				assert(textView!.isFirstResponder)
+				
+				textView!.resignFirstResponder()
+
+				assert(!textView!.isFirstResponder)
+
+				popExp.fulfill()
+				
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+	}
 
 }
