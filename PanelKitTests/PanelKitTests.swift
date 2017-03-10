@@ -16,21 +16,23 @@ class PanelKitTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
-
+		
 		viewController = ViewController()
 		navigationController = UINavigationController(rootViewController: viewController)
 		navigationController.view.frame = CGRect(origin: .zero, size: CGSize(width: 1024, height: 768))
-
-		UIApplication.shared.keyWindow!.rootViewController!.present(navigationController, animated: false, completion: nil)
-
+	
+		let window = UIWindow(frame: UIScreen.main.bounds)
+		window.rootViewController = navigationController
+		window.makeKeyAndVisible()
+	
 		XCTAssertNotNil(navigationController.view)
 		XCTAssertNotNil(viewController.view)
 
     }
 
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
+		// Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
     func testFloating() {
@@ -107,7 +109,6 @@ class PanelKitTests: XCTestCase {
 				XCTFail(error.localizedDescription)
 			}
 		}
-
 		
 	}
 
