@@ -44,8 +44,7 @@ class PanelKitTests: XCTestCase {
 		assert(!mapPanel.isPresentedModally)
 		assert(!mapPanel.isPresentedAsPopover)
 
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "floating")
 
 		viewController.showMapPanelFromBarButton {
 
@@ -54,11 +53,9 @@ class PanelKitTests: XCTestCase {
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
 				assert(mapPanel.isFloating)
-				popExp.fulfill()
+				exp.fulfill()
 
 			})
-
-			popoverExp.fulfill()
 
 		}
 
@@ -122,8 +119,7 @@ class PanelKitTests: XCTestCase {
 
 		let mapPanel = viewController.mapPanelVC!
 		
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "pinned")
 		
 		viewController.showMapPanelFromBarButton {
 			
@@ -141,11 +137,9 @@ class PanelKitTests: XCTestCase {
 				assert(!mapPanel.isPinned)
 				assert(self.viewController.panelPinnedRight == nil)
 
-				popExp.fulfill()
+				exp.fulfill()
 				
 			})
-			
-			popoverExp.fulfill()
 			
 		}
 		
@@ -161,8 +155,7 @@ class PanelKitTests: XCTestCase {
 
 		let textPanel = viewController.textPanelVC!
 		
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "keyboard")
 		
 		viewController.showTextPanelFromBarButton {
 			
@@ -180,11 +173,9 @@ class PanelKitTests: XCTestCase {
 
 				assert(!textView!.isFirstResponder)
 
-				popExp.fulfill()
+				exp.fulfill()
 				
 			})
-			
-			popoverExp.fulfill()
 			
 		}
 		
@@ -199,8 +190,7 @@ class PanelKitTests: XCTestCase {
 		
 		let mapPanel = viewController.mapPanelVC!
 		
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "offOnScreen")
 		
 		viewController.showMapPanelFromBarButton {
 			
@@ -234,11 +224,9 @@ class PanelKitTests: XCTestCase {
 				assert(vcFrame.intersects(mapPanelFrameOn))
 
 				
-				popExp.fulfill()
+				exp.fulfill()
 				
 			})
-			
-			popoverExp.fulfill()
 			
 		}
 		
@@ -254,8 +242,7 @@ class PanelKitTests: XCTestCase {
 		
 		let mapPanel = viewController.mapPanelVC!
 		
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "closing")
 		
 		viewController.showMapPanelFromBarButton {
 			
@@ -269,12 +256,10 @@ class PanelKitTests: XCTestCase {
 				
 				assert(!mapPanel.isFloating)
 				
-				popExp.fulfill()
+				exp.fulfill()
 				
 			})
-			
-			popoverExp.fulfill()
-			
+						
 		}
 		
 		waitForExpectations(timeout: 10.0) { (error) in
