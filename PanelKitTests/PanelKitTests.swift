@@ -289,8 +289,7 @@ class PanelKitTests: XCTestCase {
 		
 		let mapPanel = viewController.mapPanelVC!
 		
-		let popoverExp = self.expectation(description: "popover")
-		let popExp = self.expectation(description: "pop")
+		let exp = self.expectation(description: "dragToPin")
 		
 		viewController.showMapPanelFromBarButton {
 			
@@ -311,11 +310,18 @@ class PanelKitTests: XCTestCase {
 				assert(mapPanel.isPinned)
 				assert(self.viewController.panelPinnedRight == mapPanel)
 				
-				popExp.fulfill()
+				
+				mapPanel.panelNavigationController.moveWithTouch(from: to, to: from)
+				self.viewController.view.layoutIfNeeded()
+				mapPanel.didEndDrag()
+
+				assert(!mapPanel.isPinned)
+				assert(self.viewController.panelPinnedRight == nil)
+				
+				
+				exp.fulfill()
 
 			})
-			
-			popoverExp.fulfill()
 			
 		}
 		
