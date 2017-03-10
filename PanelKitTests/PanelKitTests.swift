@@ -189,4 +189,59 @@ class PanelKitTests: XCTestCase {
 		}
 	}
 
+	func testOffOnScreen() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			assert(mapPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				// Move off screen
+				
+				self.viewController.panelsPrepareMoveOffScreen()
+				self.viewController.panelsMovePanelOffScreen()
+				
+				self.viewController.view.layoutIfNeeded()
+				self.viewController.panelsCompleteMoveOffScreen()
+				
+				let vcFrame = self.viewController.view.bounds
+				let mapPanelFrame = mapPanel.view.frame
+				
+				assert(!vcFrame.intersects(mapPanelFrame))
+				
+				
+				// Move on screen
+				
+				self.viewController.panelsPrepareMoveOnScreen()
+				self.viewController.panelsMovePanelOnScreen()
+				
+				self.viewController.view.layoutIfNeeded()
+				self.viewController.panelsCompleteMoveOnScreen()
+
+				let mapPanelFrameOn = mapPanel.view.frame
+				assert(vcFrame.intersects(mapPanelFrameOn))
+
+				
+				popExp.fulfill()
+				
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+		
+	}
+	
 }
