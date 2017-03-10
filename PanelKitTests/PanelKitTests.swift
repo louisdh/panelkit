@@ -67,5 +67,48 @@ class PanelKitTests: XCTestCase {
 		}
 
     }
+	
+	func testExpose() {
+		
+		let mapPanel = viewController.mapPanelVC!
+		let textPanel = viewController.textPanelVC!
+		
+		let popoverExp = self.expectation(description: "popover")
+		let popExp = self.expectation(description: "pop")
+		
+		viewController.showMapPanelFromBarButton {
+			
+			assert(mapPanel.isPresentedAsPopover)
+			
+			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
+				
+				assert(mapPanel.isFloating)
+				
+				self.viewController.enterExpose()
+				
+				assert(mapPanel.isInExpose)
+				assert(!textPanel.isInExpose)
+				
+				self.viewController.exitExpose()
+				
+				assert(!mapPanel.isInExpose)
+				assert(!textPanel.isInExpose)
+				
+				popExp.fulfill()
+				
+			})
+			
+			popoverExp.fulfill()
+			
+		}
+		
+		waitForExpectations(timeout: 10.0) { (error) in
+			if let error = error {
+				XCTFail(error.localizedDescription)
+			}
+		}
+
+		
+	}
 
 }
