@@ -974,6 +974,7 @@
 				BEBE2F561E71FC0B00DEDF21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BEBE2F711E7208C800DEDF21 /* Build configuration list for PBXNativeTarget "PanelKit Test Host" */ = {
 			isa = XCConfigurationList;
@@ -982,6 +983,7 @@
 				BEBE2F731E7208C800DEDF21 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BEFCF76D1E6759F800BC95ED /* Build configuration list for PBXNativeTarget "PanelKit UI Tests" */ = {
 			isa = XCConfigurationList;
