@@ -1,2 +1,3 @@
 ignore:
   - "PanelKitTests"
+  - "PanelKit UI Test Host"
