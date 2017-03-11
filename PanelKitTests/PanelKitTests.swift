@@ -18,7 +18,7 @@ class PanelKitTests: XCTestCase {
         super.setUp()
 
 		viewController = ViewController()
-		
+
 		navigationController = UINavigationController(rootViewController: viewController)
 		navigationController.view.frame = CGRect(origin: .zero, size: CGSize(width: 1024, height: 768))
 
@@ -54,14 +54,14 @@ class PanelKitTests: XCTestCase {
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
 				XCTAssert(mapPanel.isFloating)
-				
+
 				self.viewController.toggleFloatStatus(for: mapPanel, completion: {
-					
+
 					XCTAssert(!mapPanel.isFloating)
 					exp.fulfill()
-					
+
 				})
-				
+
 			})
 
 		}
@@ -128,42 +128,42 @@ class PanelKitTests: XCTestCase {
 		let textPanel = viewController.textPanelVC!
 
 		let exp = self.expectation(description: "pinnedFloating")
-		
+
 		viewController.showMapPanelFromBarButton {
-			
+
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
-				
+
 				self.viewController.showTextPanelFromBarButton {
 
 					self.viewController.toggleFloatStatus(for: textPanel, completion: {
 
 						self.viewController.didEndDrag(mapPanel, toEdgeOf: .right)
-						
+
 						XCTAssert(mapPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedRight == mapPanel)
-						
+
 						self.viewController.didDragFree(mapPanel)
 						XCTAssert(!mapPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedRight == nil)
-						
+
 						exp.fulfill()
-						
+
 					})
-					
+
 				}
-				
+
 			})
-			
+
 		}
-		
+
 		waitForExpectations(timeout: 10.0) { (error) in
 			if let error = error {
 				XCTFail(error.localizedDescription)
 			}
 		}
-		
+
 	}
-	
+
 	func testPinned() {
 
 		let mapPanel = viewController.mapPanelVC!
@@ -362,31 +362,29 @@ class PanelKitTests: XCTestCase {
 				XCTAssert(mapPanel.isPinned)
 				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
-				
 				self.viewController.showTextPanelFromBarButton {
 
 					self.viewController.toggleFloatStatus(for: textPanel, completion: {
-						
+
 						self.viewController.didEndDrag(textPanel, toEdgeOf: .left)
 
 						XCTAssert(textPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedLeft == textPanel)
 
 						self.viewController.closeAllPinnedPanels()
-						
+
 						XCTAssert(!mapPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedRight == nil)
-						
+
 						XCTAssert(!textPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedLeft == nil)
-						
-						
+
 						exp.fulfill()
-						
+
 					})
-					
+
 				}
-				
+
 			})
 
 		}

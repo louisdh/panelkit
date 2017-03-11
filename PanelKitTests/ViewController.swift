@@ -73,7 +73,7 @@ class ViewController: UIViewController, PanelManager {
 	// MARK: - PanelManager
 
 	let panelManagerLogLevel: LogLevel = .full
-	
+
 	var panelContentWrapperView: UIView {
 		return contentWrapperView
 	}

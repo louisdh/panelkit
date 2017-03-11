@@ -56,7 +56,7 @@ import UIKit
 			self.updateShadow()
 		}
 	}
-	
+
 	weak var contentDelegate: PanelContentDelegate?
 
 	let shadowView: UIView
@@ -134,7 +134,7 @@ import UIKit
 
 		contentDelegate?.didUpdateFloatingState()
 		contentDelegate?.updateNavigationButtons()
-		
+
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
