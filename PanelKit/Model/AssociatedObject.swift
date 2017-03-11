@@ -15,8 +15,10 @@ func associatedObject<ValueType: AnyObject>(
 	key: UnsafePointer<UInt8>,
 	initialiser: () -> ValueType)
 	-> ValueType {
-		if let associated = objc_getAssociatedObject(base, key)
-			as? ValueType { return associated }
+		if let associated = objc_getAssociatedObject(base, key) as? ValueType {
+			return associated
+		}
+
 		let associated = initialiser()
 		objc_setAssociatedObject(base, key, associated, .OBJC_ASSOCIATION_RETAIN)
 		return associated
