@@ -43,35 +43,15 @@ class ViewController: UIViewController, PanelManager {
 
 		enableTripleTapExposeActivation()
 
-		mapPanelBarBtn = UIBarButtonItem(title: "Map", style: .done, target: self, action: #selector(showMap(_:)))
-		textPanelBarBtn = UIBarButtonItem(title: "Text", style: .done, target: self, action: #selector(showTextViewPanel(_:)))
+		mapPanelBarBtn = UIBarButtonItem(title: "Map", style: .done, target: self, action: nil)
+		textPanelBarBtn = UIBarButtonItem(title: "Text", style: .done, target: self, action: nil)
 
 		self.navigationItem.title = "Test"
 		self.navigationItem.rightBarButtonItems = [mapPanelBarBtn, textPanelBarBtn]
 
 	}
 
-	// MARK: - Exposé
-
-	@IBAction func toggleExpose(_ sender: UIBarButtonItem) {
-
-		toggleExpose()
-
-	}
-
 	// MARK: - Popover
-
-	func showMap(_ sender: UIBarButtonItem) {
-
-		showPopover(mapPanelVC, from: sender)
-
-	}
-
-	func showTextViewPanel(_ sender: UIBarButtonItem) {
-
-		showPopover(textPanelVC, from: sender)
-
-	}
 
 	func showMapPanelFromBarButton(completion: @escaping (() -> Void)) {
 		showPopover(mapPanelVC, from: mapPanelBarBtn, completion: completion)
