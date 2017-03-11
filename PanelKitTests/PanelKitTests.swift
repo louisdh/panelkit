@@ -249,7 +249,7 @@ class PanelKitTests: XCTestCase {
 				// Move off screen
 
 				self.viewController.panelsPrepareMoveOffScreen()
-				self.viewController.panelsMovePanelOffScreen()
+				self.viewController.panelsMoveOffScreen()
 
 				self.viewController.view.layoutIfNeeded()
 				self.viewController.panelsCompleteMoveOffScreen()
@@ -262,7 +262,7 @@ class PanelKitTests: XCTestCase {
 				// Move on screen
 
 				self.viewController.panelsPrepareMoveOnScreen()
-				self.viewController.panelsMovePanelOnScreen()
+				self.viewController.panelsMoveOnScreen()
 
 				self.viewController.view.layoutIfNeeded()
 				self.viewController.panelsCompleteMoveOnScreen()

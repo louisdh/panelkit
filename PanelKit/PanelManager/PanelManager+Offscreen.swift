@@ -26,7 +26,7 @@ public extension PanelManager {
 
 	}
 
-	func panelsMovePanelOnScreen() {
+	func panelsMoveOnScreen() {
 
 		for panel in panels {
 
@@ -40,7 +40,7 @@ public extension PanelManager {
 
 	}
 
-	func panelsMovePanelOffScreen() {
+	func panelsMoveOffScreen() {
 
 		for panel in panels {
 
