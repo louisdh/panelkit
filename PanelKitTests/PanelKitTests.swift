@@ -39,20 +39,20 @@ class PanelKitTests: XCTestCase {
 
 		let mapPanel = viewController.mapPanelVC!
 
-		assert(!mapPanel.isFloating)
-		assert(!mapPanel.isPinned)
-		assert(!mapPanel.isPresentedModally)
-		assert(!mapPanel.isPresentedAsPopover)
+		XCTAssert(!mapPanel.isFloating)
+		XCTAssert(!mapPanel.isPinned)
+		XCTAssert(!mapPanel.isPresentedModally)
+		XCTAssert(!mapPanel.isPresentedAsPopover)
 
 		let exp = self.expectation(description: "floating")
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
-				assert(mapPanel.isFloating)
+				XCTAssert(mapPanel.isFloating)
 				exp.fulfill()
 
 			})
@@ -76,7 +76,7 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
@@ -84,18 +84,18 @@ class PanelKitTests: XCTestCase {
 
 					self.viewController.toggleFloatStatus(for: textPanel, completion: {
 
-						assert(mapPanel.isFloating)
-						assert(textPanel.isFloating)
+						XCTAssert(mapPanel.isFloating)
+						XCTAssert(textPanel.isFloating)
 
 						self.viewController.enterExpose()
 
-						assert(mapPanel.isInExpose)
-						assert(textPanel.isInExpose)
+						XCTAssert(mapPanel.isInExpose)
+						XCTAssert(textPanel.isInExpose)
 
 						self.viewController.exitExpose()
 
-						assert(!mapPanel.isInExpose)
-						assert(!textPanel.isInExpose)
+						XCTAssert(!mapPanel.isInExpose)
+						XCTAssert(!textPanel.isInExpose)
 
 						exp.fulfill()
 
@@ -123,18 +123,18 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
 				self.viewController.didEndDrag(mapPanel, toEdgeOf: .right)
 
-				assert(mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == mapPanel)
+				XCTAssert(mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
 				self.viewController.didDragFree(mapPanel)
-				assert(!mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == nil)
+				XCTAssert(!mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == nil)
 
 				exp.fulfill()
 
@@ -158,7 +158,7 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showTextPanelFromBarButton {
 
-			assert(textPanel.isPresentedAsPopover)
+			XCTAssert(textPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: textPanel, completion: {
 
@@ -166,11 +166,11 @@ class PanelKitTests: XCTestCase {
 
 				textView!.becomeFirstResponder()
 
-				assert(textView!.isFirstResponder)
+				XCTAssert(textView!.isFirstResponder)
 
 				textView!.resignFirstResponder()
 
-				assert(!textView!.isFirstResponder)
+				XCTAssert(!textView!.isFirstResponder)
 
 				exp.fulfill()
 
@@ -193,7 +193,7 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
@@ -208,7 +208,7 @@ class PanelKitTests: XCTestCase {
 				let vcFrame = self.viewController.view.bounds
 				let mapPanelFrame = mapPanel.view.frame
 
-				assert(!vcFrame.intersects(mapPanelFrame))
+				XCTAssert(!vcFrame.intersects(mapPanelFrame))
 
 				// Move on screen
 
@@ -219,7 +219,7 @@ class PanelKitTests: XCTestCase {
 				self.viewController.panelsCompleteMoveOnScreen()
 
 				let mapPanelFrameOn = mapPanel.view.frame
-				assert(vcFrame.intersects(mapPanelFrameOn))
+				XCTAssert(vcFrame.intersects(mapPanelFrameOn))
 
 				exp.fulfill()
 
@@ -243,15 +243,15 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
-				assert(mapPanel.isFloating)
+				XCTAssert(mapPanel.isFloating)
 
 				self.viewController.close(mapPanel)
 
-				assert(!mapPanel.isFloating)
+				XCTAssert(!mapPanel.isFloating)
 
 				exp.fulfill()
 
@@ -277,11 +277,11 @@ class PanelKitTests: XCTestCase {
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
-				assert(mapPanel.isFloating)
+				XCTAssert(mapPanel.isFloating)
 
 				self.viewController.closeAllFloatingPanels()
 
-				assert(!mapPanel.isFloating)
+				XCTAssert(!mapPanel.isFloating)
 
 				exp.fulfill()
 
@@ -309,13 +309,13 @@ class PanelKitTests: XCTestCase {
 
 				self.viewController.didEndDrag(mapPanel, toEdgeOf: .right)
 
-				assert(mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == mapPanel)
+				XCTAssert(mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
 				self.viewController.closeAllPinnedPanels()
 
-				assert(!mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == nil)
+				XCTAssert(!mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == nil)
 
 				exp.fulfill()
 
@@ -339,7 +339,7 @@ class PanelKitTests: XCTestCase {
 
 		viewController.showMapPanelFromBarButton {
 
-			assert(mapPanel.isPresentedAsPopover)
+			XCTAssert(mapPanel.isPresentedAsPopover)
 
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 
@@ -353,15 +353,15 @@ class PanelKitTests: XCTestCase {
 
 				mapPanel.didEndDrag()
 
-				assert(mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == mapPanel)
+				XCTAssert(mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
 				mapPanel.panelNavigationController.moveWithTouch(from: to, to: from)
 				self.viewController.view.layoutIfNeeded()
 				mapPanel.didEndDrag()
 
-				assert(!mapPanel.isPinned)
-				assert(self.viewController.panelPinnedRight == nil)
+				XCTAssert(!mapPanel.isPinned)
+				XCTAssert(self.viewController.panelPinnedRight == nil)
 
 				exp.fulfill()
 
