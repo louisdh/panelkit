@@ -18,6 +18,7 @@ class PanelKitTests: XCTestCase {
         super.setUp()
 
 		viewController = ViewController()
+		
 		navigationController = UINavigationController(rootViewController: viewController)
 		navigationController.view.frame = CGRect(origin: .zero, size: CGSize(width: 1024, height: 768))
 
