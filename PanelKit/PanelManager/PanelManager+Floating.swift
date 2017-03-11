@@ -50,7 +50,7 @@ public extension PanelManager {
 				}, completion: nil)
 
 				if panel.view.superview == self.panelContentWrapperView {
-					panel.contentViewController?.didUpdateFloatingState()
+					panel.contentDelegate?.didUpdateFloatingState()
 				}
 
 				completion?()

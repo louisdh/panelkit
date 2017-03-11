@@ -114,7 +114,7 @@ extension PanelViewController {
 
 		}
 
-		contentViewController?.updateNavigationButtons()
+		contentDelegate?.updateNavigationButtons()
 
 	}
 

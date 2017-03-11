@@ -14,7 +14,7 @@ extension PanelManager {
 
 		panel.view.removeFromSuperview()
 
-		panel.contentViewController?.didUpdateFloatingState()
+		panel.contentDelegate?.didUpdateFloatingState()
 
 		if panel.isPinned || panel.wasPinned {
 			didDragFree(panel)

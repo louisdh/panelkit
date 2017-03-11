@@ -32,7 +32,7 @@ import UIKit
 	// TODO: make internal?
 	@objc public let panelNavigationController: PanelNavigationController
 
-	@objc public weak var contentViewController: PanelContentViewController?
+	@objc public weak var contentViewController: UIViewController?
 
 	var pinnedSide: PanelPinSide?
 
@@ -56,13 +56,16 @@ import UIKit
 			self.updateShadow()
 		}
 	}
+	
+	weak var contentDelegate: PanelContentDelegate?
 
 	let shadowView: UIView
 
 	// MARK: -
 
-	public init(with contentViewController: PanelContentViewController, in panelManager: PanelManager) {
+	public init(with contentViewController: UIViewController, contentDelegate: PanelContentDelegate, in panelManager: PanelManager) {
 
+		self.contentDelegate = contentDelegate
 		self.contentViewController = contentViewController
 
 		self.panelNavigationController = PanelNavigationController(rootViewController: contentViewController)
@@ -129,6 +132,9 @@ import UIKit
 		didUpdateFloatingState()
 		contentViewController?.viewWillAppear(animated)
 
+		contentDelegate?.didUpdateFloatingState()
+		contentDelegate?.updateNavigationButtons()
+		
 		if logLevel == .full {
 			print("\(self) viewWillAppear")
 		}
@@ -213,7 +219,7 @@ import UIKit
 
 	@objc override public var preferredContentSize: CGSize {
 		get {
-			return contentViewController?.preferredPanelContentSize ?? super.preferredContentSize
+			return contentDelegate?.preferredPanelContentSize ?? super.preferredContentSize
 		}
 		set {
 			super.preferredContentSize = newValue

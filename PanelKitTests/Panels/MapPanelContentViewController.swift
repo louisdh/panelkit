@@ -10,7 +10,7 @@ import Foundation
 import PanelKit
 import MapKit
 
-class MapPanelContentViewController: PanelContentViewController {
+class MapPanelContentViewController: UIViewController, PanelContentDelegate {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,7 +22,7 @@ class MapPanelContentViewController: PanelContentViewController {
 
 	}
 
-	override var preferredPanelContentSize: CGSize {
+	var preferredPanelContentSize: CGSize {
 		return CGSize(width: 320, height: 500)
 	}
 

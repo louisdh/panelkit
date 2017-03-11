@@ -48,14 +48,14 @@ extension PanelManager {
 
 		updatedContentViewFrame.origin.x = 0.0
 
-		if let leftPanelSize = panelPinnedLeft?.contentViewController?.preferredPanelContentSize {
+		if let leftPanelSize = panelPinnedLeft?.contentDelegate?.preferredPanelContentSize {
 
 			updatedContentViewFrame.size.width -= leftPanelSize.width
 
 			updatedContentViewFrame.origin.x = leftPanelSize.width
 		}
 
-		if let rightPanelSize = panelPinnedRight?.contentViewController?.preferredPanelContentSize {
+		if let rightPanelSize = panelPinnedRight?.contentDelegate?.preferredPanelContentSize {
 
 			updatedContentViewFrame.size.width -= rightPanelSize.width
 

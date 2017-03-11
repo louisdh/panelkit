@@ -9,7 +9,7 @@
 import UIKit
 import PanelKit
 
-class TextPanelContentViewController: PanelContentViewController {
+class TextPanelContentViewController: UIViewController, PanelContentDelegate {
 
 	@IBOutlet weak var textView: UITextView!
 
@@ -20,11 +20,11 @@ class TextPanelContentViewController: PanelContentViewController {
 
 	}
 
-	override var shouldAdjustForKeyboard: Bool {
+	var shouldAdjustForKeyboard: Bool {
 		return textView.isFirstResponder
 	}
 
-	override var preferredPanelContentSize: CGSize {
+	var preferredPanelContentSize: CGSize {
 		return CGSize(width: 320, height: 400)
 	}
 

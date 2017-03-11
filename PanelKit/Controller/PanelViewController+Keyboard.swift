@@ -16,11 +16,11 @@ extension PanelViewController {
 
 	func willShowKeyboard(_ notification: Notification) {
 
-		guard let contentViewController = contentViewController else {
+		guard let contentDelegate = contentDelegate else {
 			return
 		}
 
-		guard contentViewController.shouldAdjustForKeyboard else {
+		guard contentDelegate.shouldAdjustForKeyboard else {
 			return
 		}
 
@@ -76,12 +76,12 @@ extension PanelViewController {
 
 		}
 
-		contentViewController.updateConstraintsForKeyboardShow(with: keyboardFrame)
+		contentDelegate.updateConstraintsForKeyboardShow(with: keyboardFrame)
 
 		UIView.animate(withDuration: duration, delay: 0.0, options: animationCurve, animations: {
 
 			self.view.layoutIfNeeded()
-			contentViewController.updateUIForKeyboardShow(with: keyboardFrame)
+			contentDelegate.updateUIForKeyboardShow(with: keyboardFrame)
 
 		}, completion: nil)
 
@@ -89,7 +89,7 @@ extension PanelViewController {
 
 	func willHideKeyboard(_ notification: Notification) {
 
-		guard let contentViewController = contentViewController else {
+		guard let contentDelegate = contentDelegate else {
 			return
 		}
 
@@ -114,12 +114,12 @@ extension PanelViewController {
 		// 1: change panel size height to actual height + 1
 
 		var newFrame = currentFrame
-		newFrame.size = contentViewController.preferredPanelContentSize
+		newFrame.size = contentDelegate.preferredPanelContentSize
 		newFrame.size.height += 1
 
 		self.delegate?.updateFrame(for: self, to: newFrame, keyboardShown: true)
 
-		contentViewController.updateConstraintsForKeyboardHide()
+		contentDelegate.updateConstraintsForKeyboardHide()
 
 		UIView.animate(withDuration: duration, delay: 0.0, options: animationCurve, animations: {
 
@@ -127,14 +127,14 @@ extension PanelViewController {
 
 			self.delegate?.panelContentWrapperView.layoutIfNeeded()
 
-			contentViewController.updateUIForKeyboardHide()
+			contentDelegate.updateUIForKeyboardHide()
 
 		}, completion: nil)
 
 		// 2: change panel size height to actual height
 
 		var newFrame2 = currentFrame
-		newFrame2.size = contentViewController.preferredPanelContentSize
+		newFrame2.size = contentDelegate.preferredPanelContentSize
 
 		self.delegate?.updateFrame(for: self, to: newFrame2)
 		self.delegate?.panelContentWrapperView.layoutIfNeeded()

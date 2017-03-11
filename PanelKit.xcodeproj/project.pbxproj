@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE2332291E745B8A005D3F4C /* BlockBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2332281E745B8A005D3F4C /* BlockBarButtonItem.swift */; };
 		BE24AD081E4F6B11008892A2 /* PanelKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BE24AD061E4F6B11008892A2 /* PanelKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE5123641E5790E30034A61F /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123621E5790E30034A61F /* LogLevel.swift */; };
 		BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123631E5790E30034A61F /* PanelPinSide.swift */; };
@@ -100,6 +101,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE2332281E745B8A005D3F4C /* BlockBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockBarButtonItem.swift; path = Utils/BlockBarButtonItem.swift; sourceTree = "<group>"; };
 		BE24AD031E4F6B11008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE24AD061E4F6B11008892A2 /* PanelKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelKit.h; sourceTree = "<group>"; };
 		BE24AD071E4F6B11008892A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -314,6 +316,7 @@
 				BEF801501E525607007D3CEE /* CGRect+Center.swift */,
 				BE8682F21E6225DC00714BED /* AssociatedObject.swift */,
 				BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */,
+				BE2332281E745B8A005D3F4C /* BlockBarButtonItem.swift */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				BE5123641E5790E30034A61F /* LogLevel.swift in Sources */,
 				BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */,
 				BEBE2F411E71DDFC00DEDF21 /* PanelViewController+Appearance.swift in Sources */,
+				BE2332291E745B8A005D3F4C /* BlockBarButtonItem.swift in Sources */,
 				BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */,
 				BE5123711E5791090034A61F /* PanelViewController.swift in Sources */,
 				BEBE2F351E6F459A00DEDF21 /* PanelManager+Pinning.swift in Sources */,

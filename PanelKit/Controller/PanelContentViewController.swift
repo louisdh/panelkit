@@ -7,147 +7,184 @@
 //
 
 import UIKit
+import CoreGraphics
 
-extension PanelContentViewController {
-
-	@objc public weak var panelNavigationController: PanelNavigationController? {
-		return navigationController as? PanelNavigationController
+extension PanelContentDelegate {
+	
+	func didUpdateFloatingState() {
+		
+		updateNavigationButtons()
+		
 	}
-
+	
 }
 
-/// Needs to be presented as root view controller in a PanelNavigationController instance
-@objc open class PanelContentViewController: UIViewController {
+public extension PanelContentDelegate where Self: UIViewController {
 
-	override open func viewWillAppear(_ animated: Bool) {
-		super.viewWillAppear(animated)
-
-		didUpdateFloatingState()
-		updateNavigationButtons()
-
+	weak var panelNavigationController: PanelNavigationController? {
+		return navigationController as? PanelNavigationController
+	}
+	
+	func updateNavigationButtons() {
+		
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+		
+		if panel.isPresentedModally {
+			
+			let backBtn = getBackBtn()
+			
+			navigationItem.leftBarButtonItems = [backBtn] + leftBarButtonItems
+			
+		} else {
+			
+			if !panel.canFloat {
+				
+				navigationItem.leftBarButtonItems = leftBarButtonItems
+				
+			} else {
+				
+				let panelToggleBtn = getPanelToggleBtn()
+				
+				navigationItem.leftBarButtonItems = [panelToggleBtn] + leftBarButtonItems
+				
+			}
+			
+		}
+		
+		navigationItem.rightBarButtonItems = rightBarButtonItems
+		
 	}
 
-	open func updateConstraintsForKeyboardShow(with frame: CGRect) {
-
-	}
-
-	open func updateUIForKeyboardShow(with frame: CGRect) {
-
-	}
-
-	open func updateConstraintsForKeyboardHide() {
-
-	}
-
-	open func updateUIForKeyboardHide() {
-
-	}
-
-	/// Defaults to false
-	open var shouldAdjustForKeyboard: Bool {
-		return false
-	}
-
-	// MARK: -
-
-	public func dismissPanel() {
+	func dismissPanel() {
 		panelNavigationController?.panelViewController?.dismiss(animated: true, completion: nil)
 	}
+	
+}
 
-	open func didUpdateFloatingState() {
-
-		updateNavigationButtons()
-
-	}
-
-	open var preferredPanelContentSize: CGSize {
-		fatalError("Preferred panel content size not implemented")
-	}
-
-	// MARK: - Bar button items
-
-	/// Excludes potential "close" or "pop" buttons
-	open var leftBarButtonItems: [UIBarButtonItem] {
-		return []
-	}
-
-	/// Excludes potential "close" or "pop" buttons
-	open var rightBarButtonItems: [UIBarButtonItem] {
-		return []
-	}
-
-	open var closeButtonTitle = "Close"
-	open var popButtonTitle = "⬇︎"
-	open var modalCloseButtonTitle = "Back"
-
-	private func panelFloatToggleBtnTitle() -> String {
-
+extension PanelContentDelegate where Self: UIViewController {
+	
+	func panelFloatToggleBtnTitle() -> String {
+		
 		guard let panel = panelNavigationController?.panelViewController else {
 			return closeButtonTitle
 		}
-
+		
 		if panel.isFloating || panel.isPinned {
 			return closeButtonTitle
 		} else {
 			return popButtonTitle
 		}
 	}
-
-	private func getBackBtn() -> UIBarButtonItem {
-
-		let button = UIBarButtonItem(title: modalCloseButtonTitle, style: .done, target: self, action: #selector(dismissPanel))
-
+	
+	func getBackBtn() -> UIBarButtonItem {
+		
+		let button = BlockBarButtonItem(title: modalCloseButtonTitle, style: .done) {
+			self.dismissPanel()
+		}
+		
 		return button
 	}
-
-	private func getPanelToggleBtn() -> UIBarButtonItem {
-
-		let button = UIBarButtonItem(title: "", style: .done, target: self, action: #selector(popPanel(_:)))
+	
+	func getPanelToggleBtn() -> UIBarButtonItem {
+		
+		let button = BlockBarButtonItem(title: "", style: .done) {
+			self.popPanel()
+		}
+		
 		button.title = panelFloatToggleBtnTitle()
-
+		
 		return button
 	}
-
-	func popPanel(_ sender: UIBarButtonItem) {
-
+	
+	public func popPanel() {
+		
 		guard let panel = panelNavigationController?.panelViewController else {
 			return
 		}
-
+		
 		panel.delegate?.toggleFloatStatus(for: panel)
+		
+	}
+	
+	
+	
+}
+
+public protocol PanelContentDelegate: class {
+	
+	var closeButtonTitle: String { get }
+	var popButtonTitle: String { get }
+	var modalCloseButtonTitle: String { get }
+
+	var shouldAdjustForKeyboard: Bool { get }
+	
+	var preferredPanelContentSize: CGSize { get }
+	
+	func updateConstraintsForKeyboardShow(with frame: CGRect)
+	
+	func updateUIForKeyboardShow(with frame: CGRect)
+	func updateConstraintsForKeyboardHide()
+	
+	func updateUIForKeyboardHide()
+	
+	/// Excludes potential "close" or "pop" buttons
+	var leftBarButtonItems: [UIBarButtonItem] { get }
+	
+	/// Excludes potential "close" or "pop" buttons
+	var rightBarButtonItems: [UIBarButtonItem] { get }
+	
+	func dismissPanel()
+	func popPanel()
+	
+	func updateNavigationButtons()
+	
+}
+
+public extension PanelContentDelegate {
+	
+	var closeButtonTitle: String {
+		return "Close"
+	}
+	var popButtonTitle: String {
+		return "⬇︎"
+	}
+	
+	var modalCloseButtonTitle: String {
+		return "Back"
+	}
+	
+	func updateConstraintsForKeyboardShow(with frame: CGRect) {
+		
+	}
+	
+	func updateUIForKeyboardShow(with frame: CGRect) {
+		
+	}
+	
+	func updateConstraintsForKeyboardHide() {
+		
+	}
+	
+	func updateUIForKeyboardHide() {
 
 	}
-
-	func updateNavigationButtons() {
-
-		guard let panel = panelNavigationController?.panelViewController else {
-			return
-		}
-
-		if panel.isPresentedModally {
-
-			let backBtn = getBackBtn()
-
-			navigationItem.leftBarButtonItems = [backBtn] + leftBarButtonItems
-
-		} else {
-
-			if !panel.canFloat {
-
-				navigationItem.leftBarButtonItems = leftBarButtonItems
-
-			} else {
-
-				let panelToggleBtn = getPanelToggleBtn()
-
-				navigationItem.leftBarButtonItems = [panelToggleBtn] + leftBarButtonItems
-
-			}
-
-		}
-
-		navigationItem.rightBarButtonItems = rightBarButtonItems
-
+	
+	/// Defaults to false
+	var shouldAdjustForKeyboard: Bool {
+		return false
 	}
-
+	
+	
+	/// Excludes potential "close" or "pop" buttons
+	var leftBarButtonItems: [UIBarButtonItem] {
+		return []
+	}
+	
+	/// Excludes potential "close" or "pop" buttons
+	var rightBarButtonItems: [UIBarButtonItem] {
+		return []
+	}
+	
 }

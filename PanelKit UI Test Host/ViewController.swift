@@ -25,11 +25,11 @@ class ViewController: UIViewController, PanelManager {
 
 		mapPanelContentVC = storyboard?.instantiateViewController(withIdentifier: "MapPanelContentViewController") as! MapPanelContentViewController
 
-		mapPanelVC = PanelViewController(with: mapPanelContentVC, in: self)
+		mapPanelVC = PanelViewController(with: mapPanelContentVC, contentDelegate: mapPanelContentVC, in: self)
 
 		textPanelContentVC = storyboard?.instantiateViewController(withIdentifier: "TextPanelContentViewController") as! TextPanelContentViewController
 
-		textPanelVC = PanelViewController(with: textPanelContentVC, in: self)
+		textPanelVC = PanelViewController(with: textPanelContentVC, contentDelegate: textPanelContentVC, in: self)
 
 		enableTripleTapExposeActivation()
 	}

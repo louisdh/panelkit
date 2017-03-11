@@ -36,7 +36,7 @@ extension PanelManager {
 			let currentFrame = panelView.frame
 
 			var newFrame = currentFrame
-			if let contentSize = panel.contentViewController?.preferredPanelContentSize {
+			if let contentSize = panel.contentDelegate?.preferredPanelContentSize {
 				newFrame.size = contentSize
 			}
 
