@@ -21,6 +21,7 @@ public protocol PanelContentDelegate: class {
 	func updateConstraintsForKeyboardShow(with frame: CGRect)
 
 	func updateUIForKeyboardShow(with frame: CGRect)
+
 	func updateConstraintsForKeyboardHide()
 
 	func updateUIForKeyboardHide()
@@ -31,19 +32,6 @@ public protocol PanelContentDelegate: class {
 	/// Excludes potential "close" or "pop" buttons
 	var rightBarButtonItems: [UIBarButtonItem] { get }
 
-	func dismissPanel()
-	func popPanel()
-
 	func updateNavigationButtons()
-
-}
-
-extension PanelContentDelegate {
-
-	func didUpdateFloatingState() {
-
-		updateNavigationButtons()
-
-	}
 
 }

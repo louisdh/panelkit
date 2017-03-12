@@ -16,7 +16,31 @@ public extension PanelContentDelegate where Self: UIViewController {
 
 }
 
+extension PanelContentDelegate {
+
+	func didUpdateFloatingState() {
+
+		updateNavigationButtons()
+
+	}
+
+}
+
 extension PanelContentDelegate where Self: UIViewController {
+
+	func dismissPanel() {
+		panelNavigationController?.panelViewController?.dismiss(animated: true, completion: nil)
+	}
+
+	func popPanel() {
+
+		guard let panel = panelNavigationController?.panelViewController else {
+			return
+		}
+
+		panel.delegate?.toggleFloatStatus(for: panel)
+
+	}
 
 	func panelFloatToggleBtnTitle() -> String {
 
