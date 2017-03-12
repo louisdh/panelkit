@@ -57,8 +57,8 @@ extension PanelContentDelegate where Self: UIViewController {
 
 	func getBackBtn() -> UIBarButtonItem {
 
-		let button = BlockBarButtonItem(title: modalCloseButtonTitle, style: .done) {
-			self.dismissPanel()
+		let button = BlockBarButtonItem(title: modalCloseButtonTitle, style: .done) { [weak self] in
+			self?.dismissPanel()
 		}
 
 		return button
@@ -66,8 +66,8 @@ extension PanelContentDelegate where Self: UIViewController {
 
 	func getPanelToggleBtn() -> UIBarButtonItem {
 
-		let button = BlockBarButtonItem(title: "", style: .done) {
-			self.popPanel()
+		let button = BlockBarButtonItem(title: "", style: .done) { [weak self] in
+			self?.popPanel()
 		}
 
 		button.title = panelFloatToggleBtnTitle()

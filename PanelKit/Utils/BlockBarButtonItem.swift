@@ -9,6 +9,7 @@
 import UIKit
 
 class BlockBarButtonItem: UIBarButtonItem {
+	
 	private var actionHandler: ((Void) -> Void)?
 
 	convenience init(title: String?, style: UIBarButtonItemStyle, actionHandler: ((Void) -> Void)?) {

@@ -31,10 +31,10 @@ extension PanelManager {
 
 				let gestureRecognizer = UITapGestureRecognizer()
 
-				let blockRecognizer = BlockGestureRecognizer(view: exposeOverlayView, recognizer: gestureRecognizer, closure: {
+				let blockRecognizer = BlockGestureRecognizer(view: exposeOverlayView, recognizer: gestureRecognizer, closure: { [weak self] in
 
-					if self.isInExpose {
-						self.exitExpose()
+					if self?.isInExpose == true {
+						self?.exitExpose()
 					}
 				})
 
@@ -54,9 +54,9 @@ extension PanelManager {
 				tapGestureRecognizer.numberOfTapsRequired = 2
 				tapGestureRecognizer.numberOfTouchesRequired = 3
 
-				let blockRecognizer = BlockGestureRecognizer(view: panelContentWrapperView, recognizer: tapGestureRecognizer) {
+				let blockRecognizer = BlockGestureRecognizer(view: panelContentWrapperView, recognizer: tapGestureRecognizer) { [weak self] in
 
-					self.toggleExpose()
+					self?.toggleExpose()
 
 				}
 
