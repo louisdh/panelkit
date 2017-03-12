@@ -32,8 +32,7 @@ public extension PanelManager {
 				self.panelContentWrapperView.layoutIfNeeded()
 
 				let x = rect.origin.x
-
-				let y: CGFloat = 12.0
+				let y = rect.origin.y + panelPopYOffset
 
 				let width = panel.view.frame.size.width
 				let height = panel.view.frame.size.height

@@ -26,6 +26,7 @@ let panelGrowDuration: TimeInterval = 0.3
 // Floating
 
 let panelPopDuration: TimeInterval = 0.2
+let panelPopYOffset: CGFloat = 12.0
 
 // PanelViewController
 
