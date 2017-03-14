@@ -11,7 +11,7 @@ import UIKit
 
 extension UIViewController {
 
-	var isPresentedAsPopover: Bool {
+	public var isPresentedAsPopover: Bool {
 		
 		// Checking for a "UIPopoverView" seems to be deemed trustworthy,
 		// as explained here: 
