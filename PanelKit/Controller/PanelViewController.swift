@@ -152,6 +152,28 @@ import UIKit
 		}
 
 	}
+	
+	override public func viewWillDisappear(_ animated: Bool) {
+		super.viewWillDisappear(animated)
+		
+		contentViewController?.viewWillDisappear(animated)
+		
+		if logLevel == .full {
+			print("\(self) viewWillDisappear")
+		}
+		
+	}
+	
+	override public func viewDidDisappear(_ animated: Bool) {
+		super.viewDidDisappear(animated)
+		
+		contentViewController?.viewDidDisappear(animated)
+		
+		if logLevel == .full {
+			print("\(self) viewDidDisappear")
+		}
+		
+	}
 
 	override public func viewWillLayoutSubviews() {
 		super.viewWillLayoutSubviews()
