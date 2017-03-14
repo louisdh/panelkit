@@ -10,14 +10,14 @@ import UIKit
 
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
-	var topConstraint: NSLayoutConstraint?
-	var bottomConstraint: NSLayoutConstraint?
+	weak var topConstraint: NSLayoutConstraint?
+	weak var bottomConstraint: NSLayoutConstraint?
 
-	var leadingConstraint: NSLayoutConstraint?
-	var trailingConstraint: NSLayoutConstraint?
+	weak var leadingConstraint: NSLayoutConstraint?
+	weak var trailingConstraint: NSLayoutConstraint?
 
-	var widthConstraint: NSLayoutConstraint?
-	var heightConstraint: NSLayoutConstraint?
+	weak var widthConstraint: NSLayoutConstraint?
+	weak var heightConstraint: NSLayoutConstraint?
 
 	var panelPinnedPreviewView: UIView?
 
