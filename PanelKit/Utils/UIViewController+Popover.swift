@@ -12,16 +12,40 @@ import UIKit
 extension UIViewController {
 
 	var isPresentedAsPopover: Bool {
-		get {
+		
+		// Checking for a "UIPopoverView" seems to be deemed trustworthy,
+		// as explained here: 
+		// http://petersteinberger.com/blog/2015/uipresentationcontroller-popover-detection/
+		
+		var currentView: UIView? = self.view
+		
+		while currentView != nil {
+			let classNameOfCurrentView = NSStringFromClass(type(of: currentView!)) as NSString
 
-			guard let p = self.popoverPresentationController else { return false }
-
-			// FIXME: presentedViewController can never be nil?
-			let c = p.presentedViewController as UIViewController?
-
-			return c != nil && p.arrowDirection != .unknown
-
+			let searchString = "UIPopoverView"
+			
+			if classNameOfCurrentView.range(of: searchString, options: .caseInsensitive).location != NSNotFound  {
+				return true
+			}
+			
+			currentView = currentView?.superview
 		}
+		
+		return false
+		
+		// The "popoverPresentationController" way of checking if presented as popover
+		// causes a memory leak :/
+		// Possibly because "popoverPresentationController" is lazily created?
+		
+//		guard let p = self.popoverPresentationController else {
+//			return false
+//		}
+//
+//		// FIXME: presentedViewController can never be nil?
+//		let c = p.presentedViewController as UIViewController?
+//
+//		return c != nil && p.arrowDirection != .unknown
+		
 	}
 
 }
