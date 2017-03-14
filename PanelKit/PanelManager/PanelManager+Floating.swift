@@ -8,6 +8,15 @@
 
 import UIKit
 
+
+public extension PanelManager where Self: UIViewController {
+
+	var managerViewController: UIViewController {
+		return self
+	}
+
+}
+
 public extension PanelManager {
 
 	func toggleFloatStatus(for panel: PanelViewController, completion: (() -> Void)? = nil) {
@@ -26,6 +35,7 @@ public extension PanelManager {
 			panel.dismiss(animated: false, completion: {
 
 				self.panelContentWrapperView.addSubview(panel.view)
+				
 				panel.didUpdateFloatingState()
 
 				self.updateFrame(for: panel, to: rect)

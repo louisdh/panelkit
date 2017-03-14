@@ -10,6 +10,8 @@ import UIKit
 
 public protocol PanelManager: class {
 
+	var managerViewController: UIViewController { get }
+	
 	/// The panels to be managed.
 	var panels: [PanelViewController] { get }
 
