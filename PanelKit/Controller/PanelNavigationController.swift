@@ -3,7 +3,7 @@
 //  PanelKit
 //
 //  Created by Louis D'hauwe on 10/09/16.
-//  Copyright © 2016 Silver Fox. All rights reserved.
+//  Copyright © 2016-2017 Silver Fox. All rights reserved.
 //
 
 import UIKit
