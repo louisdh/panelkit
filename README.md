@@ -4,24 +4,24 @@
 
 <p align="center">
 
-<a href="https://travis-ci.org/louisdh/panelkit"><img src="https://travis-ci.org/louisdh/panelkit.svg?branch=master" style="max-height: 300px;" alt="Build Status"></a>
+<a href="https://travis-ci.org/louisdh/panelkit"><img src="https://travis-ci.org/louisdh/panelkit.svg?branch=master" style="max-height: 300px;" alt="Build Status"/></a>
 
-<a href="https://codeclimate.com/github/louisdh/panelkit"><img src="https://codeclimate.com/github/louisdh/panelkit/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"></a>
+<a href="https://codeclimate.com/github/louisdh/panelkit"><img src="https://codeclimate.com/github/louisdh/panelkit/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
 
 <a href="https://codecov.io/gh/louisdh/panelkit">
   <img src="https://codecov.io/gh/louisdh/panelkit/branch/master/graph/badge.svg" alt="Codecov"/></a>
 
-</br>
+<br>
 
-<a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"></a>
+<a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-3.0.2-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"/></a>
 
-<a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"></a>
+<a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"/></a>
 
-<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"></a>
+<a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"/></a>
 
 <img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS">
 
-<a href="http://twitter.com/LouisDhauwe"><img src="https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat" style="max-height: 300px;" alt="Twitter"></a>
+<a href="http://twitter.com/LouisDhauwe"><img src="https://img.shields.io/badge/Twitter-@LouisDhauwe-blue.svg?style=flat" style="max-height: 300px;" alt="Twitter"/></a>
 
 </p>
 
@@ -44,10 +44,10 @@ This framework does all the heavy lifting for dragging panels, pinning them and 
 ## Implementing
 A lot of effort has gone into making the API simple for a basic implementation, yet very customizable if needed. Since PanelKit is protocol based, you don't need to subclass anything in order to use it. There a two basic principles PanelKit entails: ```panels``` and a ```PanelManager```.
 
-###Panels
+### Panels
 A panel is created using the ```PanelViewController``` initializer, which expects a ```UIViewController```, ```PanelContentDelegate``` and ```PanelManager```.
 
-####PanelContentDelegate
+#### PanelContentDelegate
 ```PanelContentDelegate ``` is a protocol that defines the appearance of a panel. Typically the ```PanelContentDelegate ``` protocol is implemented for each panel on its ```UIViewController```.
 
 
@@ -71,7 +71,7 @@ class MyPanelContentViewController: UIViewController, PanelContentDelegate {
 A panel is explicitly (without your action) shown in a ```UINavigationController```, but the top bar can be hidden or styled as with any ```UINavigationController```.
 
 
-###PanelManager
+### PanelManager
 ```PanelManager``` is a protocol that in its most basic form expects the following:
 
 ```swift
