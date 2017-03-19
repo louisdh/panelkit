@@ -42,18 +42,19 @@ This framework does all the heavy lifting for dragging panels, pinning them and 
 
 
 ## Implementing
-A lot of effort has gone into making the API simple for a basic implementation, yet very customizable if needed. There a two basic principles PanelKit entails: ```panels``` and a ```PanelManager```.
+A lot of effort has gone into making the API simple for a basic implementation, yet very customizable if needed. Since PanelKit is protocol based, you don't need to subclass anything in order to use it. There a two basic principles PanelKit entails: ```panels``` and a ```PanelManager```.
 
 ###Panels
-A panel is created using the ```PanelViewController``` initializer, which expects a ```PanelContentViewController``` and a ```PanelManager```.
+A panel is created using the ```PanelViewController``` initializer, which expects a ```UIViewController```, ```PanelContentDelegate``` and ```PanelManager```.
 
-####PanelContentViewController
-A ```PanelContentViewController``` is a ```UIViewController``` that needs to be subclassed for each of the desired panels in your application. 
+####PanelContentDelegate
+```PanelContentDelegate ``` is a protocol that defines the appearance of a panel. Typically the ```PanelContentDelegate ``` protocol is implemented for each panel on its ```UIViewController```.
+
 
 Example:
 
 ```swift
-class MyPanelContentViewController: PanelContentViewController {
+class MyPanelContentViewController: UIViewController, PanelContentDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,7 +62,7 @@ class MyPanelContentViewController: PanelContentViewController {
         self.title = "Panel title"	
     }
     
-    override var preferredPanelContentSize: CGSize {
+    var preferredPanelContentSize: CGSize {
         return CGSize(width: 320, height: 500)
     }	
 }
