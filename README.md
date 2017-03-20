@@ -15,9 +15,9 @@
 
 <p align="center">
 <img src="readme-resources/example.gif" style="max-height: 4480px;" alt="PanelKit for iOS">
+<p><i>Applications using PanelKit can be seen in the <a href="SHOWCASE.md">showcase</a>.</i></p>
 </p>
 
-*Applications using PanelKit can be seen in the [showcase](SHOWCASE.md).*
 
 ## About
 PanelKit is a UI framework that enables panels on iOS. A panel can be presented in the following ways:
