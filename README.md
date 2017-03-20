@@ -88,14 +88,14 @@ Typically the ```PanelManager``` protocol is implemented on a ```UIViewControlle
 To install, add the following line to your ```Podfile```:
 
 ```ruby
-pod 'PanelKit', '~> 0.9'
+pod 'PanelKit', '~> 1.0'
 ```
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 To install, add the following line to your ```Cartfile```:
 
 ```ruby
-github "louisdh/panelkit" ~> 0.9
+github "louisdh/panelkit" ~> 1.0
 ```
 Run ```carthage update``` to build the framework and drag the built ```PanelKit.framework``` into your Xcode project.
 
