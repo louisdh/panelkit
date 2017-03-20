@@ -15,7 +15,8 @@
 
 <p align="center">
 <img src="readme-resources/example.gif" style="max-height: 4480px;" alt="PanelKit for iOS">
-<p><i>Applications using PanelKit can be seen in the <a href="SHOWCASE.md">showcase</a>.</i></p>
+<br>
+<i>Applications using PanelKit can be seen in the <a href="SHOWCASE.md">showcase</a>.</i>
 </p>
 
 
