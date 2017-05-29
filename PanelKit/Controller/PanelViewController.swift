@@ -89,7 +89,7 @@ import UIKit
 		panelNavigationController.view.layer.cornerRadius = cornerRadius
 		panelNavigationController.view.clipsToBounds = true
 
-		panelNavigationController.view.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 1.0).isActive = true
+		panelNavigationController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.0).isActive = true
 		panelNavigationController.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
 		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true

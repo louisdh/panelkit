@@ -81,7 +81,7 @@ class ViewController: UIViewController, PanelManager {
 		vc.popoverPresentationController?.barButtonItem = barButtonItem
 
 		present(vc, animated: true, completion: nil)
-
+		
 	}
 
 	// MARK: - PanelManager

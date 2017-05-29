@@ -24,8 +24,6 @@ class TextPanelContentViewController: UIViewController, PanelContentDelegate {
 		return textView.isFirstResponder
 	}
 
-	var preferredPanelContentSize: CGSize {
-		return CGSize(width: 320, height: 400)
-	}
+	let preferredPanelContentSize = CGSize(width: 320, height: 400)
 
 }
