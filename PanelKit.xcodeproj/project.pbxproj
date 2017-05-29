@@ -533,50 +533,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		BE24AD011E4F6B11008892A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BEBE2F4A1E71FC0A00DEDF21 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BEBE2F601E7208C800DEDF21 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BEBE2F6F1E7208C800DEDF21 /* LaunchScreen.storyboard in Resources */,
-				BEBE2F6C1E7208C800DEDF21 /* Assets.xcassets in Resources */,
-				BEBE2F6A1E7208C800DEDF21 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BEFCF7641E6759F800BC95ED /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		BEFCF7701E675D0600BC95ED /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BEFCF77F1E675D0600BC95ED /* LaunchScreen.storyboard in Resources */,
-				BEFCF77C1E675D0600BC95ED /* Assets.xcassets in Resources */,
-				BEFCF77A1E675D0600BC95ED /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BE24ACFE1E4F6B11008892A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;

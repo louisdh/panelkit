@@ -163,19 +163,6 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXResourcesBuildPhase section */
-		BE24AD211E508C49008892A2 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BE24AD311E508C49008892A2 /* LaunchScreen.storyboard in Resources */,
-				BE24AD2E1E508C49008892A2 /* Assets.xcassets in Resources */,
-				BE24AD2C1E508C49008892A2 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXResourcesBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		BE24AD1F1E508C49008892A2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
