@@ -21,6 +21,8 @@
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
 		BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F21E6225DC00714BED /* AssociatedObject.swift */; };
 		BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */; };
+		BE9C5B561EEB761F009490A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF7781E675D0600BC95ED /* Main.storyboard */; };
+		BE9C5B571EEB7629009490A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F681E7208C800DEDF21 /* Main.storyboard */; };
 		BEBE2F351E6F459A00DEDF21 /* PanelManager+Pinning.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */; };
 		BEBE2F371E6F463300DEDF21 /* PanelManager+AutoLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F361E6F463300DEDF21 /* PanelManager+AutoLayout.swift */; };
 		BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */; };
@@ -38,9 +40,6 @@
 		BEBE2F5D1E71FE1900DEDF21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F5C1E71FE1900DEDF21 /* ViewController.swift */; };
 		BEBE2F651E7208C800DEDF21 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F641E7208C800DEDF21 /* AppDelegate.swift */; };
 		BEBE2F671E7208C800DEDF21 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F661E7208C800DEDF21 /* ViewController.swift */; };
-		BEBE2F6A1E7208C800DEDF21 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F681E7208C800DEDF21 /* Main.storyboard */; };
-		BEBE2F6C1E7208C800DEDF21 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F6B1E7208C800DEDF21 /* Assets.xcassets */; };
-		BEBE2F6F1E7208C800DEDF21 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEBE2F6D1E7208C800DEDF21 /* LaunchScreen.storyboard */; };
 		BECEE6131E6E225800AB2B25 /* PanelManager+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6121E6E225800AB2B25 /* PanelManager+Dragging.swift */; };
 		BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BECEE6141E6E234D00AB2B25 /* PanelManager+Default.swift */; };
 		BED541DF1E676172002A5459 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
@@ -50,9 +49,6 @@
 		BEFCF7691E6759F800BC95ED /* PanelKit_UI_Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7681E6759F800BC95ED /* PanelKit_UI_Tests.swift */; };
 		BEFCF7751E675D0600BC95ED /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7741E675D0600BC95ED /* AppDelegate.swift */; };
 		BEFCF7771E675D0600BC95ED /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7761E675D0600BC95ED /* ViewController.swift */; };
-		BEFCF77A1E675D0600BC95ED /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF7781E675D0600BC95ED /* Main.storyboard */; };
-		BEFCF77C1E675D0600BC95ED /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF77B1E675D0600BC95ED /* Assets.xcassets */; };
-		BEFCF77F1E675D0600BC95ED /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BEFCF77D1E675D0600BC95ED /* LaunchScreen.storyboard */; };
 		BEFCF7881E675EC100BC95ED /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7871E675EC100BC95ED /* MapPanelContentViewController.swift */; };
 		BEFCF78A1E67605200BC95ED /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEFCF7891E67605200BC95ED /* TextPanelContentViewController.swift */; };
 /* End PBXBuildFile section */
@@ -388,7 +384,6 @@
 				BE24ACFE1E4F6B11008892A2 /* Sources */,
 				BE24ACFF1E4F6B11008892A2 /* Frameworks */,
 				BE24AD001E4F6B11008892A2 /* Headers */,
-				BE24AD011E4F6B11008892A2 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -405,7 +400,6 @@
 			buildPhases = (
 				BEBE2F481E71FC0A00DEDF21 /* Sources */,
 				BEBE2F491E71FC0A00DEDF21 /* Frameworks */,
-				BEBE2F4A1E71FC0A00DEDF21 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -424,7 +418,7 @@
 			buildPhases = (
 				BEBE2F5E1E7208C800DEDF21 /* Sources */,
 				BEBE2F5F1E7208C800DEDF21 /* Frameworks */,
-				BEBE2F601E7208C800DEDF21 /* Resources */,
+				BE9C5B551EEB7619009490A1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -441,7 +435,6 @@
 			buildPhases = (
 				BEFCF7621E6759F800BC95ED /* Sources */,
 				BEFCF7631E6759F800BC95ED /* Frameworks */,
-				BEFCF7641E6759F800BC95ED /* Resources */,
 			);
 			buildRules = (
 			);
@@ -459,8 +452,8 @@
 			buildPhases = (
 				BEFCF76E1E675D0600BC95ED /* Sources */,
 				BEFCF76F1E675D0600BC95ED /* Frameworks */,
-				BEFCF7701E675D0600BC95ED /* Resources */,
 				BED541E31E676173002A5459 /* Embed Frameworks */,
+				BE9C5B541EEB7616009490A1 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -532,6 +525,25 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BE9C5B541EEB7616009490A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE9C5B561EEB761F009490A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BE9C5B551EEB7619009490A1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BE9C5B571EEB7629009490A1 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		BE24ACFE1E4F6B11008892A2 /* Sources */ = {
