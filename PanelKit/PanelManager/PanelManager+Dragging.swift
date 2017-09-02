@@ -23,7 +23,13 @@ extension PanelManager {
 		guard let panelView = panel.view else {
 			return
 		}
+		
+		guard let contentDelegate = panel.contentDelegate else {
+			return
+		}
 
+		let pinnedSide = panel.pinnedSide
+		
 		panel.pinnedSide = nil
 
 		panel.bringToFront()
@@ -36,10 +42,19 @@ extension PanelManager {
 			let currentFrame = panelView.frame
 
 			var newFrame = currentFrame
-			if let contentSize = panel.contentDelegate?.preferredPanelContentSize {
-				newFrame.size = contentSize
-			}
+			
+			let preferredPanelPinnedWidth = contentDelegate.preferredPanelPinnedWidth
+			let preferredPanelContentSize  = contentDelegate.preferredPanelContentSize
+			newFrame.size = preferredPanelContentSize
 
+			if pinnedSide == .right {
+				if preferredPanelContentSize.width > preferredPanelPinnedWidth {
+					let delta = preferredPanelContentSize.width - preferredPanelPinnedWidth
+					newFrame.origin.x -= delta
+				}
+			}
+			
+			
 			updateFrame(for: panel, to: newFrame)
 		}
 

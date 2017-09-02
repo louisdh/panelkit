@@ -23,16 +23,21 @@ extension PanelManager {
 		guard let panelView = panel.view else {
 			return nil
 		}
+		
+		guard let contentDelegate = panel.contentDelegate else {
+			return nil
+		}
 
 		var previewTargetFrame = panelView.bounds
-
+		previewTargetFrame.size.width = contentDelegate.preferredPanelPinnedWidth
+		
 		previewTargetFrame.origin.y = panelContentView.frame.origin.y
 
 		switch side {
 		case .left:
 			previewTargetFrame.origin.x = 0.0
 		case .right:
-			previewTargetFrame.origin.x = panelContentWrapperView.bounds.width - panelView.bounds.width
+			previewTargetFrame.origin.x = panelContentWrapperView.bounds.width - contentDelegate.preferredPanelPinnedWidth
 		}
 
 		previewTargetFrame.size.height = panelContentWrapperView.bounds.height - previewTargetFrame.origin.y
@@ -48,16 +53,16 @@ extension PanelManager {
 
 		updatedContentViewFrame.origin.x = 0.0
 
-		if let leftPanelSize = panelPinnedLeft?.contentDelegate?.preferredPanelContentSize {
+		if let leftPanelWidth = panelPinnedLeft?.contentDelegate?.preferredPanelPinnedWidth {
 
-			updatedContentViewFrame.size.width -= leftPanelSize.width
+			updatedContentViewFrame.size.width -= leftPanelWidth
 
-			updatedContentViewFrame.origin.x = leftPanelSize.width
+			updatedContentViewFrame.origin.x = leftPanelWidth
 		}
 
-		if let rightPanelSize = panelPinnedRight?.contentDelegate?.preferredPanelContentSize {
+		if let rightPanelWidth = panelPinnedRight?.contentDelegate?.preferredPanelPinnedWidth {
 
-			updatedContentViewFrame.size.width -= rightPanelSize.width
+			updatedContentViewFrame.size.width -= rightPanelWidth
 
 		}
 

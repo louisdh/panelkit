@@ -17,6 +17,8 @@ public protocol PanelContentDelegate: class {
 	var shouldAdjustForKeyboard: Bool { get }
 
 	var preferredPanelContentSize: CGSize { get }
+	
+	var preferredPanelPinnedWidth: CGFloat { get }
 
 	func updateConstraintsForKeyboardShow(with frame: CGRect)
 
