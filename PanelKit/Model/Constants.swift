@@ -6,7 +6,9 @@
 //  Copyright © 2017 Silver Fox. All rights reserved.
 //
 
+import Foundation
 import CoreGraphics
+import UIKit
 
 // Exposé
 

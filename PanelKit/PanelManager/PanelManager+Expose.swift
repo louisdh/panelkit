@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 private var exposeOverlayViewKey: UInt8 = 0
 private var exposeOverlayTapRecognizerKey: UInt8 = 0
