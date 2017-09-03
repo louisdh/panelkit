@@ -9,6 +9,7 @@
 import Foundation
 import PanelKit
 import MapKit
+import UIKit
 
 class MapPanelContentViewController: UIViewController, PanelContentDelegate {
 
