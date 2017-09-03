@@ -35,5 +35,7 @@ public protocol PanelContentDelegate: class {
 	var rightBarButtonItems: [UIBarButtonItem] { get }
 
 	func updateNavigationButtons()
-
+	
+	func panelDragGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool
+	
 }

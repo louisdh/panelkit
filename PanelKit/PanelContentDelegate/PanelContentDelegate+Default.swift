@@ -51,6 +51,10 @@ public extension PanelContentDelegate {
 	var rightBarButtonItems: [UIBarButtonItem] {
 		return []
 	}
+	
+	func panelDragGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+		return true
+	}
 
 	var preferredPanelPinnedWidth: CGFloat {
 		return preferredPanelContentSize.width

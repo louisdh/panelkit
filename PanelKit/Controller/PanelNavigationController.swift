@@ -55,6 +55,15 @@ import UIKit
 		return false
 	}
 
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+		
+		if let panel = self.panelViewController {
+			return panel.contentDelegate?.panelDragGestureRecognizer(gestureRecognizer, shouldReceive: touch) ?? true
+		}
+		
+		return true
+	}
+	
 	var dragInsets: UIEdgeInsets {
 		if let panel = self.panelViewController {
 			return panel.delegate?.totalDragInsets(for: panel) ?? .zero
