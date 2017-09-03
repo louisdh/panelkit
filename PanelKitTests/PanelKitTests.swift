@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import UIKit
 @testable import PanelKit
 
 class PanelKitTests: XCTestCase {

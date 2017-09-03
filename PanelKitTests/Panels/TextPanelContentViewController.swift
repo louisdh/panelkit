@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 import PanelKit
 
 class TextPanelContentViewController: UIViewController, PanelContentDelegate {
