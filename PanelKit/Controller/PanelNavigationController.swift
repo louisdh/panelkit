@@ -46,10 +46,20 @@ import UIKit
 	}
 
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-
-		// Prevent panel from dragging when sliding UITableViewCell (e.g. for "delete")
-		if gestureRecognizer == dragGestureRecognizer && otherGestureRecognizer is UIPanGestureRecognizer && otherGestureRecognizer.view?.superview is UITableView {
-			return true
+		
+		if gestureRecognizer == dragGestureRecognizer {
+			
+			// Prevents panel from dragging when sliding UITableViewCell (e.g. for "delete")
+			
+			// iOS 11
+			if type(of: otherGestureRecognizer) == UIPanGestureRecognizer.self && (otherGestureRecognizer.view is UITableView) {
+				return true
+			}
+			
+			// iOS 10
+			if otherGestureRecognizer is UIPanGestureRecognizer && (otherGestureRecognizer.view?.superview is UITableView) {
+				return true
+			}
 		}
 
 		return false
@@ -58,6 +68,11 @@ import UIKit
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
 		
 		if let panel = self.panelViewController {
+			
+			if panel.isPresentedAsPopover || panel.isPresentedModally {
+				return false
+			}
+			
 			return panel.contentDelegate?.panelDragGestureRecognizer(gestureRecognizer, shouldReceive: touch) ?? true
 		}
 		
