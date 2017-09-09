@@ -12,7 +12,10 @@ import Foundation
 /// Helpful while debugging.
 public enum LogLevel {
 
+	/// Log nothing.
 	case none
+	
+	/// Log all events.
 	case full
 
 }
