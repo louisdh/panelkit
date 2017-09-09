@@ -11,7 +11,7 @@ import UIKit
 
 extension PanelManager {
 
-	func didDragFree(_ panel: PanelViewController) {
+	func didDragFree(_ panel: PanelViewController, from point: CGPoint) {
 
 		fadePinnedPreviewOut(for: panel)
 
@@ -55,6 +55,9 @@ extension PanelManager {
 				}
 			}
 			
+			if currentFrame.contains(point) && !newFrame.contains(point) {
+				newFrame.origin.y += point.y - newFrame.maxY
+			}
 			
 			updateFrame(for: panel, to: newFrame)
 		}

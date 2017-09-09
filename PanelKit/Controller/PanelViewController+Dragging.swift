@@ -10,7 +10,7 @@ import UIKit
 
 extension PanelViewController {
 
-	func didDrag() {
+	func didDrag(at point: CGPoint) {
 
 		guard isFloating || isPinned else {
 			return
@@ -30,7 +30,7 @@ extension PanelViewController {
 
 		} else {
 
-			delegate?.didDragFree(self)
+			delegate?.didDragFree(self, from: point)
 
 		}
 

@@ -17,7 +17,7 @@ extension PanelManager {
 		panel.contentDelegate?.didUpdateFloatingState()
 
 		if panel.isPinned || panel.wasPinned {
-			didDragFree(panel)
+			didDragFree(panel, from: panel.view.frame.origin)
 		}
 
 	}

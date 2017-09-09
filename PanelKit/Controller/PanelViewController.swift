@@ -442,7 +442,7 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		
 		self.prevTouch = touch
 		
-		self.didDrag()
+		self.didDrag(at: touch)
 		
 	}
 	
