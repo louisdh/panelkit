@@ -21,6 +21,9 @@ import UIKit
 
 	var panelPinnedPreviewView: UIView?
 
+	var dragGestureRecognizer: UIPanGestureRecognizer?
+	fileprivate var prevTouch: CGPoint?
+
 	var position: CGPoint?
 	var positionInFullscreen: CGPoint?
 
@@ -100,6 +103,11 @@ import UIKit
 		tapGestureRecognizer.cancelsTouchesInView = false
 		self.view.addGestureRecognizer(tapGestureRecognizer)
 
+		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
+		dragGestureRecognizer.delegate = self
+		
+		self.view.addGestureRecognizer(dragGestureRecognizer)
+		self.dragGestureRecognizer = dragGestureRecognizer
 	}
 
 	required public init?(coder aDecoder: NSCoder) {
@@ -315,4 +323,127 @@ import UIKit
 		return .lightContent
 	}
 
+}
+
+extension PanelViewController: UIGestureRecognizerDelegate {
+	
+	
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		if gestureRecognizer == dragGestureRecognizer {
+			return false
+		}
+		return true
+	}
+	
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+		
+		if gestureRecognizer == dragGestureRecognizer {
+			
+			// Prevents panel from dragging when sliding UITableViewCell (e.g. for "delete")
+			
+			// iOS 11
+			if type(of: otherGestureRecognizer) == UIPanGestureRecognizer.self && (otherGestureRecognizer.view is UITableView) {
+				return true
+			}
+			
+			// iOS 10
+			if otherGestureRecognizer is UIPanGestureRecognizer && (otherGestureRecognizer.view?.superview is UITableView) {
+				return true
+			}
+			
+			if otherGestureRecognizer.view == self {
+				return true
+			}
+		}
+		
+		return false
+	}
+	
+	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+		
+		if gestureRecognizer == dragGestureRecognizer {
+			
+			if isPresentedAsPopover || isPresentedModally {
+				return false
+			}
+			
+			return contentDelegate?.panelDragGestureRecognizer(gestureRecognizer, shouldReceive: touch) ?? true
+		}
+		
+		return true
+	}
+	
+	@objc func dragView(_ gestureRecognizer: UIPanGestureRecognizer) {
+		
+		if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
+			
+			prevTouch = nil
+			self.didEndDrag()
+			return
+			
+		}
+		
+		guard isFloating || isPinned else {
+			return
+		}
+		
+		guard let viewToMove = self.view else {
+			return
+		}
+		
+		guard let superview = viewToMove.superview else {
+			return
+		}
+		
+		if gestureRecognizer.numberOfTouches == 0 {
+			return
+		}
+		
+		let touch = gestureRecognizer.location(ofTouch: 0, in: superview)
+		
+		if gestureRecognizer.state == .began {
+			
+			prevTouch = touch
+			
+			if self.isPinned != true {
+				self.bringToFront()
+			}
+			
+		}
+		
+		if gestureRecognizer.state == .changed {
+			
+			guard let prevTouch = prevTouch else {
+				self.prevTouch = touch
+				return
+			}
+			
+			moveWithTouch(from: prevTouch, to: touch)
+		}
+		
+	}
+	
+	private func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
+
+		guard let viewToMove = self.view else {
+			return
+		}
+		
+		let proposeX = viewToMove.center.x - (fromTouch.x - touch.x)
+		let proposeY = viewToMove.center.y - (fromTouch.y - touch.y)
+		
+		let proposedCenter = CGPoint(x: proposeX, y: proposeY)
+		
+		var newFrame = viewToMove.frame
+		let newCenter = self.allowedCenter(for: proposedCenter)
+		newFrame.center = newCenter
+		
+		self.delegate?.updateFrame(for: self, to: newFrame)
+		
+		self.prevTouch = touch
+		
+		self.didDrag()
+		
+	}
+	
 }
