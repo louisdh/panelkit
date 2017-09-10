@@ -93,7 +93,7 @@ extension PanelViewController {
 	func updateState() {
 
 		if wasPinned {
-			delegate?.didDragFree(self)
+			delegate?.didDragFree(self, from: view.frame.origin)
 		}
 
 		if isFloating || isPinned {
