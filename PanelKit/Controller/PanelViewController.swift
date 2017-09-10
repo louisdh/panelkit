@@ -423,7 +423,7 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		
 	}
 	
-	private func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
+	func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
 
 		guard let viewToMove = self.view else {
 			return

@@ -143,7 +143,7 @@ class PanelKitTests: XCTestCase {
 						XCTAssert(mapPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
-						self.viewController.didDragFree(mapPanel)
+						self.viewController.didDragFree(mapPanel, from: mapPanel.view.frame.origin)
 						XCTAssert(!mapPanel.isPinned)
 						XCTAssert(self.viewController.panelPinnedRight == nil)
 
@@ -182,7 +182,7 @@ class PanelKitTests: XCTestCase {
 				XCTAssert(mapPanel.isPinned)
 				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
-				self.viewController.didDragFree(mapPanel)
+				self.viewController.didDragFree(mapPanel, from: mapPanel.view.frame.origin)
 				XCTAssert(!mapPanel.isPinned)
 				XCTAssert(self.viewController.panelPinnedRight == nil)
 
@@ -413,17 +413,17 @@ class PanelKitTests: XCTestCase {
 				let from = mapPanel.view.center
 				let toX = self.viewController.view.bounds.width - mapPanel.contentViewController!.view.bounds.width/2
 				let to = CGPoint(x: toX, y: mapPanel.view.center.y)
-				mapPanel.panelNavigationController.moveWithTouch(from: from, to: to)
+				mapPanel.moveWithTouch(from: from, to: to)
 				self.viewController.view.layoutIfNeeded()
 
-				mapPanel.panelNavigationController.moveWithTouch(from: to, to: to)
+				mapPanel.moveWithTouch(from: to, to: to)
 
 				mapPanel.didEndDrag()
 
 				XCTAssert(mapPanel.isPinned)
 				XCTAssert(self.viewController.panelPinnedRight == mapPanel)
 
-				mapPanel.panelNavigationController.moveWithTouch(from: to, to: from)
+				mapPanel.moveWithTouch(from: to, to: from)
 				self.viewController.view.layoutIfNeeded()
 				mapPanel.didEndDrag()
 
