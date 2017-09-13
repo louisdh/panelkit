@@ -216,7 +216,7 @@ import UIKit
 
 	// MARK: -
 
-	func didTap(_ sender: UITapGestureRecognizer) {
+	@objc func didTap(_ sender: UITapGestureRecognizer) {
 
 		if delegate?.isInExpose == true {
 

@@ -20,7 +20,7 @@ class BlockGestureRecognizer: NSObject {
 		recognizer.addTarget(self, action: #selector(invokeTarget(_ :)))
 	}
 
-	func invokeTarget(_ recognizer: UIGestureRecognizer) {
+	@objc func invokeTarget(_ recognizer: UIGestureRecognizer) {
 		self.closure()
 	}
 }
