@@ -31,7 +31,7 @@ class PanelKit_UI_Tests: XCTestCase {
 
     func testFloating() {
 
-		XCUIDevice.shared().orientation = .landscapeLeft
+		XCUIDevice.shared.orientation = .landscapeLeft
 
 		let app = XCUIApplication()
 		let mapButton = app.navigationBars["PanelKit Example"].buttons["Map"]
