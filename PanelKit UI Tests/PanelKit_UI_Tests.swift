@@ -41,8 +41,8 @@ class PanelKit_UI_Tests: XCTestCase {
 
 		mapNavigationBar.buttons["⬇︎"].tap()
 
-		let mapStaticText = mapNavigationBar.staticTexts["Map"]
-		mapStaticText.tap()
+//		let mapStaticText = mapNavigationBar.staticTexts["Map"]
+//		mapStaticText.tap()
 
 		mapNavigationBar.buttons["Close"].tap()
 

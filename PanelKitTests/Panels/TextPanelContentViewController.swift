@@ -17,9 +17,10 @@ class TextPanelContentViewController: UIViewController, PanelContentDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		textView = UITextView(frame: view.bounds)
+		let textView = UITextView(frame: view.bounds)
 		self.view.addSubview(textView)
-
+		self.textView = textView
+		
 		self.title = "TextView"
 
 	}

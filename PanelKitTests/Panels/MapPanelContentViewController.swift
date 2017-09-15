@@ -16,8 +16,9 @@ class MapPanelContentViewController: UIViewController, PanelContentDelegate {
 	override func viewDidLoad() {
 		super.viewDidLoad()
 
-		let mapView = MKMapView(frame: view.bounds)
-		self.view.addSubview(mapView)
+		// Xcode 9.0's simulators do NOT like map views :/
+//		let mapView = MKMapView(frame: view.bounds)
+//		self.view.addSubview(mapView)
 
 		self.title = "Map"
 
