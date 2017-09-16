@@ -14,7 +14,7 @@ extension PanelViewController {
 		return !isPinned && pinnedSide != nil
 	}
 
-	public var isPinned: Bool {
+	@objc public var isPinned: Bool {
 
 		if isPresentedAsPopover {
 			return false
@@ -31,7 +31,7 @@ extension PanelViewController {
 		return pinnedSide != nil
 	}
 
-	public var isFloating: Bool {
+	@objc public var isFloating: Bool {
 
 		if isPresentedAsPopover {
 			return false
