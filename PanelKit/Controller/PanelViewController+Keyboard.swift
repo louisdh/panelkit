@@ -58,10 +58,15 @@ extension PanelViewController {
 
 				let maxHeight = superView.bounds.height - keyboardFrameInSuperView.height
 
-				let height = min(viewToMove.frame.height, maxHeight)
+				var height = min(viewToMove.frame.height, maxHeight)
 
-				let y = keyboardFrameInSuperView.origin.y - height
+				var y = keyboardFrameInSuperView.origin.y - height
 
+				if let dragInsets = self.delegate?.dragInsets(for: self) {
+					y += dragInsets.top
+					height -= dragInsets.top
+				}
+				
 				let updatedFrame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
 
 				delegate?.updateFrame(for: self, to: updatedFrame, keyboardShown: true)
