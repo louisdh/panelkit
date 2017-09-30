@@ -115,6 +115,11 @@ extension PanelViewController {
 
 		var newFrame = currentFrame
 		newFrame.size = contentDelegate.preferredPanelContentSize
+		
+		if isPinned {
+			newFrame.size.width = contentDelegate.preferredPanelPinnedWidth
+		}
+		
 		newFrame.size.height += 1
 
 		self.delegate?.updateFrame(for: self, to: newFrame, keyboardShown: true)
@@ -136,6 +141,10 @@ extension PanelViewController {
 		var newFrame2 = currentFrame
 		newFrame2.size = contentDelegate.preferredPanelContentSize
 
+		if isPinned {
+			newFrame2.size.width = contentDelegate.preferredPanelPinnedWidth
+		}
+		
 		self.delegate?.updateFrame(for: self, to: newFrame2)
 		self.delegate?.panelContentWrapperView.layoutIfNeeded()
 
