@@ -12,12 +12,14 @@
 		BE23322E1E74BA95005D3F4C /* PanelContentDelegate+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322D1E74BA95005D3F4C /* PanelContentDelegate+Default.swift */; };
 		BE2332301E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322F1E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift */; };
 		BE24AD081E4F6B11008892A2 /* PanelKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BE24AD061E4F6B11008892A2 /* PanelKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE29D6E41F11289E007FCE07 /* PanelViewController+Resizing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE29D6E31F11289E007FCE07 /* PanelViewController+Resizing.swift */; };
 		BE5123641E5790E30034A61F /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123621E5790E30034A61F /* LogLevel.swift */; };
 		BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123631E5790E30034A61F /* PanelPinSide.swift */; };
 		BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123661E5790FD0034A61F /* PanelManager.swift */; };
 		BE51236A1E5790FD0034A61F /* PanelManager+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */; };
 		BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236D1E5791090034A61F /* PanelNavigationController.swift */; };
 		BE5123711E5791090034A61F /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236E1E5791090034A61F /* PanelViewController.swift */; };
+		BE6109B21F0EC917000782EA /* HandleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE6109B11F0EC917000782EA /* HandleView.swift */; };
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
 		BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F21E6225DC00714BED /* AssociatedObject.swift */; };
 		BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */; };
@@ -106,12 +108,14 @@
 		BE24AD031E4F6B11008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE24AD061E4F6B11008892A2 /* PanelKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelKit.h; sourceTree = "<group>"; };
 		BE24AD071E4F6B11008892A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE29D6E31F11289E007FCE07 /* PanelViewController+Resizing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Resizing.swift"; path = "Controller/PanelViewController+Resizing.swift"; sourceTree = "<group>"; };
 		BE5123621E5790E30034A61F /* LogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Model/LogLevel.swift; sourceTree = "<group>"; };
 		BE5123631E5790E30034A61F /* PanelPinSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelPinSide.swift; path = Model/PanelPinSide.swift; sourceTree = "<group>"; };
 		BE5123661E5790FD0034A61F /* PanelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelManager.swift; path = PanelManager/PanelManager.swift; sourceTree = "<group>"; };
 		BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Offscreen.swift"; path = "PanelManager/PanelManager+Offscreen.swift"; sourceTree = "<group>"; };
 		BE51236D1E5791090034A61F /* PanelNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelNavigationController.swift; path = Controller/PanelNavigationController.swift; sourceTree = "<group>"; };
 		BE51236E1E5791090034A61F /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelViewController.swift; path = Controller/PanelViewController.swift; sourceTree = "<group>"; };
+		BE6109B11F0EC917000782EA /* HandleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HandleView.swift; path = View/HandleView.swift; sourceTree = "<group>"; };
 		BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Expose.swift"; path = "PanelManager/PanelManager+Expose.swift"; sourceTree = "<group>"; };
 		BE8682F21E6225DC00714BED /* AssociatedObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AssociatedObject.swift; path = Model/AssociatedObject.swift; sourceTree = "<group>"; };
 		BE8682F41E622E9900714BED /* BlockGestureRecognizer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockGestureRecognizer.swift; path = Model/BlockGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -236,6 +240,7 @@
 			children = (
 				BEF801491E50F0A1007D3CEE /* Utils */,
 				BE51235F1E5790960034A61F /* Model */,
+				BE6109AF1F0EC7C0000782EA /* View */,
 				BE5123611E5790AA0034A61F /* PanelManager */,
 				BE23322A1E74BA1A005D3F4C /* PanelContentDelegate */,
 				BE5123601E57909B0034A61F /* Controller */,
@@ -265,6 +270,7 @@
 				BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */,
 				BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */,
 				BEBE2F3E1E71DCE400DEDF21 /* PanelViewController+States.swift */,
+				BE29D6E31F11289E007FCE07 /* PanelViewController+Resizing.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -283,6 +289,14 @@
 				BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */,
 			);
 			name = PanelManager;
+			sourceTree = "<group>";
+		};
+		BE6109AF1F0EC7C0000782EA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				BE6109B11F0EC917000782EA /* HandleView.swift */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		BEBE2F4D1E71FC0A00DEDF21 /* PanelKit Tests */ = {
@@ -556,6 +570,7 @@
 			files = (
 				BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */,
 				BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */,
+				BE6109B21F0EC917000782EA /* HandleView.swift in Sources */,
 				BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */,
 				BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */,
 				BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */,
@@ -581,6 +596,7 @@
 				BECEE6151E6E234D00AB2B25 /* PanelManager+Default.swift in Sources */,
 				BEBE2F3D1E70984800DEDF21 /* PanelManager+Closing.swift in Sources */,
 				BEBE2F371E6F463300DEDF21 /* PanelManager+AutoLayout.swift in Sources */,
+				BE29D6E41F11289E007FCE07 /* PanelViewController+Resizing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

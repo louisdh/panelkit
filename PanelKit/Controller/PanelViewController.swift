@@ -8,6 +8,13 @@
 
 import UIKit
 
+struct HandleContainer {
+	
+	let wrapperView: UIView
+	let handleView: HandleView
+	
+}
+
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	weak var topConstraint: NSLayoutConstraint?
@@ -22,6 +29,9 @@ import UIKit
 	var panelPinnedPreviewView: UIView?
 
 	var dragGestureRecognizer: UIPanGestureRecognizer?
+
+	var scaleStartFrame: CGRect?
+
 	fileprivate var prevTouch: CGPoint?
 
 	var position: CGPoint?
@@ -64,6 +74,13 @@ import UIKit
 
 	let shadowView: UIView
 
+	let leftHandleContainer: HandleContainer
+	let rightHandleContainer: HandleContainer
+	let topHandleContainer: HandleContainer
+	let bottomHandleContainer: HandleContainer
+	
+	let horizontalStackView = UIStackView()
+
 	// MARK: -
 
 	public init(with contentViewController: UIViewController, contentDelegate: PanelContentDelegate, in panelManager: PanelManager) {
@@ -75,12 +92,60 @@ import UIKit
 		panelNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
 
 		self.shadowView = UIView(frame: .zero)
+		shadowView.translatesAutoresizingMaskIntoConstraints = false
 
+		leftHandleContainer = PanelViewController.handleContainer(for: .vertical)
+		rightHandleContainer = PanelViewController.handleContainer(for: .vertical)
+		
+		topHandleContainer = PanelViewController.handleContainer(for: .horizontal)
+		bottomHandleContainer = PanelViewController.handleContainer(for: .horizontal)
+		
+
+		
 		super.init(nibName: nil, bundle: nil)
+		
+		
+		let doubleTapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(enterResizing(_:)))
+		
+		doubleTapGestureRecognizer.numberOfTapsRequired = 2
+		doubleTapGestureRecognizer.numberOfTouchesRequired = 2
+		
+		self.view.addGestureRecognizer(doubleTapGestureRecognizer)
+		
+		
+	
+		
+		let leftHandlePanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragLeftHandle(_:)))
+		
+		leftHandleContainer.handleView.addGestureRecognizer(leftHandlePanGestureRecognizer)
 
+		let rightHandlePanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragRightHandle(_:)))
+		
+		rightHandleContainer.handleView.addGestureRecognizer(rightHandlePanGestureRecognizer)
+	
+		let topHandlePanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragTopHandle(_:)))
+		
+		topHandleContainer.handleView.addGestureRecognizer(topHandlePanGestureRecognizer)
+		
+		let bottomHandlePanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragBottomHandle(_:)))
+		
+		bottomHandleContainer.handleView.addGestureRecognizer(bottomHandlePanGestureRecognizer)
+		
+		
+		let pinchToResizeGestureRecognizer = UIPinchGestureRecognizer(target: self, action: #selector(pinchToResize(_:)))
+
+		self.view.addGestureRecognizer(pinchToResizeGestureRecognizer)
+
+		
+		let verticalStackView = UIStackView()
+		verticalStackView.translatesAutoresizingMaskIntoConstraints = false
+	
+		horizontalStackView.translatesAutoresizingMaskIntoConstraints = false
+		
 		self.view.addSubview(shadowView)
 		self.addChildViewController(panelNavigationController)
 		self.view.addSubview(panelNavigationController.view)
+		self.view.addSubview(horizontalStackView)
 		panelNavigationController.didMove(toParentViewController: self)
 
 		panelNavigationController.panelViewController = self
@@ -91,23 +156,161 @@ import UIKit
 
 		panelNavigationController.view.layer.cornerRadius = cornerRadius
 		panelNavigationController.view.clipsToBounds = true
-
+		
 		panelNavigationController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.0).isActive = true
 		panelNavigationController.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
 		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
 
+		
+		
+		horizontalStackView.distribution = .fill
+		horizontalStackView.axis = .horizontal
+		horizontalStackView.alignment = .fill
+		horizontalStackView.spacing = 4.0
+
+
+
+		horizontalStackView.addArrangedSubview(leftHandleContainer.wrapperView)
+		horizontalStackView.addArrangedSubview(verticalStackView)
+		horizontalStackView.addArrangedSubview(rightHandleContainer.wrapperView)
+
+		verticalStackView.distribution = .fill
+		verticalStackView.axis = .vertical
+		verticalStackView.alignment = .fill
+		
+		horizontalStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+		horizontalStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+		horizontalStackView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+		horizontalStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+
+		// Vibrancy Effect
+		let vibrancyEffect = UIVibrancyEffect(blurEffect: UIBlurEffect(style: .dark))
+		
+		let vibrancyEffectView = UIVisualEffectView(effect: vibrancyEffect)
+		vibrancyEffectView.frame = view.bounds
+		
+		vibrancyEffectView.translatesAutoresizingMaskIntoConstraints = false
+		
+		vibrantLabel.translatesAutoresizingMaskIntoConstraints = false
+		
+		// Label for vibrant text
+		vibrantLabel.font = UIFont.boldSystemFont(ofSize: 32.0)
+		vibrantLabel.textAlignment = .center
+		
+		vibrancyEffectView.contentView.addSubview(vibrantLabel)
+
+		
+		verticalStackView.addArrangedSubview(topHandleContainer.wrapperView)
+		
+		let emptyView = UIView()
+		emptyView.translatesAutoresizingMaskIntoConstraints = false
+		
+		verticalStackView.addArrangedSubview(emptyView)
+		
+//		emptyView.isUserInteractionEnabled = false
+
+		verticalStackView.addArrangedSubview(bottomHandleContainer.wrapperView)
+		
+		verticalStackView.spacing = 4.0
+		
 		self.delegate = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
 		tapGestureRecognizer.cancelsTouchesInView = false
 		self.view.addGestureRecognizer(tapGestureRecognizer)
 
+		
+		
+		shadowView.heightAnchor.constraint(equalTo: panelNavigationController.view.heightAnchor, multiplier: 1.0).isActive = true
+		shadowView.widthAnchor.constraint(equalTo: panelNavigationController.view.widthAnchor, multiplier: 1.0).isActive = true
+		shadowView.leftAnchor.constraint(equalTo: panelNavigationController.view.leftAnchor).isActive = true
+		shadowView.topAnchor.constraint(equalTo: panelNavigationController.view.topAnchor).isActive = true
+		
+		
+		
+		resizingEffectView.translatesAutoresizingMaskIntoConstraints = false
+		resizingEffectView.isUserInteractionEnabled = false
+		
+//		self.view.addSubview(resizingEffectView)
+		self.panelNavigationController.view.addSubview(resizingEffectView)
+
+		resizingEffectView.heightAnchor.constraint(equalTo: panelNavigationController.view.heightAnchor, multiplier: 1.0).isActive = true
+		resizingEffectView.widthAnchor.constraint(equalTo: panelNavigationController.view.widthAnchor, multiplier: 1.0).isActive = true
+		resizingEffectView.leftAnchor.constraint(equalTo: panelNavigationController.view.leftAnchor).isActive = true
+		resizingEffectView.topAnchor.constraint(equalTo: panelNavigationController.view.topAnchor).isActive = true
+	
+	
+
+		resizingEffectView.contentView.addSubview(vibrancyEffectView)
+
+		vibrancyEffectView.heightAnchor.constraint(equalTo: resizingEffectView.heightAnchor, multiplier: 1.0).isActive = true
+		vibrancyEffectView.widthAnchor.constraint(equalTo: resizingEffectView.widthAnchor, multiplier: 1.0).isActive = true
+		vibrancyEffectView.leftAnchor.constraint(equalTo: resizingEffectView.leftAnchor).isActive = true
+		vibrancyEffectView.topAnchor.constraint(equalTo: resizingEffectView.topAnchor).isActive = true
+		
+
+	
+		
+	
+		vibrantLabel.heightAnchor.constraint(equalTo: vibrancyEffectView.heightAnchor, multiplier: 1.0).isActive = true
+		vibrantLabel.widthAnchor.constraint(equalTo: vibrancyEffectView.widthAnchor, multiplier: 1.0).isActive = true
+		vibrantLabel.leftAnchor.constraint(equalTo: vibrancyEffectView.leftAnchor).isActive = true
+		vibrantLabel.topAnchor.constraint(equalTo: vibrancyEffectView.topAnchor).isActive = true
+		
+		// Add the vibrancy view to the blur view
+		
+		horizontalStackView.alpha = 0
+		
 		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
 		dragGestureRecognizer.delegate = self
 		
 		self.view.addGestureRecognizer(dragGestureRecognizer)
 		self.dragGestureRecognizer = dragGestureRecognizer
+	}
+	
+	let vibrantLabel = UILabel()
+	let resizingEffectView = UIVisualEffectView(effect: nil)
+
+	var isResizing = false
+	
+	@objc func enterResizing(_ recognizer: UITapGestureRecognizer) {
+		
+		vibrantLabel.text = panelNavigationController.title
+
+		if isResizing {
+			
+			isResizing = false
+			
+			self.resizingEffectView.isUserInteractionEnabled = false
+
+			UIView.animate(withDuration: 0.25) {
+				
+				self.resizingEffectView.effect = nil
+				self.vibrantLabel.alpha = 0
+				self.horizontalStackView.alpha = 0
+				self.horizontalStackView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+			}
+			
+		} else {
+			
+			self.horizontalStackView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+
+			isResizing = true
+			
+			self.resizingEffectView.isUserInteractionEnabled = true
+			
+			UIView.animate(withDuration: 0.25) {
+				
+				self.resizingEffectView.effect = UIBlurEffect(style: .dark)
+				self.vibrantLabel.alpha = 1
+				self.horizontalStackView.alpha = 1
+				self.horizontalStackView.transform = .identity
+
+			}
+			
+		}
+		
 	}
 
 	required public init?(coder aDecoder: NSCoder) {
@@ -191,7 +394,9 @@ import UIKit
 	override public func viewDidLayoutSubviews() {
 		super.viewDidLayoutSubviews()
 
-		shadowView.frame = panelNavigationController.view.frame
+//		let shadowFrame = panelNavigationController.view.convert(panelNavigationController.view.bounds, to: self.view)
+//		
+//		shadowView.frame = shadowFrame
 
 		if shadowEnabled {
 			shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
