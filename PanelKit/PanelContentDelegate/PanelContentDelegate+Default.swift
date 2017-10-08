@@ -59,6 +59,15 @@ public extension PanelContentDelegate {
 	var preferredPanelPinnedWidth: CGFloat {
 		return preferredPanelContentSize.width
 	}
+	
+	var minimumPanelContentSize: CGSize {
+		return preferredPanelContentSize
+	}
+	
+	var maximumPanelContentSize: CGSize {
+		return preferredPanelContentSize
+	}
+	
 }
 
 public extension PanelContentDelegate where Self: UIViewController {

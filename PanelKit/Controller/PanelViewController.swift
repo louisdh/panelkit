@@ -61,9 +61,11 @@ import UIKit
 	}
 
 	weak var contentDelegate: PanelContentDelegate?
-
+	
 	let shadowView: UIView
 
+	let resizeCornerHandle: CornerHandleView
+	
 	// MARK: -
 
 	public init(with contentViewController: UIViewController, contentDelegate: PanelContentDelegate, in panelManager: PanelManager) {
@@ -75,6 +77,8 @@ import UIKit
 		panelNavigationController.view.translatesAutoresizingMaskIntoConstraints = false
 
 		self.shadowView = UIView(frame: .zero)
+
+		self.resizeCornerHandle = CornerHandleView()
 
 		super.init(nibName: nil, bundle: nil)
 
@@ -92,11 +96,11 @@ import UIKit
 		panelNavigationController.view.layer.cornerRadius = cornerRadius
 		panelNavigationController.view.clipsToBounds = true
 
-		panelNavigationController.view.heightAnchor.constraint(equalTo: view.heightAnchor, multiplier: 1.0).isActive = true
-		panelNavigationController.view.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 1.0).isActive = true
 		panelNavigationController.view.leftAnchor.constraint(equalTo: self.view.leftAnchor).isActive = true
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
-
+		panelNavigationController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
+		panelNavigationController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
+		
 		self.delegate = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
@@ -108,8 +112,14 @@ import UIKit
 		
 		self.view.addGestureRecognizer(dragGestureRecognizer)
 		self.dragGestureRecognizer = dragGestureRecognizer
+		
+		configureResizeHandle()
+
 	}
 
+	var startDragPosition: CGPoint?
+	var startFrame: CGRect?
+	
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}

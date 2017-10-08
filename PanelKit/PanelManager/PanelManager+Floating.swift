@@ -36,10 +36,16 @@ public extension PanelManager {
 
 				self.panelContentWrapperView.addSubview(panel.view)
 				
+				self.panelContentWrapperView.addSubview(panel.resizeCornerHandle)
+				
+				panel.resizeCornerHandle.bottomAnchor.constraint(equalTo: panel.view.bottomAnchor, constant: 16).isActive = true
+				panel.resizeCornerHandle.trailingAnchor.constraint(equalTo: panel.view.trailingAnchor, constant: 16).isActive = true
+
 				panel.didUpdateFloatingState()
 
 				self.updateFrame(for: panel, to: rect)
 				self.panelContentWrapperView.layoutIfNeeded()
+				
 
 				let x = rect.origin.x
 				let y = rect.origin.y + panelPopYOffset

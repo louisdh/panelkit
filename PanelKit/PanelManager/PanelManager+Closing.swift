@@ -12,6 +12,7 @@ extension PanelManager {
 
 	func close(_ panel: PanelViewController) {
 
+		panel.resizeCornerHandle.removeFromSuperview()
 		panel.view.removeFromSuperview()
 
 		panel.contentDelegate?.didUpdateFloatingState()

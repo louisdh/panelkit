@@ -39,6 +39,10 @@ public protocol PanelContentDelegate: class {
 	
 	/// The width the panel should have when it is pinned.
 	var preferredPanelPinnedWidth: CGFloat { get }
+	
+	var minimumPanelContentSize: CGSize { get }
+
+	var maximumPanelContentSize: CGSize { get }
 
 	/// Notifies you that the keyboard will be shown.
 	/// Use this to update any constraints that descend from the panel's view.
