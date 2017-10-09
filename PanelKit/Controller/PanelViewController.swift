@@ -220,11 +220,11 @@ import UIKit
 
 		coordinator.animate(alongsideTransition: { (context) in
 
-		}) { (context) in
+		}, completion: { (context) in
 
 			self.updateState()
 
-		}
+		})
 
 	}
 
