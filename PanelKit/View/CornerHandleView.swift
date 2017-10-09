@@ -56,6 +56,10 @@ class CornerHandleView: UIView {
 		imgView.frame = CGRect(x: 0, y: 0, width: 38, height: 38)
 		visualEffectView.mask = imgView
 		
+		self.layer.shadowColor = UIColor.black.cgColor
+		self.layer.shadowRadius = 8.0
+		self.layer.shadowOpacity = 0.4
+		self.layer.shadowOffset = .zero
 	}
 	
 	func cornerHandleDidBecomeActive() {
