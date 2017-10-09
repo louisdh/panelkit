@@ -51,10 +51,10 @@ import UIKit
 	}
 
 	var logLevel: LogLevel {
-		return delegate?.panelManagerLogLevel ?? .none
+		return manager?.panelManagerLogLevel ?? .none
 	}
 
-	weak var delegate: PanelManager? {
+	weak var manager: PanelManager? {
 		didSet {
 			self.updateShadow()
 		}
@@ -101,7 +101,7 @@ import UIKit
 		panelNavigationController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
 		panelNavigationController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
 		
-		self.delegate = panelManager
+		self.manager = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
 		tapGestureRecognizer.cancelsTouchesInView = false
@@ -228,13 +228,13 @@ import UIKit
 
 	@objc func didTap(_ sender: UITapGestureRecognizer) {
 
-		if delegate?.isInExpose == true {
+		if manager?.isInExpose == true {
 
 			if !isPinned {
 				bringToFront()
 			}
 
-			delegate?.exitExpose()
+			manager?.exitExpose()
 		}
 
 	}
@@ -448,7 +448,7 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		let newCenter = self.allowedCenter(for: proposedCenter)
 		newFrame.center = newCenter
 		
-		self.delegate?.updateFrame(for: self, to: newFrame)
+		self.manager?.updateFrame(for: self, to: newFrame)
 		
 		self.prevTouch = touch
 		

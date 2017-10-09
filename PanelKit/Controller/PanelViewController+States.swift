@@ -68,7 +68,7 @@ extension PanelViewController {
 	/// A panel can't float when it is presented modally
 	public var canFloat: Bool {
 
-		guard delegate?.allowFloatingPanels == true else {
+		guard manager?.allowFloatingPanels == true else {
 			return false
 		}
 
@@ -93,7 +93,7 @@ extension PanelViewController {
 	func updateState() {
 
 		if wasPinned {
-			delegate?.didDragFree(self, from: view.frame.origin)
+			manager?.didDragFree(self, from: view.frame.origin)
 		}
 
 		if isFloating || isPinned {

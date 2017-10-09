@@ -113,7 +113,7 @@ extension PanelViewController {
 			newFrame.size.width = newWidth
 			newFrame.size.height = newHeight
 			
-			self.delegate?.updateFrame(for: self, to: newFrame)
+			self.manager?.updateFrame(for: self, to: newFrame)
 			
 		} else if recognizer.state == .ended {
 			

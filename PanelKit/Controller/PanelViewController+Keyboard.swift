@@ -62,18 +62,18 @@ extension PanelViewController {
 
 				var y = keyboardFrameInSuperView.origin.y - height
 
-				if let dragInsets = self.delegate?.dragInsets(for: self) {
+				if let dragInsets = self.manager?.dragInsets(for: self) {
 					y += dragInsets.top
 					height -= dragInsets.top
 				}
 				
 				let updatedFrame = CGRect(x: viewToMove.frame.origin.x, y: y, width: viewToMove.frame.width, height: height)
 
-				delegate?.updateFrame(for: self, to: updatedFrame, keyboardShown: true)
+				manager?.updateFrame(for: self, to: updatedFrame, keyboardShown: true)
 
 				UIView.animate(withDuration: duration, delay: 0.0, options: [animationCurve], animations: {
 
-					self.delegate?.panelContentWrapperView.layoutIfNeeded()
+					self.manager?.panelContentWrapperView.layoutIfNeeded()
 
 				}, completion: nil)
 
@@ -127,7 +127,7 @@ extension PanelViewController {
 		
 		newFrame.size.height += 1
 
-		self.delegate?.updateFrame(for: self, to: newFrame, keyboardShown: true)
+		self.manager?.updateFrame(for: self, to: newFrame, keyboardShown: true)
 
 		contentDelegate.updateConstraintsForKeyboardHide()
 
@@ -135,7 +135,7 @@ extension PanelViewController {
 
 			self.view.layoutIfNeeded()
 
-			self.delegate?.panelContentWrapperView.layoutIfNeeded()
+			self.manager?.panelContentWrapperView.layoutIfNeeded()
 
 			contentDelegate.updateUIForKeyboardHide()
 
@@ -150,8 +150,8 @@ extension PanelViewController {
 			newFrame2.size.width = contentDelegate.preferredPanelPinnedWidth
 		}
 		
-		self.delegate?.updateFrame(for: self, to: newFrame2)
-		self.delegate?.panelContentWrapperView.layoutIfNeeded()
+		self.manager?.updateFrame(for: self, to: newFrame2)
+		self.manager?.panelContentWrapperView.layoutIfNeeded()
 
 	}
 

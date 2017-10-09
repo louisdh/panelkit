@@ -22,15 +22,15 @@ extension PanelViewController {
 
 		if self.view.frame.maxX >= containerWidth {
 
-			delegate?.didDrag(self, toEdgeOf: .right)
+			manager?.didDrag(self, toEdgeOf: .right)
 
 		} else if self.view.frame.minX <= 0 {
 
-			delegate?.didDrag(self, toEdgeOf: .left)
+			manager?.didDrag(self, toEdgeOf: .left)
 
 		} else {
 
-			delegate?.didDragFree(self, from: point)
+			manager?.didDragFree(self, from: point)
 
 		}
 
@@ -48,15 +48,15 @@ extension PanelViewController {
 
 		if self.view.frame.maxX >= containerWidth {
 
-			delegate?.didEndDrag(self, toEdgeOf: .right)
+			manager?.didEndDrag(self, toEdgeOf: .right)
 
 		} else if self.view.frame.minX <= 0 {
 
-			delegate?.didEndDrag(self, toEdgeOf: .left)
+			manager?.didEndDrag(self, toEdgeOf: .left)
 
 		} else {
 
-			delegate?.didEndDragFree(self)
+			manager?.didEndDragFree(self)
 
 		}
 

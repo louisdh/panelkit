@@ -38,7 +38,7 @@ extension PanelContentDelegate where Self: UIViewController {
 			return
 		}
 
-		panel.delegate?.toggleFloatStatus(for: panel)
+		panel.manager?.toggleFloatStatus(for: panel)
 
 	}
 

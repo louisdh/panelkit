@@ -91,7 +91,7 @@ extension PanelViewController {
 	}
 
 	var shadowEnabled: Bool {
-		return delegate?.enablePanelShadow(for: self) == true
+		return manager?.enablePanelShadow(for: self) == true
 	}
 
 	func updateShadow() {

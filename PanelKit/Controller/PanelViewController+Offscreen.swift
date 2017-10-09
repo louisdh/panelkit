@@ -36,7 +36,7 @@ extension PanelViewController {
 			frame.center = CGPoint(x: superView.frame.size.width + deltaToMoveOffscreen, y: viewToMove.center.y)
 		}
 
-		delegate?.updateFrame(for: self, to: frame)
+		manager?.updateFrame(for: self, to: frame)
 
 	}
 
@@ -81,7 +81,7 @@ extension PanelViewController {
 		var frame = viewToMove.frame
 		frame.center = position
 
-		delegate?.updateFrame(for: self, to: frame)
+		manager?.updateFrame(for: self, to: frame)
 
 	}
 
