@@ -68,6 +68,10 @@ import UIKit
 	
 	// MARK: -
 
+	public convenience init(with contentViewController: UIViewController & PanelContentDelegate, in panelManager: PanelManager) {
+		self.init(with: contentViewController, contentDelegate: contentViewController, in: panelManager)
+	}
+	
 	public init(with contentViewController: UIViewController, contentDelegate: PanelContentDelegate, in panelManager: PanelManager) {
 
 		self.contentDelegate = contentDelegate
