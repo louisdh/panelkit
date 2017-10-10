@@ -142,6 +142,10 @@ extension PanelManager {
 			return
 		}
 
+		if panel.logLevel == .full {
+			print("did pin \(panel) to edge of \(side) side")
+		}
+
 		panel.pinnedSide = side
 
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
