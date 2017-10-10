@@ -74,6 +74,8 @@ extension PanelManager {
 
 		})
 
+		panel.showResizeHandleIfNeeded()
+
 	}
 
 	func didDrag(_ panel: PanelViewController, toEdgeOf side: PanelPinSide) {
@@ -93,7 +95,7 @@ extension PanelManager {
 		if panel.logLevel == .full {
 			print("did drag \(panel) to edge of \(side) side")
 		}
-
+		
 		guard let panelView = panel.view else {
 			return
 		}
@@ -173,6 +175,8 @@ extension PanelManager {
 
 		})
 
+		panel.hideResizeHandle()
+
 	}
 
 	func didEndDragFree(_ panel: PanelViewController) {
@@ -184,6 +188,7 @@ extension PanelManager {
 		}
 
 		panel.pinnedSide = nil
+		panel.showResizeHandleIfNeeded()
 
 	}
 

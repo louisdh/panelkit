@@ -255,6 +255,7 @@ import UIKit
 			return
 		}
 
+		superview.bringSubview(toFront: self.resizeCornerHandle)
 		superview.bringSubview(toFront: viewToMove)
 
 	}

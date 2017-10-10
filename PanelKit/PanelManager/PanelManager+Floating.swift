@@ -34,10 +34,10 @@ public extension PanelManager {
 
 			panel.dismiss(animated: false, completion: {
 
-				self.panelContentWrapperView.addSubview(panel.view)
-				
 				self.panelContentWrapperView.addSubview(panel.resizeCornerHandle)
 				
+				self.panelContentWrapperView.addSubview(panel.view)
+
 				panel.resizeCornerHandle.bottomAnchor.constraint(equalTo: panel.view.bottomAnchor, constant: 16).isActive = true
 				panel.resizeCornerHandle.trailingAnchor.constraint(equalTo: panel.view.trailingAnchor, constant: 16).isActive = true
 

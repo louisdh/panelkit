@@ -22,7 +22,7 @@ class CornerHandleView: UIView {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
-	let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
+	private let visualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .light))
 
 	private func setup() {
 		
@@ -60,6 +60,8 @@ class CornerHandleView: UIView {
 		self.layer.shadowRadius = 8.0
 		self.layer.shadowOpacity = 0.4
 		self.layer.shadowOffset = .zero
+		
+		self.visualEffectView.transform = CGAffineTransform(rotationAngle: .pi/2 * 2)
 	}
 	
 	func cornerHandleDidBecomeActive() {
@@ -142,4 +144,3 @@ private class CornerHandleGlyphView: UIView {
 	}
 	
 }
-

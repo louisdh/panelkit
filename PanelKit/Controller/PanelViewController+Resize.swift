@@ -10,6 +10,80 @@ import UIKit
 
 extension PanelViewController {
 	
+	private var canResize: Bool {
+		
+		guard let contentDelegate = contentDelegate else {
+			return false
+		}
+		
+		let preferredSize = contentDelegate.preferredPanelContentSize
+		let minSize = contentDelegate.minimumPanelContentSize
+		let maxSize = contentDelegate.maximumPanelContentSize
+
+		
+		if preferredSize == minSize && preferredSize == maxSize {
+			return false
+		}
+		
+		return true
+	}
+	
+	func showResizeHandleIfNeeded(animated: Bool = true) {
+		
+		guard canResize else {
+			return
+		}
+		
+		func show() {
+			
+			self.resizeCornerHandle.transform = .identity
+
+		}
+		
+		self.resizeCornerHandle.alpha = 1
+
+		if animated {
+	
+			UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
+				
+				self.resizeCornerHandle.transform = .identity
+
+			}, completion: nil)
+			
+		} else {
+			
+			show()
+		}
+		
+	}
+	
+	func hideResizeHandle(animated: Bool = true) {
+		
+		func hide() {
+			
+			var transform = CGAffineTransform.identity
+			transform = transform.translatedBy(x: -44, y: -44)
+			
+			self.resizeCornerHandle.transform = transform
+			self.resizeCornerHandle.alpha = 0
+			
+		}
+		
+		if animated {
+			
+			UIView.animate(withDuration: 0.4, delay: 0.0, usingSpringWithDamping: 0.7, initialSpringVelocity: 1.0, options: [], animations: {
+
+				hide()
+
+			}, completion: nil)
+			
+		} else {
+			
+			hide()
+		}
+		
+	}
+	
 	func configureResizeHandle() {
 		
 		let resizeHandle = resizeCornerHandle
@@ -29,7 +103,8 @@ extension PanelViewController {
 		resizeHandle.addGestureRecognizer(resizeHandleTapGestureRecognizer)
 		
 		cornerHandleDidBecomeInactive(animated: false)
-
+		hideResizeHandle(animated: false)
+		
 	}
 	
 	private func cornerHandleDidBecomeActive() {

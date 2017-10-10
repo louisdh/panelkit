@@ -95,7 +95,7 @@ extension PanelViewController {
 		if wasPinned {
 			manager?.didDragFree(self, from: view.frame.origin)
 		}
-
+		
 		if isFloating || isPinned {
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -127,6 +127,12 @@ extension PanelViewController {
 		if !(isFloating || isPinned) {
 			widthConstraint?.isActive = false
 			heightConstraint?.isActive = false
+		}
+		
+		if isFloating {
+			showResizeHandleIfNeeded()
+		} else {
+			hideResizeHandle()
 		}
 
 	}

@@ -141,6 +141,10 @@ public extension PanelManager {
 			}
 
 		})
+		
+		for panel in panels {
+			panel.hideResizeHandle()
+		}
 
 	}
 
@@ -182,6 +186,10 @@ public extension PanelManager {
 			}
 
 		})
+		
+		for panel in panels {
+			panel.showResizeHandleIfNeeded()
+		}
 
 	}
 
