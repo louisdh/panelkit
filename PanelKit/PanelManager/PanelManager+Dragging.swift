@@ -70,9 +70,9 @@ extension PanelManager {
 
 			self.didUpdatePinnedPanels()
 
-		}) { (_) in
+		}, completion: { (_) in
 
-		}
+		})
 
 	}
 
@@ -158,7 +158,7 @@ extension PanelManager {
 
 			self.didUpdatePinnedPanels()
 
-		}) { (_) in
+		}, completion: { (_) in
 
 			// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
 			self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
@@ -167,7 +167,7 @@ extension PanelManager {
 				self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
 			}
 
-		}
+		})
 
 	}
 
