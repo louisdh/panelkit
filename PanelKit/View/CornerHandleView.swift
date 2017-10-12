@@ -33,9 +33,15 @@ class CornerHandleView: UIView {
 		glyphView.isOpaque = false
 		glyphView.tintColor = self.tintColor
 		
-		UIGraphicsBeginImageContextWithOptions(glyphView.bounds.size, false, 0.0)
-		glyphView.drawHierarchy(in: glyphView.bounds, afterScreenUpdates: true)
-		let img = UIGraphicsGetImageFromCurrentImageContext()
+        let drawRect = CGRect(origin: .zero, size: glyphView.bounds.size)
+		UIGraphicsBeginImageContextWithOptions(drawRect.size, false, 0.0)
+        
+        if let context = UIGraphicsGetCurrentContext() {
+            glyphView.draw(in: context, rect: drawRect)
+        }
+
+        let img = UIGraphicsGetImageFromCurrentImageContext()
+
 		UIGraphicsEndImageContext()
 		
 		self.tintColor = .white
@@ -105,39 +111,45 @@ private class CornerHandleGlyphView: UIView {
 		
 		self.tintColor.setFill()
 		
-		context.saveGState()
-		
-		let outerRadii = CGSize(width: outerRadius, height: outerRadius)
-		let innerRadii = CGSize(width: innerRadius, height: innerRadius)
-		
-		let outerRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width * 2, height: rect.height * 2)
-		
-		let outerRoundedRect = UIBezierPath(roundedRect: outerRect, byRoundingCorners: .topLeft, cornerRadii: outerRadii)
-		
-		let clipRect = UIBezierPath(rect: CGRect(x: 0, y: 0, width: rect.width - handleWidth/2, height: rect.height - handleWidth/2))
-		
-		clipRect.addClip()
-		
-		let innerRect = CGRect(x: rect.origin.x + handleWidth, y: rect.origin.y + handleWidth, width: rect.width*2, height: rect.height*2)
-		
-		
-		let innerRoundedRect = UIBezierPath(roundedRect: innerRect, byRoundingCorners: .topLeft, cornerRadii: innerRadii)
-		
-		
-		outerRoundedRect.append(innerRoundedRect)
-		outerRoundedRect.usesEvenOddFillRule = true
-		
-		outerRoundedRect.addClip()
-		
-		context.fill(rect)
-		
-		context.restoreGState()
-		
-		context.fillEllipse(in: CGRect(x: 0, y: rect.height - handleWidth, width: handleWidth, height: handleWidth))
-		
-		context.fillEllipse(in: CGRect(x: rect.width - handleWidth, y: 0, width: handleWidth, height: handleWidth))
+        draw(in: context, rect: rect)
 		
 	}
+    
+    func draw(in context: CGContext, rect: CGRect) {
+        
+        context.saveGState()
+        
+        let outerRadii = CGSize(width: outerRadius, height: outerRadius)
+        let innerRadii = CGSize(width: innerRadius, height: innerRadius)
+        
+        let outerRect = CGRect(x: rect.origin.x, y: rect.origin.y, width: rect.width * 2, height: rect.height * 2)
+        
+        let outerRoundedRect = UIBezierPath(roundedRect: outerRect, byRoundingCorners: .topLeft, cornerRadii: outerRadii)
+        
+        let clipRect = UIBezierPath(rect: CGRect(x: 0, y: 0, width: rect.width - handleWidth/2, height: rect.height - handleWidth/2))
+        
+        clipRect.addClip()
+        
+        let innerRect = CGRect(x: rect.origin.x + handleWidth, y: rect.origin.y + handleWidth, width: rect.width*2, height: rect.height*2)
+        
+        
+        let innerRoundedRect = UIBezierPath(roundedRect: innerRect, byRoundingCorners: .topLeft, cornerRadii: innerRadii)
+        
+        
+        outerRoundedRect.append(innerRoundedRect)
+        outerRoundedRect.usesEvenOddFillRule = true
+        
+        outerRoundedRect.addClip()
+        
+        context.fill(rect)
+        
+        context.restoreGState()
+        
+        context.fillEllipse(in: CGRect(x: 0, y: rect.height - handleWidth, width: handleWidth, height: handleWidth))
+        
+        context.fillEllipse(in: CGRect(x: rect.width - handleWidth, y: 0, width: handleWidth, height: handleWidth))
+        
+    }
 	
 	override var intrinsicContentSize: CGSize {
 		return CGSize(width: 38, height: 38)
