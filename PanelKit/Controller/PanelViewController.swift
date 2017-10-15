@@ -27,6 +27,8 @@ import UIKit
 	var position: CGPoint?
 	var positionInFullscreen: CGPoint?
 
+	var popBarButtonItem: BlockBarButtonItem?
+	
 	/// Shadow "force" disabled (meaning not by delegate choice).
 	///
 	/// E.g. when panel is pinned.

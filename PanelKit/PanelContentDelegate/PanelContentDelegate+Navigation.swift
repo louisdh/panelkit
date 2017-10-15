@@ -66,9 +66,18 @@ extension PanelContentDelegate where Self: UIViewController {
 
 	func getPanelToggleBtn() -> UIBarButtonItem {
 
+		let panel = panelNavigationController?.panelViewController
+		
+		if let button = panel?.popBarButtonItem {
+			button.title = panelFloatToggleBtnTitle()
+			return button
+		}
+		
 		let button = BlockBarButtonItem(title: "", style: .done) { [weak self] in
 			self?.popPanel()
 		}
+		
+		panel?.popBarButtonItem = button
 
 		button.title = panelFloatToggleBtnTitle()
 
