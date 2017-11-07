@@ -26,5 +26,9 @@ class MapPanelContentViewController: UIViewController, PanelContentDelegate {
     var maximumPanelContentSize: CGSize {
         return CGSize(width: 512, height: 600)
     }
+	
+	var preferredPanelPinnedWidth: CGFloat {
+		return 500
+	}
     
 }

@@ -14,6 +14,10 @@ extension PanelViewController {
 		return !isPinned && pinnedSide != nil
 	}
 
+	@objc public var isUnpinning: Bool {
+		return unpinningMetadata != nil
+	}
+	
 	@objc public var isPinned: Bool {
 
 		if isPresentedAsPopover {

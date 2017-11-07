@@ -15,21 +15,41 @@ extension PanelViewController {
 		guard isFloating || isPinned else {
 			return
 		}
-
-		guard let containerWidth = self.view.superview?.bounds.size.width else {
+		
+		guard let panelContentView = self.manager?.panelContentView else {
 			return
 		}
+		
+		let containerWidth: CGFloat
+		
+		if self.isPinned {
+			
+			guard let superview = self.view.superview else {
+				return
+			}
+			
+			containerWidth = superview.bounds.size.width
+			
+		} else {
+			containerWidth = panelContentView.bounds.size.width
+		}
 
-		if self.view.frame.maxX >= containerWidth {
+		if self.view.frame.maxX >= containerWidth && !isPinned {
 
 			manager?.didDrag(self, toEdgeOf: .right)
 
-		} else if self.view.frame.minX <= 0 {
+		} else if self.view.frame.minX <= 0 && !isPinned {
 
 			manager?.didDrag(self, toEdgeOf: .left)
 
 		} else {
 
+			if let pinnedSide = pinnedSide?.side {
+				if !isUnpinning {
+					self.unpinningMetadata = UnpinningMetadata(side: pinnedSide)
+				}
+			}
+			
 			manager?.didDragFree(self, from: point)
 
 		}
@@ -38,13 +58,21 @@ extension PanelViewController {
 
 	func didEndDrag() {
 
+		self.unpinningMetadata = nil
+
 		guard isFloating || isPinned else {
 			return
 		}
 
-		guard let containerWidth = self.view.superview?.bounds.size.width else {
+		guard let panelContentView = self.manager?.panelContentView else {
 			return
 		}
+		
+		let containerWidth = panelContentView.bounds.size.width
+
+//		guard let containerWidth = self.view.superview?.bounds.size.width else {
+//			return
+//		}
 
 		if self.view.frame.maxX >= containerWidth {
 

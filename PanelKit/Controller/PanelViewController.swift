@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct UnpinningMetadata {
+	
+	let side: PanelPinSide
+	
+}
+
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	weak var topConstraint: NSLayoutConstraint?
@@ -39,7 +45,9 @@ import UIKit
 
 	@objc public weak var contentViewController: UIViewController?
 
-	var pinnedSide: PanelPinSide?
+	var pinnedSide: PanelPinnedMetadata?
+	
+	var unpinningMetadata: UnpinningMetadata?
 
 	var frameBeforeExpose: CGRect? {
 		didSet {
@@ -291,14 +299,24 @@ import UIKit
 			// Allow pinned panels to move beyond superview bounds,
 			// for smooth transition
 
-			if pinnedSide == .left {
+			if pinnedSide?.side == .left {
 				dragInsets.left -= viewToMove.bounds.width
 			}
 
-			if pinnedSide == .right {
+			if pinnedSide?.side == .right {
 				dragInsets.right -= viewToMove.bounds.width
 			}
 
+		} else if let manager = self.manager, let unpinningMetadata = unpinningMetadata {
+			
+			if unpinningMetadata.side == .left, let panel = manager.panelsPinned(at: .left).first {
+				dragInsets.left -= panel.view.bounds.width
+			}
+			
+			if unpinningMetadata.side == .right, let panel = manager.panelsPinned(at: .right).first {
+				dragInsets.right -= panel.view.bounds.width
+			}
+			
 		}
 
 		var newX = proposedCenter.x
@@ -457,9 +475,13 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		
 		self.manager?.updateFrame(for: self, to: newFrame)
 		
-		self.prevTouch = touch
+		self.manager?.panelContentWrapperView.layoutIfNeeded()
 		
-		self.didDrag(at: touch)
+		if fromTouch != touch {
+			self.didDrag(at: touch)
+		}
+
+		self.prevTouch = touch
 		
 	}
 	

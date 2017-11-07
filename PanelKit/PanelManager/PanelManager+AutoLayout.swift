@@ -71,10 +71,12 @@ extension PanelManager {
 			panel.trailingConstraint = panel.view.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: 0.0)
 		}
 
-		if panel.isPinned && !keyboardShown && !isInExpose {
+		if let pinnedSide = panel.pinnedSide?.side, !keyboardShown && !isInExpose {
 
 			panel.heightConstraint?.isActive = false
-			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentView.heightAnchor, multiplier: 1.0)
+			
+			let multiplier = 1.0 / CGFloat(numberOfPanelsPinned(at: pinnedSide))
+			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentView.heightAnchor, multiplier: multiplier)
 			panel.heightConstraint?.isActive = true
 
 		} else {
@@ -104,7 +106,7 @@ extension PanelManager {
 		panel.widthConstraint?.isActive = true
 		panel.widthConstraint?.constant = frame.width
 
-		if panel.isPinned && !isInExpose {
+		if let pinnedSide = panel.pinnedSide?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
 
 			panel.topConstraint?.constant = panelContentView.frame.origin.y
 
