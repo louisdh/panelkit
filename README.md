@@ -110,10 +110,13 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 * Xcode 9.0+
 
 ## Todo 
-### Long term:
-- [ ] Panel resizing
-- [ ] Top/down pinning
+### 2.0:
+- [x] Panel resizing
+- [ ] Multiple panels pinned to same side
+- [ ] Panel state saving and loading
 
+### Long term:
+- [ ] Top/down pinning
 
 ## License
 
