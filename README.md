@@ -106,7 +106,7 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 
 ## Requirements
 
-* iOS 9.0+
+* iOS 10.0+
 * Xcode 9.0+
 
 ## Todo 
