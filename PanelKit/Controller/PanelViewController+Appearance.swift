@@ -14,6 +14,10 @@ extension PanelViewController {
 	var tintColor: UIColor {
 		return panelNavigationController.navigationBar.tintColor
 	}
+	
+	var shadowLayer: CALayer {
+		return shadowView.layer
+	}
 
 	func disableShadow(animated: Bool = false, duration: Double = 0.3) {
 
@@ -21,14 +25,14 @@ extension PanelViewController {
 
 			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
 			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.fromValue = shadowLayer.shadowOpacity
 			anim.toValue = 0.0
 			anim.duration = duration
-			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			shadowLayer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
 
 		}
 
-		shadowView.layer.shadowOpacity = 0.0
+		shadowLayer.shadowOpacity = 0.0
 
 		isShadowForceDisabled = true
 	}
@@ -39,14 +43,14 @@ extension PanelViewController {
 
 			let anim = CABasicAnimation(keyPath: #keyPath(CALayer.shadowOpacity))
 			anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-			anim.fromValue = shadowView.layer.shadowOpacity
+			anim.fromValue = shadowLayer.shadowOpacity
 			anim.toValue = shadowOpacity
 			anim.duration = duration
-			shadowView.layer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
+			shadowLayer.add(anim, forKey: #keyPath(CALayer.shadowOpacity))
 
 		}
 
-		shadowView.layer.shadowOpacity = shadowOpacity
+		shadowLayer.shadowOpacity = shadowOpacity
 
 		isShadowForceDisabled = false
 
@@ -102,15 +106,15 @@ extension PanelViewController {
 
 		if shadowEnabled {
 
-			shadowView.layer.shadowRadius = shadowRadius
-			shadowView.layer.shadowOpacity = shadowOpacity
-			shadowView.layer.shadowOffset = shadowOffset
-			shadowView.layer.shadowColor = shadowColor
+			shadowLayer.shadowRadius = shadowRadius
+			shadowLayer.shadowOpacity = shadowOpacity
+			shadowLayer.shadowOffset = shadowOffset
+			shadowLayer.shadowColor = shadowColor
 
 		} else {
 
-			shadowView.layer.shadowRadius = 0.0
-			shadowView.layer.shadowOpacity = 0.0
+			shadowLayer.shadowRadius = 0.0
+			shadowLayer.shadowOpacity = 0.0
 
 		}
 

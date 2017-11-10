@@ -218,7 +218,7 @@ struct UnpinningMetadata {
 		shadowView.frame = panelNavigationController.view.frame
 
 		if shadowEnabled {
-			shadowView.layer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
+			shadowLayer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
 		}
 
 	}
