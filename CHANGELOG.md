@@ -14,6 +14,21 @@ CHANGELOG
 
 </details>
 
+2.0.0 (TBD)
+--------------
+* Updated to Swift 4.0
+* Requires iOS 10.0 or newer
+* Panel resizing 
+* Improved documentation
+* Added PanelViewController convenience initializer
+* Maintain panel at drag position when unpinned
+* Respect dragInsets when adjusting panel position for keyboard
+* Added preferredPanelPinnedWidth: specifies width for panel while pinned, which can now differ from the panel width while floating
+* Fixes UITableViewCell swipe actions on iOS 11
+* PanelContentDelegate: add panelDragGestureRecognizer(shouldReceive: touch) API
+* Improved debug logging
+* Improved performance
+
 [1.0.0](https://github.com/louisdh/panelkit/tree/1.0.0) (2017-03-20)
 --------------
 * Replaced ```PanelContentViewController``` with ```PanelContentDelegate``` protocol.
