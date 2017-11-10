@@ -120,6 +120,12 @@ extension PanelViewController {
 
 		var newFrame = currentFrame
 		newFrame.size = contentDelegate.preferredPanelContentSize
+		
+		if isFloating {
+			if let floatingSize = self.floatingSize {
+				newFrame.size = floatingSize
+			}
+		}
 
 		if isPinned {
 			newFrame.size.width = contentDelegate.preferredPanelPinnedWidth
@@ -146,6 +152,12 @@ extension PanelViewController {
 		var newFrame2 = currentFrame
 		newFrame2.size = contentDelegate.preferredPanelContentSize
 
+		if isFloating {
+			if let floatingSize = self.floatingSize {
+				newFrame2.size = floatingSize
+			}
+		}
+		
 		if isPinned {
 			newFrame2.size.width = contentDelegate.preferredPanelPinnedWidth
 		}

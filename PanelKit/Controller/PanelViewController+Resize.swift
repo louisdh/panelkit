@@ -210,6 +210,8 @@ extension PanelViewController {
 			newFrame.size.height = newHeight
 
 			manager.updateFrame(for: self, to: newFrame)
+			
+			floatingSize = newFrame.size
 
 		} else if recognizer.state == .ended {
 
