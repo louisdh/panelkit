@@ -32,8 +32,8 @@ public protocol PanelContentDelegate: class {
 	var shouldAdjustForKeyboard: Bool { get }
 
 	/// The size the panel should have while floating.
-	/// The panel manager will try to maintain the size specified by 
-	/// this property. The panel manager may deviate from this size, 
+	/// The panel manager will try to maintain the size specified by
+	/// this property. The panel manager may deviate from this size,
 	/// for example when the keyboard is shown.
 	var preferredPanelContentSize: CGSize { get }
 

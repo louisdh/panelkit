@@ -14,7 +14,7 @@ extension UIViewController {
 	@objc public var isPresentedAsPopover: Bool {
 
 		// Checking for a "UIPopoverView" seems to be deemed trustworthy,
-		// as explained here: 
+		// as explained here:
 		// http://petersteinberger.com/blog/2015/uipresentationcontroller-popover-detection/
 
 		var currentView: UIView? = self.view
