@@ -14,7 +14,7 @@ extension PanelViewController {
 	var tintColor: UIColor {
 		return panelNavigationController.navigationBar.tintColor
 	}
-	
+
 	var shadowLayer: CALayer {
 		return shadowView.layer
 	}

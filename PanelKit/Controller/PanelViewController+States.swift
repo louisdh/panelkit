@@ -17,7 +17,7 @@ extension PanelViewController {
 	@objc public var isUnpinning: Bool {
 		return unpinningMetadata != nil
 	}
-	
+
 	@objc public var isPinned: Bool {
 
 		if isPresentedAsPopover {
@@ -99,7 +99,7 @@ extension PanelViewController {
 		if wasPinned {
 			manager?.didDragFree(self, from: view.frame.origin)
 		}
-		
+
 		if isFloating || isPinned {
 			self.view.translatesAutoresizingMaskIntoConstraints = false
 
@@ -132,7 +132,7 @@ extension PanelViewController {
 			widthConstraint?.isActive = false
 			heightConstraint?.isActive = false
 		}
-		
+
 		if isFloating {
 			showResizeHandleIfNeeded()
 		} else {

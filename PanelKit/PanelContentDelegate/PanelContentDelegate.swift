@@ -14,11 +14,11 @@ public protocol PanelContentDelegate: class {
 
 	/// The title for the close button in the navigation bar.
 	var closeButtonTitle: String { get }
-	
+
 	/// The title for the pop button in the navigation bar.
 	/// This is the button that will make the panel float when tapped.
 	var popButtonTitle: String { get }
-	
+
 	/// The close button title for the panel when it is presented modally.
 	var modalCloseButtonTitle: String { get }
 
@@ -36,10 +36,10 @@ public protocol PanelContentDelegate: class {
 	/// this property. The panel manager may deviate from this size, 
 	/// for example when the keyboard is shown.
 	var preferredPanelContentSize: CGSize { get }
-	
+
 	/// The width the panel should have when it is pinned.
 	var preferredPanelPinnedWidth: CGFloat { get }
-	
+
 	var minimumPanelContentSize: CGSize { get }
 
 	var maximumPanelContentSize: CGSize { get }
@@ -82,12 +82,12 @@ public protocol PanelContentDelegate: class {
 	/// The default implementation provides the default close or pop button.
 	/// Only implement yourself if you wish to use your own close and pop button.
 	func updateNavigationButtons()
-	
+
 	/// Return true to make the drag gesture recognizer receive its touch.
 	/// This is only applicable when a panel is in a floating state.
 	/// Returning false will prevent the panel from being dragged.
 	/// 
 	/// This can be used to prevent the panel from dragging in certain areas.
 	func panelDragGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool
-	
+
 }

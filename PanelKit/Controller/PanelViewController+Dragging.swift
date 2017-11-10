@@ -15,11 +15,11 @@ extension PanelViewController {
 		guard isFloating || isPinned else {
 			return
 		}
-		
+
 		guard let manager = self.manager else {
 			return
 		}
-		
+
 		let panelContentView = manager.panelContentView
 
 		if self.view.frame.maxX >= panelContentView.frame.maxX && !isPinned {
@@ -37,7 +37,7 @@ extension PanelViewController {
 					self.unpinningMetadata = UnpinningMetadata(side: pinnedSide)
 				}
 			}
-			
+
 			manager.didDragFree(self, from: point)
 
 		}
@@ -55,7 +55,7 @@ extension PanelViewController {
 		guard let manager = self.manager else {
 			return
 		}
-		
+
 		let panelContentView = manager.panelContentView
 
 		if self.view.frame.maxX >= panelContentView.frame.maxX {

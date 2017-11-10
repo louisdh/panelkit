@@ -13,7 +13,7 @@ public protocol PanelManager: class {
 	/// The ```UIViewController``` that manages the panels and contains
 	/// ```panelContentWrapperView``` and ```panelContentView```.
 	var managerViewController: UIViewController { get }
-	
+
 	/// The panels to be managed.
 	var panels: [PanelViewController] { get }
 

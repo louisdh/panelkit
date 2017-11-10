@@ -24,5 +24,5 @@ extension PanelPinSide: CustomStringConvertible {
 			return "right"
 		}
 	}
-	
+
 }

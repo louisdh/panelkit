@@ -8,7 +8,6 @@
 
 import UIKit
 
-
 public extension PanelManager where Self: UIViewController {
 
 	var managerViewController: UIViewController {
@@ -35,7 +34,7 @@ public extension PanelManager {
 			panel.dismiss(animated: false, completion: {
 
 				self.panelContentWrapperView.addSubview(panel.resizeCornerHandle)
-				
+
 				self.panelContentWrapperView.addSubview(panel.view)
 
 				panel.resizeCornerHandle.bottomAnchor.constraint(equalTo: panel.view.bottomAnchor, constant: 16).isActive = true
@@ -45,7 +44,6 @@ public extension PanelManager {
 
 				self.updateFrame(for: panel, to: rect)
 				self.panelContentWrapperView.layoutIfNeeded()
-				
 
 				let x = rect.origin.x
 				let y = rect.origin.y + panelPopYOffset

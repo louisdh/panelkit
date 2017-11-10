@@ -9,7 +9,7 @@
 import Foundation
 
 struct UnpinningMetadata {
-	
+
 	let side: PanelPinSide
-	
+
 }

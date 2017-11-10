@@ -34,7 +34,7 @@ import UIKit
 	var positionInFullscreen: CGPoint?
 
 	var popBarButtonItem: BlockBarButtonItem?
-	
+
 	/// Shadow "force" disabled (meaning not by delegate choice).
 	///
 	/// E.g. when panel is pinned.
@@ -49,7 +49,7 @@ import UIKit
 	@objc public weak var contentViewController: UIViewController?
 
 	var pinnedSide: PanelPinnedMetadata?
-	
+
 	var unpinningMetadata: UnpinningMetadata?
 
 	var frameBeforeExpose: CGRect? {
@@ -76,19 +76,19 @@ import UIKit
 	var dragInsets: UIEdgeInsets {
 		return manager?.totalDragInsets(for: self) ?? .zero
 	}
-	
+
 	weak var contentDelegate: PanelContentDelegate?
-	
+
 	let shadowView: UIView
 
 	let resizeCornerHandle: CornerHandleView
-	
+
 	// MARK: -
 
 	public convenience init(with contentViewController: UIViewController & PanelContentDelegate, in panelManager: PanelManager) {
 		self.init(with: contentViewController, contentDelegate: contentViewController, in: panelManager)
 	}
-	
+
 	public init(with contentViewController: UIViewController, contentDelegate: PanelContentDelegate, in panelManager: PanelManager) {
 
 		self.contentDelegate = contentDelegate
@@ -121,7 +121,7 @@ import UIKit
 		panelNavigationController.view.topAnchor.constraint(equalTo: self.view.topAnchor).isActive = true
 		panelNavigationController.view.rightAnchor.constraint(equalTo: self.view.rightAnchor).isActive = true
 		panelNavigationController.view.bottomAnchor.constraint(equalTo: self.view.bottomAnchor).isActive = true
-		
+
 		self.manager = panelManager
 
 		let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTap(_ :)))
@@ -130,17 +130,17 @@ import UIKit
 
 		let dragGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(dragView(_ :)))
 		dragGestureRecognizer.delegate = self
-		
+
 		self.view.addGestureRecognizer(dragGestureRecognizer)
 		self.dragGestureRecognizer = dragGestureRecognizer
-		
+
 		configureResizeHandle()
 
 	}
 
 	var startDragPosition: CGPoint?
 	var startFrame: CGRect?
-	
+
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
 	}
@@ -191,27 +191,27 @@ import UIKit
 		}
 
 	}
-	
+
 	override public func viewWillDisappear(_ animated: Bool) {
 		super.viewWillDisappear(animated)
-		
+
 		contentViewController?.viewWillDisappear(animated)
-		
+
 		if logLevel == .full {
 			print("\(self) viewWillDisappear")
 		}
-		
+
 	}
-	
+
 	override public func viewDidDisappear(_ animated: Bool) {
 		super.viewDidDisappear(animated)
-		
+
 		contentViewController?.viewDidDisappear(animated)
-		
+
 		if logLevel == .full {
 			print("\(self) viewDidDisappear")
 		}
-		
+
 	}
 
 	override public func viewWillLayoutSubviews() {
@@ -237,7 +237,7 @@ import UIKit
 
 		coordinator.animate(alongsideTransition: { (context) in
 
-		}, completion: { (context) in
+		}, completion: { (_) in
 
 			self.updateState()
 
@@ -315,15 +315,15 @@ import UIKit
 			}
 
 		} else if let manager = self.manager, let unpinningMetadata = unpinningMetadata {
-			
+
 			if unpinningMetadata.side == .left, let panel = manager.panelsPinned(at: .left).first {
 				dragInsets.left -= panel.view.bounds.width
 			}
-			
+
 			if unpinningMetadata.side == .right, let panel = manager.panelsPinned(at: .right).first {
 				dragInsets.right -= panel.view.bounds.width
 			}
-			
+
 		}
 
 		var newX = proposedCenter.x
@@ -368,128 +368,127 @@ import UIKit
 }
 
 extension PanelViewController: UIGestureRecognizerDelegate {
-	
-	
+
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
 		if gestureRecognizer == dragGestureRecognizer {
 			return false
 		}
 		return true
 	}
-	
+
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-		
+
 		if gestureRecognizer == dragGestureRecognizer {
-			
+
 			// Prevents panel from dragging when sliding UITableViewCell (e.g. for "delete")
-			
+
 			// iOS 11
 			if type(of: otherGestureRecognizer) == UIPanGestureRecognizer.self && (otherGestureRecognizer.view is UITableView) {
 				return true
 			}
-			
+
 			// iOS 10
 			if otherGestureRecognizer is UIPanGestureRecognizer && (otherGestureRecognizer.view?.superview is UITableView) {
 				return true
 			}
-			
+
 			if otherGestureRecognizer.view == self {
 				return true
 			}
 		}
-		
+
 		return false
 	}
-	
+
 	public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
-		
+
 		if gestureRecognizer == dragGestureRecognizer {
-			
+
 			if isPresentedAsPopover || isPresentedModally {
 				return false
 			}
-			
+
 			return contentDelegate?.panelDragGestureRecognizer(gestureRecognizer, shouldReceive: touch) ?? true
 		}
-		
+
 		return true
 	}
-	
+
 	@objc func dragView(_ gestureRecognizer: UIPanGestureRecognizer) {
-		
+
 		if gestureRecognizer.state == .ended || gestureRecognizer.state == .cancelled {
-			
+
 			prevTouch = nil
 			self.didEndDrag()
 			return
-			
+
 		}
-		
+
 		guard isFloating || isPinned else {
 			return
 		}
-		
+
 		guard let viewToMove = self.view else {
 			return
 		}
-		
+
 		guard let superview = viewToMove.superview else {
 			return
 		}
-		
+
 		if gestureRecognizer.numberOfTouches == 0 {
 			return
 		}
-		
+
 		let touch = gestureRecognizer.location(ofTouch: 0, in: superview)
-		
+
 		if gestureRecognizer.state == .began {
-			
+
 			prevTouch = touch
-			
+
 			if self.isPinned != true {
 				self.bringToFront()
 			}
-			
+
 		}
-		
+
 		if gestureRecognizer.state == .changed {
-			
+
 			guard let prevTouch = prevTouch else {
 				self.prevTouch = touch
 				return
 			}
-			
+
 			moveWithTouch(from: prevTouch, to: touch)
 		}
-		
+
 	}
-	
+
 	func moveWithTouch(from fromTouch: CGPoint, to touch: CGPoint) {
 
 		guard let viewToMove = self.view else {
 			return
 		}
-		
+
 		let proposeX = viewToMove.center.x - (fromTouch.x - touch.x)
 		let proposeY = viewToMove.center.y - (fromTouch.y - touch.y)
-		
+
 		let proposedCenter = CGPoint(x: proposeX, y: proposeY)
-		
+
 		var newFrame = viewToMove.frame
 		let newCenter = self.allowedCenter(for: proposedCenter)
 		newFrame.center = newCenter
-		
+
 		self.manager?.updateFrame(for: self, to: newFrame)
-		
+
 		self.manager?.panelContentWrapperView.layoutIfNeeded()
-		
+
 		if fromTouch != touch {
 			self.didDrag(at: touch)
 		}
 
 		self.prevTouch = touch
-		
+
 	}
-	
+
 }

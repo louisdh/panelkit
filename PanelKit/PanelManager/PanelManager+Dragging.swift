@@ -18,7 +18,7 @@ extension PanelManager {
 		guard let pinnedMetadata = panel.pinnedSide else {
 			return
 		}
-		
+
 		let isPinned = panel.isPinned
 
 		guard isPinned || panel.wasPinned else {
@@ -28,7 +28,7 @@ extension PanelManager {
 		guard let panelView = panel.view else {
 			return
 		}
-		
+
 		guard let contentDelegate = panel.contentDelegate else {
 			return
 		}
@@ -36,7 +36,7 @@ extension PanelManager {
 		var prevPinnedPanels = panelsPinned(at: pinnedMetadata.side).sorted { (p1, p2) -> Bool in
 			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
 		}
-		
+
 		prevPinnedPanels.remove(at: pinnedMetadata.index)
 
 		panel.pinnedSide = nil
@@ -47,11 +47,11 @@ extension PanelManager {
 		panel.enableShadow(animated: true, duration: panelGrowDuration)
 
 		let side = pinnedMetadata.side
-		
+
 		let currentFrame = panelView.frame
 
 		var newFrame = currentFrame
-		
+
 		let preferredPanelPinnedWidth = contentDelegate.preferredPanelPinnedWidth
 		let preferredPanelContentSize  = contentDelegate.preferredPanelContentSize
 		newFrame.size = preferredPanelContentSize
@@ -62,36 +62,34 @@ extension PanelManager {
 				newFrame.origin.x -= delta
 			}
 		}
-		
+
 		if currentFrame.contains(point) && !newFrame.contains(point) {
 			newFrame.origin.y += point.y - newFrame.maxY
 		}
-		
+
 		updateFrame(for: panel, to: newFrame)
-		
-		
+
 		if numberOfPanelsPinned(at: side) > 0 {
-			
+
 			for pinnedPanel in panelsPinned(at: side) {
-				
+
 				if pinnedPanel == panel {
 					continue
 				}
-				
+
 				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
-				
+
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")
 					continue
 				}
-				
+
 				self.updateFrame(for: pinnedPanel, to: newPosition.frame)
-				
+
 			}
-			
+
 		}
 
-		
 		updateContentViewFrame(to: updatedContentViewFrame())
 
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
@@ -117,31 +115,29 @@ extension PanelManager {
 		guard !panel.isPinned else {
 			return
 		}
-		
+
 		guard let panelView = panel.view else {
 			return
 		}
-		
+
 		guard let previewTargetPosition = pinnedPanelPosition(for: panel, at: side) else {
 			return
 		}
 
 		if let currentPreviewView = panel.panelPinnedPreviewView {
-			
+
 			if currentPreviewView.frame == previewTargetPosition.frame {
 				return
 			}
-			
+
 		}
 
 		if panel.logLevel == .full {
 			print("did drag \(panel) to edge of \(side) side")
 		}
-		
+
 		let previewView = panel.panelPinnedPreviewView ?? UIView(frame: panelView.frame)
 		previewView.isUserInteractionEnabled = false
-
-	
 
 		previewView.backgroundColor = panel.tintColor
 		previewView.alpha = pinnedPanelPreviewAlpha
@@ -187,35 +183,35 @@ extension PanelManager {
 		var prevPinnedPanels = panelsPinned(at: side).sorted { (p1, p2) -> Bool in
 			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
 		}
-		
+
 		panel.pinnedSide = PanelPinnedMetadata(side: side, index: position.index)
-		
+
 		prevPinnedPanels.insert(panel, at: position.index)
 
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
 
 		self.updateFrame(for: panel, to: position.frame)
-		
+
 		if numberOfPanelsPinned(at: side) > 1 {
-			
+
 			for pinnedPanel in panelsPinned(at: side) {
-				
+
 				if pinnedPanel == panel {
 					continue
 				}
-				
+
 				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")
 					continue
 				}
-				
+
 				self.updateFrame(for: pinnedPanel, to: newPosition.frame)
-				
+
 			}
-			
+
 		}
 
 		updateContentViewFrame(to: updatedContentViewFrame())
@@ -240,15 +236,15 @@ extension PanelManager {
 		self.moveAllPanelsToValidPositions()
 
 		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
-			
+
 			self.panelContentWrapperView.layoutIfNeeded()
-			
+
 		})
-		
+
 		panel.hideResizeHandle()
 
 	}
-	
+
 	func didEndDragFree(_ panel: PanelViewController) {
 
 		fadePinnedPreviewOut(for: panel)

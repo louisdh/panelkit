@@ -141,7 +141,7 @@ public extension PanelManager {
 			}
 
 		})
-		
+
 		for panel in panels {
 			panel.hideResizeHandle()
 		}
@@ -186,7 +186,7 @@ public extension PanelManager {
 			}
 
 		})
-		
+
 		for panel in panels {
 			panel.showResizeHandleIfNeeded()
 		}
@@ -217,7 +217,7 @@ extension PanelManager {
 
 			panelContentWrapperView.layoutIfNeeded()
 
-			let _ = exposeOverlayTapRecognizer
+			_ = exposeOverlayTapRecognizer
 		}
 
 	}

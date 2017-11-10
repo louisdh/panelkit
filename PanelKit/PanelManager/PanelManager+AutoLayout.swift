@@ -74,7 +74,7 @@ extension PanelManager {
 		if let pinnedSide = panel.pinnedSide?.side, !keyboardShown && !isInExpose {
 
 			panel.heightConstraint?.isActive = false
-			
+
 			let multiplier = 1.0 / CGFloat(numberOfPanelsPinned(at: pinnedSide))
 			panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentView.heightAnchor, multiplier: multiplier)
 			panel.heightConstraint?.isActive = true
