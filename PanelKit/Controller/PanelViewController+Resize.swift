@@ -139,6 +139,10 @@ extension PanelViewController {
 			return
 		}
 		
+		guard let manager = self.manager else {
+			return
+		}
+		
 		guard let viewToMove = self.view else {
 			return
 		}
@@ -159,7 +163,24 @@ extension PanelViewController {
 			let proposedWidth = newFrame.size.width + (newPosition.x - startDragPosition.x)
 			let proposedHeight = newFrame.size.height + (newPosition.y - startDragPosition.y)
 			
-			let maxWidth = contentDelegate.maximumPanelContentSize.width
+			let maxWidth: CGFloat
+			
+			if let panelPinnedRight = manager.panelPinnedRight {
+				
+				// Prevent a panel from intersecting with a pinned panel when resizing.
+				
+				let wrapperWidth = manager.panelContentWrapperView.frame.width
+				
+				let theoreticalMaxWidth = (wrapperWidth - self.view.frame.minX) - panelPinnedRight.view.frame.width
+				
+				maxWidth = min(contentDelegate.maximumPanelContentSize.width, theoreticalMaxWidth)
+				
+			} else {
+				
+				maxWidth = contentDelegate.maximumPanelContentSize.width
+
+			}
+			
 			let minWidth = contentDelegate.minimumPanelContentSize.width
 			
 			let maxHeight = contentDelegate.maximumPanelContentSize.height
@@ -188,7 +209,7 @@ extension PanelViewController {
 			newFrame.size.width = newWidth
 			newFrame.size.height = newHeight
 			
-			self.manager?.updateFrame(for: self, to: newFrame)
+			manager.updateFrame(for: self, to: newFrame)
 			
 		} else if recognizer.state == .ended {
 			
