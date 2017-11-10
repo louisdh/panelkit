@@ -112,7 +112,7 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 ## Todo 
 ### 2.0:
 - [x] Panel resizing
-- [ ] Multiple panels pinned to same side
+- [x] Multiple panels pinned to same side
 - [ ] Panel state saving and loading
 
 ### Long term:
