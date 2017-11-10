@@ -8,12 +8,12 @@
 
 import UIKit
 
-struct UnpinningMetadata {
-	
-	let side: PanelPinSide
-	
-}
-
+/// A UIViewController subclass that represents a panel.
+/// A panel can be presented in the following ways:
+/// * Modally
+/// * As a popover
+/// * Floating (drag the panel around)
+/// * Pinned (either left or right)
 @objc public class PanelViewController: UIViewController, UIAdaptivePresentationControllerDelegate {
 
 	weak var topConstraint: NSLayoutConstraint?
@@ -40,7 +40,10 @@ struct UnpinningMetadata {
 	/// E.g. when panel is pinned.
 	var isShadowForceDisabled = false
 
-	// TODO: make internal?
+	/// The navigation controller of the contentViewController.
+	/// This is created during initialization of a `PanelViewController`.
+	///
+	/// Customization can be done as with any `UINavigationController`.
 	@objc public let panelNavigationController: PanelNavigationController
 
 	@objc public weak var contentViewController: UIViewController?

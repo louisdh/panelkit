@@ -8,9 +8,13 @@
 
 import Foundation
 
-@objc public enum PanelPinSide: Int, CustomStringConvertible {
+/// The sides that a panel can be pinned to.
+@objc public enum PanelPinSide: Int {
 	case left
 	case right
+}
+
+extension PanelPinSide: CustomStringConvertible {
 
 	public var description: String {
 		switch self {
@@ -20,4 +24,5 @@ import Foundation
 			return "right"
 		}
 	}
+	
 }

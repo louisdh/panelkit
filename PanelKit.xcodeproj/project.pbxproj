@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BE0737BF1FB5E012007177EA /* UnpinningMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE0737BE1FB5E012007177EA /* UnpinningMetadata.swift */; };
 		BE2332291E745B8A005D3F4C /* BlockBarButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2332281E745B8A005D3F4C /* BlockBarButtonItem.swift */; };
 		BE23322C1E74BA30005D3F4C /* PanelContentDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322B1E74BA30005D3F4C /* PanelContentDelegate.swift */; };
 		BE23322E1E74BA95005D3F4C /* PanelContentDelegate+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322D1E74BA95005D3F4C /* PanelContentDelegate+Default.swift */; };
@@ -103,6 +104,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		BE0737BE1FB5E012007177EA /* UnpinningMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UnpinningMetadata.swift; path = Model/UnpinningMetadata.swift; sourceTree = "<group>"; };
 		BE2332281E745B8A005D3F4C /* BlockBarButtonItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BlockBarButtonItem.swift; path = Utils/BlockBarButtonItem.swift; sourceTree = "<group>"; };
 		BE23322B1E74BA30005D3F4C /* PanelContentDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelContentDelegate.swift; path = PanelContentDelegate/PanelContentDelegate.swift; sourceTree = "<group>"; };
 		BE23322D1E74BA95005D3F4C /* PanelContentDelegate+Default.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelContentDelegate+Default.swift"; path = "PanelContentDelegate/PanelContentDelegate+Default.swift"; sourceTree = "<group>"; };
@@ -262,6 +264,7 @@
 				BEBE2F3A1E6F52DA00DEDF21 /* Constants.swift */,
 				BE7ED6781FAE3A5F00857273 /* PinnedPosition.swift */,
 				BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */,
+				BE0737BE1FB5E012007177EA /* UnpinningMetadata.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -583,6 +586,7 @@
 				BEFE6ACC1F8129DC009B072D /* CornerHandleView.swift in Sources */,
 				BE2332301E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift in Sources */,
 				BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */,
+				BE0737BF1FB5E012007177EA /* UnpinningMetadata.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,
 				BE23322E1E74BA95005D3F4C /* PanelContentDelegate+Default.swift in Sources */,
 				BEBE2F3F1E71DCE400DEDF21 /* PanelViewController+States.swift in Sources */,
