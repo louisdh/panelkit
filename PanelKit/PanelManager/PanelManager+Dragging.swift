@@ -195,7 +195,6 @@ extension PanelManager {
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
 
-		self.moveAllPanelsToValidPositions()
 		self.updateFrame(for: panel, to: position.frame)
 		
 		if numberOfPanelsPinned(at: side) > 1 {
@@ -238,6 +237,14 @@ extension PanelManager {
 
 		})
 
+		self.moveAllPanelsToValidPositions()
+
+		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
+			
+			self.panelContentWrapperView.layoutIfNeeded()
+			
+		})
+		
 		panel.hideResizeHandle()
 
 	}
