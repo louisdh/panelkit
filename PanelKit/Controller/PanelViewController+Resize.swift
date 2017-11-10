@@ -150,17 +150,18 @@ extension PanelViewController {
 
 			cornerHandleDidBecomeActive()
 
-			startFrame = viewToMove.frame
-			startDragPosition = recognizer.location(in: self.view)
-
-		} else if recognizer.state == .changed, let startDragPosition = startDragPosition, let startFrame = startFrame {
+			let position = recognizer.location(in: self.view)
+			
+			resizeStart = ResizeStart(dragPosition: position, frame: viewToMove.frame)
+			
+		} else if recognizer.state == .changed, let resizeStart = resizeStart {
 
 			let newPosition = recognizer.location(in: self.view)
 
-			var newFrame = startFrame
+			var newFrame = resizeStart.frame
 
-			let proposedWidth = newFrame.size.width + (newPosition.x - startDragPosition.x)
-			let proposedHeight = newFrame.size.height + (newPosition.y - startDragPosition.y)
+			let proposedWidth = newFrame.size.width + (newPosition.x - resizeStart.dragPosition.x)
+			let proposedHeight = newFrame.size.height + (newPosition.y - resizeStart.dragPosition.y)
 
 			let maxWidth: CGFloat
 

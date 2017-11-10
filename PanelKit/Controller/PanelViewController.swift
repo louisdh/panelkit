@@ -79,6 +79,8 @@ import UIKit
 
 	let resizeCornerHandle: CornerHandleView
 
+	var resizeStart: ResizeStart?
+
 	// MARK: -
 
 	public convenience init(with contentViewController: UIViewController & PanelContentDelegate, in panelManager: PanelManager) {
@@ -133,9 +135,6 @@ import UIKit
 		configureResizeHandle()
 
 	}
-
-	var startDragPosition: CGPoint?
-	var startFrame: CGRect?
 
 	required public init?(coder aDecoder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
