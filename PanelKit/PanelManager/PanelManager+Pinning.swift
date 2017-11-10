@@ -93,14 +93,30 @@ extension PanelManager {
 		case .left:
 			previewTargetFrame.origin.x = 0.0
 			
-			if numberOfPanelsPinnedLeft > 0 {
-				
-				previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedLeft + 1)
-				
-				index = Int(floor((panelView.frame.center.y - panelContentView.frame.origin.y) / previewTargetFrame.size.height))
+			if panel.isPinned {
 
+				if numberOfPanelsPinnedLeft > 1 {
+					
+					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedLeft)
+					
+					index = panel.pinnedSide?.index ?? 0
+					
+				} else {
+					index = 0
+				}
+				
 			} else {
-				index = 0
+				
+				if numberOfPanelsPinnedLeft > 0 {
+					
+					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedLeft + 1)
+					
+					index = Int(floor((panelView.frame.center.y - panelContentView.frame.origin.y) / previewTargetFrame.size.height))
+					
+				} else {
+					index = 0
+				}
+				
 			}
 			
 		case .right:
@@ -110,46 +126,8 @@ extension PanelManager {
 				
 				if numberOfPanelsPinnedRight > 1 {
 					
-//					let sortedPanels = panelsPinnedRight.sorted(by: { (p1, p2) -> Bool in
-//
-//						let y1 = p1.view.frame.origin.y
-//						let y2 = p2.view.frame.origin.y
-//
-//						return y1 < y2
-//					})
-					
 					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedRight)
 
-//					guard let i = sortedPanels.index(of: panel) else {
-//						assertionFailure("Expected to find panel")
-//						index = 0
-//						break
-//					}
-//
-//					index = i
-
-					
-//					var possibleIndices = Array(0..<numberOfPanelsPinnedRight)
-//
-//					for pinnedPanel in panelsPinned(at: side) {
-//
-//						if pinnedPanel == panel {
-//							continue
-//						}
-//
-//						guard let index = pinnedPanel.pinnedSide?.index else {
-//							assertionFailure("pinnedSide should not be nil")
-//							continue
-//						}
-//
-//						if let i = possibleIndices.index(of: index) {
-//							possibleIndices.remove(at: i)
-//						}
-//
-//					}
-					
-//					index = possibleIndices.first ?? 0
-					
 					index = panel.pinnedSide?.index ?? 0
 					
 				} else {

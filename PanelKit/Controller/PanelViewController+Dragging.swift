@@ -16,31 +16,19 @@ extension PanelViewController {
 			return
 		}
 		
-		guard let panelContentView = self.manager?.panelContentView else {
+		guard let manager = self.manager else {
 			return
 		}
 		
-		let containerWidth: CGFloat
-		
-		if self.isPinned {
-			
-			guard let superview = self.view.superview else {
-				return
-			}
-			
-			containerWidth = superview.bounds.size.width
-			
-		} else {
-			containerWidth = panelContentView.bounds.size.width
-		}
+		let panelContentView = manager.panelContentView
 
-		if self.view.frame.maxX >= containerWidth && !isPinned {
+		if self.view.frame.maxX >= panelContentView.frame.maxX && !isPinned {
 
-			manager?.didDrag(self, toEdgeOf: .right)
+			manager.didDrag(self, toEdgeOf: .right)
 
-		} else if self.view.frame.minX <= 0 && !isPinned {
+		} else if self.view.frame.minX <= panelContentView.frame.minX && !isPinned {
 
-			manager?.didDrag(self, toEdgeOf: .left)
+			manager.didDrag(self, toEdgeOf: .left)
 
 		} else {
 
@@ -50,7 +38,7 @@ extension PanelViewController {
 				}
 			}
 			
-			manager?.didDragFree(self, from: point)
+			manager.didDragFree(self, from: point)
 
 		}
 
@@ -64,27 +52,23 @@ extension PanelViewController {
 			return
 		}
 
-		guard let panelContentView = self.manager?.panelContentView else {
+		guard let manager = self.manager else {
 			return
 		}
 		
-		let containerWidth = panelContentView.bounds.size.width
+		let panelContentView = manager.panelContentView
 
-//		guard let containerWidth = self.view.superview?.bounds.size.width else {
-//			return
-//		}
+		if self.view.frame.maxX >= panelContentView.frame.maxX {
 
-		if self.view.frame.maxX >= containerWidth {
+			manager.didEndDrag(self, toEdgeOf: .right)
 
-			manager?.didEndDrag(self, toEdgeOf: .right)
+		} else if self.view.frame.minX <= panelContentView.frame.minX {
 
-		} else if self.view.frame.minX <= 0 {
-
-			manager?.didEndDrag(self, toEdgeOf: .left)
+			manager.didEndDrag(self, toEdgeOf: .left)
 
 		} else {
 
-			manager?.didEndDragFree(self)
+			manager.didEndDragFree(self)
 
 		}
 
