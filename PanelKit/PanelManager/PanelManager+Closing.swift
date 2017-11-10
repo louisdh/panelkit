@@ -10,7 +10,7 @@ import UIKit
 
 extension PanelManager {
 
-	func close(_ panel: PanelViewController) {
+	public func close(_ panel: PanelViewController) {
 
 		panel.resizeCornerHandle.removeFromSuperview()
 		panel.view.removeFromSuperview()
