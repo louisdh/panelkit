@@ -230,11 +230,11 @@ extension PanelManager {
 		}, completion: { (_) in
 
 			// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
-//			self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
-//
-//			if let pinnedPreviewView = pinnedPreviewView, pinnedPreviewView.superview != nil {
-//				self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
-//			}
+			self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
+
+			if let pinnedPreviewView = pinnedPreviewView, pinnedPreviewView.superview != nil {
+				self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
+			}
 
 		})
 
@@ -242,58 +242,9 @@ extension PanelManager {
 
 	}
 	
-	func updatePinnedPanels(at side: PanelPinSide) {
-		
-		for pinnedPanel in panelsPinned(at: side) {
-			
-			print(pinnedPanel.contentViewController?.title)
-			
-			guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
-				assertionFailure("Expected a valid position")
-				continue
-			}
-			
-			pinnedPanel.pinnedSide?.index = newPosition.index
-			
-			self.updateFrame(for: pinnedPanel, to: newPosition.frame)
-			
-		}
-		
-		updateContentViewFrame(to: updatedContentViewFrame())
-		
-		UIView.animate(withDuration: panelGrowDuration, delay: 0.0, options: [.allowAnimatedContent, .allowUserInteraction], animations: {
-			
-			self.panelContentWrapperView.layoutIfNeeded()
-			
-			self.didUpdatePinnedPanels()
-			
-		}, completion: { (_) in
-			
-			// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
-			//			self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
-			//
-			//			if let pinnedPreviewView = pinnedPreviewView, pinnedPreviewView.superview != nil {
-			//				self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
-			//			}
-			
-		})
-		
-	}
-
 	func didEndDragFree(_ panel: PanelViewController) {
 
 		fadePinnedPreviewOut(for: panel)
-
-		guard let pinnedPosition = panel.pinnedSide else {
-			return
-		}
-		
-		// Never reached?
-
-		panel.pinnedSide = nil
-		panel.showResizeHandleIfNeeded()
-		
-		updatePinnedPanels(at: pinnedPosition.side)
 
 	}
 
