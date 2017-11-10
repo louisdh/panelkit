@@ -26,14 +26,6 @@ import UIKit
 			print("deinit \(self)")
 		}
 	}
-	
-	var dragInsets: UIEdgeInsets {
-		if let panel = self.panelViewController {
-			return panel.manager?.totalDragInsets(for: panel) ?? .zero
-		}
-
-		return .zero
-	}
 
 	@objc private func didTapBar(_ gestureRecognizer: UITapGestureRecognizer) {
 

@@ -73,6 +73,10 @@ import UIKit
 		}
 	}
 
+	var dragInsets: UIEdgeInsets {
+		return manager?.totalDragInsets(for: self) ?? .zero
+	}
+	
 	weak var contentDelegate: PanelContentDelegate?
 	
 	let shadowView: UIView
@@ -296,7 +300,7 @@ import UIKit
 			return proposedCenter
 		}
 
-		var dragInsets = panelNavigationController.dragInsets
+		var dragInsets = self.dragInsets
 
 		if isPinned {
 			// Allow pinned panels to move beyond superview bounds,
