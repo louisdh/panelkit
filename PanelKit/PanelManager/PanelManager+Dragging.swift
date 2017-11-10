@@ -53,12 +53,12 @@ extension PanelManager {
 		var newFrame = currentFrame
 
 		let preferredPanelPinnedWidth = contentDelegate.preferredPanelPinnedWidth
-		let preferredPanelContentSize  = contentDelegate.preferredPanelContentSize
-		newFrame.size = preferredPanelContentSize
+		let preferredPanelContentSize = contentDelegate.preferredPanelContentSize
+		newFrame.size = panel.floatingSize ?? preferredPanelContentSize
 
 		if side == .right {
-			if preferredPanelContentSize.width > preferredPanelPinnedWidth {
-				let delta = preferredPanelContentSize.width - preferredPanelPinnedWidth
+			if newFrame.width > preferredPanelPinnedWidth {
+				let delta = newFrame.width - preferredPanelPinnedWidth
 				newFrame.origin.x -= delta
 			}
 		}
@@ -191,6 +191,8 @@ extension PanelManager {
 		panel.disableCornerRadius(animated: true, duration: panelGrowDuration)
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
 
+		panel.floatingSize = panel.view.frame.size
+		
 		self.updateFrame(for: panel, to: position.frame)
 
 		if numberOfPanelsPinned(at: side) > 1 {

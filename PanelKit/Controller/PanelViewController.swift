@@ -81,6 +81,8 @@ import UIKit
 
 	var resizeStart: ResizeStart?
 
+	var floatingSize: CGSize?
+	
 	// MARK: -
 
 	public convenience init(with contentViewController: UIViewController & PanelContentDelegate, in panelManager: PanelManager) {
