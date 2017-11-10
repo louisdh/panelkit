@@ -1,5 +1,5 @@
 language: objective-c
-osx_image: xcode9
+osx_image: xcode9.1
 branches:
   only:
     - master
@@ -13,7 +13,7 @@ env:
   matrix:
 
     - DESTINATION="OS=9.0,name=iPhone 6"           SCHEME="$IOS_FRAMEWORK_SCHEME"    RUN_TESTS="NO" BUILD_EXAMPLE="YES"  CODE_COV="NO"
-    - DESTINATION="OS=11.0,name=iPad Pro (9.7-inch)"     SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  CODE_COV="YES"
+    - DESTINATION="OS=11.1,name=iPad Pro (9.7-inch)"     SCHEME="$IOS_FRAMEWORK_SCHEME"     RUN_TESTS="YES" BUILD_EXAMPLE="YES"  CODE_COV="YES"
 
 script:
   - set -o pipefail
