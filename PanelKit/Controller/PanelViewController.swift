@@ -67,11 +67,7 @@ import UIKit
 		return manager?.panelManagerLogLevel ?? .none
 	}
 
-	weak var manager: PanelManager? {
-		didSet {
-			self.updateShadow()
-		}
-	}
+	weak var manager: PanelManager?
 
 	var dragInsets: UIEdgeInsets {
 		return manager?.totalDragInsets(for: self) ?? .zero
