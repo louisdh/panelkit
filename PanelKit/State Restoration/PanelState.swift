@@ -194,6 +194,10 @@ public extension PanelManager {
 			return
 		}
 		
+		guard panel.canFloat else {
+			return
+		}
+		
 		toggleFloatStatus(for: panel, animated: false)
 
 		updateFrame(for: panel, to: frame)
