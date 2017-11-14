@@ -13,6 +13,8 @@
 		BE23322E1E74BA95005D3F4C /* PanelContentDelegate+Default.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322D1E74BA95005D3F4C /* PanelContentDelegate+Default.swift */; };
 		BE2332301E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE23322F1E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift */; };
 		BE24AD081E4F6B11008892A2 /* PanelKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BE24AD061E4F6B11008892A2 /* PanelKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BE2B26DA1FBB825500283481 /* PanelManager+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B26D91FBB825500283481 /* PanelManager+State.swift */; };
+		BE2B26DC1FBB828E00283481 /* PanelFloatingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B26DB1FBB828E00283481 /* PanelFloatingState.swift */; };
 		BE5123641E5790E30034A61F /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123621E5790E30034A61F /* LogLevel.swift */; };
 		BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123631E5790E30034A61F /* PanelPinSide.swift */; };
 		BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123661E5790FD0034A61F /* PanelManager.swift */; };
@@ -115,6 +117,8 @@
 		BE24AD031E4F6B11008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = PanelKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BE24AD061E4F6B11008892A2 /* PanelKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PanelKit.h; sourceTree = "<group>"; };
 		BE24AD071E4F6B11008892A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BE2B26D91FBB825500283481 /* PanelManager+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PanelManager+State.swift"; path = "PanelManager/PanelManager+State.swift"; sourceTree = "<group>"; };
+		BE2B26DB1FBB828E00283481 /* PanelFloatingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelFloatingState.swift; path = Model/PanelFloatingState.swift; sourceTree = "<group>"; };
 		BE5123621E5790E30034A61F /* LogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Model/LogLevel.swift; sourceTree = "<group>"; };
 		BE5123631E5790E30034A61F /* PanelPinSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelPinSide.swift; path = Model/PanelPinSide.swift; sourceTree = "<group>"; };
 		BE5123661E5790FD0034A61F /* PanelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelManager.swift; path = PanelManager/PanelManager.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 				BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */,
 				BE0737BE1FB5E012007177EA /* UnpinningMetadata.swift */,
 				BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */,
+				BE2B26DB1FBB828E00283481 /* PanelFloatingState.swift */,
 				BE5BC9651FB650ED00DE93E8 /* PanelState.swift */,
 			);
 			name = Model;
@@ -305,6 +310,7 @@
 				BEBE2F381E6F47CE00DEDF21 /* PanelManager+Floating.swift */,
 				BE5123671E5790FD0034A61F /* PanelManager+Offscreen.swift */,
 				BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */,
+				BE2B26D91FBB825500283481 /* PanelManager+State.swift */,
 			);
 			name = PanelManager;
 			sourceTree = "<group>";
@@ -596,6 +602,7 @@
 			files = (
 				BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */,
 				BEBE2F3B1E6F52DA00DEDF21 /* Constants.swift in Sources */,
+				BE2B26DA1FBB825500283481 /* PanelManager+State.swift in Sources */,
 				BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */,
 				BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */,
 				BE8682F51E622E9900714BED /* BlockGestureRecognizer.swift in Sources */,
@@ -603,6 +610,7 @@
 				BEFE6ACC1F8129DC009B072D /* CornerHandleView.swift in Sources */,
 				BE5BC9611FB6330000DE93E8 /* ResizeStart.swift in Sources */,
 				BE2332301E74BBF4005D3F4C /* PanelContentDelegate+Navigation.swift in Sources */,
+				BE2B26DC1FBB828E00283481 /* PanelFloatingState.swift in Sources */,
 				BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */,
 				BE0737BF1FB5E012007177EA /* UnpinningMetadata.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,

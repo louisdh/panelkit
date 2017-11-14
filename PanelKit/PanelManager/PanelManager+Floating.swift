@@ -18,11 +18,6 @@ public extension PanelManager where Self: UIViewController {
 
 public extension PanelManager {
 
-//	public func 
-}
-
-public extension PanelManager {
-
 	func toggleFloatStatus(for panel: PanelViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
 
 		let panelNavCon = panel.panelNavigationController
@@ -98,4 +93,27 @@ public extension PanelManager {
 		
 	}
 
+}
+
+public extension PanelManager {
+	
+	func float(_ panel: PanelViewController, at frame: CGRect) {
+		
+		guard !panel.isFloating else {
+			return
+		}
+		
+		guard panel.canFloat else {
+			return
+		}
+		
+		toggleFloatStatus(for: panel, animated: false)
+		
+		updateFrame(for: panel, to: frame)
+		
+		panel.viewWillAppear(false)
+		panel.viewDidAppear(false)
+		
+	}
+	
 }
