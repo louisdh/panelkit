@@ -197,3 +197,97 @@ extension PanelManager {
 	}
 
 }
+
+public extension PanelManager {
+
+	func pin(_ panel: PanelViewController, to side: PanelPinSide, atIndex index: Int) {
+
+		if !panel.isFloating {
+			toggleFloatStatus(for: panel, animated: false)
+		}
+		
+		let pinnedPreviewView = panel.panelPinnedPreviewView
+		
+		fadePinnedPreviewOut(for: panel)
+		
+		guard allowPanelPinning else {
+			return
+		}
+		
+		guard !panel.isPinned else {
+			return
+		}
+		
+		guard let panelView = panel.view else {
+			return
+		}
+		
+		if panel.logLevel == .full {
+			print("did pin \(panel) to edge of \(side) side")
+		}
+		
+		var prevPinnedPanels = panelsPinned(at: side).sorted { (p1, p2) -> Bool in
+			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
+		}
+		
+		panel.pinnedSide = PanelPinnedMetadata(side: side, index: index)
+		
+		prevPinnedPanels.insert(panel, at: index)
+		
+		panel.disableCornerRadius(animated: false, duration: panelGrowDuration)
+		panel.disableShadow(animated: false, duration: panelGrowDuration)
+		
+		guard let position = pinnedPanelPosition(for: panel, at: side) else {
+			assertionFailure("Expected a valid position")
+			return
+		}
+		
+		self.updateFrame(for: panel, to: position.frame)
+		
+		if numberOfPanelsPinned(at: side) > 1 {
+			
+			for pinnedPanel in panelsPinned(at: side) {
+				
+				if pinnedPanel == panel {
+					continue
+				}
+				
+				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
+				
+				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
+					assertionFailure("Expected a valid position")
+					continue
+				}
+				
+				self.updateFrame(for: pinnedPanel, to: newPosition.frame)
+				
+			}
+			
+		}
+		
+		updateContentViewFrame(to: updatedContentViewFrame())
+		
+		self.panelContentWrapperView.layoutIfNeeded()
+		
+		self.didUpdatePinnedPanels()
+		
+		// Send panel and preview view to back, so (shadows of) non-pinned panels are on top
+		self.panelContentWrapperView.insertSubview(panelView, aboveSubview: self.panelContentView)
+		
+		if let pinnedPreviewView = pinnedPreviewView, pinnedPreviewView.superview != nil {
+			self.panelContentWrapperView.insertSubview(pinnedPreviewView, aboveSubview: self.panelContentView)
+		}
+		
+		self.moveAllPanelsToValidPositions()
+		
+		self.panelContentWrapperView.layoutIfNeeded()
+
+		panel.hideResizeHandle(animated: false)
+		
+		panel.viewWillAppear(false)
+		panel.viewDidAppear(false)
+
+	}
+	
+}
+

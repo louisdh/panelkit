@@ -20,6 +20,8 @@
 		BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236D1E5791090034A61F /* PanelNavigationController.swift */; };
 		BE5123711E5791090034A61F /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE51236E1E5791090034A61F /* PanelViewController.swift */; };
 		BE5BC9611FB6330000DE93E8 /* ResizeStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */; };
+		BE5BC9641FB6507100DE93E8 /* PanelStateCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9631FB6507100DE93E8 /* PanelStateCoder.swift */; };
+		BE5BC9661FB650ED00DE93E8 /* PanelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9651FB650ED00DE93E8 /* PanelState.swift */; };
 		BE7ED6791FAE3A5F00857273 /* PinnedPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ED6781FAE3A5F00857273 /* PinnedPosition.swift */; };
 		BE7ED67B1FAE3B2E00857273 /* PanelPinnedMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */; };
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
@@ -120,6 +122,8 @@
 		BE51236D1E5791090034A61F /* PanelNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelNavigationController.swift; path = Controller/PanelNavigationController.swift; sourceTree = "<group>"; };
 		BE51236E1E5791090034A61F /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelViewController.swift; path = Controller/PanelViewController.swift; sourceTree = "<group>"; };
 		BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResizeStart.swift; path = Model/ResizeStart.swift; sourceTree = "<group>"; };
+		BE5BC9631FB6507100DE93E8 /* PanelStateCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelStateCoder.swift; path = "State Restoration/PanelStateCoder.swift"; sourceTree = "<group>"; };
+		BE5BC9651FB650ED00DE93E8 /* PanelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelState.swift; path = "State Restoration/PanelState.swift"; sourceTree = "<group>"; };
 		BE7ED6781FAE3A5F00857273 /* PinnedPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PinnedPosition.swift; path = Model/PinnedPosition.swift; sourceTree = "<group>"; };
 		BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelPinnedMetadata.swift; path = Model/PanelPinnedMetadata.swift; sourceTree = "<group>"; };
 		BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Expose.swift"; path = "PanelManager/PanelManager+Expose.swift"; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 		BE24AD051E4F6B11008892A2 /* PanelKit */ = {
 			isa = PBXGroup;
 			children = (
+				BE5BC9621FB63BCB00DE93E8 /* State Restoration */,
 				BE9E51F61F8AB7CF0010445A /* View */,
 				BEF801491E50F0A1007D3CEE /* Utils */,
 				BE51235F1E5790960034A61F /* Model */,
@@ -268,6 +273,7 @@
 				BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */,
 				BE0737BE1FB5E012007177EA /* UnpinningMetadata.swift */,
 				BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */,
+				BE5BC9651FB650ED00DE93E8 /* PanelState.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,6 +307,14 @@
 				BEBE2F341E6F459A00DEDF21 /* PanelManager+Pinning.swift */,
 			);
 			name = PanelManager;
+			sourceTree = "<group>";
+		};
+		BE5BC9621FB63BCB00DE93E8 /* State Restoration */ = {
+			isa = PBXGroup;
+			children = (
+				BE5BC9631FB6507100DE93E8 /* PanelStateCoder.swift */,
+			);
+			name = "State Restoration";
 			sourceTree = "<group>";
 		};
 		BE9E51F61F8AB7CF0010445A /* View */ = {
@@ -593,11 +607,13 @@
 				BE0737BF1FB5E012007177EA /* UnpinningMetadata.swift in Sources */,
 				BEF8014B1E50F0C4007D3CEE /* UIViewController+Popover.swift in Sources */,
 				BE23322E1E74BA95005D3F4C /* PanelContentDelegate+Default.swift in Sources */,
+				BE5BC9661FB650ED00DE93E8 /* PanelState.swift in Sources */,
 				BEBE2F3F1E71DCE400DEDF21 /* PanelViewController+States.swift in Sources */,
 				BE23322C1E74BA30005D3F4C /* PanelContentDelegate.swift in Sources */,
 				BE9E51F51F8AB7760010445A /* PanelViewController+Resize.swift in Sources */,
 				BE8682F31E6225DC00714BED /* AssociatedObject.swift in Sources */,
 				BE7ED6791FAE3A5F00857273 /* PinnedPosition.swift in Sources */,
+				BE5BC9641FB6507100DE93E8 /* PanelStateCoder.swift in Sources */,
 				BEBE2F391E6F47CE00DEDF21 /* PanelManager+Floating.swift in Sources */,
 				BE5123701E5791090034A61F /* PanelNavigationController.swift in Sources */,
 				BEF801511E525607007D3CEE /* CGRect+Center.swift in Sources */,

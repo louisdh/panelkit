@@ -9,7 +9,7 @@
 import Foundation
 
 /// The sides that a panel can be pinned to.
-@objc public enum PanelPinSide: Int {
+@objc public enum PanelPinSide: Int, Codable {
 	case left
 	case right
 }

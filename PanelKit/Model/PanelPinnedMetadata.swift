@@ -8,8 +8,20 @@
 
 import Foundation
 
-struct PanelPinnedMetadata {
+struct PanelPinnedMetadata: Codable {
 	var side: PanelPinSide
 	var index: Int
 	let date = Date()
+}
+
+extension PanelPinnedMetadata: Hashable {
+	
+	static func ==(lhs: PanelPinnedMetadata, rhs: PanelPinnedMetadata) -> Bool {
+		return lhs.side == rhs.side && lhs.index == rhs.index && lhs.date == rhs.date
+	}
+	
+	var hashValue: Int {
+		return date.hashValue
+	}
+
 }

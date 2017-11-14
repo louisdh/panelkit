@@ -18,7 +18,12 @@ public extension PanelManager where Self: UIViewController {
 
 public extension PanelManager {
 
-	func toggleFloatStatus(for panel: PanelViewController, completion: (() -> Void)? = nil) {
+//	public func 
+}
+
+public extension PanelManager {
+
+	func toggleFloatStatus(for panel: PanelViewController, animated: Bool = true, completion: (() -> Void)? = nil) {
 
 		let panelNavCon = panel.panelNavigationController
 
@@ -27,51 +32,70 @@ public extension PanelManager {
 			close(panel)
 			completion?()
 
-		} else {
+		} else if panelNavCon.isPresentedAsPopover {
 
 			let rect = panel.view.convert(panel.view.frame, to: panelContentWrapperView)
 
 			panel.dismiss(animated: false, completion: {
 
-				self.panelContentWrapperView.addSubview(panel.resizeCornerHandle)
-
-				self.panelContentWrapperView.addSubview(panel.view)
-
-				panel.resizeCornerHandle.bottomAnchor.constraint(equalTo: panel.view.bottomAnchor, constant: 16).isActive = true
-				panel.resizeCornerHandle.trailingAnchor.constraint(equalTo: panel.view.trailingAnchor, constant: 16).isActive = true
-
-				panel.didUpdateFloatingState()
-
-				self.updateFrame(for: panel, to: rect)
-				self.panelContentWrapperView.layoutIfNeeded()
-
-				let x = rect.origin.x
-				let y = rect.origin.y + panelPopYOffset
-
-				let width = panel.view.frame.size.width
-				let height = panel.view.frame.size.height
-
-				var newFrame = CGRect(x: x, y: y, width: width, height: height)
-				newFrame.center = panel.allowedCenter(for: newFrame.center)
-
-				self.updateFrame(for: panel, to: newFrame)
-
-				UIView.animate(withDuration: panelPopDuration, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
-
-					self.panelContentWrapperView.layoutIfNeeded()
-
-				}, completion: nil)
-
-				if panel.view.superview == self.panelContentWrapperView {
-					panel.contentDelegate?.didUpdateFloatingState()
-				}
+				self.floatPanel(panel, toRect: rect, animated: animated)
 
 				completion?()
 
 			})
 
+		} else {
+			
+			let rect = CGRect(origin: .zero, size: panel.preferredContentSize)
+			floatPanel(panel, toRect: rect, animated: animated)
+			
 		}
 
+	}
+	
+	internal func floatPanel(_ panel: PanelViewController, toRect rect: CGRect, animated: Bool) {
+		
+		self.panelContentWrapperView.addSubview(panel.resizeCornerHandle)
+		
+		self.panelContentWrapperView.addSubview(panel.view)
+		
+		panel.resizeCornerHandle.bottomAnchor.constraint(equalTo: panel.view.bottomAnchor, constant: 16).isActive = true
+		panel.resizeCornerHandle.trailingAnchor.constraint(equalTo: panel.view.trailingAnchor, constant: 16).isActive = true
+		
+		panel.didUpdateFloatingState()
+		
+		self.updateFrame(for: panel, to: rect)
+		self.panelContentWrapperView.layoutIfNeeded()
+		
+		let x = rect.origin.x
+		let y = rect.origin.y + panelPopYOffset
+		
+		let width = panel.view.frame.size.width
+		let height = panel.view.frame.size.height
+		
+		var newFrame = CGRect(x: x, y: y, width: width, height: height)
+		newFrame.center = panel.allowedCenter(for: newFrame.center)
+		
+		self.updateFrame(for: panel, to: newFrame)
+		
+		if animated {
+			
+			UIView.animate(withDuration: panelPopDuration, delay: 0.0, options: [.allowUserInteraction, .curveEaseOut], animations: {
+				
+				self.panelContentWrapperView.layoutIfNeeded()
+				
+			}, completion: nil)
+			
+		} else {
+			
+			self.panelContentWrapperView.layoutIfNeeded()
+
+		}
+		
+		if panel.view.superview == self.panelContentWrapperView {
+			panel.contentDelegate?.didUpdateFloatingState()
+		}
+		
 	}
 
 }
