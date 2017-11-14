@@ -159,8 +159,6 @@ extension PanelManager {
 				continue
 			}
 			
-			toggleFloatStatus(for: panel, animated: false)
-			
 			var pos = floatingState.relativePosition
 			
 			pos.x *= panelContentWrapperView.frame.width
@@ -178,14 +176,31 @@ extension PanelManager {
 				
 			}
 			
-			updateFrame(for: panel, to: CGRect(origin: pos, size: size))
+			let frame = CGRect(origin: pos, size: size)
 			
-			panel.viewWillAppear(false)
-			panel.viewDidAppear(false)
+			float(panel, at: frame)
 			
 		}
 		
-		
 	}
 	
+}
+
+public extension PanelManager {
+
+	func float(_ panel: PanelViewController, at frame: CGRect) {
+		
+		guard !panel.isFloating else {
+			return
+		}
+		
+		toggleFloatStatus(for: panel, animated: false)
+
+		updateFrame(for: panel, to: frame)
+		
+		panel.viewWillAppear(false)
+		panel.viewDidAppear(false)
+		
+	}
+
 }
