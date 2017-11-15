@@ -24,6 +24,8 @@ public protocol PanelManager: class {
 	/// resizing ```panelContentView``` when a panel is pinned.
 	var allowPanelPinning: Bool { get }
 
+	func maximumNumberOfPanelsPinned(at side: PanelPinSide) -> Int
+	
 	/// The view in which the panels may be dragged around.
 	var panelContentWrapperView: UIView { get }
 

@@ -201,9 +201,17 @@ extension PanelManager {
 public extension PanelManager {
 
 	func pin(_ panel: PanelViewController, to side: PanelPinSide, atIndex index: Int) {
-
+		
+		guard numberOfPanelsPinned(at: side) < maximumNumberOfPanelsPinned(at: side) else {
+			return
+		}
+		
 		if !panel.isFloating {
 			toggleFloatStatus(for: panel, animated: false)
+		}
+		
+		guard panel.isFloating || panel.isPinned else {
+			return
 		}
 		
 		let pinnedPreviewView = panel.panelPinnedPreviewView

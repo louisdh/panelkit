@@ -27,6 +27,10 @@ public extension PanelManager {
 		return panelContentWrapperView.bounds.width > 800
 	}
 
+	func maximumNumberOfPanelsPinned(at side: PanelPinSide) -> Int {
+		return 1
+	}
+	
 	var panelManagerLogLevel: LogLevel {
 		return .none
 	}

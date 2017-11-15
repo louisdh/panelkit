@@ -111,6 +111,10 @@ extension PanelManager {
 		guard allowPanelPinning else {
 			return
 		}
+		
+		guard numberOfPanelsPinned(at: side) < maximumNumberOfPanelsPinned(at: side) else {
+			return
+		}
 
 		guard !panel.isPinned else {
 			return
@@ -164,6 +168,10 @@ extension PanelManager {
 			return
 		}
 
+		guard numberOfPanelsPinned(at: side) < maximumNumberOfPanelsPinned(at: side) else {
+			return
+		}
+		
 		guard !panel.isPinned else {
 			return
 		}
