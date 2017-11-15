@@ -105,20 +105,39 @@ extension PanelManager {
 
 		panel.widthConstraint?.isActive = true
 		panel.widthConstraint?.constant = frame.width
-
-		if let pinnedSide = panel.pinnedSide?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
-
-			panel.topConstraint?.constant = panelContentView.frame.origin.y
-
+		
+		var useTopConstraint = false
+		
+		if let pinnedSide = panel.pinnedSide, pinnedSide.index > 0 {
+			
+			var panelsPinned = self.panelsPinned(at: pinnedSide.side).sorted { (p1, p2) -> Bool in
+				return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
+			}
+			
+			let panelPinnedAbove = panelsPinned[pinnedSide.index - 1]
+			
+			panel.topConstraint?.isActive = false
+			panel.topConstraint = panel.view.topAnchor.constraint(equalTo: panelPinnedAbove.view.bottomAnchor, constant: 0.0)
+			
+			useTopConstraint = true
+			
 		} else {
-
-			panel.topConstraint?.constant = frame.origin.y
+			
+			if let pinnedSide = panel.pinnedSide?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
+				
+				panel.topConstraint?.constant = panelContentView.frame.origin.y
+				
+			} else {
+				
+				panel.topConstraint?.constant = frame.origin.y
+				
+			}
 
 		}
 
 		panel.bottomConstraint?.constant = frame.maxY - panelContentWrapperView.bounds.maxY
 
-		if frame.center.y > panelContentWrapperView.bounds.center.y {
+		if !useTopConstraint && frame.center.y > panelContentWrapperView.bounds.center.y {
 
 			panel.topConstraint?.isActive = false
 			panel.bottomConstraint?.isActive = true
