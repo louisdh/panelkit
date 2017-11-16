@@ -14,6 +14,7 @@ extension PanelManager {
 
 		panel.resizeCornerHandle.removeFromSuperview()
 		panel.view.removeFromSuperview()
+        panel.contentViewController?.viewWillDisappear(true)
 
 		panel.contentDelegate?.didUpdateFloatingState()
 
