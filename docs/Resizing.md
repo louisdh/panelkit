@@ -10,17 +10,17 @@ The following implementation will enable resizing:
 ```swift
 extension MyPanelContentViewController: PanelContentDelegate {
 
-	var preferredPanelContentSize: CGSize {
-		return CGSize(width: 320, height: 240)
-	}
+    var preferredPanelContentSize: CGSize {
+        return CGSize(width: 320, height: 240)
+    }
 	
-	var minimumPanelContentSize: CGSize {
-		return CGSize(width: 300, height: 200)
-	}
+    var minimumPanelContentSize: CGSize {
+        return CGSize(width: 300, height: 200)
+    }
 	
-	var maximumPanelContentSize: CGSize {
-		return CGSize(width: 480, height: 640)
-	}
-	
+    var maximumPanelContentSize: CGSize {
+        return CGSize(width: 480, height: 640)
+    }
+
 }
 ```
