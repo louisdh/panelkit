@@ -38,6 +38,8 @@ public protocol PanelContentDelegate: class {
 	var preferredPanelContentSize: CGSize { get }
 
 	/// The width the panel should have when it is pinned.
+	///
+	/// Returns `preferredPanelContentSize.width` by default.
 	var preferredPanelPinnedWidth: CGFloat { get }
 
 	/// The `minimumPanelContentSize` controls the minimum size
