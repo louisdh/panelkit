@@ -40,8 +40,20 @@ public protocol PanelContentDelegate: class {
 	/// The width the panel should have when it is pinned.
 	var preferredPanelPinnedWidth: CGFloat { get }
 
+	/// The `minimumPanelContentSize` controls the minimum size
+	/// a panel may have while floating.
+	/// If this property differs from `preferredPanelContentSize`, it will
+	/// allow the user to resize the panel.
+	///
+	/// Returns `preferredPanelContentSize` by default.
 	var minimumPanelContentSize: CGSize { get }
 
+	/// The `maximumPanelContentSize` controls the maximum size
+	/// a panel may have while floating.
+	/// If this property differs from `preferredPanelContentSize`, it will
+	/// allow the user to resize the panel.
+	///
+	/// Returns `preferredPanelContentSize` by default.
 	var maximumPanelContentSize: CGSize { get }
 
 	/// Notifies you that the keyboard will be shown.

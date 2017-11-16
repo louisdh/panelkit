@@ -69,7 +69,7 @@ extension PanelViewController {
 		return frameBeforeExpose != nil
 	}
 
-	/// A panel can't float when it is presented modally
+	/// A panel can't float when it is presented modally.
 	public var canFloat: Bool {
 
 		guard manager?.allowFloatingPanels == true else {
