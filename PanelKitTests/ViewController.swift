@@ -35,11 +35,11 @@ class ViewController: UIViewController, PanelManager {
 
 		mapPanelContentVC = MapPanelContentViewController()
 
-		mapPanelVC = PanelViewController(with: mapPanelContentVC, contentDelegate: mapPanelContentVC, in: self)
+		mapPanelVC = PanelViewController(with: mapPanelContentVC, in: self)
 
 		textPanelContentVC = TextPanelContentViewController()
 
-		textPanelVC = PanelViewController(with: textPanelContentVC, contentDelegate: textPanelContentVC, in: self)
+		textPanelVC = PanelViewController(with: textPanelContentVC, in: self)
 
 		enableTripleTapExposeActivation()
 

@@ -15,6 +15,8 @@
 		BE24AD081E4F6B11008892A2 /* PanelKit.h in Headers */ = {isa = PBXBuildFile; fileRef = BE24AD061E4F6B11008892A2 /* PanelKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BE2B26DA1FBB825500283481 /* PanelManager+State.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B26D91FBB825500283481 /* PanelManager+State.swift */; };
 		BE2B26DC1FBB828E00283481 /* PanelFloatingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B26DB1FBB828E00283481 /* PanelFloatingState.swift */; };
+		BE2B27151FBE1AAF00283481 /* StateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B27141FBE1AAF00283481 /* StateTests.swift */; };
+		BE2B27171FBE1CC100283481 /* MainTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE2B27161FBE1CC100283481 /* MainTests.swift */; };
 		BE5123641E5790E30034A61F /* LogLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123621E5790E30034A61F /* LogLevel.swift */; };
 		BE5123651E5790E30034A61F /* PanelPinSide.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123631E5790E30034A61F /* PanelPinSide.swift */; };
 		BE5123691E5790FD0034A61F /* PanelManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5123661E5790FD0034A61F /* PanelManager.swift */; };
@@ -24,6 +26,9 @@
 		BE5BC9611FB6330000DE93E8 /* ResizeStart.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */; };
 		BE5BC9641FB6507100DE93E8 /* PanelStateCoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9631FB6507100DE93E8 /* PanelStateCoder.swift */; };
 		BE5BC9661FB650ED00DE93E8 /* PanelState.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5BC9651FB650ED00DE93E8 /* PanelState.swift */; };
+		BE609F931FBE1F990018FC93 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
+		BE609F941FBE1F990018FC93 /* PanelKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		BE609F9A1FBE20000018FC93 /* StateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE609F981FBE1FD70018FC93 /* StateViewController.swift */; };
 		BE7ED6791FAE3A5F00857273 /* PinnedPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ED6781FAE3A5F00857273 /* PinnedPosition.swift */; };
 		BE7ED67B1FAE3B2E00857273 /* PanelPinnedMetadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */; };
 		BE8682F11E5FA81F00714BED /* PanelManager+Expose.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */; };
@@ -42,7 +47,6 @@
 		BEBE2F431E71DED600DEDF21 /* PanelViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F421E71DED600DEDF21 /* PanelViewController+Keyboard.swift */; };
 		BEBE2F451E71DFC100DEDF21 /* PanelViewController+Dragging.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */; };
 		BEBE2F471E71ED0300DEDF21 /* PanelViewController+Offscreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */; };
-		BEBE2F4F1E71FC0B00DEDF21 /* PanelKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */; };
 		BEBE2F511E71FC0B00DEDF21 /* PanelKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BE24AD031E4F6B11008892A2 /* PanelKit.framework */; };
 		BEBE2F5A1E71FCC500DEDF21 /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F581E71FCC500DEDF21 /* MapPanelContentViewController.swift */; };
 		BEBE2F5B1E71FCC500DEDF21 /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBE2F591E71FCC500DEDF21 /* TextPanelContentViewController.swift */; };
@@ -64,6 +68,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		BE609F951FBE1F990018FC93 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BE24AD021E4F6B11008892A2;
+			remoteInfo = PanelKit;
+		};
 		BEBE2F521E71FC0B00DEDF21 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BE24ACFA1E4F6B11008892A2 /* Project object */;
@@ -95,6 +106,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		BE609F971FBE1F990018FC93 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				BE609F941FBE1F990018FC93 /* PanelKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		BED541E31E676173002A5459 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,6 +141,8 @@
 		BE24AD071E4F6B11008892A2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BE2B26D91FBB825500283481 /* PanelManager+State.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "PanelManager+State.swift"; path = "PanelManager/PanelManager+State.swift"; sourceTree = "<group>"; };
 		BE2B26DB1FBB828E00283481 /* PanelFloatingState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelFloatingState.swift; path = Model/PanelFloatingState.swift; sourceTree = "<group>"; };
+		BE2B27141FBE1AAF00283481 /* StateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateTests.swift; sourceTree = "<group>"; };
+		BE2B27161FBE1CC100283481 /* MainTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTests.swift; sourceTree = "<group>"; };
 		BE5123621E5790E30034A61F /* LogLevel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LogLevel.swift; path = Model/LogLevel.swift; sourceTree = "<group>"; };
 		BE5123631E5790E30034A61F /* PanelPinSide.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelPinSide.swift; path = Model/PanelPinSide.swift; sourceTree = "<group>"; };
 		BE5123661E5790FD0034A61F /* PanelManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PanelManager.swift; path = PanelManager/PanelManager.swift; sourceTree = "<group>"; };
@@ -128,6 +152,7 @@
 		BE5BC9601FB6330000DE93E8 /* ResizeStart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResizeStart.swift; path = Model/ResizeStart.swift; sourceTree = "<group>"; };
 		BE5BC9631FB6507100DE93E8 /* PanelStateCoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelStateCoder.swift; path = "State Restoration/PanelStateCoder.swift"; sourceTree = "<group>"; };
 		BE5BC9651FB650ED00DE93E8 /* PanelState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelState.swift; path = "State Restoration/PanelState.swift"; sourceTree = "<group>"; };
+		BE609F981FBE1FD70018FC93 /* StateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateViewController.swift; sourceTree = "<group>"; };
 		BE7ED6781FAE3A5F00857273 /* PinnedPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PinnedPosition.swift; path = Model/PinnedPosition.swift; sourceTree = "<group>"; };
 		BE7ED67A1FAE3B2E00857273 /* PanelPinnedMetadata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = PanelPinnedMetadata.swift; path = Model/PanelPinnedMetadata.swift; sourceTree = "<group>"; };
 		BE8682F01E5FA81F00714BED /* PanelManager+Expose.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelManager+Expose.swift"; path = "PanelManager/PanelManager+Expose.swift"; sourceTree = "<group>"; };
@@ -145,7 +170,6 @@
 		BEBE2F441E71DFC100DEDF21 /* PanelViewController+Dragging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Dragging.swift"; path = "Controller/PanelViewController+Dragging.swift"; sourceTree = "<group>"; };
 		BEBE2F461E71ED0300DEDF21 /* PanelViewController+Offscreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "PanelViewController+Offscreen.swift"; path = "Controller/PanelViewController+Offscreen.swift"; sourceTree = "<group>"; };
 		BEBE2F4C1E71FC0A00DEDF21 /* PanelKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PanelKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelKitTests.swift; sourceTree = "<group>"; };
 		BEBE2F501E71FC0B00DEDF21 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		BEBE2F581E71FCC500DEDF21 /* MapPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPanelContentViewController.swift; path = Panels/MapPanelContentViewController.swift; sourceTree = "<group>"; };
 		BEBE2F591E71FCC500DEDF21 /* TextPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPanelContentViewController.swift; path = Panels/TextPanelContentViewController.swift; sourceTree = "<group>"; };
@@ -196,6 +220,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE609F931FBE1F990018FC93 /* PanelKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -335,8 +360,10 @@
 			isa = PBXGroup;
 			children = (
 				BEBE2F5C1E71FE1900DEDF21 /* ViewController.swift */,
+				BE609F981FBE1FD70018FC93 /* StateViewController.swift */,
 				BEBE2F571E71FCA300DEDF21 /* Panels */,
-				BEBE2F4E1E71FC0B00DEDF21 /* PanelKitTests.swift */,
+				BE2B27141FBE1AAF00283481 /* StateTests.swift */,
+				BE2B27161FBE1CC100283481 /* MainTests.swift */,
 				BEBE2F501E71FC0B00DEDF21 /* Info.plist */,
 			);
 			name = "PanelKit Tests";
@@ -465,10 +492,12 @@
 				BEBE2F5E1E7208C800DEDF21 /* Sources */,
 				BEBE2F5F1E7208C800DEDF21 /* Frameworks */,
 				BE9C5B551EEB7619009490A1 /* Resources */,
+				BE609F971FBE1F990018FC93 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				BE609F961FBE1F990018FC93 /* PBXTargetDependency */,
 			);
 			name = "PanelKit Test Host";
 			productName = "PanelKit Test Host";
@@ -523,6 +552,7 @@
 				TargetAttributes = {
 					BE24AD021E4F6B11008892A2 = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = 6G5LMQ72D8;
 						LastSwiftMigration = 0900;
 						ProvisioningStyle = Automatic;
 					};
@@ -644,10 +674,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BE609F9A1FBE20000018FC93 /* StateViewController.swift in Sources */,
 				BEBE2F5A1E71FCC500DEDF21 /* MapPanelContentViewController.swift in Sources */,
 				BEBE2F5B1E71FCC500DEDF21 /* TextPanelContentViewController.swift in Sources */,
+				BE2B27151FBE1AAF00283481 /* StateTests.swift in Sources */,
 				BEBE2F5D1E71FE1900DEDF21 /* ViewController.swift in Sources */,
-				BEBE2F4F1E71FC0B00DEDF21 /* PanelKitTests.swift in Sources */,
+				BE2B27171FBE1CC100283481 /* MainTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -682,6 +714,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		BE609F961FBE1F990018FC93 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BE24AD021E4F6B11008892A2 /* PanelKit */;
+			targetProxy = BE609F951FBE1F990018FC93 /* PBXContainerItemProxy */;
+		};
 		BEBE2F531E71FC0B00DEDF21 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = BE24AD021E4F6B11008892A2 /* PanelKit */;
@@ -857,6 +894,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -879,6 +917,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = 6G5LMQ72D8;
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
@@ -927,6 +966,7 @@
 		BEBE2F721E7208C800DEDF21 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6G5LMQ72D8;
 				INFOPLIST_FILE = "PanelKit Test Host/Info.plist";
@@ -942,6 +982,7 @@
 		BEBE2F731E7208C800DEDF21 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 6G5LMQ72D8;
 				INFOPLIST_FILE = "PanelKit Test Host/Info.plist";

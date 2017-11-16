@@ -50,3 +50,13 @@ public struct PanelState: Codable {
 	}
 	
 }
+
+extension PanelState: Equatable {
+	
+	public static func ==(lhs: PanelState, rhs: PanelState) -> Bool {
+		return lhs.floatingSize == rhs.floatingSize &&
+				lhs.floatingState == rhs.floatingState &&
+				lhs.pinnedMetadata == rhs.pinnedMetadata
+	}
+	
+}

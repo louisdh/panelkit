@@ -11,7 +11,7 @@ import PanelKit
 import MapKit
 import UIKit
 
-class MapPanelContentViewController: UIViewController, PanelContentDelegate {
+class MapPanelContentViewController: UIViewController {
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -22,6 +22,10 @@ class MapPanelContentViewController: UIViewController, PanelContentDelegate {
 		self.title = "Map"
 
 	}
+
+}
+
+extension MapPanelContentViewController: PanelContentDelegate {
 
 	var preferredPanelContentSize: CGSize {
 		return CGSize(width: 320, height: 500)
