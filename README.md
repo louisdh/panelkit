@@ -113,7 +113,7 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 ### 2.0:
 - [x] Panel resizing
 - [x] Multiple panels pinned to same side
-- [ ] Panel state saving and loading
+- [x] Panel state saving and loading
 
 ### Long term:
 - [ ] Top/down pinning
