@@ -13,7 +13,7 @@ public protocol PanelStateCoder {
 	/// Unique id to identify a panel.
 	/// Used when restoring the panel's state.
 	///
-	/// A panel's id should be the same accross app launches
+	/// A panel's id should be the same across app launches
 	/// to successfully restore its state.
 	var panelId: Int { get }
 	

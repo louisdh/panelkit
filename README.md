@@ -84,6 +84,13 @@ var panels: [PanelViewController] {
 
 Typically the ```PanelManager``` protocol is implemented on a ```UIViewController```.
 
+## Advanced features
+PanelKit has some advanced opt-in features:
+
+* [Multi-pinning](docs/MultiPinning.md)
+* [Panel resizing](docs/Resizing.md)
+* [State restoration](docs/States.md)
+
 ## Installation
 
 ### [CocoaPods](http://cocoapods.org)
