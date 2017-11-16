@@ -94,17 +94,16 @@ class StateTests: XCTestCase {
 		let json = """
 					{
 					   "2": {
-						  "pinnedMetadata": {
-							 "side":1,
-							 "index":0,
-							 "date":532555376.98414397
+						  "floatingState": {
+							"relativePosition": [0.4, 0.4],
+							"zIndex": 0
 						  }
 					   },
 					   "1": {
 						  "pinnedMetadata": {
-							 "side":0,
-							 "index":0,
-							 "date":532555376.97106999
+							 "side": 0,
+							 "index": 0,
+							 "date": 532555376.97106999
 						  }
 					   }
 					}
@@ -124,14 +123,14 @@ class StateTests: XCTestCase {
 		}
 		
 		XCTAssert(state1.pinnedMetadata?.side == .left)
-		XCTAssert(state2.pinnedMetadata?.side == .right)
+		XCTAssert(state2.floatingState?.zIndex == 0)
 		
 		viewController.restorePanelStates(states)
 
 		XCTAssert(viewController.numberOfPanelsPinned(at: .left) == 1)
-		XCTAssert(viewController.numberOfPanelsPinned(at: .right) == 1)
+		XCTAssert(viewController.numberOfPanelsPinned(at: .right) == 0)
 		XCTAssert(viewController.panel1VC.isPinned)
-		XCTAssert(viewController.panel2VC.isPinned)
+		XCTAssert(viewController.panel2VC.isFloating)
 	}
 	
 }
