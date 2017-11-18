@@ -128,7 +128,7 @@ extension PanelViewController {
 		}
 
 		if isPinned {
-			newFrame.size.width = contentDelegate.preferredPanelPinnedWidth
+			newFrame.size.width = view.frame.width
 		}
 
 		newFrame.size.height += 1
@@ -159,7 +159,7 @@ extension PanelViewController {
 		}
 		
 		if isPinned {
-			newFrame2.size.width = contentDelegate.preferredPanelPinnedWidth
+			newFrame2.size.width = view.frame.width
 		}
 
 		self.manager?.updateFrame(for: self, to: newFrame2)
