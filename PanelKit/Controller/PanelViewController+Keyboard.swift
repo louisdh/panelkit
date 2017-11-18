@@ -71,6 +71,8 @@ extension PanelViewController {
 
 				manager?.updateFrame(for: self, to: updatedFrame, keyboardShown: true)
 
+				self.bringToFront()
+				
 				UIView.animate(withDuration: duration, delay: 0.0, options: [animationCurve], animations: {
 
 					self.manager?.panelContentWrapperView.layoutIfNeeded()
