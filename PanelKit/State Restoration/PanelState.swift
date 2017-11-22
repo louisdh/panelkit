@@ -11,11 +11,18 @@ import CoreGraphics
 
 public struct PanelState: Codable {
 	
-	let floatingState: PanelFloatingState?
+	public let floatingState: PanelFloatingState?
 	
-	let pinnedMetadata: PanelPinnedMetadata?
+	public let pinnedMetadata: PanelPinnedMetadata?
 
-	let floatingSize: CGSize?
+	public let floatingSize: CGSize?
+	
+	public init(floatingState: PanelFloatingState? = nil, pinnedMetadata: PanelPinnedMetadata? = nil, floatingSize: CGSize? = nil) {
+		
+		self.floatingState = floatingState
+		self.pinnedMetadata = pinnedMetadata
+		self.floatingSize = floatingSize
+	}
 	
 	init(_ panel: PanelViewController) {
 		
@@ -45,7 +52,7 @@ public struct PanelState: Codable {
 		
 		floatingSize = panel.floatingSize
 		
-		pinnedMetadata = panel.pinnedSide
+		pinnedMetadata = panel.pinnedMetadata
 		
 	}
 	

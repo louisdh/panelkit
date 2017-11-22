@@ -15,7 +15,7 @@ extension PanelManager {
 
 		fadePinnedPreviewOut(for: panel)
 
-		guard let pinnedMetadata = panel.pinnedSide else {
+		guard let pinnedMetadata = panel.pinnedMetadata else {
 			return
 		}
 
@@ -34,12 +34,12 @@ extension PanelManager {
 		}
 
 		var prevPinnedPanels = panelsPinned(at: pinnedMetadata.side).sorted { (p1, p2) -> Bool in
-			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
+			return p1.pinnedMetadata?.index ?? 0 < p2.pinnedMetadata?.index ?? 0
 		}
 
 		prevPinnedPanels.remove(at: pinnedMetadata.index)
 
-		panel.pinnedSide = nil
+		panel.pinnedMetadata = nil
 
 		panel.bringToFront()
 
@@ -77,7 +77,7 @@ extension PanelManager {
 					continue
 				}
 
-				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
+				pinnedPanel.pinnedMetadata?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")
@@ -189,10 +189,10 @@ extension PanelManager {
 		}
 
 		var prevPinnedPanels = panelsPinned(at: side).sorted { (p1, p2) -> Bool in
-			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
+			return p1.pinnedMetadata?.index ?? 0 < p2.pinnedMetadata?.index ?? 0
 		}
 
-		panel.pinnedSide = PanelPinnedMetadata(side: side, index: position.index)
+		panel.pinnedMetadata = PanelPinnedMetadata(side: side, index: position.index)
 
 		prevPinnedPanels.insert(panel, at: position.index)
 
@@ -211,7 +211,7 @@ extension PanelManager {
 					continue
 				}
 
-				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
+				pinnedPanel.pinnedMetadata?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")

@@ -35,13 +35,13 @@ extension PanelManager {
 	}
 
 	func panelsPinned(at side: PanelPinSide) -> [PanelViewController] {
-		return panels.filter { $0.pinnedSide?.side == side }.sorted(by: { (p1, p2) -> Bool in
+		return panels.filter { $0.pinnedMetadata?.side == side }.sorted(by: { (p1, p2) -> Bool in
 
-			guard let date1 = p1.pinnedSide?.date else {
+			guard let date1 = p1.pinnedMetadata?.date else {
 				return true
 			}
 
-			guard let date2 = p2.pinnedSide?.date else {
+			guard let date2 = p2.pinnedMetadata?.date else {
 				return true
 			}
 
@@ -99,7 +99,7 @@ extension PanelManager {
 
 					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedLeft)
 
-					index = panel.pinnedSide?.index ?? 0
+					index = panel.pinnedMetadata?.index ?? 0
 
 				} else {
 					index = 0
@@ -128,7 +128,7 @@ extension PanelManager {
 
 					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedRight)
 
-					index = panel.pinnedSide?.index ?? 0
+					index = panel.pinnedMetadata?.index ?? 0
 
 				} else {
 					index = 0
@@ -235,10 +235,10 @@ public extension PanelManager {
 		}
 		
 		var prevPinnedPanels = panelsPinned(at: side).sorted { (p1, p2) -> Bool in
-			return p1.pinnedSide?.index ?? 0 < p2.pinnedSide?.index ?? 0
+			return p1.pinnedMetadata?.index ?? 0 < p2.pinnedMetadata?.index ?? 0
 		}
 		
-		panel.pinnedSide = PanelPinnedMetadata(side: side, index: index)
+		panel.pinnedMetadata = PanelPinnedMetadata(side: side, index: index)
 		
 		prevPinnedPanels.insert(panel, at: index)
 		
@@ -260,7 +260,7 @@ public extension PanelManager {
 					continue
 				}
 				
-				pinnedPanel.pinnedSide?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
+				pinnedPanel.pinnedMetadata?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 				
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")

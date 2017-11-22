@@ -11,7 +11,7 @@ import Foundation
 extension PanelViewController {
 
 	var wasPinned: Bool {
-		return !isPinned && pinnedSide != nil
+		return !isPinned && pinnedMetadata != nil
 	}
 
 	@objc public var isUnpinning: Bool {
@@ -32,7 +32,7 @@ extension PanelViewController {
 			return false
 		}
 
-		return pinnedSide != nil
+		return pinnedMetadata != nil
 	}
 
 	@objc public var isFloating: Bool {

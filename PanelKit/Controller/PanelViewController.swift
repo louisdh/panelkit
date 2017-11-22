@@ -48,7 +48,7 @@ import UIKit
 
 	@objc public weak var contentViewController: UIViewController?
 
-	var pinnedSide: PanelPinnedMetadata?
+	var pinnedMetadata: PanelPinnedMetadata?
 
 	var unpinningMetadata: UnpinningMetadata?
 
@@ -303,11 +303,11 @@ import UIKit
 			// Allow pinned panels to move beyond superview bounds,
 			// for smooth transition
 
-			if pinnedSide?.side == .left {
+			if pinnedMetadata?.side == .left {
 				dragInsets.left -= viewToMove.bounds.width
 			}
 
-			if pinnedSide?.side == .right {
+			if pinnedMetadata?.side == .right {
 				dragInsets.right -= viewToMove.bounds.width
 			}
 

@@ -32,7 +32,7 @@ extension PanelViewController {
 
 		} else {
 
-			if let pinnedSide = pinnedSide?.side {
+			if let pinnedSide = pinnedMetadata?.side {
 				if !isUnpinning {
 					self.unpinningMetadata = UnpinningMetadata(side: pinnedSide)
 				}
