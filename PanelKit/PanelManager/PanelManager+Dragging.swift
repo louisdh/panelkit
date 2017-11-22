@@ -140,7 +140,9 @@ extension PanelManager {
 			print("did drag \(panel) to edge of \(side) side")
 		}
 
-		let previewView = panel.panelPinnedPreviewView ?? UIView(frame: panelView.frame)
+		let previewStartFrame = panelView.layer.presentation()?.frame ?? panelView.frame
+		
+		let previewView = panel.panelPinnedPreviewView ?? UIView(frame: previewStartFrame)
 		previewView.isUserInteractionEnabled = false
 
 		previewView.backgroundColor = panel.tintColor
