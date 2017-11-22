@@ -60,6 +60,8 @@ extension PanelManager {
 				continue
 			}
 			
+			panel.floatingSize = state.floatingSize
+			
 			if let pinnedMetadata = state.pinnedMetadata {
 				
 				pinnedTable[pinnedMetadata] = panel

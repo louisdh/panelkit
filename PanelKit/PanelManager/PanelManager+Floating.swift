@@ -111,6 +111,8 @@ public extension PanelManager {
 		
 		updateFrame(for: panel, to: frame)
 		
+		self.panelContentWrapperView.layoutIfNeeded()
+
 		panel.viewWillAppear(false)
 		panel.viewDidAppear(false)
 		
