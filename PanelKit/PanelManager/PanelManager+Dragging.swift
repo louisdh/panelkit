@@ -64,7 +64,9 @@ extension PanelManager {
 		}
 
 		if currentFrame.contains(point) && !newFrame.contains(point) {
-			newFrame.origin.y += point.y - newFrame.maxY
+			if newFrame.minY > point.y || newFrame.maxY < point.y {
+				newFrame.origin.y += point.y - newFrame.maxY
+			}
 		}
 
 		updateFrame(for: panel, to: newFrame)
