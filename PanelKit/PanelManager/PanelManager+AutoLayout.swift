@@ -116,6 +116,8 @@ extension PanelManager {
 			
 			let panelPinnedAbove = panelsPinned[pinnedMetadata.index - 1]
 			
+			assert(panelPinnedAbove != panel, "Panel logic error")
+			
 			panel.topConstraint?.isActive = false
 			panel.topConstraint = panel.view.topAnchor.constraint(equalTo: panelPinnedAbove.view.bottomAnchor, constant: 0.0)
 			

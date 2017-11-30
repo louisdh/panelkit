@@ -81,6 +81,14 @@ extension PanelManager {
 
 				pinnedPanel.pinnedMetadata?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 
+			}
+			
+			for pinnedPanel in panelsPinned(at: side) {
+
+				if pinnedPanel == panel {
+					continue
+				}
+
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")
 					continue
@@ -204,8 +212,6 @@ extension PanelManager {
 		panel.disableShadow(animated: true, duration: panelGrowDuration)
 
 		panel.floatingSize = panel.view.frame.size
-		
-		self.updateFrame(for: panel, to: position.frame)
 
 		if numberOfPanelsPinned(at: side) > 1 {
 
@@ -217,6 +223,14 @@ extension PanelManager {
 
 				pinnedPanel.pinnedMetadata?.index = prevPinnedPanels.index(of: pinnedPanel) ?? 0
 
+			}
+
+			for pinnedPanel in panelsPinned(at: side) {
+
+				if pinnedPanel == panel {
+					continue
+				}
+				
 				guard let newPosition = pinnedPanelPosition(for: pinnedPanel, at: side) else {
 					assertionFailure("Expected a valid position")
 					continue
@@ -227,6 +241,8 @@ extension PanelManager {
 			}
 
 		}
+
+		self.updateFrame(for: panel, to: position.frame)
 
 		updateContentViewFrame(to: updatedContentViewFrame())
 
