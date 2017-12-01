@@ -202,6 +202,10 @@ public extension PanelManager {
 
 	func pin(_ panel: PanelViewController, to side: PanelPinSide, atIndex index: Int) {
 		
+		guard allowPanelPinning else {
+			return
+		}
+		
 		guard numberOfPanelsPinned(at: side) < maximumNumberOfPanelsPinned(at: side) else {
 			return
 		}
@@ -217,10 +221,6 @@ public extension PanelManager {
 		let pinnedPreviewView = panel.panelPinnedPreviewView
 		
 		fadePinnedPreviewOut(for: panel)
-		
-		guard allowPanelPinning else {
-			return
-		}
 		
 		guard !panel.isPinned else {
 			return
