@@ -2,12 +2,5 @@ version: "2"         # required to adjust maintainability checks
 plugins:
   tailor:
     enabled: true
-    checks:
-      forced-type-cast:
-        enabled: false
-      function-whitespace:
-        enabled: false
-ratings:
-  paths:
-  - "**.swift"
-exclude_paths: []
+exclude_patterns: 
+  - "*.md"
