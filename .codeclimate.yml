@@ -1,5 +1,5 @@
 version: "2"         # required to adjust maintainability checks
-engines:
+plugins:
   tailor:
     enabled: true
     checks:
