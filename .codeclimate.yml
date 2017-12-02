@@ -1,4 +1,4 @@
----
+version: "2"         # required to adjust maintainability checks
 engines:
   tailor:
     enabled: true
