@@ -97,14 +97,14 @@ PanelKit has some advanced opt-in features:
 To install, add the following line to your ```Podfile```:
 
 ```ruby
-pod 'PanelKit', '~> 1.0'
+pod 'PanelKit', '~> 2.0'
 ```
 
 ### [Carthage](https://github.com/Carthage/Carthage)
 To install, add the following line to your ```Cartfile```:
 
 ```ruby
-github "louisdh/panelkit" ~> 1.0
+github "louisdh/panelkit" ~> 2.0
 ```
 Run ```carthage update``` to build the framework and drag the built ```PanelKit.framework``` into your Xcode project.
 
@@ -116,10 +116,6 @@ Run ```carthage update``` to build the framework and drag the built ```PanelKit.
 * Xcode 9.0+
 
 ## Todo 
-### 2.0:
-- [x] Panel resizing
-- [x] Multiple panels pinned to same side
-- [x] Panel state saving and loading
 
 ### Long term:
 - [ ] Top/down pinning
