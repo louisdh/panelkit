@@ -4,7 +4,6 @@
 
 <p align="center">
 <a href="https://travis-ci.org/louisdh/panelkit"><img src="https://travis-ci.org/louisdh/panelkit.svg?branch=master" style="max-height: 300px;" alt="Build Status"/></a>
-<a href="https://codeclimate.com/github/louisdh/panelkit"><img src="https://codeclimate.com/github/louisdh/panelkit/badges/gpa.svg" style="max-height: 300px;" alt="Code Climate"/></a>
 <a href="https://codecov.io/gh/louisdh/panelkit"><img src="https://codecov.io/gh/louisdh/panelkit/branch/master/graph/badge.svg" alt="Codecov"/></a><br>
 <a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"/></a>
 <a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"/></a>
