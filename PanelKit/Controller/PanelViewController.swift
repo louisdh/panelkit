@@ -292,48 +292,60 @@ import UIKit
 		guard let viewToMove = self.view else {
 			return proposedCenter
 		}
+		
+		var proposedFrame = viewToMove.bounds
+		proposedFrame.center = proposedCenter
+		
+		let newFrame = allowedFrame(for: proposedFrame)
 
-		guard let superview = viewToMove.superview else {
-			return proposedCenter
+		return newFrame.center
+	}
+	
+	func allowedFrame(for proposedFrame: CGRect) -> CGRect {
+		
+		guard let superview = self.view?.superview else {
+			return proposedFrame
 		}
-
+		
 		var dragInsets = self.dragInsets
-
+		
 		if isPinned {
 			// Allow pinned panels to move beyond superview bounds,
 			// for smooth transition
-
+			
 			if pinnedMetadata?.side == .left {
-				dragInsets.left -= viewToMove.bounds.width
+				dragInsets.left -= proposedFrame.width
 			}
-
+			
 			if pinnedMetadata?.side == .right {
-				dragInsets.right -= viewToMove.bounds.width
+				dragInsets.right -= proposedFrame.width
 			}
-
+			
 		} else if let manager = self.manager, let unpinningMetadata = unpinningMetadata {
-
+			
 			if unpinningMetadata.side == .left, let panel = manager.panelsPinned(at: .left).first {
 				dragInsets.left -= panel.view.bounds.width
 			}
-
+			
 			if unpinningMetadata.side == .right, let panel = manager.panelsPinned(at: .right).first {
 				dragInsets.right -= panel.view.bounds.width
 			}
-
+			
 		}
-
-		var newX = proposedCenter.x
-		var newY = proposedCenter.y
-
-		newX = max(newX, viewToMove.bounds.size.width/2 + dragInsets.left)
-		newX = min(newX, superview.bounds.size.width - viewToMove.bounds.size.width/2 - dragInsets.right)
-
-		newY = max(newY, viewToMove.bounds.size.height/2 + dragInsets.top)
-		newY = min(newY, superview.bounds.size.height - viewToMove.bounds.size.height/2 - dragInsets.bottom)
-
-		return CGPoint(x: newX, y: newY)
-
+		
+		var newX = proposedFrame.center.x
+		var newY = proposedFrame.center.y
+		
+		newX = max(newX, proposedFrame.size.width/2 + dragInsets.left)
+		newX = min(newX, superview.bounds.size.width - proposedFrame.size.width/2 - dragInsets.right)
+		
+		newY = max(newY, proposedFrame.size.height/2 + dragInsets.top)
+		newY = min(newY, superview.bounds.size.height - proposedFrame.size.height/2 - dragInsets.bottom)
+		
+		var newRect = proposedFrame
+		newRect.center = CGPoint(x: newX, y: newY)
+		
+		return newRect
 	}
 
 	deinit {

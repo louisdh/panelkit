@@ -32,6 +32,10 @@ extension PanelManager {
 		guard let contentDelegate = panel.contentDelegate else {
 			return
 		}
+		
+		if panel.logLevel == .full {
+			print("did drag \(panel) free from \(point)")
+		}
 
 		var prevPinnedPanels = panelsPinned(at: pinnedMetadata.side).sorted { (p1, p2) -> Bool in
 			return p1.pinnedMetadata?.index ?? 0 < p2.pinnedMetadata?.index ?? 0
@@ -68,6 +72,8 @@ extension PanelManager {
 				newFrame.origin.y += point.y - newFrame.maxY
 			}
 		}
+
+		newFrame = panel.allowedFrame(for: newFrame)
 
 		updateFrame(for: panel, to: newFrame)
 
