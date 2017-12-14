@@ -3,3 +3,5 @@ If you have an app that uses PanelKit, please [contact me](mailto:louisdhauwe@si
 
 ## [Pixure – Professional Pixel Art Studio](https://itunes.apple.com/app/pixure/id893400841) 
 ![Pixure](showcase-resources/pixure.gif)
+
+## [SkipTimer](https://itunes.apple.com/app/skiptimer/id1308077196)
