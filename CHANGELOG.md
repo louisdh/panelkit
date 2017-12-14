@@ -6,6 +6,7 @@ CHANGELOG
 
 | Contents                        |
 | :------------------------------ |
+| [2.0.1](#201-2017-12-14)        |
 | [2.0.0](#200-2017-12-05)        |
 | [1.0.0](#100-2017-03-20)        |
 | [0.9.0](#090-2017-03-08)        |
@@ -14,6 +15,10 @@ CHANGELOG
 | [0.8](#08-2017-02-20)           |
 
 </details>
+
+[2.0.1](https://github.com/louisdh/panelkit/tree/2.0.1) (2017-12-14)
+--------------
+* Fixed an animation glitch when unpinning a panel
 
 [2.0.0](https://github.com/louisdh/panelkit/tree/2.0.0) (2017-12-05)
 --------------
