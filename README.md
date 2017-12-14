@@ -89,6 +89,7 @@ PanelKit has some advanced opt-in features:
 * [Multi-pinning](docs/MultiPinning.md)
 * [Panel resizing](docs/Resizing.md)
 * [State restoration](docs/States.md)
+* [Exposé](docs/Expose.md)
 
 ## Installation
 
