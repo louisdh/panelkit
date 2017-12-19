@@ -432,6 +432,10 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 			return
 
 		}
+		
+		guard !isInExpose else {
+			return
+		}
 
 		guard isFloating || isPinned else {
 			return

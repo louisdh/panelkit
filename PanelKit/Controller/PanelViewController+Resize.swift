@@ -11,6 +11,10 @@ import UIKit
 extension PanelViewController {
 
 	private var canResize: Bool {
+		
+		guard isFloating else {
+			return false
+		}
 
 		guard let contentDelegate = contentDelegate else {
 			return false
