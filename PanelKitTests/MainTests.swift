@@ -29,7 +29,11 @@ class MainTests: XCTestCase {
 		
 		XCTAssertNotNil(navigationController.view)
 		XCTAssertNotNil(viewController.view)
-		
+        
+        if UIDevice.current.userInterfaceIdiom == .phone {
+            continueAfterFailure = false
+            XCTFail("Test does not work on an iPhone")
+        }
 	}
 	
 	override func tearDown() {
