@@ -9,7 +9,7 @@
 import Foundation
 import CoreGraphics
 
-public struct PanelState: Codable {
+public struct PanelState: Codable, Equatable {
 	
 	public let floatingState: PanelFloatingState?
 	
@@ -54,16 +54,6 @@ public struct PanelState: Codable {
 		
 		pinnedMetadata = panel.pinnedMetadata
 		
-	}
-	
-}
-
-extension PanelState: Equatable {
-	
-	public static func ==(lhs: PanelState, rhs: PanelState) -> Bool {
-		return lhs.floatingSize == rhs.floatingSize &&
-				lhs.floatingState == rhs.floatingState &&
-				lhs.pinnedMetadata == rhs.pinnedMetadata
 	}
 	
 }

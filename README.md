@@ -6,7 +6,7 @@
 <a href="https://travis-ci.org/louisdh/panelkit"><img src="https://travis-ci.org/louisdh/panelkit.svg?branch=master" style="max-height: 300px;" alt="Build Status"/></a>
 <a href="https://codecov.io/gh/louisdh/panelkit"><img src="https://codecov.io/gh/louisdh/panelkit/branch/master/graph/badge.svg" alt="Codecov"/></a>
 <br>
-<a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"/></a>
+<a href="https://developer.apple.com/swift/"><img src="https://img.shields.io/badge/Swift-4.1-orange.svg?style=flat" style="max-height: 300px;" alt="Swift"/></a>
 <a href="https://cocoapods.org/pods/PanelKit"><img src="https://img.shields.io/cocoapods/v/PanelKit.svg" style="max-height: 300px;" alt="PodVersion"/></a>
 <a href="https://github.com/Carthage/Carthage"><img src="https://img.shields.io/badge/Carthage-compatible-4bc51d.svg?style=flat" style="max-height: 300px;" alt="Carthage Compatible"/></a>
 <img src="https://img.shields.io/badge/platform-iOS-lightgrey.svg" style="max-height: 300px;" alt="Platform: iOS">
