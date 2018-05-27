@@ -71,8 +71,10 @@ extension PanelManager {
 				
 				panel.heightConstraint?.isActive = false
 				
+				let insets = dragInsets(for: panel)
+
 				let multiplier = 1.0 / CGFloat(numberOfPanelsPinned(at: pinnedSide))
-				panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: multiplier, constant: -panel.dragInsets.top - panel.dragInsets.bottom)
+				panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: multiplier, constant: -insets.top - insets.bottom)
 				panel.heightConstraint?.isActive = true
 				
 				panel.widthConstraint?.isActive = true
