@@ -23,7 +23,15 @@ class TextPanelContentViewController: UIViewController, PanelContentDelegate {
 	var shouldAdjustForKeyboard: Bool {
 		return textView.isFirstResponder
 	}
+	
+	var minimumPanelContentSize: CGSize {
+		return CGSize(width: 240, height: 260)
+	}
 
 	let preferredPanelContentSize = CGSize(width: 320, height: 400)
 
+	var preferredPanelPinnedHeight: CGFloat {
+		return 260
+	}
+	
 }

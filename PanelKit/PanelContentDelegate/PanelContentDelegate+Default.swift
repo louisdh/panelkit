@@ -59,6 +59,10 @@ public extension PanelContentDelegate {
 	var preferredPanelPinnedWidth: CGFloat {
 		return preferredPanelContentSize.width
 	}
+	
+	var preferredPanelPinnedHeight: CGFloat {
+		return preferredPanelContentSize.height
+	}
 
 	var minimumPanelContentSize: CGSize {
 		return preferredPanelContentSize

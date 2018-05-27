@@ -90,5 +90,9 @@ extension ViewController: PanelManager {
 	var panels: [PanelViewController] {
 		return [mapPanelVC, textPanelVC]
 	}
-
+	
+	func maximumNumberOfPanelsPinned(at side: PanelPinSide) -> Int {
+		return 2
+	}
+	
 }

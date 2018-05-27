@@ -30,6 +30,14 @@ extension PanelViewController {
 
 			manager.didDrag(self, toEdgeOf: .left)
 
+		} else if self.view.frame.minY <= panelContentView.frame.minY && !isPinned {
+
+			manager.didDrag(self, toEdgeOf: .top)
+			
+		} else if self.view.frame.maxY >= panelContentView.frame.maxY && !isPinned {
+			
+			manager.didDrag(self, toEdgeOf: .bottom)
+
 		} else {
 
 			if let pinnedSide = pinnedMetadata?.side {
@@ -65,6 +73,14 @@ extension PanelViewController {
 		} else if self.view.frame.minX <= panelContentView.frame.minX {
 
 			manager.didEndDrag(self, toEdgeOf: .left)
+
+		} else if self.view.frame.minY <= panelContentView.frame.minY {
+
+			manager.didEndDrag(self, toEdgeOf: .top)
+
+		} else if self.view.frame.maxY >= panelContentView.frame.maxY {
+
+			manager.didEndDrag(self, toEdgeOf: .bottom)
 
 		} else {
 

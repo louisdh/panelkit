@@ -33,6 +33,30 @@ extension PanelManager {
 	var numberOfPanelsPinnedRight: Int {
 		return numberOfPanelsPinned(at: .right)
 	}
+	
+	var panelPinnedTop: PanelViewController? {
+		return panelsPinnedTop.first
+	}
+	
+	var panelsPinnedTop: [PanelViewController] {
+		return panelsPinned(at: .top)
+	}
+	
+	var numberOfPanelsPinnedTop: Int {
+		return numberOfPanelsPinned(at: .top)
+	}
+	
+	var panelPinnedBottom: PanelViewController? {
+		return panelsPinnedBottom.first
+	}
+	
+	var panelsPinnedBottom: [PanelViewController] {
+		return panelsPinned(at: .bottom)
+	}
+	
+	var numberOfPanelsPinnedBottom: Int {
+		return numberOfPanelsPinned(at: .bottom)
+	}
 
 	func panelsPinned(at side: PanelPinSide) -> [PanelViewController] {
 		return panels.filter { $0.pinnedMetadata?.side == side }.sorted(by: { (p1, p2) -> Bool in
@@ -70,26 +94,114 @@ extension PanelManager {
 		var previewTargetFrame = panelView.bounds
 
 		if let panelPinned = panelsPinned(at: side).first {
-
-			if let preferredPanelPinnedWidth = panelPinned.contentDelegate?.preferredPanelPinnedWidth {
-				previewTargetFrame.size.width = preferredPanelPinnedWidth
+			
+			if side == .left || side == .right {
+				
+				if let preferredPanelPinnedWidth = panelPinned.contentDelegate?.preferredPanelPinnedWidth {
+					previewTargetFrame.size.width = preferredPanelPinnedWidth
+				}
+				
+			} else {
+				
+				if let preferredPanelPinnedHeight = panelPinned.contentDelegate?.preferredPanelPinnedHeight {
+					previewTargetFrame.size.height = preferredPanelPinnedHeight
+				}
 			}
 
 		} else {
 
-			previewTargetFrame.size.width = contentDelegate.preferredPanelPinnedWidth
+			if side == .left || side == .right {
+
+				previewTargetFrame.size.width = contentDelegate.preferredPanelPinnedWidth
+
+			} else {
+				
+				previewTargetFrame.size.height = contentDelegate.preferredPanelPinnedHeight
+
+			}
 
 		}
+		
+		if side == .left || side == .right {
 
-		previewTargetFrame.origin.y = panelContentView.frame.origin.y
-
-		let totalAvailableHeight = panelContentWrapperView.bounds.height - previewTargetFrame.origin.y
-
-		previewTargetFrame.size.height = totalAvailableHeight
+			previewTargetFrame.origin.y = panelContentView.frame.origin.y
+			
+			let totalAvailableHeight = panelContentWrapperView.bounds.height - previewTargetFrame.origin.y
+			
+			previewTargetFrame.size.height = totalAvailableHeight
+			
+		} else {
+			
+			previewTargetFrame.origin.x = panelContentView.frame.origin.x
+			
+			let totalAvailableWidth = panelContentWrapperView.bounds.width - previewTargetFrame.origin.x
+			
+			previewTargetFrame.size.width = totalAvailableWidth
+			
+		}
 
 		let index: Int
 
 		switch side {
+			
+		case .top:
+			previewTargetFrame.origin.y = 0.0
+			
+			if panel.isPinned {
+				
+				if numberOfPanelsPinnedTop > 1 {
+					
+					previewTargetFrame.size.width /= CGFloat(numberOfPanelsPinnedTop)
+					
+					index = panel.pinnedMetadata?.index ?? 0
+					
+				} else {
+					index = 0
+				}
+				
+			} else {
+				
+				if numberOfPanelsPinnedTop > 0 {
+					
+					previewTargetFrame.size.width /= CGFloat(numberOfPanelsPinnedTop + 1)
+					
+					index = Int(floor((panelView.frame.center.x - panelContentView.frame.origin.x) / previewTargetFrame.size.width))
+					
+				} else {
+					index = 0
+				}
+				
+			}
+			
+		case .bottom:
+			previewTargetFrame.origin.y = panelContentWrapperView.bounds.height - previewTargetFrame.size.height
+			
+			if panel.isPinned {
+				
+				if numberOfPanelsPinnedBottom > 1 {
+					
+					previewTargetFrame.size.width /= CGFloat(numberOfPanelsPinnedBottom)
+					
+					index = panel.pinnedMetadata?.index ?? 0
+					
+				} else {
+					index = 0
+				}
+				
+			} else {
+				
+				if numberOfPanelsPinnedBottom > 0 {
+					
+					previewTargetFrame.size.width /= CGFloat(numberOfPanelsPinnedBottom + 1)
+					
+					index = Int(floor((panelView.frame.center.x - panelContentView.frame.origin.x) / previewTargetFrame.size.width))
+					
+				} else {
+					index = 0
+				}
+				
+			}
+			
 		case .left:
 			previewTargetFrame.origin.x = 0.0
 
@@ -151,7 +263,11 @@ extension PanelManager {
 		}
 
 		if index > 0 {
-			previewTargetFrame.origin.y += previewTargetFrame.size.height * CGFloat(index)
+			if side == .left || side == .right {
+				previewTargetFrame.origin.y += previewTargetFrame.size.height * CGFloat(index)
+			} else {
+				previewTargetFrame.origin.x += previewTargetFrame.size.width * CGFloat(index)
+			}
 		}
 
 		return PinnedPosition(frame: previewTargetFrame, index: index)
@@ -164,6 +280,10 @@ extension PanelManager {
 		updatedContentViewFrame.size.width = panelContentWrapperView.bounds.width
 
 		updatedContentViewFrame.origin.x = 0.0
+		
+		updatedContentViewFrame.size.height = panelContentWrapperView.bounds.height
+		
+		updatedContentViewFrame.origin.y = 0.0
 
 		if let leftPanelWidth = panelPinnedLeft?.contentDelegate?.preferredPanelPinnedWidth {
 
@@ -171,13 +291,26 @@ extension PanelManager {
 
 			updatedContentViewFrame.origin.x = leftPanelWidth
 		}
-
+		
 		if let rightPanelWidth = panelPinnedRight?.contentDelegate?.preferredPanelPinnedWidth {
 
 			updatedContentViewFrame.size.width -= rightPanelWidth
 
 		}
-
+		
+		if let topPanelHeight = panelPinnedTop?.contentDelegate?.preferredPanelPinnedHeight {
+			
+			updatedContentViewFrame.size.height -= topPanelHeight
+			
+			updatedContentViewFrame.origin.y = topPanelHeight
+		}
+		
+		if let bottomPanelHeight = panelPinnedBottom?.contentDelegate?.preferredPanelPinnedHeight {
+			
+			updatedContentViewFrame.size.height -= bottomPanelHeight
+			
+		}
+		
 		return updatedContentViewFrame
 	}
 

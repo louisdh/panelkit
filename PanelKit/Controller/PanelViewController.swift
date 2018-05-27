@@ -321,6 +321,14 @@ import UIKit
 				dragInsets.right -= proposedFrame.width
 			}
 			
+			if pinnedMetadata?.side == .top {
+				dragInsets.top -= proposedFrame.height
+			}
+			
+			if pinnedMetadata?.side == .bottom {
+				dragInsets.bottom -= proposedFrame.height
+			}			
+			
 		} else if let manager = self.manager, let unpinningMetadata = unpinningMetadata {
 			
 			if unpinningMetadata.side == .left, let panel = manager.panelsPinned(at: .left).first {
@@ -329,6 +337,14 @@ import UIKit
 			
 			if unpinningMetadata.side == .right, let panel = manager.panelsPinned(at: .right).first {
 				dragInsets.right -= panel.view.bounds.width
+			}
+			
+			if unpinningMetadata.side == .top, let panel = manager.panelsPinned(at: .top).first {
+				dragInsets.top -= panel.view.bounds.height
+			}
+			
+			if unpinningMetadata.side == .bottom, let panel = manager.panelsPinned(at: .bottom).first {
+				dragInsets.bottom -= panel.view.bounds.height
 			}
 			
 		}

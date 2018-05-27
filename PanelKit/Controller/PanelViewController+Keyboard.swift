@@ -130,7 +130,11 @@ extension PanelViewController {
 		}
 
 		if isPinned {
-			newFrame.size.width = view.frame.width
+			if pinnedMetadata?.side == .left || pinnedMetadata?.side == .right {
+				newFrame.size.width = view.frame.width
+			} else {
+				newFrame.size.height = view.frame.height
+			}
 		}
 
 		newFrame.size.height += 1
@@ -161,7 +165,11 @@ extension PanelViewController {
 		}
 		
 		if isPinned {
-			newFrame2.size.width = view.frame.width
+			if pinnedMetadata?.side == .left || pinnedMetadata?.side == .right {
+				newFrame2.size.width = view.frame.width
+			} else {
+				newFrame2.size.height = view.frame.height
+			}
 		}
 
 		self.manager?.updateFrame(for: self, to: newFrame2)

@@ -57,6 +57,7 @@ extension PanelManager {
 		var newFrame = currentFrame
 
 		let preferredPanelPinnedWidth = contentDelegate.preferredPanelPinnedWidth
+		let preferredPanelPinnedHeight = contentDelegate.preferredPanelPinnedWidth
 		let preferredPanelContentSize = contentDelegate.preferredPanelContentSize
 		newFrame.size = panel.floatingSize ?? preferredPanelContentSize
 
@@ -66,11 +67,31 @@ extension PanelManager {
 				newFrame.origin.x -= delta
 			}
 		}
+		
+		if side == .bottom {
+			if newFrame.height > preferredPanelPinnedHeight {
+				let delta = newFrame.height - preferredPanelPinnedHeight
+				newFrame.origin.y -= delta
+			}
+		}
+
 
 		if currentFrame.contains(point) && !newFrame.contains(point) {
-			if newFrame.minY > point.y || newFrame.maxY < point.y {
-				newFrame.origin.y += point.y - newFrame.maxY
+
+			if side == .left || side == .right {
+				
+				if newFrame.minY > point.y || newFrame.maxY < point.y {
+					newFrame.origin.y += point.y - newFrame.maxY
+				}
+				
+			} else {
+				
+				if newFrame.minX > point.x || newFrame.maxX < point.x {
+					newFrame.origin.x += point.x - newFrame.maxX
+				}
+				
 			}
+			
 		}
 
 		newFrame = panel.allowedFrame(for: newFrame)

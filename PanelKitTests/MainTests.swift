@@ -414,9 +414,9 @@ class MainTests: XCTestCase {
 			
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 				
-				let from = mapPanel.view.center
+				let from = CGPoint(x: mapPanel.view.center.x, y: mapPanel.view.center.y + 200)
 				let toX = self.viewController.view.bounds.width - mapPanel.contentViewController!.view.bounds.width/2
-				let to = CGPoint(x: toX, y: mapPanel.view.center.y)
+				let to = CGPoint(x: toX, y: mapPanel.view.center.y + 200)
 				mapPanel.moveWithTouch(from: from, to: to)
 				self.viewController.view.layoutIfNeeded()
 				

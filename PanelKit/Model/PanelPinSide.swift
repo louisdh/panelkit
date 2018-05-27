@@ -12,6 +12,8 @@ import Foundation
 @objc public enum PanelPinSide: Int, Codable {
 	case left
 	case right
+	case top
+	case bottom
 }
 
 extension PanelPinSide: CustomStringConvertible {
@@ -22,6 +24,10 @@ extension PanelPinSide: CustomStringConvertible {
 			return "left"
 		case .right:
 			return "right"
+		case .top:
+			return "top"
+		case .bottom:
+			return "bottom"
 		}
 	}
 

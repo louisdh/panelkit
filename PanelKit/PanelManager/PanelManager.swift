@@ -90,8 +90,13 @@ extension PanelManager {
 
 		let left = panelPinnedLeft?.view?.bounds.width ?? 0.0
 		let right = panelPinnedRight?.view?.bounds.width ?? 0.0
+		let top = panelPinnedTop?.view?.bounds.height ?? 0.0
+		let bottom = panelPinnedBottom?.view?.bounds.height ?? 0.0
 
-		return UIEdgeInsets(top: insets.top, left: insets.left + left, bottom: insets.bottom, right: insets.right + right)
+		return UIEdgeInsets(top: insets.top + top,
+							left: insets.left + left,
+							bottom: insets.bottom + bottom,
+							right: insets.right + right)
 
 	}
 
