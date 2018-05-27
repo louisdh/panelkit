@@ -59,13 +59,11 @@ extension PanelManager {
 			panel.bottomConstraint = panel.view.bottomAnchor.constraint(equalTo: panelContentWrapperView.bottomAnchor, constant: 0.0)
 		}
 
-		if panel.leadingConstraint == nil {
-			panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: 0.0)
-		}
+		panel.leadingConstraint?.isActive = false
+		panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: 0.0)
 
-		if panel.trailingConstraint == nil {
-			panel.trailingConstraint = panel.view.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: 0.0)
-		}
+		panel.trailingConstraint?.isActive = false
+		panel.trailingConstraint = panel.view.trailingAnchor.constraint(equalTo: panelContentWrapperView.trailingAnchor, constant: 0.0)
 
 		if let pinnedSide = panel.pinnedMetadata?.side, !keyboardShown && !isInExpose {
 
@@ -74,7 +72,7 @@ extension PanelManager {
 				panel.heightConstraint?.isActive = false
 				
 				let multiplier = 1.0 / CGFloat(numberOfPanelsPinned(at: pinnedSide))
-				panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentView.heightAnchor, multiplier: multiplier)
+				panel.heightConstraint = panel.view.heightAnchor.constraint(equalTo: panelContentWrapperView.heightAnchor, multiplier: multiplier)
 				panel.heightConstraint?.isActive = true
 				
 				panel.widthConstraint?.isActive = true
@@ -143,7 +141,7 @@ extension PanelManager {
 			} else {
 				
 				panel.leadingConstraint?.isActive = false
-				panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentWrapperView.leadingAnchor, constant: 0.0)
+				panel.leadingConstraint = panel.view.leadingAnchor.constraint(equalTo: panelContentView.leadingAnchor, constant: 0.0)
 				
 				if let pinnedSide = panel.pinnedMetadata?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
 					

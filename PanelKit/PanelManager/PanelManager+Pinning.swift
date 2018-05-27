@@ -134,7 +134,7 @@ extension PanelManager {
 			
 			previewTargetFrame.origin.x = panelContentView.frame.origin.x
 			
-			let totalAvailableWidth = panelContentWrapperView.bounds.width - previewTargetFrame.origin.x
+			let totalAvailableWidth = panelContentView.bounds.width - previewTargetFrame.origin.x
 			
 			previewTargetFrame.size.width = totalAvailableWidth
 			
