@@ -113,4 +113,7 @@ public protocol PanelContentDelegate: class {
 	/// Default is false.
 	var hideCloseButtonWhileFloating: Bool { get }
 	
+	/// When true: the close UIBarButtonItem will be hidden when the panel is pinned.
+	/// Default is false.
+	var hideCloseButtonWhilePinned: Bool { get }
 }

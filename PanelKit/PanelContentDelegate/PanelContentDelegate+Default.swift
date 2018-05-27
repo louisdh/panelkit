@@ -14,6 +14,10 @@ public extension PanelContentDelegate {
 		return false
 	}
 	
+	var hideCloseButtonWhilePinned: Bool {
+		return false
+	}
+	
 	var closeButtonTitle: String {
 		return "Close"
 	}
@@ -104,6 +108,10 @@ public extension PanelContentDelegate where Self: UIViewController {
 										
 					navigationItem.leftBarButtonItems = leftBarButtonItems
 
+				} else if panel.contentDelegate?.hideCloseButtonWhilePinned == true, panel.isPinned {
+					
+					navigationItem.leftBarButtonItems = leftBarButtonItems
+					
 				} else {
 					
 					let panelToggleBtn = getPanelToggleBtn()
