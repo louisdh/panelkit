@@ -10,6 +10,10 @@ import UIKit
 
 public extension PanelContentDelegate {
 
+	var hideCloseButtonWhileFloating: Bool {
+		return false
+	}
+	
 	var closeButtonTitle: String {
 		return "Close"
 	}
@@ -95,11 +99,20 @@ public extension PanelContentDelegate where Self: UIViewController {
 				navigationItem.leftBarButtonItems = leftBarButtonItems
 
 			} else {
+				
+				if panel.contentDelegate?.hideCloseButtonWhileFloating == true, panel.isFloating {
+										
+					navigationItem.leftBarButtonItems = leftBarButtonItems
 
-				let panelToggleBtn = getPanelToggleBtn()
+				} else {
+					
+					let panelToggleBtn = getPanelToggleBtn()
+					
+					navigationItem.leftBarButtonItems = [panelToggleBtn] + leftBarButtonItems
 
-				navigationItem.leftBarButtonItems = [panelToggleBtn] + leftBarButtonItems
+				}
 
+				
 			}
 
 		}

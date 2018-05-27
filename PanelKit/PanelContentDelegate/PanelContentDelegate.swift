@@ -109,4 +109,8 @@ public protocol PanelContentDelegate: class {
 	/// This can be used to prevent the panel from dragging in certain areas.
 	func panelDragGestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool
 
+	/// When true: the close UIBarButtonItem will be hidden when the panel is floating.
+	/// Default is false.
+	var hideCloseButtonWhileFloating: Bool { get }
+	
 }
