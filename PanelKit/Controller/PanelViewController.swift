@@ -487,7 +487,7 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		}
 
 		let touchPoint = gestureRecognizer.location(ofTouch: 0, in: superview)
-			
+		
 		if gestureRecognizer.state == .began {
 
 			prevTouch = touchPoint
@@ -515,22 +515,57 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		guard let viewToMove = self.view else {
 			return
 		}
+		
+		if isFloating {
 
-		let proposeX = viewToMove.center.x - (fromTouch.x - touch.x)
-		let proposeY = viewToMove.center.y - (fromTouch.y - touch.y)
+			let proposeX = viewToMove.center.x - (fromTouch.x - touch.x)
+			let proposeY = viewToMove.center.y - (fromTouch.y - touch.y)
 
-		let proposedCenter = CGPoint(x: proposeX, y: proposeY)
+			let proposedCenter = CGPoint(x: proposeX, y: proposeY)
 
-		var newFrame = viewToMove.frame
-		let newCenter = self.allowedCenter(for: proposedCenter)
-		newFrame.center = newCenter
+			var newFrame = viewToMove.frame
+			let newCenter = self.allowedCenter(for: proposedCenter)
+			newFrame.center = newCenter
 
-		self.manager?.updateFrame(for: self, to: newFrame)
+			self.manager?.updateFrame(for: self, to: newFrame)
 
-		self.manager?.panelContentWrapperView.layoutIfNeeded()
+			self.manager?.panelContentWrapperView.layoutIfNeeded()
 
-		if fromTouch != touch {
-			self.didDrag(at: touch)
+		}
+		
+		if let pinnedSide = self.pinnedMetadata?.side {
+			
+			let mayUnpin: Bool
+			
+			switch pinnedSide {
+			case .left:
+				mayUnpin = touch.x > fromTouch.x
+				
+			case .right:
+				mayUnpin = touch.x < fromTouch.x
+
+			case .top:
+				mayUnpin = touch.y > fromTouch.y
+
+			case .bottom:
+				mayUnpin = touch.y < fromTouch.y
+
+			}
+			
+			if mayUnpin {
+				
+				if fromTouch != touch {
+					self.didDrag(at: touch)
+				}
+				
+			}
+			
+		} else {
+			
+			if fromTouch != touch {
+				self.didDrag(at: touch)
+			}
+			
 		}
 
 		self.prevTouch = touch
