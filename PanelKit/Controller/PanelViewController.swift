@@ -468,6 +468,12 @@ extension PanelViewController: UIGestureRecognizerDelegate {
 		if gestureRecognizer.numberOfTouches == 0 {
 			return
 		}
+		
+		let navigationBar = panelNavigationController.navigationBar
+		
+		guard navigationBar.frame.contains(gestureRecognizer.location(ofTouch: 0, in: navigationBar)) else {
+			return
+		}
 
 		let touch = gestureRecognizer.location(ofTouch: 0, in: superview)
 
