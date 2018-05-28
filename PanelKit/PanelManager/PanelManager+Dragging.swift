@@ -11,7 +11,7 @@ import UIKit
 
 extension PanelManager {
 
-	func didDragFree(_ panel: PanelViewController, from point: CGPoint) {
+	func didDragFree(_ panel: PanelViewController, from point: CGPoint?) {
 
 		fadePinnedPreviewOut(for: panel)
 
@@ -34,7 +34,7 @@ extension PanelManager {
 		}
 		
 		if panel.logLevel == .full {
-			print("did drag \(panel) free from \(point)")
+			print("did drag \(panel) free from \(String(describing: point))")
 		}
 
 		var prevPinnedPanels = panelsPinned(at: pinnedMetadata.side).sorted { (p1, p2) -> Bool in
@@ -74,20 +74,23 @@ extension PanelManager {
 				newFrame.origin.y -= delta
 			}
 		}
+		
+		if let point = point {
 
+			if !newFrame.contains(point) {
 
-		if currentFrame.contains(point) && !newFrame.contains(point) {
-
-			if side == .left || side == .right {
-				
-				if newFrame.minY > point.y || newFrame.maxY < point.y {
-					newFrame.origin.y += point.y - newFrame.maxY
-				}
-				
-			} else {
-				
-				if newFrame.minX > point.x || newFrame.maxX < point.x {
-					newFrame.origin.x += point.x - newFrame.maxX
+				if side == .left || side == .right {
+					
+					if newFrame.minY > point.y || newFrame.maxY < point.y {
+						newFrame.origin.y += point.y - newFrame.maxY
+					}
+					
+				} else {
+					
+					if newFrame.minX > point.x || newFrame.maxX < point.x {
+						newFrame.origin.x += point.x - newFrame.maxX
+					}
+					
 				}
 				
 			}

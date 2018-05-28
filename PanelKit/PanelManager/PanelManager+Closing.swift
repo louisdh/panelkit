@@ -21,7 +21,7 @@ extension PanelManager {
 		panel.viewDidDisappear(false)
 
 		if panel.isPinned || panel.wasPinned {
-			didDragFree(panel, from: panel.view.frame.origin)
+			didDragFree(panel, from: nil)
 		}
 
 	}
