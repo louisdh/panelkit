@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T71-d2-5SW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="T71-d2-5SW">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -80,9 +80,14 @@
                     </view>
                     <navigationItem key="navigationItem" title="PanelKit Example" id="0j5-HW-w4S">
                         <rightBarButtonItems>
-                            <barButtonItem title="TextView" id="Oga-o6-uCI">
+                            <barButtonItem title="TextView2" id="Oga-o6-uCI">
                                 <connections>
-                                    <action selector="showTextViewPanel:" destination="BYZ-38-t0r" id="oN7-IN-nj8"/>
+                                    <action selector="showTextView2Panel:" destination="BYZ-38-t0r" id="zsS-HO-MAv"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="TextView" id="maQ-Jd-bzD">
+                                <connections>
+                                    <action selector="showTextViewPanel:" destination="BYZ-38-t0r" id="CHo-I6-Xb5"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Map" id="fSk-xH-LRf">
@@ -215,6 +220,46 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="loM-da-204" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="942" y="138"/>
+        </scene>
+        <!--Text2 Panel Content View Controller-->
+        <scene sceneID="WJC-oY-59Y">
+            <objects>
+                <viewController storyboardIdentifier="Text2PanelContentViewController" id="69A-Bc-4DQ" customClass="Text2PanelContentViewController" customModule="Example" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KNJ-h8-He1"/>
+                        <viewControllerLayoutGuide type="bottom" id="ibg-0Q-EAG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZGc-P0-HGq">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="m8t-ua-Ks7">
+                                <rect key="frame" x="16" y="64" width="288" height="336"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <string key="text">Here's to the crazy ones. The misfits. The rebels. The trouble-makers. The round pegs in the square holes. The ones who see things differently. They're not fond of rules, and they have no respect for the status-quo. You can quote them, disagree with them, glorify, or vilify them. But the only thing you can't do is ignore them. Because they change things. They push the human race forward. And while some may see them as the crazy ones, we see genius. Because the people who are crazy enough to think they can change the world, are the ones who do.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="m8t-ua-Ks7" firstAttribute="top" secondItem="ZGc-P0-HGq" secondAttribute="topMargin" id="7kd-kh-OUo"/>
+                            <constraint firstItem="m8t-ua-Ks7" firstAttribute="leading" secondItem="ZGc-P0-HGq" secondAttribute="leadingMargin" id="CCa-oB-0Rf"/>
+                            <constraint firstItem="ibg-0Q-EAG" firstAttribute="top" secondItem="m8t-ua-Ks7" secondAttribute="bottom" id="DvL-Kx-0Wc"/>
+                            <constraint firstItem="m8t-ua-Ks7" firstAttribute="trailing" secondItem="ZGc-P0-HGq" secondAttribute="trailingMargin" id="h86-XF-51w"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="400"/>
+                    <connections>
+                        <outlet property="textView" destination="m8t-ua-Ks7" id="08l-he-mlS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fr1-v5-80X" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="871" y="563"/>
         </scene>
     </scenes>
 </document>

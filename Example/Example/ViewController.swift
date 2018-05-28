@@ -17,6 +17,9 @@ class ViewController: UIViewController {
 	var textPanelContentVC: TextPanelContentViewController!
 	var textPanelVC: PanelViewController!
 
+	var text2PanelContentVC: Text2PanelContentViewController!
+	var text2PanelVC: PanelViewController!
+	
 	@IBOutlet weak var contentWrapperView: UIView!
 	@IBOutlet weak var contentView: UIView!
 
@@ -31,6 +34,10 @@ class ViewController: UIViewController {
 
 		textPanelVC = PanelViewController(with: textPanelContentVC, in: self)
 
+		text2PanelContentVC = storyboard?.instantiateViewController(withIdentifier: "Text2PanelContentViewController") as! Text2PanelContentViewController
+		
+		text2PanelVC = PanelViewController(with: text2PanelContentVC, in: self)
+		
 	}
 
 	override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -65,6 +72,12 @@ class ViewController: UIViewController {
 		showPopover(textPanelVC, from: sender)
 
 	}
+	
+	@IBAction func showTextView2Panel(_ sender: UIBarButtonItem) {
+		
+		showPopover(text2PanelVC, from: sender)
+		
+	}
 
 	func showPopover(_ vc: UIViewController, from barButtonItem: UIBarButtonItem) {
 
@@ -88,7 +101,7 @@ extension ViewController: PanelManager {
 	}
 
 	var panels: [PanelViewController] {
-		return [mapPanelVC, textPanelVC]
+		return [mapPanelVC, textPanelVC, text2PanelVC]
 	}
 	
 	func maximumNumberOfPanelsPinned(at side: PanelPinSide) -> Int {

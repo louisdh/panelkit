@@ -14,6 +14,7 @@
 		BE9C5B531EEB6FCA009490A1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE24AD2A1E508C49008892A2 /* Main.storyboard */; };
 		BEF801441E508FFC007D3CEE /* MapPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */; };
 		BEF801461E50E1AC007D3CEE /* TextPanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */; };
+		BEF8B6A020BC9A34006B85E9 /* Text2PanelContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEF8B69F20BC9A34006B85E9 /* Text2PanelContentViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +43,7 @@
 		BE24AD391E508C8F008892A2 /* PanelKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PanelKit.framework; path = "../../../../Library/Developer/Xcode/DerivedData/PanelKit-bazukjpbanitzpeyxanllouvbgxh/Build/Products/Debug-iphoneos/PanelKit.framework"; sourceTree = "<group>"; };
 		BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MapPanelContentViewController.swift; path = Panels/MapPanelContentViewController.swift; sourceTree = "<group>"; };
 		BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextPanelContentViewController.swift; path = Panels/TextPanelContentViewController.swift; sourceTree = "<group>"; };
+		BEF8B69F20BC9A34006B85E9 /* Text2PanelContentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Text2PanelContentViewController.swift; path = Panels/Text2PanelContentViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				BEF801431E508FFC007D3CEE /* MapPanelContentViewController.swift */,
 				BEF801451E50E1AC007D3CEE /* TextPanelContentViewController.swift */,
+				BEF8B69F20BC9A34006B85E9 /* Text2PanelContentViewController.swift */,
 			);
 			name = Panels;
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				BE24AD291E508C49008892A2 /* ViewController.swift in Sources */,
 				BEF801461E50E1AC007D3CEE /* TextPanelContentViewController.swift in Sources */,
 				BE24AD271E508C49008892A2 /* AppDelegate.swift in Sources */,
+				BEF8B6A020BC9A34006B85E9 /* Text2PanelContentViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
