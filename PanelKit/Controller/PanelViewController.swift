@@ -225,10 +225,6 @@ import UIKit
 
 		shadowView.frame = panelNavigationController.view.frame
 
-		if shadowEnabled {
-			shadowLayer.shadowPath = UIBezierPath(roundedRect: shadowView.bounds, cornerRadius: cornerRadius).cgPath
-		}
-
 	}
 
 	override public func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

@@ -16,7 +16,7 @@ extension PanelViewController {
 	}
 
 	var shadowLayer: CALayer {
-		return shadowView.layer
+		return self.view.layer
 	}
 
 	func disableShadow(animated: Bool = false, duration: Double = 0.3) {
