@@ -124,9 +124,9 @@ extension PanelManager {
 		
 		if side == .left || side == .right {
 
-			previewTargetFrame.origin.y = panelContentView.frame.origin.y
+			previewTargetFrame.origin.y = panelContentWrapperView.bounds.origin.y
 			
-			let totalAvailableHeight = panelContentWrapperView.bounds.height - previewTargetFrame.origin.y
+			let totalAvailableHeight = panelContentWrapperView.bounds.height
 			
 			previewTargetFrame.size.height = totalAvailableHeight
 			
@@ -134,7 +134,7 @@ extension PanelManager {
 			
 			previewTargetFrame.origin.x = panelContentView.frame.origin.x
 			
-			let totalAvailableWidth = panelContentView.bounds.width - previewTargetFrame.origin.x
+			let totalAvailableWidth = panelContentView.bounds.width
 			
 			previewTargetFrame.size.width = totalAvailableWidth
 			
@@ -223,7 +223,7 @@ extension PanelManager {
 
 					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedLeft + 1)
 
-					index = Int(floor((panelView.frame.center.y - panelContentView.frame.origin.y) / previewTargetFrame.size.height))
+					index = Int(floor((panelView.frame.center.y - panelContentWrapperView.bounds.origin.y) / previewTargetFrame.size.height))
 
 				} else {
 					index = 0
@@ -252,7 +252,7 @@ extension PanelManager {
 
 					previewTargetFrame.size.height /= CGFloat(numberOfPanelsPinnedRight + 1)
 
-					index = Int(floor((panelView.frame.center.y - panelContentView.frame.origin.y) / previewTargetFrame.size.height))
+					index = Int(floor((panelView.frame.center.y - panelContentWrapperView.bounds.origin.y) / previewTargetFrame.size.height))
 
 				} else {
 					index = 0

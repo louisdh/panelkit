@@ -147,11 +147,11 @@ extension PanelManager {
 				
 				if let pinnedSide = panel.pinnedMetadata?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
 					
-					panel.leadingConstraint?.constant = panelContentView.frame.origin.x
+					panel.leadingConstraint?.constant = 0
 					
 				} else {
 					
-					panel.leadingConstraint?.constant = frame.origin.x
+					panel.leadingConstraint?.constant = 0
 					
 				}
 				
@@ -221,7 +221,7 @@ extension PanelManager {
 				
 				if let pinnedSide = panel.pinnedMetadata?.side, numberOfPanelsPinned(at: pinnedSide) == 1, !isInExpose {
 					
-					panel.topConstraint?.constant = panelContentView.frame.origin.y
+					panel.topConstraint?.constant = 0
 					
 				} else {
 					
