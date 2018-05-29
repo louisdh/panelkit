@@ -414,7 +414,7 @@ class MainTests: XCTestCase {
 			
 			self.viewController.toggleFloatStatus(for: mapPanel, completion: {
 				
-				let from = CGPoint(x: mapPanel.view.center.x, y: mapPanel.view.center.y + 200)
+				let from = CGPoint(x: mapPanel.view.center.x - 1, y: mapPanel.view.center.y + 200)
 				let toX = self.viewController.view.bounds.width - mapPanel.contentViewController!.view.bounds.width/2
 				let to = CGPoint(x: toX, y: mapPanel.view.center.y + 200)
 				mapPanel.moveWithTouch(from: from, to: to)
@@ -429,6 +429,7 @@ class MainTests: XCTestCase {
 				
 				mapPanel.moveWithTouch(from: to, to: from)
 				self.viewController.view.layoutIfNeeded()
+				mapPanel.moveWithTouch(from: to, to: from)
 				mapPanel.didEndDrag()
 				
 				XCTAssert(!mapPanel.isPinned)
