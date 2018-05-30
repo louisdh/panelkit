@@ -37,10 +37,6 @@ extension PanelViewController {
 
 	@objc public var isFloating: Bool {
 
-		guard manager?.allowFloatingPanels == true else {
-			return false
-		}
-		
 		if isPresentedAsPopover {
 			return false
 		}
@@ -53,7 +49,7 @@ extension PanelViewController {
 			return false
 		}
 
-		guard view.superview != nil else {
+		guard view.superview == self.manager?.panelContentWrapperView else {
 			return false
 		}
 
