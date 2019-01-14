@@ -141,17 +141,3 @@ public extension PanelManager {
 	}
 
 }
-
-// MARK: - Default implementation
-
-extension PanelManager {
-    
-    func panelWillAppear(_ panel: PanelViewController, animated: Bool) {}
-    
-    func panelWillDisappear(_ panel: PanelViewController, animated: Bool) {}
-    
-    func panelDidAppear(_ panel: PanelViewController, animated: Bool) {}
-    
-    func panelDidDisappear(_ panel: PanelViewController, animated: Bool) {}
-}
-
