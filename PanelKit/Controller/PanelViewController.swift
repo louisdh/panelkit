@@ -179,6 +179,7 @@ import UIKit
 			print("\(self) viewWillAppear")
 		}
 
+        manager?.panelWillAppear(self, animated: animated)
 	}
 
 	override public func viewDidAppear(_ animated: Bool) {
@@ -191,6 +192,7 @@ import UIKit
 			print("\(self) viewDidAppear")
 		}
 
+        manager?.panelDidAppear(self, animated: animated)
 	}
 
 	override public func viewWillDisappear(_ animated: Bool) {
@@ -202,6 +204,7 @@ import UIKit
 			print("\(self) viewWillDisappear")
 		}
 
+        manager?.panelWillDisappear(self, animated: animated)
 	}
 
 	override public func viewDidDisappear(_ animated: Bool) {
@@ -213,6 +216,7 @@ import UIKit
 			print("\(self) viewDidDisappear")
 		}
 
+        manager?.panelDidDisappear(self, animated: animated)
 	}
 
 	override public func viewWillLayoutSubviews() {

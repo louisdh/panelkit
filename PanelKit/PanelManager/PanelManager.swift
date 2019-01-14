@@ -77,6 +77,22 @@ public protocol PanelManager: class {
 	/// Called when exposé is about to be exited.
 	/// The default implementation is an empty function.
 	func willExitExpose()
+    
+    /// Called when panel is about to appear.
+    /// The default implementation is an empty function.
+    func panelWillAppear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel is about to disappear.
+    /// The default implementation is an empty function.
+    func panelWillDisappear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel has appeared.
+    /// The default implementation is an empty function.
+    func panelDidAppear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel has disappeared.
+    /// The default implementation is an empty function.
+    func panelDidDisappear(_ panel: PanelViewController, animated: Bool)
 
 }
 
@@ -125,3 +141,17 @@ public extension PanelManager {
 	}
 
 }
+
+// MARK: - Default implementation
+
+extension PanelManager {
+    
+    func panelWillAppear(_ panel: PanelViewController, animated: Bool) {}
+    
+    func panelWillDisappear(_ panel: PanelViewController, animated: Bool) {}
+    
+    func panelDidAppear(_ panel: PanelViewController, animated: Bool) {}
+    
+    func panelDidDisappear(_ panel: PanelViewController, animated: Bool) {}
+}
+
