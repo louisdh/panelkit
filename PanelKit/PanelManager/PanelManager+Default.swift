@@ -14,6 +14,10 @@ public extension PanelManager {
 	func didUpdatePinnedPanels() {
 
 	}
+    
+    func panelManager(_ manager: PanelManager, didUpdatePinnedStateFor panel: PanelViewController) {
+        
+    }
 
 	func enablePanelShadow(for panel: PanelViewController) -> Bool {
 		return true
