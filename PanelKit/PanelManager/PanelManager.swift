@@ -60,7 +60,9 @@ public protocol PanelManager: class {
     
     /// This will be called when a panel is pinned or unpinned.
     /// The default implementation is an empty function.
-    func panelManager(_ manager: PanelManager, didUpdatePinnedStateFor panel: PanelViewController)
+    func panelManager(_ manager: PanelManager,
+                      didUpdatePinnedStateFor panel: PanelViewController,
+                      side: PanelPinSide)
 
 	/// Drag insets for panel.
 	///

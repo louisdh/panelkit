@@ -15,7 +15,7 @@ public extension PanelManager {
 
 	}
     
-    func panelManager(_ manager: PanelManager, didUpdatePinnedStateFor panel: PanelViewController) {
+    func panelManager(_ manager: PanelManager, didUpdatePinnedStateFor panel: PanelViewController, side: PanelPinSide) {
         
     }
 

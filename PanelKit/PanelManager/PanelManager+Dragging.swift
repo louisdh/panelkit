@@ -138,7 +138,7 @@ extension PanelManager {
 
 			self.didUpdatePinnedPanels()
             
-            self.panelManager(self, didUpdatePinnedStateFor: panel)
+            self.panelManager(self, didUpdatePinnedStateFor: panel, side: side)
 
 		}, completion: { (_) in
 
@@ -283,6 +283,8 @@ extension PanelManager {
 			self.panelContentWrapperView.layoutIfNeeded()
 
 			self.didUpdatePinnedPanels()
+            
+            self.panelManager(self, didUpdatePinnedStateFor: panel, side: side)
 
 		}, completion: { (_) in
 
