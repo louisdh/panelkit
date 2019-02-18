@@ -16,6 +16,27 @@ import Foundation
 	case bottom
 }
 
+public extension PanelPinSide {
+    
+    public var isVertical: Bool {
+        
+        let sides: [PanelPinSide]
+        
+        sides = [.top, .bottom]
+        
+        return sides.contains(self)
+    }
+    
+    public var isHorizontal: Bool {
+        
+        let sides: [PanelPinSide]
+        
+        sides = [.left, .right]
+        
+        return sides.contains(self)
+    }
+}
+
 extension PanelPinSide: CustomStringConvertible {
 
 	public var description: String {

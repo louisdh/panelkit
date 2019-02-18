@@ -14,6 +14,10 @@ public extension PanelManager {
 	func didUpdatePinnedPanels() {
 
 	}
+    
+    func panelManager(_ manager: PanelManager, didUpdatePinnedStateFor panel: PanelViewController, side: PanelPinSide) {
+        
+    }
 
 	func enablePanelShadow(for panel: PanelViewController) -> Bool {
 		return true
@@ -50,5 +54,21 @@ public extension PanelManager {
 	var exposeOverlayBlurEffect: UIBlurEffect {
 		return UIBlurEffect(style: .light)
 	}
+    
+    func panelWillAppear(_ panel: PanelViewController, animated: Bool) {
+        
+    }
+    
+    func panelWillDisappear(_ panel: PanelViewController, animated: Bool) {
+        
+    }
+    
+    func panelDidAppear(_ panel: PanelViewController, animated: Bool) {
+        
+    }
+    
+    func panelDidDisappear(_ panel: PanelViewController, animated: Bool) {
+        
+    }
 
 }

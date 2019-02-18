@@ -57,6 +57,12 @@ public protocol PanelManager: class {
 	/// This will be called when a panel is pinned or unpinned.
 	/// The default implementation is an empty function.
 	func didUpdatePinnedPanels()
+    
+    /// This will be called when a panel is pinned or unpinned.
+    /// The default implementation is an empty function.
+    func panelManager(_ manager: PanelManager,
+                      didUpdatePinnedStateFor panel: PanelViewController,
+                      side: PanelPinSide)
 
 	/// Drag insets for panel.
 	///
@@ -77,6 +83,22 @@ public protocol PanelManager: class {
 	/// Called when exposé is about to be exited.
 	/// The default implementation is an empty function.
 	func willExitExpose()
+    
+    /// Called when panel is about to appear.
+    /// The default implementation is an empty function.
+    func panelWillAppear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel is about to disappear.
+    /// The default implementation is an empty function.
+    func panelWillDisappear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel has appeared.
+    /// The default implementation is an empty function.
+    func panelDidAppear(_ panel: PanelViewController, animated: Bool)
+    
+    /// Called when panel has disappeared.
+    /// The default implementation is an empty function.
+    func panelDidDisappear(_ panel: PanelViewController, animated: Bool)
 
 }
 
